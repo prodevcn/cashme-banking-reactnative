@@ -1,5 +1,5 @@
 import loginSlice from '../../features/login/loginSlice';
-import api from '../../api';
+import api from '../../util/api';
 
 // Actions
 const {

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { isAuthenticated, removeToken } from '../../helpers/auth';
 
-const loginSlice = createSlice({
+const authSlice = createSlice({
   name: 'login',
   initialState: {
     data: {},
