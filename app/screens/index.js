@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { compose } from "redux";
 import { connect } from "react-redux";
+import { withTranslation } from 'react-i18next';
 import { fetchStartAction } from "../redux/ducks/common";
 import { Container, Text } from 'native-base';
 import Screen from "../components/Screen";
@@ -14,13 +16,17 @@ class MainScreen extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+      this.props.fetchStart();
+    }
+
     render() {
-        this.props.fetchStart();
+        const { t } = this.props;
 
         return (
             <Screen>
                 <Container>
-                    <Text>Open up App.js to start working on your app!</Text>
+                    <Text>{t('hello')}</Text>
                 </Container>
             </Screen>
         );
@@ -39,4 +45,7 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
+export default compose(
+  withTranslation('translations'),
+  connect(mapStateToProps, mapDispatchToProps)
+)(MainScreen);
