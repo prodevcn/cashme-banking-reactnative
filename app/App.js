@@ -1,12 +1,13 @@
 import React from 'react';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
-import { Container, Text } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
+import MainScreen from "./screens";
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       isReady: false,
     };
@@ -27,9 +28,9 @@ export default class App extends React.Component {
     }
 
     return (
-      <Container>
-        <Text>Open up App.js to start working on your app!</Text>
-      </Container>
+      <>
+        <MainScreen/>
+      </>
     );
   }
 }

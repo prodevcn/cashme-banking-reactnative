@@ -1,8 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit';
-import loginSlice from '../features/login/loginSlice';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import logger from "redux-logger";
+import commonSlice from '../features/common/commonSlice';
+
+const middleware = getDefaultMiddleware();
 
 export default configureStore({
   reducer: {
-    login: loginSlice.reducer,
-  }
+    common: commonSlice.reducer,
+  },
+  middleware: [...middleware, logger]
 });
