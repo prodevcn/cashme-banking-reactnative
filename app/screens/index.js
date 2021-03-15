@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchStartAction } from "../redux/ducks/common";
 import { Container, Text } from 'native-base';
+import Screen from "../components/Screen";
 
 class MainScreen extends React.Component {
     static propTypes = {
@@ -15,11 +16,13 @@ class MainScreen extends React.Component {
 
     render() {
         this.props.fetchStart();
-        
+
         return (
-            <Container>
-                <Text>Open up App.js to start working on your app!</Text>
-            </Container>
+            <Screen>
+                <Container>
+                    <Text>Open up App.js to start working on your app!</Text>
+                </Container>
+            </Screen>
         );
     }
 }
