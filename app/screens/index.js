@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { withTranslation } from 'react-i18next';
-import { fetchStartAction } from "../redux/ducks/common";
+import { fetchStartAction } from "../redux/commonSlice";
 import { Container, Text } from 'native-base';
 import Screen from "../components/Screen";
 

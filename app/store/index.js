@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import logger from "redux-logger";
-import commonSlice from '../features/common/commonSlice';
+import commonSlice from '../redux/commonSlice';
 
 const middleware = getDefaultMiddleware();
 
