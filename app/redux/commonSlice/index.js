@@ -3,40 +3,33 @@ import { createSlice } from '@reduxjs/toolkit';
 const commonSlice = createSlice({
   name: 'common',
   initialState: {
-    error: "",
+    error: null,
     loading: false,
     message: '',
   },
   reducers: {
     fetchStart: (state, action) => {
-      state = {
-        ...state,
-        error: "",
-        message: "",
-        loading: true,
-      };
+      state.error = null;
+      state.message = "";
+      state.loading = true;
     },
     fetchSuccess: (state, action) => {
-      state = { ...state };
-      state.error = "";
+      state.error = null;
       state.message = "";
       state.loading = false;
     },
     fetchError: (state, action) => {
-      state = { ...state };
-      state.error = action.error;
+      state.error = action.payload;
       state.message = "";
       state.loading = false;
     },
     showMessage: (state, action) => {
-      state = { ...state };
-      state.error = "";
-      state.message = action.message;
+      state.error = null;
+      state.message = action.payload;
       state.loading = false;
     },
     hideMessage: (state, action) => {
-      state = { ...state };
-      state.error = "";
+      state.error = null;
       state.message = "";
       state.loading = false;
     }
