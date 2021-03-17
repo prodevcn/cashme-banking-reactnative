@@ -1,6 +1,6 @@
 import axios from 'axios';
 import humps from 'humps';
-import { BASE_URL } from './config';
+import { BASE_URL } from '../config';
 
 const api = axios.create({
   baseURL: BASE_URL,
