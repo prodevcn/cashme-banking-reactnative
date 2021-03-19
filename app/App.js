@@ -1,8 +1,9 @@
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
-import MainScreen from "./screens";
+import RootNavigation from "./navigations";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,9 +29,9 @@ export default class App extends React.Component {
     }
 
     return (
-      <>
-        <MainScreen/>
-      </>
+      <NavigationContainer>
+        <RootNavigation />
+      </NavigationContainer>
     );
   }
 }
