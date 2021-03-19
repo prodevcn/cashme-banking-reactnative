@@ -1,2 +1,2 @@
-// INTRO SCREENS
-export const HOME_SCREEN = "homeScreen"
+// SCREENS
+export const HOME_SCREEN = "HOME_SCREEN";
