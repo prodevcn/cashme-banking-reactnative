@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { withTranslation } from 'react-i18next';
-import commonSlice from "../redux/commonSlice";
+import commonSlice from "../../redux/commonSlice";
 import { Container, Text } from 'native-base';
-import Screen from "../components/Screen";
+import Screen from "../../components/Screen";
 
-class MainScreen extends React.Component {
+class Home extends React.Component {
   static propTypes = {
     loading: PropTypes.bool,
   }
@@ -44,4 +44,4 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
   withTranslation('translations'),
   connect(mapStateToProps, mapDispatchToProps)
-)(MainScreen);
+)(Home);
