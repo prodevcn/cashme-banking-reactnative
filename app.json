@@ -7,13 +7,6 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ],
-    "android": {
-      "package": "com.globalcredit.cashme",
-      "googleServicesFile": "./google-services.json"
-    },
-    "ios": {
-      "bundleIdentifier": "com.globalcredit.cashme"
-    }
+    ]
   }
 }
