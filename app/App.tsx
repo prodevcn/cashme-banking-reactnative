@@ -3,11 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import Loader from "./components/Loader";
-
-interface AppState {
-  isReady: boolean;
-  [key: string]: any;
-}
+import { AppState } from "./interfaces/app";
 
 export default class App extends Component<{}, AppState> {
   constructor(props: object) {
