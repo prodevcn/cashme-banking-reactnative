@@ -1,5 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import CommonState from "../../types/CommonStateInterface";
+
+interface CommonState {
+  isLoading: boolean;
+  error: object;
+  message: string;
+}
 
 const initialState = {
   isLoading: false,
