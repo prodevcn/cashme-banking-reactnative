@@ -2,13 +2,16 @@ import * as React from "react";
 import { registerRootComponent } from 'expo';
 import { Provider } from 'react-redux';
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { Root } from 'native-base';
 import store from './app/store';
 import App from './app/App';
 
 const RootComponent = () => (
   <Provider store={store}>
     <SafeAreaProvider>
-      <App />
+      <Root>
+        <App />
+      </Root>
     </SafeAreaProvider>
   </Provider>
 );
