@@ -2,7 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import commonSlice from "../commonSlice";
 import api from "../../util/api";
 import { getToken, setToken, removeToken } from "../../helpers/auth";
-import { AuthState, SignIn } from '../../interfaces/redux/auth';
+import { AuthState, AuthPayload } from '../../interfaces/redux/auth';
+import { AppDispatch, AppThunk } from "../../store";
 
 const initialState: AuthState = {
   data: null,
@@ -30,12 +31,11 @@ const authSlice = createSlice({
 const { fetchStart, fetchSuccess, fetchError } = commonSlice.actions;
 const { signOutSuccess, signInFulfilled, setUserToken } = authSlice.actions;
 
-export const getUserToken = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getUserToken = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
-    const token: string | null = await getToken();
+    const token = await getToken();
 
     // Store token and set default request header for all
     dispatch(setUserToken(token));
@@ -45,10 +45,9 @@ export const getUserToken = () => async (
   }
 };
 
-export const signIn = (signInData: SignIn) => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const signIn = (signInData: AuthPayload): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     dispatch(fetchStart());
 
@@ -65,10 +64,9 @@ export const signIn = (signInData: SignIn) => async (
   }
 };
 
-export const signUp = ({ email, password }: { email: string, password: string }) => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const signUp = ({ email, password }: AuthPayload): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     dispatch(fetchStart());
 
@@ -83,10 +81,9 @@ export const signUp = ({ email, password }: { email: string, password: string })
   }
 };
 
-export const signOut = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const signOut = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     dispatch(fetchStart());
 
@@ -102,10 +99,9 @@ export const signOut = () => async (
   }
 };
 
-export const getUser = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getUser = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     dispatch(fetchStart());
 
@@ -118,10 +114,9 @@ export const getUser = () => async (
   }
 };
 
-export const forgotPassword = (email: string) => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const forgotPassword = (email: string): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     dispatch(fetchStart());
 

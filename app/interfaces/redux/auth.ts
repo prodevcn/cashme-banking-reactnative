@@ -3,12 +3,7 @@ export interface AuthState {
   token: string | null;
 }
 
-export interface SignIn {
-  email: string;
-  password: string;
-}
-
-export interface SignUp {
+export interface AuthPayload {
   email: string;
   password: string;
 }
