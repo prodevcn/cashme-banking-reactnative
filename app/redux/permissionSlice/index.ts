@@ -3,6 +3,7 @@ import * as Permissions from "expo-permissions";
 import commonSlice from "../commonSlice";
 import { getPermissionStatus } from "../../helpers/permission";
 import { PermissionState } from '../../interfaces/redux/permission';
+import { AppDispatch, AppThunk } from "../../store";
 
 const initialState: PermissionState = {
   data: {
@@ -38,10 +39,9 @@ const permissionSlice = createSlice({
 const { fetchError } = commonSlice.actions;
 const { permissionSuccess } = permissionSlice.actions;
 
-export const getNotificationsPermission = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getNotificationsPermission = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.NOTIFICATIONS);
     dispatch(permissionSuccess({ notificationsPermission: granted }));
@@ -50,10 +50,9 @@ export const getNotificationsPermission = () => async (
   }
 };
 
-export const getUserFacingNotificationsPermission = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getUserFacingNotificationsPermission = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.USER_FACING_NOTIFICATIONS);
     dispatch(permissionSuccess({ userFacingNotificationsPermission: granted }));
@@ -62,10 +61,9 @@ export const getUserFacingNotificationsPermission = () => async (
   }
 };
 
-export const getLocationPermission = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getLocationPermission = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.LOCATION);
     dispatch(permissionSuccess({ locationPermission: granted }));
@@ -74,10 +72,9 @@ export const getLocationPermission = () => async (
   }
 };
 
-export const getCameraPermission = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getCameraPermission = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.CAMERA);
     dispatch(permissionSuccess({ cameraPermission: granted }));
@@ -86,10 +83,9 @@ export const getCameraPermission = () => async (
   }
 };
 
-export const getAudioRecordingPermission = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getAudioRecordingPermission = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.AUDIO_RECORDING);
     dispatch(permissionSuccess({ audioRecordingPermission: granted }));
@@ -98,10 +94,9 @@ export const getAudioRecordingPermission = () => async (
   }
 };
 
-export const getContactsPermission = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getContactsPermission = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.CONTACTS);
     dispatch(permissionSuccess({ contactsPermission: granted }));
@@ -110,10 +105,9 @@ export const getContactsPermission = () => async (
   }
 };
 
-export const getMediaLibraryPermission = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getMediaLibraryPermission = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.MEDIA_LIBRARY);
     dispatch(permissionSuccess({ mediaLibraryPermission: granted }));
@@ -122,10 +116,9 @@ export const getMediaLibraryPermission = () => async (
   }
 };
 
-export const getMediaLibraryWriteOnlyPermission = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getMediaLibraryWriteOnlyPermission = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     const granted: boolean = await getPermissionStatus(
       Permissions.MEDIA_LIBRARY_WRITE_ONLY
@@ -136,10 +129,9 @@ export const getMediaLibraryWriteOnlyPermission = () => async (
   }
 };
 
-export const getCalendarPermission = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getCalendarPermission = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.CALENDAR);
     dispatch(permissionSuccess({ calendarPermission: granted }));
@@ -148,10 +140,9 @@ export const getCalendarPermission = () => async (
   }
 };
 
-export const getRemindersPermission = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getRemindersPermission = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.REMINDERS);
     dispatch(permissionSuccess({ remindersPermission: granted }));
@@ -160,10 +151,9 @@ export const getRemindersPermission = () => async (
   }
 };
 
-export const getSystemBrightnessPermission = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getSystemBrightnessPermission = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.SYSTEM_BRIGHTNESS);
     dispatch(permissionSuccess({ systemBrightnessPermission: granted }));
@@ -173,10 +163,9 @@ export const getSystemBrightnessPermission = () => async (
 };
 
 // The permission for accessing DeviceMotion and DeviceOrientation in the web browser.
-export const getMotionPermission = () => async (
-  dispatch: Function,
-  getState: Function
-): Promise<void> => {
+export const getMotionPermission = (): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.MOTION);
     dispatch(permissionSuccess({ motionPermission: granted }));
