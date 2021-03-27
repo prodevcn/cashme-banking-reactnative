@@ -1,10 +1,8 @@
-import { Action, configureStore, getDefaultMiddleware, Middleware, ThunkAction } from "@reduxjs/toolkit";
+import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import commonSlice from "../redux/commonSlice";
 import permissionSlice from "../redux/permissionSlice";
 import authSlice from "../redux/authSlice";
-
-const middleware: Array<Middleware> = getDefaultMiddleware();
 
 const store = configureStore({
   reducer: {
@@ -12,7 +10,9 @@ const store = configureStore({
     permission: permissionSlice.reducer,
     auth: authSlice.reducer,
   },
-  middleware: [...middleware, logger]
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware()
+      .concat(logger)
 });
 
 export default store;
