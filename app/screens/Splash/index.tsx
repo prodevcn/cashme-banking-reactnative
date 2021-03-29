@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, ComponentType } from "react";
 import { WithTranslation, withTranslation } from "react-i18next";
+import { compose } from "redux";
 import { View, Text } from "react-native";
 import styles from "./styles";
 import { NavigationInjectedProps, NavigationRoute } from "react-navigation";
@@ -13,10 +14,10 @@ class Splash extends Component<SplashProps> {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
+        <Text>Home</Text>
       </View>
     );
   }
 }
 
-export default withTranslation()(Splash);
+export default compose<ComponentType>(withTranslation("translations"))(Splash);
