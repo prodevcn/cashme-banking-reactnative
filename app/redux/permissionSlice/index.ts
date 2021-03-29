@@ -2,8 +2,24 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import * as Permissions from "expo-permissions";
 import commonSlice from "../commonSlice";
 import { getPermissionStatus } from "../../helpers/permission";
-import { PermissionState } from '../../interfaces/redux/permission';
 import { AppDispatch, AppThunk } from "../../store";
+
+interface PermissionState {
+  data: {
+    notificationsPermission: boolean;
+    userFacingNotificationsPermission: boolean;
+    locationPermission: boolean;
+    cameraPermission: boolean;
+    audioRecordingPermission: boolean;
+    contactsPermission: boolean;
+    mediaLibraryPermission: boolean;
+    mediaLibraryWriteOnlyPermission: boolean;
+    calendarPermission: boolean;
+    remindersPermission: boolean;
+    systemBrightnessPermission: boolean;
+    motionPermission: boolean;
+  };
+}
 
 const initialState: PermissionState = {
   data: {

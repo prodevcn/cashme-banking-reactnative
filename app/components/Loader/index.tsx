@@ -1,7 +1,12 @@
 import React, { Component } from "react";
-import { View, ActivityIndicator } from "react-native";
+import { View, ActivityIndicator, ColorValue } from "react-native";
 import styles from "./styles";
-import { LoaderProps } from '../../interfaces';
+
+interface LoaderProps {
+  isFullScreen?: boolean;
+  size?: "small" | "large"; // number works just for Android
+  color?: ColorValue;
+}
 
 export default class Loader extends Component<LoaderProps> {
 
