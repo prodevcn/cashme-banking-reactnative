@@ -1,7 +1,7 @@
 import { StackNavigationOptions } from "@react-navigation/stack";
 import { ComponentType } from "react";
 import { SIGN_IN_SCREEN } from "../constants";
-import SignInScreen from "../screens/Auth/SignIn";
+import SignIn from "../screens/Auth/SignIn";
 
 interface Routes {
   name: string;
@@ -12,7 +12,7 @@ interface Routes {
 export const nonAuthenticatedStackScreens: Array<Routes> = [
   {
     name: SIGN_IN_SCREEN,
-    component: SignInScreen,
+    component: SignIn,
     options: { title: "Sign In" },
   },
 ];
