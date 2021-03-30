@@ -2,8 +2,17 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import commonSlice from "../commonSlice";
 import api from "../../util/api";
 import { getToken, setToken, removeToken } from "../../helpers/auth";
-import { AuthState, AuthPayload } from '../../interfaces/redux/auth';
 import { AppDispatch, AppThunk } from "../../store";
+
+interface AuthState {
+  data: object | null;
+  token: string | null;
+}
+
+interface AuthPayload {
+  email: string;
+  password: string;
+}
 
 const initialState: AuthState = {
   data: null,

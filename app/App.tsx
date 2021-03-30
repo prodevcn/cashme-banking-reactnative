@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import Loader from "./components/Loader";
-import { AppState } from "./interfaces/app";
+import RootNavigation from "./navigations";
 
-export default class App extends Component<{}, AppState> {
+interface AppProps {}
+
+interface AppState {
+  isReady: boolean;
+}
+
+export default class App extends Component<AppProps, AppState> {
   constructor(props: object) {
     super(props);
 
@@ -27,20 +33,11 @@ export default class App extends Component<{}, AppState> {
     if (!this.state.isReady) {
       return <Loader />;
     }
-
+    
     return (
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-      </View>
+      <NavigationContainer>
+        <RootNavigation />
+      </NavigationContainer>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
