@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from "@react-navigation/native";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import Loader from "./components/Loader";
@@ -33,7 +33,7 @@ export default class App extends Component<AppProps, AppState> {
     if (!this.state.isReady) {
       return <Loader />;
     }
-    
+
     return (
       <NavigationContainer>
         <RootNavigation />

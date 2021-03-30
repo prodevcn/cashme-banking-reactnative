@@ -56,10 +56,12 @@ const { fetchError } = commonSlice.actions;
 const { permissionSuccess } = permissionSlice.actions;
 
 export const getNotificationsPermission = (): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
-    const granted: boolean = await getPermissionStatus(Permissions.NOTIFICATIONS);
+    const granted: boolean = await getPermissionStatus(
+      Permissions.NOTIFICATIONS,
+    );
     dispatch(permissionSuccess({ notificationsPermission: granted }));
   } catch (e) {
     dispatch(fetchError({ error: e }));
@@ -67,10 +69,12 @@ export const getNotificationsPermission = (): AppThunk => async (
 };
 
 export const getUserFacingNotificationsPermission = (): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
-    const granted: boolean = await getPermissionStatus(Permissions.USER_FACING_NOTIFICATIONS);
+    const granted: boolean = await getPermissionStatus(
+      Permissions.USER_FACING_NOTIFICATIONS,
+    );
     dispatch(permissionSuccess({ userFacingNotificationsPermission: granted }));
   } catch (e) {
     dispatch(fetchError({ error: e }));
@@ -78,7 +82,7 @@ export const getUserFacingNotificationsPermission = (): AppThunk => async (
 };
 
 export const getLocationPermission = (): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.LOCATION);
@@ -89,7 +93,7 @@ export const getLocationPermission = (): AppThunk => async (
 };
 
 export const getCameraPermission = (): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.CAMERA);
@@ -100,10 +104,12 @@ export const getCameraPermission = (): AppThunk => async (
 };
 
 export const getAudioRecordingPermission = (): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
-    const granted: boolean = await getPermissionStatus(Permissions.AUDIO_RECORDING);
+    const granted: boolean = await getPermissionStatus(
+      Permissions.AUDIO_RECORDING,
+    );
     dispatch(permissionSuccess({ audioRecordingPermission: granted }));
   } catch (e) {
     dispatch(fetchError({ error: e }));
@@ -111,7 +117,7 @@ export const getAudioRecordingPermission = (): AppThunk => async (
 };
 
 export const getContactsPermission = (): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.CONTACTS);
@@ -122,10 +128,12 @@ export const getContactsPermission = (): AppThunk => async (
 };
 
 export const getMediaLibraryPermission = (): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
-    const granted: boolean = await getPermissionStatus(Permissions.MEDIA_LIBRARY);
+    const granted: boolean = await getPermissionStatus(
+      Permissions.MEDIA_LIBRARY,
+    );
     dispatch(permissionSuccess({ mediaLibraryPermission: granted }));
   } catch (e) {
     dispatch(fetchError({ error: e }));
@@ -133,11 +141,11 @@ export const getMediaLibraryPermission = (): AppThunk => async (
 };
 
 export const getMediaLibraryWriteOnlyPermission = (): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
     const granted: boolean = await getPermissionStatus(
-      Permissions.MEDIA_LIBRARY_WRITE_ONLY
+      Permissions.MEDIA_LIBRARY_WRITE_ONLY,
     );
     dispatch(permissionSuccess({ mediaLibraryWriteOnlyPermission: granted }));
   } catch (e) {
@@ -146,7 +154,7 @@ export const getMediaLibraryWriteOnlyPermission = (): AppThunk => async (
 };
 
 export const getCalendarPermission = (): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.CALENDAR);
@@ -157,7 +165,7 @@ export const getCalendarPermission = (): AppThunk => async (
 };
 
 export const getRemindersPermission = (): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.REMINDERS);
@@ -168,10 +176,12 @@ export const getRemindersPermission = (): AppThunk => async (
 };
 
 export const getSystemBrightnessPermission = (): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
-    const granted: boolean = await getPermissionStatus(Permissions.SYSTEM_BRIGHTNESS);
+    const granted: boolean = await getPermissionStatus(
+      Permissions.SYSTEM_BRIGHTNESS,
+    );
     dispatch(permissionSuccess({ systemBrightnessPermission: granted }));
   } catch (e) {
     dispatch(fetchError({ error: e }));
@@ -180,7 +190,7 @@ export const getSystemBrightnessPermission = (): AppThunk => async (
 
 // The permission for accessing DeviceMotion and DeviceOrientation in the web browser.
 export const getMotionPermission = (): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
     const granted: boolean = await getPermissionStatus(Permissions.MOTION);

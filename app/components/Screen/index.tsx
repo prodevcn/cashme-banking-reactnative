@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { ScrollView, StatusBar, View, StatusBarAnimation, StatusBarStyle, ViewStyle } from "react-native";
+import {
+  ScrollView,
+  StatusBar,
+  View,
+  StatusBarAnimation,
+  StatusBarStyle,
+  ViewStyle,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Loader from "../Loader";
 import styles from "./styles";
@@ -23,7 +30,7 @@ export default class Screen extends Component<ScreenProps> {
       statusBarHidden = false,
       isLoading = false,
 
-      backgroundColor = { backgroundColor: "#fff"},
+      backgroundColor = { backgroundColor: "#fff" },
       innerStyle = null,
       contentContainerStyle = {},
       statusBarStyle = "light-content",
@@ -39,22 +46,23 @@ export default class Screen extends Component<ScreenProps> {
           hidden={statusBarHidden}
         />
         {[
-          isNonScrolling ?
+          isNonScrolling ? (
             <View
               key={"ScreenView"}
               style={[styles.container, innerStyle, backgroundColor]}
             >
               {this.props.children}
             </View>
-            :
+          ) : (
             <ScrollView
               key={"ScreenScrollView"}
               style={[styles.container, innerStyle, backgroundColor]}
               contentContainerStyle={contentContainerStyle}
             >
               {this.props.children}
-            </ScrollView>,
-          isLoading && <Loader key="Loader" isFullScreen={true} />
+            </ScrollView>
+          ),
+          isLoading && <Loader key="Loader" isFullScreen={true} />,
         ]}
       </SafeAreaView>
     );

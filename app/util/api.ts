@@ -1,11 +1,11 @@
-import axios from 'axios';
-import humps from 'humps';
-import { BASE_URL } from '../config';
+import axios from "axios";
+import humps from "humps";
+import { BASE_URL } from "../config";
 
 const api = axios.create({
   baseURL: BASE_URL,
   headers: {
-    'Content-Type': 'application/json'
+    "Content-Type": "application/json",
   },
 });
 
@@ -16,7 +16,7 @@ api.interceptors.request.use(
       data: humps.decamelizeKeys(config.data),
     };
   },
-  error => Promise.reject(error)
+  error => Promise.reject(error),
 );
 
 api.interceptors.response.use(
@@ -32,7 +32,7 @@ api.interceptors.response.use(
   },
   error => {
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;

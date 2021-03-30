@@ -10,9 +10,7 @@ const store = configureStore({
     permission: permissionSlice.reducer,
     auth: authSlice.reducer,
   },
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware()
-      .concat(logger)
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
 });
 
 export default store;
