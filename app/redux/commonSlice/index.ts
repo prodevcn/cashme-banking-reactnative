@@ -16,12 +16,12 @@ const commonSlice = createSlice({
   name: "common",
   initialState,
   reducers: {
-    fetchStart: (state) => {
+    fetchStart: state => {
       state.error = null;
       state.message = "";
       state.isLoading = true;
     },
-    fetchSuccess: (state) => {
+    fetchSuccess: state => {
       state.error = null;
       state.message = "";
       state.isLoading = false;
@@ -36,7 +36,7 @@ const commonSlice = createSlice({
       state.message = action.payload;
       state.isLoading = false;
     },
-    hideMessage: (state) => {
+    hideMessage: state => {
       state.error = null;
       state.message = "";
       state.isLoading = false;

@@ -9,7 +9,6 @@ interface LoaderProps {
 }
 
 export default class Loader extends Component<LoaderProps> {
-
   render() {
     const {
       isFullScreen = false,

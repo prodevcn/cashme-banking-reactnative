@@ -23,7 +23,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    signOutSuccess: (state) => {
+    signOutSuccess: state => {
       state.data = null;
       state.token = null;
     },
@@ -40,9 +40,7 @@ const authSlice = createSlice({
 const { fetchStart, fetchSuccess, fetchError } = commonSlice.actions;
 const { signOutSuccess, signInFulfilled, setUserToken } = authSlice.actions;
 
-export const getUserToken = (): AppThunk => async (
-  dispatch: AppDispatch
-) => {
+export const getUserToken = (): AppThunk => async (dispatch: AppDispatch) => {
   try {
     const token = await getToken();
 
@@ -55,7 +53,7 @@ export const getUserToken = (): AppThunk => async (
 };
 
 export const signIn = (signInData: AuthPayload): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
     dispatch(fetchStart());
@@ -74,7 +72,7 @@ export const signIn = (signInData: AuthPayload): AppThunk => async (
 };
 
 export const signUp = ({ email, password }: AuthPayload): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
     dispatch(fetchStart());
@@ -90,9 +88,7 @@ export const signUp = ({ email, password }: AuthPayload): AppThunk => async (
   }
 };
 
-export const signOut = (): AppThunk => async (
-  dispatch: AppDispatch
-) => {
+export const signOut = (): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(fetchStart());
 
@@ -108,9 +104,7 @@ export const signOut = (): AppThunk => async (
   }
 };
 
-export const getUser = (): AppThunk => async (
-  dispatch: AppDispatch
-) => {
+export const getUser = (): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(fetchStart());
 
@@ -124,7 +118,7 @@ export const getUser = (): AppThunk => async (
 };
 
 export const forgotPassword = (email: string): AppThunk => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
 ) => {
   try {
     dispatch(fetchStart());
