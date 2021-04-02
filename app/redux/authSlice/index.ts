@@ -40,7 +40,7 @@ const authSlice = createSlice({
 const { fetchStart, fetchSuccess, fetchError } = commonSlice.actions;
 const { signOutSuccess, signInFulfilled, setUserToken } = authSlice.actions;
 
-export const getUserToken = (): AppThunk => async (dispatch: AppDispatch) => {
+export const getUserToken = (): AppThunk => async dispatch => {
   try {
     const token = await getToken();
 
@@ -52,9 +52,7 @@ export const getUserToken = (): AppThunk => async (dispatch: AppDispatch) => {
   }
 };
 
-export const signIn = (signInData: AuthPayload): AppThunk => async (
-  dispatch: AppDispatch,
-) => {
+export const signIn = (signInData: AuthPayload): AppThunk => async dispatch => {
   try {
     dispatch(fetchStart());
 
@@ -71,9 +69,10 @@ export const signIn = (signInData: AuthPayload): AppThunk => async (
   }
 };
 
-export const signUp = ({ email, password }: AuthPayload): AppThunk => async (
-  dispatch: AppDispatch,
-) => {
+export const signUp = ({
+  email,
+  password,
+}: AuthPayload): AppThunk => async dispatch => {
   try {
     dispatch(fetchStart());
 
@@ -88,7 +87,7 @@ export const signUp = ({ email, password }: AuthPayload): AppThunk => async (
   }
 };
 
-export const signOut = (): AppThunk => async (dispatch: AppDispatch) => {
+export const signOut = (): AppThunk => async dispatch => {
   try {
     dispatch(fetchStart());
 
@@ -104,7 +103,7 @@ export const signOut = (): AppThunk => async (dispatch: AppDispatch) => {
   }
 };
 
-export const getUser = (): AppThunk => async (dispatch: AppDispatch) => {
+export const getUser = (): AppThunk => async dispatch => {
   try {
     dispatch(fetchStart());
 
@@ -117,9 +116,7 @@ export const getUser = (): AppThunk => async (dispatch: AppDispatch) => {
   }
 };
 
-export const forgotPassword = (email: string): AppThunk => async (
-  dispatch: AppDispatch,
-) => {
+export const forgotPassword = (email: string): AppThunk => async dispatch => {
   try {
     dispatch(fetchStart());
 

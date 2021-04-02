@@ -28,8 +28,7 @@ class SignIn extends Component<WithTranslation> {
           initialValues={initialValues}
           validationSchema={loginSchema}
           onSubmit={this.handleSubmit}
-        >
-          {({ values, handleChange, handleBlur, handleSubmit }) => (
+          component={({ values, handleChange, handleBlur, handleSubmit }) => (
             <Form>
               <Item floatingLabel>
                 <Label>{t("login.username")}</Label>
@@ -53,7 +52,7 @@ class SignIn extends Component<WithTranslation> {
               </Button>
             </Form>
           )}
-        </Formik>
+        />
       </Screen>
     );
   }

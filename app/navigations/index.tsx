@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { nonAuthenticatedStackScreens } from "./routes";
+import Splash from "../screens/Splash";
 
 const Stack = createStackNavigator();
 
@@ -8,6 +9,7 @@ class RootNavigation extends Component {
   render() {
     return (
       <Stack.Navigator>
+        <Stack.Screen name={"Splash"} component={Splash} />
         {nonAuthenticatedStackScreens.map(screen => (
           <Stack.Screen
             key={screen.name}

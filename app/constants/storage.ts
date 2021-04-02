@@ -1,2 +1,2 @@
 // AUTH
-export const TOKEN: string = "TOKEN";
+export const TOKEN = "TOKEN";
