@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component, ComponentType } from "react";
+import { compose } from "redux";
 import { connect } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import * as Font from "expo-font";
@@ -52,7 +53,10 @@ class App extends Component<AppProps, AppState> {
   }
 
   render() {
-    if (!this.state.isReady) {
+    const { isReady } = this.state;
+
+    // Loading case
+    if (!isReady) {
       return <Loader />;
     }
 
@@ -66,11 +70,10 @@ class App extends Component<AppProps, AppState> {
 
 const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
-    registerForPushNotifications: () =>
-      dispatch(registerForPushNotifications()),
+    registerForPushNotifications: () => dispatch(registerForPushNotifications),
     notificationSuccess: () =>
       dispatch(notificationSlice.actions.notificationSuccess),
   };
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default compose<ComponentType>(connect(null, mapDispatchToProps))(App);

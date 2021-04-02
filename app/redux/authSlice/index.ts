@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import commonSlice from "../commonSlice";
 import api from "../../util/api";
 import { getToken, setToken, removeToken } from "../../helpers/auth";
-import { AppDispatch, AppThunk } from "../../store";
+import { AppThunk } from "../../store";
 
 interface AuthState {
   data: object | null;
@@ -48,7 +48,7 @@ export const getUserToken = (): AppThunk => async dispatch => {
     dispatch(setUserToken(token));
     api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   } catch (e) {
-    dispatch(fetchError({ error: e }));
+    dispatch(fetchError(e));
   }
 };
 
@@ -65,7 +65,7 @@ export const signIn = (signInData: AuthPayload): AppThunk => async dispatch => {
 
     dispatch(fetchSuccess());
   } catch (e) {
-    dispatch(fetchError({ error: e }));
+    dispatch(fetchError(e));
   }
 };
 
@@ -83,7 +83,7 @@ export const signUp = ({
 
     dispatch(fetchSuccess());
   } catch (e) {
-    dispatch(fetchError({ error: e }));
+    dispatch(fetchError(e));
   }
 };
 
@@ -99,7 +99,7 @@ export const signOut = (): AppThunk => async dispatch => {
 
     dispatch(fetchSuccess());
   } catch (e) {
-    dispatch(fetchError({ error: e }));
+    dispatch(fetchError(e));
   }
 };
 
@@ -112,7 +112,7 @@ export const getUser = (): AppThunk => async dispatch => {
 
     dispatch(fetchSuccess());
   } catch (e) {
-    dispatch(fetchError({ error: e }));
+    dispatch(fetchError(e));
   }
 };
 
@@ -126,7 +126,7 @@ export const forgotPassword = (email: string): AppThunk => async dispatch => {
 
     dispatch(fetchSuccess());
   } catch (e) {
-    dispatch(fetchError({ error: e }));
+    dispatch(fetchError(e));
   }
 };
 
