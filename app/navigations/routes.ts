@@ -2,7 +2,7 @@ import { StackNavigationOptions } from "@react-navigation/stack";
 import { ComponentType } from "react";
 import {
   SIGN_IN_SCREEN,
-  SPLASH_SCREEN,
+  HOME_SCREEN,
   PRODUCTS_SCREEN,
   TERMS_SCREEN,
   HELP_SCREEN,
@@ -10,7 +10,7 @@ import {
 import SignIn from "../screens/Auth/SignIn";
 import Help from "../screens/Help";
 import Products from "../screens/Products";
-import Splash from "../screens/Splash";
+import Home from "../screens/Home";
 import Terms from "../screens/Terms";
 
 interface Routes {
@@ -20,7 +20,7 @@ interface Routes {
 }
 
 export const commonScreens: Array<Routes> = [
-  { name: SPLASH_SCREEN, component: Splash, options: { title: "Home" } },
+  { name: HOME_SCREEN, component: Home, options: { title: "Home" } },
   {
     name: PRODUCTS_SCREEN,
     component: Products,

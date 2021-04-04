@@ -1,4 +1,4 @@
-import React, { Component, ComponentType } from "react";
+import React, { Component } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { commonScreens, authScreens } from "./routes";
