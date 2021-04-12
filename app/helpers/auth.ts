@@ -1,16 +1,16 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import Storage from "../util/storage";
 import { TOKEN } from "../constants";
 
-export const setToken = async (token: string): Promise<void> => {
-  await AsyncStorage.setItem(TOKEN, token);
+export const setToken = async (token: string) => {
+  await Storage.setItem({ key: TOKEN, value: token, encrypted: true });
 };
 
-export const getToken = async (): Promise<string | null> => {
-  return await AsyncStorage.getItem(TOKEN);
+export const getToken = async () => {
+  return await Storage.getItem({ key: TOKEN, encrypted: true });
 };
 
-export const removeToken = async (): Promise<void> => {
-  await AsyncStorage.removeItem(TOKEN);
+export const removeToken = async () => {
+  await Storage.removeItem({ key: TOKEN, encrypted: true });
 };
 
 export const isAuthenticated = () => !!getToken();
