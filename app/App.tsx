@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import * as Font from "expo-font";
 import * as Notifications from "expo-notifications";
 import { Ionicons } from "@expo/vector-icons";
-import { RootState, AppDispatch } from "./store";
+import { AppDispatch } from "./store";
 import notificationSlice, {
   registerForPushNotifications,
 } from "./redux/notificationSlice";

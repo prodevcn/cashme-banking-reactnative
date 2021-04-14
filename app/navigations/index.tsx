@@ -1,45 +1,37 @@
 import React, { Component } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { commonScreens, authScreens } from "./routes";
+import { commonScreens } from "./routes";
 
 const Stack = createStackNavigator();
-const BottomTab = createBottomTabNavigator();
+const BottomTabs = createBottomTabNavigator();
 
 class RootNavigation extends Component {
   render() {
     return (
       <Stack.Navigator>
         <Stack.Screen
-          name={"Main"}
-          children={() => nonAuthenticatedScreens()}
+          name="Main"
+          component={BottomNavigation}
           options={{ headerShown: false }}
         />
-        {authScreens.map(screen => (
-          <Stack.Screen
-            key={screen.name}
-            name={screen.name}
-            component={screen.component}
-            options={screen.options}
-          />
-        ))}
       </Stack.Navigator>
     );
   }
 }
 
-function nonAuthenticatedScreens() {
+function BottomNavigation() {
   return (
-    <BottomTab.Navigator>
+    <BottomTabs.Navigator>
       {commonScreens.map(screen => (
-        <BottomTab.Screen
+        <BottomTabs.Screen
           key={screen.name}
           name={screen.name}
           component={screen.component}
           options={screen.options}
         />
       ))}
-    </BottomTab.Navigator>
+    </BottomTabs.Navigator>
   );
 }
 

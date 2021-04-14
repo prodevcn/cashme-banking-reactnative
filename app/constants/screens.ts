@@ -3,6 +3,3 @@ export const HOME_SCREEN = "HOME_SCREEN";
 export const PRODUCTS_SCREEN = "PRODUCTS_SCREEN";
 export const TERMS_SCREEN = "TERMS_SCREEN";
 export const HELP_SCREEN = "HELP_SCREEN";
-
-// AUTH
-export const SIGN_IN_SCREEN = "SIGN_IN_SCREEN";
