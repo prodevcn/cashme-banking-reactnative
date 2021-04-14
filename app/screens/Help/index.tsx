@@ -1,8 +1,9 @@
 import React, { Component, ComponentType } from "react";
 import { compose } from "redux";
 import { WithTranslation, withTranslation } from "react-i18next";
-import { View, Text } from "react-native";
+import { View, Text } from "native-base";
 import { NavigationInjectedProps, NavigationRoute } from "react-navigation";
+import withLoginSheet from "../../hocs/withLoginSheet";
 
 import styles from "./styles";
 
@@ -20,4 +21,4 @@ class Help extends Component<HelpProps> {
   }
 }
 
-export default compose<ComponentType>(withTranslation())(Help);
+export default compose<ComponentType>(withTranslation(), withLoginSheet)(Help);
