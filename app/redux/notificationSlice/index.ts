@@ -35,13 +35,11 @@ const notificationSlice = createSlice({
 });
 
 // Actions
-const { fetchStart, fetchSuccess, fetchError } = commonSlice.actions;
+const { fetchError } = commonSlice.actions;
 const { notificationSuccess } = notificationSlice.actions;
 
 export const registerForPushNotifications = (): AppThunk => async dispatch => {
   try {
-    dispatch(fetchStart());
-
     Notifications.setNotificationHandler({
       handleNotification: async () => ({
         shouldShowAlert: true,
@@ -72,8 +70,6 @@ export const registerForPushNotifications = (): AppThunk => async dispatch => {
         lightColor: "#FF231F7C",
       });
     }
-
-    dispatch(fetchSuccess());
   } catch (e) {
     dispatch(fetchError(e));
   }

@@ -1304,6 +1304,14 @@
     pouchdb-collections "^1.0.1"
     tiny-queue "^0.2.1"
 
+"@gorhom/animated-tabbar@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@gorhom/animated-tabbar/-/animated-tabbar-2.1.1.tgz#2f804646403b9838e9d24af1e994b706262f9515"
+  integrity sha512-KN+fsmqen3g+w0sDPJSnlUrNUtKno+t/4M39+V0rg78v2tM9q7TVlp23SunsY3CmssT+IRVfGX3iMNkzgOzIdQ==
+  dependencies:
+    lodash.isequal "^4.5.0"
+    react-native-redash "15.7.3"
+
 "@gorhom/bottom-sheet@^2":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@gorhom/bottom-sheet/-/bottom-sheet-2.3.0.tgz#1b9e32601819731cd7bfd4ed4e4ca5e26828b146"
@@ -8442,6 +8450,15 @@ react-native-reanimated@^1:
   integrity sha512-i714H24dv6ncpFO7/SZ0PfAMbvjgVbF8Ow2NPtowoZAz8osS54DmTMrkgJ9Za+uEku/s0AEaxqiXG2Xgntvv2g==
   dependencies:
     fbjs "^1.0.0"
+
+react-native-redash@15.7.3:
+  version "15.7.3"
+  resolved "https://registry.yarnpkg.com/react-native-redash/-/react-native-redash-15.7.3.tgz#40524976857aa7edbed9225985df8f8958505821"
+  integrity sha512-L/Ku5mUtOhobQAVt5fMHlvV1tcB2n3Aqg6JxrZBGOuNHYEovocxXiHSY5ZgHpmYwfMpTTgPWIBOWbXRJ/XymWQ==
+  dependencies:
+    abs-svg-path "^0.1.1"
+    normalize-svg-path "^1.0.1"
+    parse-svg-path "^0.1.2"
 
 react-native-redash@^14.2.4:
   version "14.2.4"
