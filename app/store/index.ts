@@ -4,6 +4,7 @@ import commonSlice from "../redux/commonSlice";
 import permissionSlice from "../redux/permissionSlice";
 import authSlice from "../redux/authSlice";
 import notificationSlice from "../redux/notificationSlice";
+import settingSlice from "../redux/settingSlice";
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     permission: permissionSlice.reducer,
     auth: authSlice.reducer,
     notification: notificationSlice.reducer,
+    setting: settingSlice.reducer,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
 });
