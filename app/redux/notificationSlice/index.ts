@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Constants from "expo-constants";
 import * as Notifications from "expo-notifications";
-import { getNotificationsPermission } from "../permissionSlice";
 import commonSlice from "../commonSlice";
 import { isAndroid } from "../../helpers/platform";
+import { getNotificationsPermission } from "../../helpers/permission";
 import { AppThunk } from "../../store";
 
 interface NotificationState {
@@ -38,10 +38,7 @@ const notificationSlice = createSlice({
 const { fetchStart, fetchSuccess, fetchError } = commonSlice.actions;
 const { notificationSuccess } = notificationSlice.actions;
 
-export const registerForPushNotifications = (): AppThunk => async (
-  dispatch,
-  getState,
-) => {
+export const registerForPushNotifications = (): AppThunk => async dispatch => {
   try {
     dispatch(fetchStart());
 
@@ -54,9 +51,7 @@ export const registerForPushNotifications = (): AppThunk => async (
     });
 
     if (Constants.isDevice) {
-      await dispatch(getNotificationsPermission());
-      const { permission } = getState();
-      const { notificationsPermission } = permission.data;
+      const notificationsPermission = await getNotificationsPermission();
 
       if (!notificationsPermission) {
         alert("Failed to get push token for push notification!");

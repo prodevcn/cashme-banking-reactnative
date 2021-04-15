@@ -1,7 +1,6 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import commonSlice from "../redux/commonSlice";
-import permissionSlice from "../redux/permissionSlice";
 import authSlice from "../redux/authSlice";
 import notificationSlice from "../redux/notificationSlice";
 import settingSlice from "../redux/settingSlice";
@@ -9,7 +8,6 @@ import settingSlice from "../redux/settingSlice";
 const store = configureStore({
   reducer: {
     common: commonSlice.reducer,
-    permission: permissionSlice.reducer,
     auth: authSlice.reducer,
     notification: notificationSlice.reducer,
     setting: settingSlice.reducer,
