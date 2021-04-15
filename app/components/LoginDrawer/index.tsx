@@ -1,6 +1,11 @@
-import React, { useCallback, useLayoutEffect, useMemo, useRef } from "react";
-import { View, Text } from "react-native";
-import { Button } from "native-base";
+import React, {
+  useCallback,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { View, Text, Button } from "native-base";
 import {
   BottomSheetModal,
   BottomSheetBackdrop,
@@ -9,8 +14,10 @@ import {
 import withModalProvider from "../../hocs/withModalProvider";
 
 import styles from "./styles";
+import LoginForm from "../LoginForm";
 
 const LoginDrawer = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const drawerRef = useRef<BottomSheetModal>(null);
   const snapPoints = useMemo(() => ["15%", "75%"], []);
 
@@ -49,19 +56,24 @@ const LoginDrawer = () => {
         backgroundComponent={ModalBackground}
         enableContentPanningGesture={false}
         enableHandlePanningGesture={false}
+        onAnimate={(fromIndex, toIndex) => setIsExpanded(toIndex === 1)}
       >
-        <View>
-          <Button
-            full
-            rounded
-            style={styles.button}
-            onPress={() => {
-              drawerRef.current?.expand();
-            }}
-          >
-            <Text>Login</Text>
-          </Button>
-        </View>
+        {!isExpanded ? (
+          <View>
+            <Button
+              full
+              rounded
+              style={styles.button}
+              onPress={() => {
+                drawerRef.current?.expand();
+              }}
+            >
+              <Text>Login</Text>
+            </Button>
+          </View>
+        ) : (
+          <LoginForm />
+        )}
       </BottomSheetModal>
     </View>
   );
