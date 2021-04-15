@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import * as Font from "expo-font";
 import * as Notifications from "expo-notifications";
 import { Ionicons } from "@expo/vector-icons";
-import { AppDispatch } from "./store";
+import { AppDispatch, RootState } from "./store";
 import notificationSlice, {
   registerForPushNotifications,
 } from "./redux/notificationSlice";
@@ -13,6 +13,7 @@ import Loader from "./components/Loader";
 import RootNavigation from "./navigations";
 
 interface AppProps {
+  expoPushToken: string;
   notificationSuccess: Function;
   registerForPushNotifications: Function;
 }
@@ -38,8 +39,11 @@ class App extends Component<AppProps, AppState> {
       ...Ionicons.font,
     });
 
+    this.setState({ isReady: true });
+
     // Subscribe for notifications
-    this.props.registerForPushNotifications().then(() => {
+    await this.props.registerForPushNotifications();
+    if (this.props.expoPushToken) {
       Notifications.addNotificationReceivedListener(notification => {
         this.props.notificationSuccess({ notification });
       });
@@ -47,9 +51,7 @@ class App extends Component<AppProps, AppState> {
       Notifications.addNotificationResponseReceivedListener(response => {
         // onNotificationClickHandler
       });
-    });
-
-    this.setState({ isReady: true });
+    }
   }
 
   render() {
@@ -68,6 +70,12 @@ class App extends Component<AppProps, AppState> {
   }
 }
 
+const mapStateToProps = (state: RootState) => {
+  return {
+    expoPushToken: state.notification.expoPushToken,
+  };
+};
+
 const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
     registerForPushNotifications: () => dispatch(registerForPushNotifications),
@@ -76,4 +84,6 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
   };
 };
 
-export default compose<ComponentType>(connect(null, mapDispatchToProps))(App);
+export default compose<ComponentType>(
+  connect(mapStateToProps, mapDispatchToProps),
+)(App);
