@@ -3,7 +3,7 @@ import * as SecureStore from "expo-secure-store";
 
 export interface StorageSetterArgs {
   key: string;
-  value: string;
+  value: string | boolean;
   encrypted?: boolean;
 }
 

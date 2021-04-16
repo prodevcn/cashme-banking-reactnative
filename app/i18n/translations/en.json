@@ -8,5 +8,16 @@
   "no_connection": {
     "check_connection": "Check your connection and try again",
     "retry": "Retry"
+  },
+  "settingsOverlay": {
+    "title": "Choose security actions to unlock your app!",
+    "pin_code": "PIN CODE",
+    "create_pin_code": "Create PIN code",
+    "touch_id": "Touch ID",
+    "enable_touch_id": "Enable Touch ID",
+    "face_recognition": "Face Recognition",
+    "use_face_recognition": "Use Face Recognition to login",
+    "skip": "Skip",
+    "dont_show_again": "Don't show again"
   }
 }
