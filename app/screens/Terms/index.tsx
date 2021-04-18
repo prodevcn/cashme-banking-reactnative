@@ -3,7 +3,7 @@ import { compose } from "redux";
 import { WithTranslation, withTranslation } from "react-i18next";
 import { View, Text } from "native-base";
 import { NavigationInjectedProps, NavigationRoute } from "react-navigation";
-import withLoginSheet from "../../hocs/withLoginSheet";
+import withLoginDrawer from "../../hocs/withLoginDrawer";
 
 import styles from "./styles";
 
@@ -21,4 +21,7 @@ class Terms extends Component<TermsProps> {
   }
 }
 
-export default compose<ComponentType>(withTranslation(), withLoginSheet)(Terms);
+export default compose<ComponentType>(
+  withTranslation(),
+  withLoginDrawer,
+)(Terms);
