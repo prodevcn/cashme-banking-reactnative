@@ -3,7 +3,7 @@ import { WithTranslation, withTranslation } from "react-i18next";
 import { compose } from "redux";
 import { View } from "native-base";
 import { NavigationInjectedProps, NavigationRoute } from "react-navigation";
-import withLoginSheet from "../../hocs/withLoginSheet";
+import withLoginDrawer from "../../hocs/withLoginDrawer";
 import Slider from "../../components/Slider";
 
 import styles from "./styles";
@@ -43,4 +43,4 @@ class Home extends Component<HomeProps> {
   }
 }
 
-export default compose<ComponentType>(withTranslation(), withLoginSheet)(Home);
+export default compose<ComponentType>(withTranslation(), withLoginDrawer)(Home);

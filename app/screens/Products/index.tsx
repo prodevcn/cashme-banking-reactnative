@@ -3,7 +3,7 @@ import { compose } from "redux";
 import { WithTranslation, withTranslation } from "react-i18next";
 import { View, Text } from "native-base";
 import { NavigationInjectedProps, NavigationRoute } from "react-navigation";
-import withLoginSheet from "../../hocs/withLoginSheet";
+import withLoginDrawer from "../../hocs/withLoginDrawer";
 
 import styles from "./styles";
 
@@ -23,5 +23,5 @@ class Products extends Component<ProductsProps> {
 
 export default compose<ComponentType>(
   withTranslation(),
-  withLoginSheet,
+  withLoginDrawer,
 )(Products);
