@@ -1,2 +1,3 @@
 // AUTH
 export const TOKEN = "TOKEN";
+export const DISMISS_SECURITY_OVERLAY = "DISMISS_SECURITY_OVERLAY";
