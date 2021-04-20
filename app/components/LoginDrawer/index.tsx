@@ -5,6 +5,7 @@ import React, {
   forwardRef,
   useState,
 } from "react";
+import { WithTranslation, withTranslation } from "react-i18next";
 import { View, Text } from "native-base";
 import {
   BottomSheetModal,
@@ -21,9 +22,12 @@ import DrawerButton from "./DrawerButton";
 type LoginDrawerProps = {};
 
 const LoginDrawer = forwardRef(
-  (props: LoginDrawerProps, ref: React.Ref<BottomSheetModal>) => {
+  (
+    props: LoginDrawerProps & WithTranslation,
+    ref: React.Ref<BottomSheetModal>,
+  ) => {
     const [isExpanded, setIsExpanded] = useState(false);
-    const snapPoints = useMemo(() => ["15%", "75%"], []);
+    const snapPoints = useMemo(() => ["20%", "70%"], []);
 
     useLayoutEffect(() => {
       ref?.current?.present();
@@ -41,6 +45,8 @@ const LoginDrawer = forwardRef(
       ),
       [],
     );
+
+    const { t } = props;
 
     const ModalBackground = () => (
       <View style={styles.backgroundContainer}></View>
@@ -74,8 +80,14 @@ const LoginDrawer = forwardRef(
                     ref?.current?.expand();
                   }}
                 >
-                  <Text>Login</Text>
+                  <Text>{t("login.login")}</Text>
                 </DrawerButton>
+                <Text style={styles.accountText}>
+                  {t("login.dontHaveAccount")}{" "}
+                  <Text style={styles.signUpLink} onPress={() => {}}>
+                    {t("login.signUp")}
+                  </Text>
+                </Text>
               </View>
             ) : (
               <LoginForm />
@@ -87,4 +99,4 @@ const LoginDrawer = forwardRef(
   },
 );
 
-export default LoginDrawer;
+export default withTranslation("translations", { withRef: true })(LoginDrawer);
