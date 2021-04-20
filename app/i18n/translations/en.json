@@ -4,5 +4,9 @@
     "login": "Login",
     "username": "Username",
     "password": "Password"
+  },
+  "no_connection": {
+    "check_connection": "Check your connection and try again",
+    "retry": "Retry"
   }
 }

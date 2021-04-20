@@ -5,11 +5,13 @@ import {
   PRODUCTS_SCREEN,
   TERMS_SCREEN,
   HELP_SCREEN,
+  NO_CONNECTION,
 } from "../constants";
 import Help from "../screens/Help";
 import Products from "../screens/Products";
 import Home from "../screens/Home";
 import Terms from "../screens/Terms";
+import ConnectionInfo from "../screens/NoConnection";
 
 interface Routes {
   name: string;
@@ -39,3 +41,10 @@ export const commonScreens: Array<Routes> = [
     options: { title: "Help" },
   },
 ];
+
+// If there is no connection
+export const noConnectionScreen: Routes = {
+  name: NO_CONNECTION,
+  component: ConnectionInfo,
+  options: { title: "Net Info", headerShown: false },
+};

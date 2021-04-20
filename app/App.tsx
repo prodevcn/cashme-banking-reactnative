@@ -10,7 +10,7 @@ import notificationSlice, {
   registerForPushNotifications,
 } from "./redux/notificationSlice";
 import Loader from "./components/Loader";
-import RootNavigation from "./navigations";
+import RootNavigation, { navigationRef } from "./navigations";
 
 interface AppProps {
   expoPushToken: string;
@@ -63,7 +63,7 @@ class App extends Component<AppProps, AppState> {
     }
 
     return (
-      <NavigationContainer>
+      <NavigationContainer ref={navigationRef}>
         <RootNavigation />
       </NavigationContainer>
     );
@@ -78,7 +78,8 @@ const mapStateToProps = (state: RootState) => {
 
 const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
-    registerForPushNotifications: () => dispatch(registerForPushNotifications),
+    registerForPushNotifications: () =>
+      dispatch(registerForPushNotifications()),
     notificationSuccess: () =>
       dispatch(notificationSlice.actions.notificationSuccess),
   };
