@@ -4,8 +4,9 @@
     "login": "Մուտք",
     "username": "Հեռախոս/Էլ․Հասցե",
     "password": "Գաղտնաբառ",
-    "dontHaveAccount": "Գրանցված չե՞ք:",
-    "signUp": "Գրանցվել"
+    "dont_have_account": "Գրանցված չե՞ք:",
+    "sign_up": "Գրանցվել",
+    "forgot_password": "Մոռացել եմ գաղտնաբառը"
   },
   "no_connection": {
     "check_connection": "Ստուգեք ինտերնետ կապի հասանելիությունը և կրկին փորձեք",

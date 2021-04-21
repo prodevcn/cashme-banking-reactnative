@@ -7,8 +7,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   button: {
-    marginVertical: 50,
+    marginVertical: 20,
     height: 54,
+  },
+  forgotPassword: {
+    alignSelf: "flex-end",
   },
 });
 
