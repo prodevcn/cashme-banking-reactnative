@@ -2,8 +2,10 @@
   "hello": "hello",
   "login": {
     "login": "Login",
-    "username": "Username",
-    "password": "Password"
+    "username": "Phone/Email",
+    "password": "Password",
+    "dontHaveAccount": "Don't have an account?",
+    "signUp": "SIGN UP"
   },
   "no_connection": {
     "check_connection": "Check your connection and try again",
@@ -19,5 +21,10 @@
     "use_face_recognition": "Use Face Recognition to login",
     "skip": "Skip",
     "dont_show_again": "Don't show again"
+  },
+  "validations": {
+    "required": "This field is required",
+    "email": "Invalid email",
+    "phone": "Invalid phone number"
   }
 }
