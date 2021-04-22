@@ -4,14 +4,15 @@
     "login": "Login",
     "username": "Phone/Email",
     "password": "Password",
-    "dontHaveAccount": "Don't have an account?",
-    "signUp": "SIGN UP"
+    "dont_have_account": "Don't have an account?",
+    "sign_up": "SIGN UP",
+    "forgot_password": "Forgot Password"
   },
   "no_connection": {
     "check_connection": "Check your connection and try again",
     "retry": "Retry"
   },
-  "settingsOverlay": {
+  "settings_overlay": {
     "title": "Choose security actions to unlock your app!",
     "pin_code": "PIN CODE",
     "create_pin_code": "Create PIN code",

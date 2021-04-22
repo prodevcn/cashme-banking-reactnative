@@ -14,23 +14,20 @@ import {
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
 
-import styles from "./styles";
-
 import LoginForm from "../LoginForm";
 import DrawerButton from "./DrawerButton";
+
+import styles from "./styles";
 
 type LoginDrawerProps = {};
 
 const LoginDrawer = forwardRef(
-  (
-    props: LoginDrawerProps & WithTranslation,
-    ref: React.Ref<BottomSheetModal>,
-  ) => {
+  (props: LoginDrawerProps & WithTranslation, ref: any) => {
     const [isExpanded, setIsExpanded] = useState(false);
-    const snapPoints = useMemo(() => ["20%", "70%"], []);
+    const snapPoints = useMemo(() => [120, 310], []);
 
     useLayoutEffect(() => {
-      ref?.current?.present();
+      ref.current?.present();
     }, []);
 
     const renderBackdrop = useCallback(
@@ -83,9 +80,9 @@ const LoginDrawer = forwardRef(
                   <Text>{t("login.login")}</Text>
                 </DrawerButton>
                 <Text style={styles.accountText}>
-                  {t("login.dontHaveAccount")}{" "}
+                  {t("login.dont_have_account")}{" "}
                   <Text style={styles.signUpLink} onPress={() => {}}>
-                    {t("login.signUp")}
+                    {t("login.sign_up")}
                   </Text>
                 </Text>
               </View>
