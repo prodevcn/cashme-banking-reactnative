@@ -3,7 +3,7 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import * as Font from "expo-font";
-import * as Notifications from "expo-notifications";
+// import * as Notifications from "expo-notifications";
 import { Ionicons } from "@expo/vector-icons";
 import { AppDispatch, RootState } from "./store";
 import notificationSlice, {
@@ -42,16 +42,17 @@ class App extends Component<AppProps, AppState> {
     this.setState({ isReady: true });
 
     // Subscribe for notifications
-    await this.props.registerForPushNotifications();
-    if (this.props.expoPushToken) {
-      Notifications.addNotificationReceivedListener(notification => {
-        this.props.notificationSuccess({ notification });
-      });
+    // TODO: Uncomment once notification server is set up
+    // await this.props.registerForPushNotifications();
+    // if (this.props.expoPushToken) {
+    //   Notifications.addNotificationReceivedListener(notification => {
+    //     this.props.notificationSuccess({ notification });
+    //   });
 
-      Notifications.addNotificationResponseReceivedListener(response => {
-        // onNotificationClickHandler
-      });
-    }
+    //   Notifications.addNotificationResponseReceivedListener(response => {
+    //     // onNotificationClickHandler
+    //   });
+    // }
   }
 
   render() {

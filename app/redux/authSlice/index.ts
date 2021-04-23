@@ -1,132 +1,59 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import commonSlice from "../commonSlice";
 import api from "../../util/api";
-import { getToken, setToken, removeToken } from "../../helpers/auth";
+import { setToken } from "../../helpers/auth";
 import { AppThunk } from "../../store";
 
 interface AuthState {
-  data: object | null;
-  token: string | null;
+  loading: boolean;
+  token: string | undefined;
+  error: object | undefined;
 }
 
 interface AuthPayload {
-  email: string;
+  username: string;
   password: string;
 }
 
 const initialState: AuthState = {
-  data: null,
-  token: null,
+  loading: false,
+  token: undefined,
+  error: undefined,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    signOutSuccess: state => {
-      state.data = null;
-      state.token = null;
+    signInStarted: state => {
+      state.loading = true;
     },
-    signInFulfilled: (state, action: PayloadAction<object | null>) => {
-      state.data = action.payload;
-    },
-    setUserToken: (state, action: PayloadAction<string | null>) => {
+    signInFulfilled: (state, action: PayloadAction<string | undefined>) => {
+      state.loading = false;
       state.token = action.payload;
+    },
+    signInFailed: (state, action: PayloadAction<object | undefined>) => {
+      state.loading = false;
+      state.token = undefined;
+      state.error = action.payload;
     },
   },
 });
 
-// Actions
-const { fetchStart, fetchSuccess, fetchError } = commonSlice.actions;
-const { signOutSuccess, signInFulfilled, setUserToken } = authSlice.actions;
-
-export const getUserToken = (): AppThunk => async dispatch => {
-  try {
-    const token = await getToken();
-
-    // Store token and set default request header for all
-    dispatch(setUserToken(token));
-    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  } catch (e) {
-    dispatch(fetchError(e));
-  }
-};
+const { signInStarted, signInFulfilled, signInFailed } = authSlice.actions;
 
 export const signIn = (signInData: AuthPayload): AppThunk => async dispatch => {
   try {
-    dispatch(fetchStart());
+    dispatch(signInStarted());
 
-    const res: any = await api.post("/api/login", signInData);
+    const { data = {} }: any = await api.post("/api/auth/login", signInData);
 
-    // Store token and set default request header for all
-    await setToken(res.data.token);
-    dispatch(setUserToken(res.data && res.data.data));
-    api.defaults.headers.common["Authorization"] = `Bearer ${res.data.token}`;
+    dispatch(signInFulfilled(data.data.token));
 
-    dispatch(fetchSuccess());
+    await setToken(data.data.token);
+
+    api.defaults.headers.common["Authorization"] = `Bearer ${data.data.token}`;
   } catch (e) {
-    dispatch(fetchError(e));
-  }
-};
-
-export const signUp = ({
-  email,
-  password,
-}: AuthPayload): AppThunk => async dispatch => {
-  try {
-    dispatch(fetchStart());
-
-    const res: any = await api.post("/api/login", {
-      email,
-      password,
-    });
-
-    dispatch(fetchSuccess());
-  } catch (e) {
-    dispatch(fetchError(e));
-  }
-};
-
-export const signOut = (): AppThunk => async dispatch => {
-  try {
-    dispatch(fetchStart());
-
-    const res: any = await api.post("/api/logout");
-
-    // Remove stored token and sign out
-    await removeToken();
-    dispatch(signOutSuccess());
-
-    dispatch(fetchSuccess());
-  } catch (e) {
-    dispatch(fetchError(e));
-  }
-};
-
-export const getUser = (): AppThunk => async dispatch => {
-  try {
-    dispatch(fetchStart());
-
-    const res: any = await api.get("/api/login");
-    dispatch(signInFulfilled(res.data && res.data.data));
-
-    dispatch(fetchSuccess());
-  } catch (e) {
-    dispatch(fetchError(e));
-  }
-};
-
-export const forgotPassword = (email: string): AppThunk => async dispatch => {
-  try {
-    dispatch(fetchStart());
-
-    const res: any = await api.post("/api/login", {
-      email,
-    });
-
-    dispatch(fetchSuccess());
-  } catch (e) {
-    dispatch(fetchError(e));
+    dispatch(signInFailed(e));
   }
 };
 

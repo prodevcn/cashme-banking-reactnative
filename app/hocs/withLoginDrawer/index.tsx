@@ -1,12 +1,15 @@
 import React, { ComponentType, useRef, useCallback } from "react";
+import { useSelector } from "react-redux";
 import { StyleSheet } from "react-native";
 import { View } from "native-base";
 import { useFocusEffect } from "@react-navigation/native";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 
 import LoginDrawer from "../../components/LoginDrawer";
+import { RootState } from "../../store";
 
 const withLoginDrawer = (Component: ComponentType) => () => {
+  const token = useSelector((state: RootState) => state.auth.token);
   const ref = useRef<BottomSheetModal>(null);
 
   // Collapse the drawer on each navigation to screen
@@ -19,7 +22,7 @@ const withLoginDrawer = (Component: ComponentType) => () => {
   return (
     <View style={styles.container}>
       <Component />
-      <LoginDrawer ref={ref} />
+      {!token && <LoginDrawer ref={ref} />}
     </View>
   );
 };
