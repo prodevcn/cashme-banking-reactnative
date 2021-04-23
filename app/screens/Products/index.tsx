@@ -1,27 +1,16 @@
-import React, { Component, ComponentType } from "react";
+import React, { ComponentType } from "react";
 import { compose } from "redux";
-import { WithTranslation, withTranslation } from "react-i18next";
 import { View, Text } from "native-base";
-import { NavigationInjectedProps, NavigationRoute } from "react-navigation";
 import withLoginDrawer from "../../hocs/withLoginDrawer";
 
 import styles from "./styles";
 
-interface ProductsProps extends WithTranslation, NavigationInjectedProps {
-  route: NavigationRoute;
-}
+const Products = () => {
+  return (
+    <View style={styles.container}>
+      <Text>Products</Text>
+    </View>
+  );
+};
 
-class Products extends Component<ProductsProps> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Products</Text>
-      </View>
-    );
-  }
-}
-
-export default compose<ComponentType>(
-  withTranslation(),
-  withLoginDrawer,
-)(Products);
+export default compose<ComponentType>(withLoginDrawer)(Products);

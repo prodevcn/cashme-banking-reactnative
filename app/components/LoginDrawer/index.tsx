@@ -5,7 +5,7 @@ import React, {
   forwardRef,
   useState,
 } from "react";
-import { WithTranslation, withTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { View, Text } from "native-base";
 import {
   BottomSheetModal,
@@ -21,79 +21,76 @@ import styles from "./styles";
 
 type LoginDrawerProps = {};
 
-const LoginDrawer = forwardRef(
-  (props: LoginDrawerProps & WithTranslation, ref: any) => {
-    const [isExpanded, setIsExpanded] = useState(false);
-    const snapPoints = useMemo(() => [120, 310], []);
+const LoginDrawer = forwardRef((props: LoginDrawerProps, ref: any) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const snapPoints = useMemo(() => [120, 310], []);
+  const { t } = useTranslation();
 
-    useLayoutEffect(() => {
-      ref.current?.present();
-    }, []);
+  useLayoutEffect(() => {
+    ref.current?.present();
+  }, []);
 
-    const renderBackdrop = useCallback(
-      (props: BottomSheetBackdropProps) => (
-        <BottomSheetBackdrop
-          {...props}
-          enableTouchThrough={false}
-          pressBehavior="collapse"
-          appearsOnIndex={1}
-          disappearsOnIndex={0}
-        />
-      ),
-      [],
-    );
+  const renderBackdrop = useCallback(
+    (props: BottomSheetBackdropProps) => (
+      <BottomSheetBackdrop
+        {...props}
+        enableTouchThrough={false}
+        pressBehavior="collapse"
+        appearsOnIndex={1}
+        disappearsOnIndex={0}
+      />
+    ),
+    [],
+  );
 
-    const { t } = props;
+  const ModalBackground = () => (
+    <View style={styles.backgroundContainer}></View>
+  );
 
-    const ModalBackground = () => (
-      <View style={styles.backgroundContainer}></View>
-    );
-
-    return (
-      <BottomSheetModalProvider>
-        <View>
-          <BottomSheetModal
-            ref={ref}
-            key="LoginDrawer"
-            name="LoginDrawer"
-            index={isExpanded ? 1 : 0}
-            snapPoints={snapPoints}
-            dismissOnPanDown={false}
-            handleComponent={null}
-            backdropComponent={renderBackdrop}
-            backgroundComponent={ModalBackground}
-            enableContentPanningGesture={false}
-            enableHandlePanningGesture={false}
-            onAnimate={(fromIndex, toIndex) => setIsExpanded(toIndex === 1)}
-            animationDuration={0.1}
-          >
-            {!isExpanded ? (
-              <View>
-                <DrawerButton
-                  full
-                  rounded
-                  style={styles.button}
-                  onPress={() => {
-                    ref?.current?.expand();
-                  }}
-                >
-                  <Text>{t("login.login")}</Text>
-                </DrawerButton>
-                <Text style={styles.accountText}>
-                  {t("login.dont_have_account")}{" "}
-                  <Text style={styles.signUpLink} onPress={() => {}}>
-                    {t("login.sign_up")}
-                  </Text>
+  return (
+    <BottomSheetModalProvider>
+      <View>
+        <BottomSheetModal
+          ref={ref}
+          key="LoginDrawer"
+          name="LoginDrawer"
+          index={isExpanded ? 1 : 0}
+          snapPoints={snapPoints}
+          dismissOnPanDown={false}
+          handleComponent={null}
+          backdropComponent={renderBackdrop}
+          backgroundComponent={ModalBackground}
+          enableContentPanningGesture={false}
+          enableHandlePanningGesture={false}
+          onAnimate={(fromIndex, toIndex) => setIsExpanded(toIndex === 1)}
+          animationDuration={0.1}
+        >
+          {!isExpanded ? (
+            <View>
+              <DrawerButton
+                full
+                rounded
+                style={styles.button}
+                onPress={() => {
+                  ref?.current?.expand();
+                }}
+              >
+                <Text>{t("login.login")}</Text>
+              </DrawerButton>
+              <Text style={styles.accountText}>
+                {t("login.dont_have_account")}{" "}
+                <Text style={styles.signUpLink} onPress={() => {}}>
+                  {t("login.sign_up")}
                 </Text>
-              </View>
-            ) : (
-              <LoginForm />
-            )}
-          </BottomSheetModal>
-        </View>
-      </BottomSheetModalProvider>
-    );
-  },
-);
+              </Text>
+            </View>
+          ) : (
+            <LoginForm />
+          )}
+        </BottomSheetModal>
+      </View>
+    </BottomSheetModalProvider>
+  );
+});
 
-export default withTranslation("translations", { withRef: true })(LoginDrawer);
+export default LoginDrawer;

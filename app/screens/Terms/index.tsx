@@ -1,27 +1,16 @@
-import React, { Component, ComponentType } from "react";
+import React, { ComponentType } from "react";
 import { compose } from "redux";
-import { WithTranslation, withTranslation } from "react-i18next";
 import { View, Text } from "native-base";
-import { NavigationInjectedProps, NavigationRoute } from "react-navigation";
 import withLoginDrawer from "../../hocs/withLoginDrawer";
 
 import styles from "./styles";
 
-interface TermsProps extends WithTranslation, NavigationInjectedProps {
-  route: NavigationRoute;
-}
+const Terms = () => {
+  return (
+    <View style={styles.container}>
+      <Text>Terms</Text>
+    </View>
+  );
+};
 
-class Terms extends Component<TermsProps> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Terms</Text>
-      </View>
-    );
-  }
-}
-
-export default compose<ComponentType>(
-  withTranslation(),
-  withLoginDrawer,
-)(Terms);
+export default compose<ComponentType>(withLoginDrawer)(Terms);

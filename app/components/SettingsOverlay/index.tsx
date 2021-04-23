@@ -1,6 +1,5 @@
-import React, { ComponentType, useEffect, useState } from "react";
-import { compose } from "redux";
-import { WithTranslation, withTranslation } from "react-i18next";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import Modal from "react-native-modal";
 import { Button, Text, View } from "native-base";
 import Storage from "../../util/storage";
@@ -14,8 +13,9 @@ import FingerprintIcon from "../../assets/images/finger-print.svg";
 
 import styles from "./styles";
 
-const SettingsOverlay = ({ t }: WithTranslation) => {
+const SettingsOverlay = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     Storage.getItem({ key: DISMISS_SECURITY_OVERLAY }).then(value => {
@@ -92,4 +92,4 @@ const SettingsOverlay = ({ t }: WithTranslation) => {
   );
 };
 
-export default compose<ComponentType>(withTranslation())(SettingsOverlay);
+export default SettingsOverlay;

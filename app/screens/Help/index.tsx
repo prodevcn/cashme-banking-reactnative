@@ -1,24 +1,16 @@
-import React, { Component, ComponentType } from "react";
+import React, { ComponentType } from "react";
 import { compose } from "redux";
-import { WithTranslation, withTranslation } from "react-i18next";
 import { View, Text } from "native-base";
-import { NavigationInjectedProps, NavigationRoute } from "react-navigation";
 import withLoginDrawer from "../../hocs/withLoginDrawer";
 
 import styles from "./styles";
 
-interface HelpProps extends WithTranslation, NavigationInjectedProps {
-  route: NavigationRoute;
-}
+const Help = () => {
+  return (
+    <View style={styles.container}>
+      <Text>Help</Text>
+    </View>
+  );
+};
 
-class Help extends Component<HelpProps> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Help</Text>
-      </View>
-    );
-  }
-}
-
-export default compose<ComponentType>(withTranslation(), withLoginDrawer)(Help);
+export default compose<ComponentType>(withLoginDrawer)(Help);
