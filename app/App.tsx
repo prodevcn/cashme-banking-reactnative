@@ -58,7 +58,6 @@ class App extends Component<AppProps, AppState> {
   render() {
     const { isReady } = this.state;
 
-    // Loading case
     if (!isReady) {
       return <Loader />;
     }

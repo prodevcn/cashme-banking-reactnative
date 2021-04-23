@@ -4,4 +4,5 @@
 
 1. cp .env.example .env
 2. yarn install
-3. expo start
+3. Set BASE_URL in app/config/index.ts to your local server ip
+4. expo start
