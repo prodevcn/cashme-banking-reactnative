@@ -9,9 +9,13 @@ const styles = StyleSheet.create({
   button: {
     marginVertical: 20,
     height: 54,
+    elevation: 0,
   },
   forgotPassword: {
     alignSelf: "flex-end",
+  },
+  inputLabel: {
+    color: "black",
   },
 });
 

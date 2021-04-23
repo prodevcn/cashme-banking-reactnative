@@ -7,8 +7,11 @@ const styles = StyleSheet.create({
   },
   eyeIcon: {
     position: "absolute",
-    top: 25,
+    top: 20,
     alignSelf: "flex-end",
+  },
+  inputLabel: {
+    color: "black",
   },
 });
 
