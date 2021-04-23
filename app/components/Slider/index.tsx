@@ -4,14 +4,17 @@ import Carousel, {
   Pagination,
   AdditionalParallaxProps,
 } from "react-native-snap-carousel";
-import { Dimensions, View, Text } from "react-native";
+import { Dimensions, View, Image } from "react-native";
+import { Button, Text } from "native-base";
 import { carouselStyle, paginationStyle, parallaxStyle } from "./styles";
+import { useTranslation } from "react-i18next";
+import { navigate } from "../../navigations/index";
 
 interface SliderData {
-  imageUri: string;
+  image: any;
   title: string;
   description: string;
-  redirectSource: string;
+  redirectScreenName: string;
 }
 
 interface SliderProps {
@@ -26,6 +29,8 @@ interface RenderFuncArgs {
 const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
 
 const Slider = (props: SliderProps): ReactElement => {
+  const { t } = useTranslation();
+  const { data } = props;
   const [activeSlide, setActiveSlide] = useState(0);
 
   const renderItem = (
@@ -36,15 +41,23 @@ const Slider = (props: SliderProps): ReactElement => {
       <View style={parallaxStyle.container}>
         <ParallaxImage
           key={`carouselItem${index}`}
-          source={{ uri: item.imageUri }}
+          source={{}}
           containerStyle={carouselStyle.imageContainer}
-          style={carouselStyle.image}
           parallaxFactor={0.4}
           {...parallaxProps}
         />
+        <Image source={item.image} style={carouselStyle.image} />
         <View style={parallaxStyle.textContainer}>
           <Text style={parallaxStyle.title}>{item.title}</Text>
           <Text style={parallaxStyle.description}>{item.description}</Text>
+          <Button
+            rounded
+            light
+            style={parallaxStyle.button}
+            onPress={() => navigate(item.redirectScreenName)}
+          >
+            <Text>{t("learn_more")}</Text>
+          </Button>
         </View>
       </View>
     );
@@ -53,18 +66,17 @@ const Slider = (props: SliderProps): ReactElement => {
   return (
     <>
       <Pagination
-        dotsLength={props.data.length}
+        dotsLength={data.length}
         activeDotIndex={activeSlide}
         containerStyle={paginationStyle.container}
         dotContainerStyle={[
           paginationStyle.dotContainer,
-          { marginHorizontal: props.data.length > 5 ? 10 : 20 },
+          { marginHorizontal: data.length > 5 ? 10 : 20 },
         ]}
         dotStyle={[
           paginationStyle.dot,
           {
-            width:
-              (screenWidth - 44 - 20 * props.data.length) / props.data.length,
+            width: (screenWidth - 44 - 20 * data.length) / data.length,
           },
         ]}
         inactiveDotOpacity={0.5}
@@ -74,12 +86,12 @@ const Slider = (props: SliderProps): ReactElement => {
         sliderWidth={screenWidth}
         sliderHeight={screenHeight}
         itemWidth={screenWidth}
-        data={props.data}
+        data={data}
         renderItem={renderItem}
         hasParallaxImages={true}
         enableSnap={true}
         loop={true}
-        loopClonesPerSide={props.data.length}
+        loopClonesPerSide={data.length}
         enableMomentum={false}
         lockScrollWhileSnapping={true}
         autoplay={true}

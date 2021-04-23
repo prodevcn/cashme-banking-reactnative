@@ -2,6 +2,7 @@ import React, { ComponentType } from "react";
 import { compose } from "redux";
 import { View } from "native-base";
 import withLoginDrawer from "../../hocs/withLoginDrawer";
+import Screen from "../../components/Screen";
 import Slider from "../../components/Slider";
 
 import styles from "./styles";
@@ -9,29 +10,31 @@ import styles from "./styles";
 const Home = () => {
   const data = [
     {
-      imageUri: "https://i.imgur.com/UYiroysl.jpg",
+      image: require("../../assets/images/products/cashme.png"),
       title: "Cash me",
       description: "Receive money in your account in as little as 5 min",
-      redirectSource: "",
+      redirectScreenName: "",
     },
     {
-      imageUri: "https://i.imgur.com/UPrs1EWl.jpg",
+      image: require("../../assets/images/products/arpi-solar.png"),
       title: "Arpi Solar",
       description: "Receive money in your account in as little as 5 min",
-      redirectSource: "",
+      redirectScreenName: "",
     },
     {
-      imageUri: "https://i.imgur.com/MABUbpDl.jpg",
+      image: require("../../assets/images/products/pay-later.png"),
       title: "Pay for me",
       description: "Receive money in your account in as little as 5 min",
-      redirectSource: "",
+      redirectScreenName: "",
     },
   ];
 
   return (
-    <View style={styles.container}>
-      <Slider data={data} />
-    </View>
+    <Screen>
+      <View style={styles.container}>
+        <Slider data={data} />
+      </View>
+    </Screen>
   );
 };
 
