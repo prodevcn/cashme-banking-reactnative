@@ -1,4 +1,5 @@
 import React from "react";
+import { ViewStyle } from "react-native";
 import { Button, View, Text } from "native-base";
 
 import ArrowIcon from "../../assets/images/arrow-right.svg";
@@ -6,19 +7,13 @@ import ArrowIcon from "../../assets/images/arrow-right.svg";
 import styles from "./styles";
 
 interface MenuButtonProps {
-  style?: object;
+  style?: ViewStyle;
   Icon: any;
   title: string;
   description?: string;
 }
 
-const MenuButton = ({
-  style,
-  Icon,
-  title,
-  description,
-  ...rest
-}: MenuButtonProps) => {
+const MenuButton = ({ Icon, title, description, ...rest }: MenuButtonProps) => {
   return (
     <Button full bordered {...rest} style={styles.button}>
       <View style={styles.buttonLeftIcon}>
