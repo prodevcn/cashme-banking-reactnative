@@ -1,7 +1,5 @@
-import React, { ComponentType } from "react";
-import { compose } from "redux";
+import React from "react";
 import { View, Text } from "native-base";
-import withLoginDrawer from "../../hocs/withLoginDrawer";
 
 import styles from "./styles";
 
@@ -13,4 +11,4 @@ const Help = () => {
   );
 };
 
-export default compose<ComponentType>(withLoginDrawer)(Help);
+export default Help;

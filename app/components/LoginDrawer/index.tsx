@@ -2,8 +2,8 @@ import React, {
   useCallback,
   useLayoutEffect,
   useMemo,
-  forwardRef,
   useState,
+  useRef,
 } from "react";
 import { useTranslation } from "react-i18next";
 import { View, Text } from "native-base";
@@ -19,9 +19,8 @@ import DrawerButton from "./DrawerButton";
 
 import styles from "./styles";
 
-type LoginDrawerProps = {};
-
-const LoginDrawer = forwardRef((props: LoginDrawerProps, ref: any) => {
+const LoginDrawer = () => {
+  const ref = useRef<BottomSheetModal>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const snapPoints = useMemo(() => [120, 310], []);
   const { t } = useTranslation();
@@ -63,7 +62,7 @@ const LoginDrawer = forwardRef((props: LoginDrawerProps, ref: any) => {
           enableContentPanningGesture={false}
           enableHandlePanningGesture={false}
           onAnimate={(fromIndex, toIndex) => setIsExpanded(toIndex === 1)}
-          animationDuration={0.1}
+          animationDuration={500}
         >
           {!isExpanded ? (
             <View>
@@ -91,6 +90,6 @@ const LoginDrawer = forwardRef((props: LoginDrawerProps, ref: any) => {
       </View>
     </BottomSheetModalProvider>
   );
-});
+};
 
 export default LoginDrawer;
