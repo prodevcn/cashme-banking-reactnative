@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import commonSlice from "../commonSlice";
 import { AppThunk } from "../../store";
 import * as LocalAuthentication from "expo-local-authentication";
 import { PIN, FINGERPRINT, FACE_ID } from "../../constants";
@@ -13,6 +12,7 @@ interface LocalAuth {
 
 interface SettingState {
   localAuth: LocalAuth;
+  hasInternetConnection: boolean;
 }
 
 const initialState: SettingState = {
@@ -22,6 +22,7 @@ const initialState: SettingState = {
     isEnrolled: false,
     supportedAuthenticationTypes: [],
   },
+  hasInternetConnection: true,
 };
 
 const settingSlice = createSlice({
@@ -40,25 +41,28 @@ const settingSlice = createSlice({
     switchToFaceIdAuth: state => {
       state.localAuth.method = FACE_ID;
     },
+
+    setInternetConnectionSuccess: (state, action: PayloadAction<boolean>) => {
+      state.hasInternetConnection = action.payload;
+    },
   },
 });
 
 // Actions
-const { fetchError } = commonSlice.actions;
-const { localAuthSuccess } = settingSlice.actions;
+const { localAuthSuccess, setInternetConnectionSuccess } = settingSlice.actions;
 
 export const loadLocalAuthSettings = (): AppThunk => async dispatch => {
   try {
     const hasHardware = await LocalAuthentication.hasHardwareAsync();
     const isEnrolled = await LocalAuthentication.isEnrolledAsync();
 
-    /* 
+    /*
     Returned values indicates the following supported biometrics:
     1: Fingerprint,
-    2: Facial recognition, 
-    3: Iris recognition (Android-only). 
-    Devices can support multiple authentication methods- i.e. [1,2] means the device supports 
-    both fingerprint and facial recognition. If none are supported, this method returns an empty array. 
+    2: Facial recognition,
+    3: Iris recognition (Android-only).
+    Devices can support multiple authentication methods- i.e. [1,2] means the device supports
+    both fingerprint and facial recognition. If none are supported, this method returns an empty array.
     */
     const supportedAuthenticationTypes = await LocalAuthentication.supportedAuthenticationTypesAsync();
 
@@ -70,7 +74,7 @@ export const loadLocalAuthSettings = (): AppThunk => async dispatch => {
       }),
     );
   } catch (e) {
-    dispatch(fetchError(e));
+    // TODO:
   }
 };
 
@@ -79,8 +83,14 @@ export const requestLocalAuth = (): AppThunk => async dispatch => {
     const res = await LocalAuthentication.authenticateAsync();
     // TODO: Based on requirements
   } catch (e) {
-    dispatch(fetchError(e));
+    // TODO:
   }
+};
+
+export const setHasInternetConnection = (
+  hasConnection: boolean,
+): AppThunk => async dispatch => {
+  dispatch(setInternetConnectionSuccess(hasConnection));
 };
 
 export default settingSlice;

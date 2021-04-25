@@ -26,10 +26,4 @@ class RootNavigation extends Component {
   }
 }
 
-export const navigationRef = React.createRef<any>();
-
-export function navigate(name: string, params?: object) {
-  navigationRef.current?.navigate(name, params);
-}
-
 export default RootNavigation;

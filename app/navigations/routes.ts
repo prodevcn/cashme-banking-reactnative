@@ -9,7 +9,7 @@ import {
 import Help from "../screens/Help";
 import Products from "../screens/Products";
 import Home from "../screens/Home";
-import ConnectionInfo from "../screens/NoConnection";
+import NoConnection from "../screens/NoConnection";
 
 interface Routes {
   name: string;
@@ -38,6 +38,6 @@ export const commonScreens: Array<Routes> = [
 // If there is no connection
 export const noConnectionScreen: Routes = {
   name: NO_CONNECTION,
-  component: ConnectionInfo,
+  component: NoConnection,
   options: { title: "Net Info", headerShown: false },
 };
