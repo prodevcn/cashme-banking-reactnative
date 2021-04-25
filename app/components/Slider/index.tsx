@@ -5,10 +5,11 @@ import Carousel, {
   AdditionalParallaxProps,
 } from "react-native-snap-carousel";
 import { Dimensions, View, Image } from "react-native";
-import { Button, Text } from "native-base";
-import { carouselStyle, paginationStyle, parallaxStyle } from "./styles";
 import { useTranslation } from "react-i18next";
-import { navigate } from "../../navigations/index";
+import { useNavigation } from "@react-navigation/native";
+import { Button, Text } from "native-base";
+
+import { carouselStyle, paginationStyle, parallaxStyle } from "./styles";
 
 interface SliderData {
   image: any;
@@ -32,6 +33,7 @@ const Slider = (props: SliderProps): ReactElement => {
   const { t } = useTranslation();
   const { data } = props;
   const [activeSlide, setActiveSlide] = useState(0);
+  const { navigate } = useNavigation();
 
   const renderItem = (
     { item, index }: RenderFuncArgs,

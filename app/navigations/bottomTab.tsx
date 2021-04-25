@@ -1,11 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-  NavigationHelpers,
-  ParamListBase,
-  TabNavigationState,
-} from "@react-navigation/native";
-import { BottomTabNavigationEventMap } from "@react-navigation/bottom-tabs/lib/typescript/src/types";
+import { ParamListBase, TabNavigationState } from "@react-navigation/native";
 import AnimatedTabBar, {
   TabsConfig,
   BubbleTabBarItemConfig,
@@ -28,7 +23,7 @@ export function NonAuthenticatedScreens() {
           tabs={renderTabs(props.state)}
           duration={1200}
           iconSize={25}
-          itemContainerWidth={"fill"}
+          itemContainerWidth="fill"
           itemInnerSpace={13}
           itemOuterSpace={10}
           {...props}
