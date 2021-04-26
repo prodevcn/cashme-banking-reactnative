@@ -40,9 +40,6 @@ export const parallaxStyle = StyleSheet.create({
     lineHeight: 29,
     marginBottom: 16,
   },
-  button: {
-    backgroundColor: "white",
-  },
 });
 
 export const carouselStyle = StyleSheet.create({

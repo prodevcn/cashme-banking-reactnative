@@ -40,5 +40,13 @@
   },
   "pin_code_prompt": {
     "title": "Enter your PIN Code"
+  },
+  "products": {
+    "cash_me": "Cash me",
+    "cash_me_description": "Receive money in your account in as little as 5 min",
+    "arpi_solar": "Arpi Solar",
+    "arpi_solar_description": "Receive money in your account in as little as 5 min",
+    "pay_later": "Pay for me",
+    "pay_later_description": "Receive money in your account in as little as 5 min"
   }
 }

@@ -40,5 +40,13 @@
   },
   "pin_code_prompt": {
     "title": "Մուտքագրք ձեր պինը"
+  },
+  "products": {
+    "cash_me": "Cash me",
+    "cash_me_description": "Ստացեք ձեր հաշվեհամարին գումար 5 րոպեի ընթացքում",
+    "arpi_solar": "Arpi Solar",
+    "arpi_solar_description": "Ստացեք ձեր հաշվեհամարին գումար 5 րոպեի ընթացքում",
+    "pay_later": "Pay for me",
+    "pay_later_description": "Ստացեք ձեր հաշվեհամարին գումար 5 րոպեի ընթացքում"
   }
 }

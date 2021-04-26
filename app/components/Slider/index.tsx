@@ -55,7 +55,6 @@ const Slider = (props: SliderProps): ReactElement => {
           <Button
             rounded
             light
-            style={parallaxStyle.button}
             onPress={() => navigate(item.redirectScreenName)}
           >
             <Text>{t("learn_more")}</Text>
