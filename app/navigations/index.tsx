@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NonAuthenticatedScreens } from "./bottomTab";
-import { noConnectionScreen } from "./routes";
+import { noConnectionScreen, authScreens } from "./routes";
 
 const Stack = createStackNavigator();
 
@@ -14,6 +14,14 @@ class RootNavigation extends Component {
           component={NonAuthenticatedScreens}
           options={{ headerShown: false }}
         />
+        {authScreens.map((authScreen, index) => (
+          <Stack.Screen
+            key={index}
+            name={authScreen.name}
+            component={authScreen.component}
+            options={authScreen.options}
+          />
+        ))}
 
         {/* If there is no internet connection */}
         <Stack.Screen

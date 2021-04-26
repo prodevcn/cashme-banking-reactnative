@@ -2,6 +2,7 @@ import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import commonSlice from "../redux/commonSlice";
 import authSlice from "../redux/authSlice";
+import forgotPasswordSlice from "../redux/forgotPasswordSlice";
 import notificationSlice from "../redux/notificationSlice";
 import settingSlice from "../redux/settingSlice";
 import profileSlice from "../redux/profileSlice";
@@ -10,6 +11,7 @@ const store = configureStore({
   reducer: {
     common: commonSlice.reducer,
     auth: authSlice.reducer,
+    forgotPassword: forgotPasswordSlice.reducer,
     notification: notificationSlice.reducer,
     setting: settingSlice.reducer,
     profile: profileSlice.reducer,

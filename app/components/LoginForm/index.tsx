@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { Formik } from "formik";
 import { Asserts } from "yup";
-import { Form, Item, Input, Label, View, Text, Button } from "native-base";
+import { useNavigation } from "@react-navigation/native";
+import { Form, Item, Input, Label, View, Text } from "native-base";
 import DrawerButton from "../LoginDrawer/DrawerButton";
 import Validation from "../../components/Validation";
 import PasswordInput from "../PasswordInput";
@@ -20,6 +21,7 @@ const LoginForm = () => {
   const { t } = useTranslation();
   const { loading } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
+  const { navigate } = useNavigation();
 
   const handleSubmit = (values: any) => {
     dispatch(signIn(values));
@@ -64,9 +66,13 @@ const LoginForm = () => {
                     onBlur={handleBlur("password")}
                   />
                 </Validation>
-                <Button transparent style={styles.forgotPassword}>
+                <DrawerButton
+                  transparent
+                  style={styles.forgotPassword}
+                  onPress={() => navigate("FORGOT_PASSWORD")}
+                >
                   <Text>{t("login.forgot_password")}</Text>
-                </Button>
+                </DrawerButton>
                 <DrawerButton
                   full
                   rounded

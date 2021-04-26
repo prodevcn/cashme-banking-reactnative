@@ -5,11 +5,14 @@ import {
   PRODUCTS_SCREEN,
   HELP_SCREEN,
   NO_CONNECTION,
+  FORGOT_PASSWORD,
 } from "../constants";
 import Help from "../screens/Help";
 import Products from "../screens/Products";
 import Home from "../screens/Home";
 import NoConnection from "../screens/NoConnection";
+import ForgotPassword from "../screens/ForgotPassword";
+import { Button, Text } from "native-base";
 
 interface Routes {
   name: string;
@@ -32,6 +35,14 @@ export const commonScreens: Array<Routes> = [
     name: HELP_SCREEN,
     component: Help,
     options: { title: "Help" },
+  },
+];
+
+export const authScreens: Array<Routes> = [
+  {
+    name: FORGOT_PASSWORD,
+    component: ForgotPassword,
+    options: { title: "" },
   },
 ];
 

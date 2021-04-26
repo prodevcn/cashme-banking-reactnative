@@ -8,6 +8,12 @@
     "sign_up": "SIGN UP",
     "forgot_password": "Forgot Password"
   },
+  "forgot_password": {
+    "title": "Forgot Password",
+    "label": "Don't worry, happens to the best of us.",
+    "username": "Phone/Email",
+    "continue": "Continue"
+  },
   "no_connection": {
     "check_connection": "Check your connection and try again",
     "retry": "Retry"
