@@ -2,7 +2,6 @@ import React, { ComponentType } from "react";
 import { compose } from "redux";
 import { View } from "native-base";
 import withLoginDrawer from "../../hocs/withLoginDrawer";
-import Screen from "../../components/Screen";
 import Slider from "../../components/Slider";
 
 import styles from "./styles";
@@ -30,11 +29,9 @@ const Home = () => {
   ];
 
   return (
-    <Screen>
-      <View style={styles.container}>
-        <Slider data={data} />
-      </View>
-    </Screen>
+    <View style={styles.container}>
+      <Slider data={data} />
+    </View>
   );
 };
 
