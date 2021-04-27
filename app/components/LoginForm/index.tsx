@@ -10,9 +10,9 @@ import PasswordInput from "../PasswordInput";
 import Loader from "../Loader";
 import loginSchema from "../../validation/schemas/loginSchema";
 import { signIn } from "../../redux/authSlice";
+import { RootState } from "../../store";
 
 import styles from "./styles";
-import { RootState } from "../../store";
 
 interface SignInFormValues extends Asserts<typeof loginSchema> {}
 

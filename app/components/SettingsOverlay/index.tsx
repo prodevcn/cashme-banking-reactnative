@@ -1,39 +1,75 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import Modal from "react-native-modal";
 import { Button, Text, View } from "native-base";
-import Storage from "../../util/storage";
-import { DISMISS_SECURITY_OVERLAY } from "../../constants/storage";
 import Logo from "../Logo";
 import MenuButton from "../MenuButton";
+import { enrollPublicKey } from "../../redux/authSlice";
+import * as auth from "../../helpers/auth";
+import { RootState } from "../../store";
 
 import PinIcon from "../../assets/images/pin.svg";
-import FaceRecognitionIcon from "../../assets/images/face-recognition.svg";
 import FingerprintIcon from "../../assets/images/finger-print.svg";
 
 import styles from "./styles";
 
 const SettingsOverlay = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(true);
+  const [hasSensor, setHasSensor] = useState(false);
+
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
+  const {
+    token,
+    profile: { email } = {},
+  } = useSelector((state: RootState) => ({
+    token: state.auth.token,
+    profile: state.profile.data,
+  }));
+
   useEffect(() => {
-    Storage.getItem({ key: DISMISS_SECURITY_OVERLAY }).then(value => {
-      setIsVisible(!value);
-    });
+    async function init() {
+      const dismissed = await auth.isBiometricsDismissed();
+      const sensor = await auth.hasSensor();
+
+      setIsDismissed(dismissed);
+      setHasSensor(sensor);
+    }
+    init();
   }, []);
+
+  useEffect(() => {
+    if (!token) {
+      return;
+    }
+
+    setIsVisible(!isDismissed && hasSensor);
+  }, [token]);
 
   const skip = () => {
     setIsVisible(false);
   };
 
-  const hideOverlay = () => {
-    Storage.setItem({
-      key: DISMISS_SECURITY_OVERLAY,
-      value: true,
-    }).then(() => {
-      skip();
-    });
+  const hideOverlay = async () => {
+    auth.dismissBiometrics();
+    skip();
+  };
+
+  const enableBiometrics = async () => {
+    const success = auth.promptBiometrics(t("login.login"));
+
+    if (!success) {
+      return;
+    }
+
+    const publicKey = await auth.enableBiometrics(email);
+
+    await dispatch(enrollPublicKey(email, publicKey));
+
+    hideOverlay();
   };
 
   return (
@@ -54,16 +90,14 @@ const SettingsOverlay = () => {
               description={t("settings_overlay.create_pin_code")}
               Icon={PinIcon}
             />
-            <MenuButton
-              title={t("settings_overlay.touch_id")}
-              description={t("settings_overlay.enable_touch_id")}
-              Icon={FingerprintIcon}
-            />
-            <MenuButton
-              title={t("settings_overlay.face_recognition")}
-              description={t("settings_overlay.use_face_recognition")}
-              Icon={FaceRecognitionIcon}
-            />
+            {hasSensor && (
+              <MenuButton
+                title={t("settings_overlay.biometrics")}
+                description={t("settings_overlay.enable_biometrics")}
+                Icon={FingerprintIcon}
+                onPress={enableBiometrics}
+              />
+            )}
           </View>
 
           <Button
