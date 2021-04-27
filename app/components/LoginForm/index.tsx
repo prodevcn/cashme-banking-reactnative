@@ -46,7 +46,9 @@ const LoginForm = () => {
                 <View>
                   <Validation formik={props} name="username" showMessage={true}>
                     <Item floatingLabel>
-                      <Label>{t("login.username")}</Label>
+                      <Label style={styles.inputLabel}>
+                        {t("login.username")}
+                      </Label>
                       <Input
                         value={values.username}
                         onChangeText={handleChange("username")}

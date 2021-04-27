@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Item, Input, Label, View, NativeBase } from "native-base";
+import { Item, Input, Label, View, NativeBase, Icon } from "native-base";
 import { TouchableOpacity } from "@gorhom/bottom-sheet";
-
-import EyeIcon from "../../assets/images/eye.svg";
 
 import styles from "./styles";
 
@@ -19,14 +17,18 @@ const PasswordInput = (props: NativeBase.Input) => {
   return (
     <View style={styles.passwordSection}>
       <View>
-        <Item floatingLabel>
-          <Label>{t("login.password")}</Label>
+        <Item floatingLabel style={props.style}>
+          <Label style={styles.inputLabel}>{t("login.password")}</Label>
           <Input secureTextEntry={secureTextEntry} {...props} />
         </Item>
       </View>
       <View style={styles.eyeIcon}>
         <TouchableOpacity onPress={togglePassword}>
-          <EyeIcon />
+          {secureTextEntry ? (
+            <Icon name="eye-outline" />
+          ) : (
+            <Icon name="eye-off-outline" />
+          )}
         </TouchableOpacity>
       </View>
     </View>

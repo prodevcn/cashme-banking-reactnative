@@ -13,6 +13,7 @@ import {
   BottomSheetBackdropProps,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
+import { BlurView } from "@react-native-community/blur";
 
 import LoginForm from "../LoginForm";
 import DrawerButton from "./DrawerButton";
@@ -22,7 +23,7 @@ import styles from "./styles";
 const LoginDrawer = () => {
   const ref = useRef<BottomSheetModal>(null);
   const [isExpanded, setIsExpanded] = useState(false);
-  const snapPoints = useMemo(() => [120, 310], []);
+  const snapPoints = useMemo(() => [120, 320], []);
   const { t } = useTranslation();
 
   useLayoutEffect(() => {
@@ -64,28 +65,36 @@ const LoginDrawer = () => {
           onAnimate={(fromIndex, toIndex) => setIsExpanded(toIndex === 1)}
           animationDuration={500}
         >
-          {!isExpanded ? (
-            <View>
-              <DrawerButton
-                full
-                rounded
-                style={styles.button}
-                onPress={() => {
-                  ref?.current?.expand();
-                }}
-              >
-                <Text>{t("login.login")}</Text>
-              </DrawerButton>
-              <Text style={styles.accountText}>
-                {t("login.dont_have_account")}{" "}
-                <Text style={styles.signUpLink} onPress={() => {}}>
-                  {t("login.sign_up")}
+          <View style={styles.blurArea}>
+            <BlurView
+              style={styles.blured}
+              blurType="light"
+              blurAmount={5}
+              reducedTransparencyFallbackColor="white"
+            />
+            {!isExpanded ? (
+              <View>
+                <DrawerButton
+                  full
+                  rounded
+                  style={styles.button}
+                  onPress={() => {
+                    ref?.current?.expand();
+                  }}
+                >
+                  <Text>{t("login.login")}</Text>
+                </DrawerButton>
+                <Text style={styles.accountText}>
+                  {t("login.dont_have_account")}{" "}
+                  <Text style={styles.signUpLink} onPress={() => {}}>
+                    {t("login.sign_up")}
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-          ) : (
-            <LoginForm />
-          )}
+              </View>
+            ) : (
+              <LoginForm />
+            )}
+          </View>
         </BottomSheetModal>
       </View>
     </BottomSheetModalProvider>
