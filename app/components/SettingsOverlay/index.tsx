@@ -22,13 +22,12 @@ const SettingsOverlay = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const {
-    token,
-    profile: { email } = {},
-  } = useSelector((state: RootState) => ({
-    token: state.auth.token,
-    profile: state.profile.data,
-  }));
+  const { token, profile: { email } = {} } = useSelector(
+    (state: RootState) => ({
+      token: state.auth.token,
+      profile: state.profile.data,
+    }),
+  );
 
   useEffect(() => {
     async function init() {
