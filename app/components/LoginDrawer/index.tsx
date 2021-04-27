@@ -6,6 +6,7 @@ import React, {
   useRef,
 } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { View, Text } from "native-base";
 import {
   BottomSheetModal,
@@ -17,6 +18,8 @@ import { BlurView } from "@react-native-community/blur";
 
 import LoginForm from "../LoginForm";
 import DrawerButton from "./DrawerButton";
+import { verifySignature } from "../../redux/authSlice";
+import { hasPrivateKey, signMessage } from "../../helpers/auth";
 
 import styles from "./styles";
 
@@ -25,6 +28,7 @@ const LoginDrawer = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const snapPoints = useMemo(() => [120, 320], []);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   useLayoutEffect(() => {
     ref.current?.present();
@@ -46,6 +50,21 @@ const LoginDrawer = () => {
   const ModalBackground = () => (
     <View style={styles.backgroundContainer}></View>
   );
+
+  const onLogin = async () => {
+    ref?.current?.expand();
+
+    const isBiometricsEnabled = await hasPrivateKey();
+
+    if (!isBiometricsEnabled) {
+      return;
+    }
+
+    const { signature, message } = await signMessage(t("login.login"));
+
+    // TODO: get username from storage
+    dispatch(verifySignature("mobile-user@mail.com", signature, message));
+  };
 
   return (
     <BottomSheetModalProvider>
@@ -78,9 +97,7 @@ const LoginDrawer = () => {
                   full
                   rounded
                   style={styles.button}
-                  onPress={() => {
-                    ref?.current?.expand();
-                  }}
+                  onPress={onLogin}
                 >
                   <Text>{t("login.login")}</Text>
                 </DrawerButton>

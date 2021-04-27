@@ -1,8 +1,9 @@
-import React, { ComponentType } from "react";
-import { compose } from "redux";
+import React, { useEffect } from "react";
 import { View } from "native-base";
-import withLoginDrawer from "../../hocs/withLoginDrawer";
+import { useSelector } from "react-redux";
 import Slider from "../../components/Slider";
+import LoginDrawer from "../../components/LoginDrawer";
+import { RootState } from "../../store";
 
 import styles from "./styles";
 
@@ -28,11 +29,16 @@ const Home = () => {
     },
   ];
 
+  const { token } = useSelector((state: RootState) => state.auth);
+
   return (
     <View style={styles.container}>
-      <Slider data={data} />
+      <View style={styles.innerContainer}>
+        <Slider data={data} />
+      </View>
+      {!token && <LoginDrawer />}
     </View>
   );
 };
 
-export default compose<ComponentType>(withLoginDrawer)(Home);
+export default Home;

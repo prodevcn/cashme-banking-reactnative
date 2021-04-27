@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import api from "../../util/api";
-import { setToken } from "../../helpers/auth";
 import { AppThunk } from "../../store";
 
 interface AuthState {
@@ -36,20 +35,79 @@ const authSlice = createSlice({
       state.token = undefined;
       state.error = action.payload;
     },
+
+    enrollPublicKeyStarted: state => {
+      state.loading = true;
+    },
+    enrollPublicKeyFulfilled: state => {
+      state.loading = false;
+    },
+    enrollPublicKeyFailed: (
+      state,
+      action: PayloadAction<object | undefined>,
+    ) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
-const { signInStarted, signInFulfilled, signInFailed } = authSlice.actions;
+const {
+  signInStarted,
+  signInFulfilled,
+  signInFailed,
+  enrollPublicKeyStarted,
+  enrollPublicKeyFulfilled,
+  enrollPublicKeyFailed,
+} = authSlice.actions;
 
 export const signIn = (signInData: AuthPayload): AppThunk => async dispatch => {
   try {
     dispatch(signInStarted());
 
-    const { data = {} }: any = await api.post("/api/auth/login", signInData);
+    const { data = {} }: any = await api.post(
+      "/api/auth/mobile/login",
+      signInData,
+    );
 
     dispatch(signInFulfilled(data.data.token));
 
-    await setToken(data.data.token);
+    api.defaults.headers.common["Authorization"] = `Bearer ${data.data.token}`;
+  } catch (e) {
+    dispatch(signInFailed(e));
+  }
+};
+
+export const enrollPublicKey = (
+  username: string,
+  publicKey: string,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(enrollPublicKeyStarted());
+
+    await api.post("/api/auth/enroll", { username, public_key: publicKey });
+
+    dispatch(enrollPublicKeyFulfilled());
+  } catch (e) {
+    dispatch(enrollPublicKeyFailed(e));
+  }
+};
+
+export const verifySignature = (
+  username: string,
+  signature: string,
+  message: string,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(signInStarted());
+
+    const { data = {} } = await api.post("/api/auth/verify", {
+      username,
+      signature,
+      message,
+    });
+
+    dispatch(signInFulfilled(data.data.token));
 
     api.defaults.headers.common["Authorization"] = `Bearer ${data.data.token}`;
   } catch (e) {

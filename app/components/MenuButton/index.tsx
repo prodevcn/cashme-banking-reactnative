@@ -11,6 +11,7 @@ interface MenuButtonProps {
   Icon: any;
   title: string;
   description?: string;
+  onPress?(): void;
 }
 
 const MenuButton = ({ Icon, title, description, ...rest }: MenuButtonProps) => {
