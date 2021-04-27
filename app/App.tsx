@@ -6,12 +6,13 @@ import NetInfo from "@react-native-community/netinfo";
 import * as Font from "expo-font";
 // import * as Notifications from "expo-notifications";
 import { Ionicons } from "@expo/vector-icons";
-import { AppDispatch, RootState } from "./store";
 import notificationSlice, {
   registerForPushNotifications,
 } from "./redux/notificationSlice";
 import { setHasInternetConnection } from "./redux/settingSlice";
 import Loader from "./components/Loader";
+import SettingsOverlay from "./components/SettingsOverlay";
+import { AppDispatch, RootState } from "./store";
 import RootNavigation from "./navigations";
 import * as GlobalNavigation from "./navigations/GlobalNavigation";
 
@@ -71,11 +72,14 @@ class App extends Component<AppProps, AppState> {
     }
 
     return (
-      <NavigationContainer
-        ref={ref => GlobalNavigation.setGlobalNavigator(ref)}
-      >
-        <RootNavigation />
-      </NavigationContainer>
+      <>
+        <SettingsOverlay />
+        <NavigationContainer
+          ref={ref => GlobalNavigation.setGlobalNavigator(ref)}
+        >
+          <RootNavigation />
+        </NavigationContainer>
+      </>
     );
   }
 }

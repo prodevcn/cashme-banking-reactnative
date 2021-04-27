@@ -16,10 +16,15 @@ const api = axios.create({
 api.interceptors.request.use(
   config => {
     const state = store.getState();
+    const token = state.auth.token;
 
     if (!state.setting.hasInternetConnection) {
       GlobalNavigation.navigate(NO_CONNECTION);
       throw new axios.Cancel("No internet connection!");
+    }
+
+    if (token) {
+      Object.assign(config.headers, { Authorization: `Bearer ${token}` });
     }
 
     return {

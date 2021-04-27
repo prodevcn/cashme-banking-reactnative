@@ -1,20 +1,6 @@
 import ReactNativeBiometrics from "react-native-biometrics";
 import Storage from "../util/storage";
-import { TOKEN } from "../constants";
-
-export const setToken = async (token: string) => {
-  await Storage.setItem({ key: TOKEN, value: token, encrypted: true });
-};
-
-export const getToken = async () => {
-  return await Storage.getItem({ key: TOKEN, encrypted: true });
-};
-
-export const removeToken = async () => {
-  await Storage.removeItem({ key: TOKEN, encrypted: true });
-};
-
-export const isAuthenticated = () => !!getToken();
+import { DISMISS_SECURITY_OVERLAY, IDENTIFIER } from "../constants";
 
 export const createKeys = async () => {
   const { publicKey } = await ReactNativeBiometrics.createKeys();
@@ -28,6 +14,33 @@ export const promptBiometrics = async (text: string) => {
   });
 
   return success;
+};
+
+export const hasSensor = async () => {
+  const { available } = await ReactNativeBiometrics.isSensorAvailable();
+
+  return available;
+};
+
+export const deleteKeys = async () => {
+  await ReactNativeBiometrics.deleteKeys();
+};
+
+export const getBiometricsUsername = async () => {
+  const hasKey = await hasPrivateKey();
+
+  if (!hasKey) {
+    return;
+  }
+
+  return await getUsername();
+};
+
+export const enableBiometrics = async (username: string) => {
+  const publicKey = await createKeys();
+  await setUsername(username);
+
+  return publicKey;
 };
 
 export const hasPrivateKey = async () => {
@@ -51,8 +64,24 @@ export const signMessage = async (text: string) => {
 
 export const setUsername = async (username: string) => {
   return await Storage.setItem({
-    key: TOKEN,
+    key: IDENTIFIER,
     value: username,
-    encrypted: true,
+  });
+};
+
+export const getUsername = async () => {
+  return await Storage.getItem({
+    key: IDENTIFIER,
+  });
+};
+
+export const isBiometricsDismissed = async () => {
+  return Storage.getItem({ key: DISMISS_SECURITY_OVERLAY });
+};
+
+export const dismissBiometrics = async () => {
+  await Storage.setItem({
+    key: DISMISS_SECURITY_OVERLAY,
+    value: true,
   });
 };

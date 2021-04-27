@@ -38,6 +38,7 @@ const authSlice = createSlice({
 
     enrollPublicKeyStarted: state => {
       state.loading = true;
+      state.error = undefined;
     },
     enrollPublicKeyFulfilled: state => {
       state.loading = false;
@@ -69,12 +70,17 @@ export const signIn = (signInData: AuthPayload): AppThunk => async dispatch => {
       "/api/auth/mobile/login",
       signInData,
     );
+    const token = data.data?.token;
 
-    dispatch(signInFulfilled(data.data.token));
+    dispatch(signInFulfilled(token));
 
-    api.defaults.headers.common["Authorization"] = `Bearer ${data.data.token}`;
+    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+    return token;
   } catch (e) {
-    dispatch(signInFailed(e));
+    dispatch(signInFailed(e.message));
+
+    return e;
   }
 };
 
@@ -85,11 +91,15 @@ export const enrollPublicKey = (
   try {
     dispatch(enrollPublicKeyStarted());
 
-    await api.post("/api/auth/enroll", { username, public_key: publicKey });
+    const res = await api.post("/api/auth/enroll", { username, publicKey });
 
     dispatch(enrollPublicKeyFulfilled());
+
+    return res;
   } catch (e) {
-    dispatch(enrollPublicKeyFailed(e));
+    dispatch(enrollPublicKeyFailed(e.message));
+
+    return e;
   }
 };
 
@@ -106,12 +116,17 @@ export const verifySignature = (
       signature,
       message,
     });
+    const token = data.data?.token;
 
-    dispatch(signInFulfilled(data.data.token));
+    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-    api.defaults.headers.common["Authorization"] = `Bearer ${data.data.token}`;
+    dispatch(signInFulfilled(token));
+
+    return token;
   } catch (e) {
-    dispatch(signInFailed(e));
+    dispatch(signInFailed(e.message));
+
+    return e;
   }
 };
 

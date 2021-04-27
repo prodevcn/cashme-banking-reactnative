@@ -19,7 +19,7 @@ import { BlurView } from "@react-native-community/blur";
 import LoginForm from "../LoginForm";
 import DrawerButton from "./DrawerButton";
 import { verifySignature } from "../../redux/authSlice";
-import { hasPrivateKey, signMessage } from "../../helpers/auth";
+import { getBiometricsUsername, signMessage } from "../../helpers/auth";
 
 import styles from "./styles";
 
@@ -54,16 +54,15 @@ const LoginDrawer = () => {
   const onLogin = async () => {
     ref?.current?.expand();
 
-    const isBiometricsEnabled = await hasPrivateKey();
+    const username = await getBiometricsUsername();
 
-    if (!isBiometricsEnabled) {
+    if (!username) {
       return;
     }
 
     const { signature, message } = await signMessage(t("login.login"));
 
-    // TODO: get username from storage
-    dispatch(verifySignature("mobile-user@mail.com", signature, message));
+    dispatch(verifySignature(username, signature, message));
   };
 
   return (
