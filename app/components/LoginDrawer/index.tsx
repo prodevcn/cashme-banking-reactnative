@@ -29,7 +29,7 @@ import customColor from "../../theme/customColor";
 const LoginDrawer = () => {
   const ref = useRef<BottomSheetModal>(null);
   const [isExpanded, setIsExpanded] = useState(false);
-  const snapPoints = useMemo(() => [120, 320], []);
+  const snapPoints = useMemo(() => [195, 385], []);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
