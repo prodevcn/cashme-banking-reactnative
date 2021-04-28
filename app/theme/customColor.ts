@@ -5,7 +5,7 @@ export default {
   ...commonColor,
   brandPrimary: "#4389ed",
   brandLight: "#fff",
-  titleColor: "#32506E",
+  brandDark: "#32506E",
 
   get buttonPrimaryBg() {
     return this.brandPrimary;

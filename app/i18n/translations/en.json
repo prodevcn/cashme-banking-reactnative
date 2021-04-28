@@ -1,5 +1,6 @@
 {
   "learn_more": "Learn More",
+  "categories": "Categories",
   "login": {
     "login": "Login",
     "username": "Phone/Email",
@@ -64,5 +65,13 @@
   "security_settings": {
     "title": "Security",
     "caption": "Choose security actions to unlock your phone"
+  },
+  "category_item": {
+    "finance": "Finance",
+    "services": "Services",
+    "property": "Property",
+    "medical": "Medical",
+    "wallet": "Wallet",
+    "e_commerce": "E-commerce"
   }
 }

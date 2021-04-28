@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   },
   subHeader: {
     paddingHorizontal: 30,
+    paddingVertical: 10,
   },
   subHeaderText: {
     color: "#32506E",

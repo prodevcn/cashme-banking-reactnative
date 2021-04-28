@@ -1,8 +1,9 @@
 import { StackNavigationOptions } from "@react-navigation/stack";
 import { ComponentType } from "react";
+import i18n from "../i18n";
 import {
   HOME_SCREEN,
-  PRODUCTS_SCREEN,
+  CATEGORIES_SCREEN,
   HELP_SCREEN,
   NO_CONNECTION,
   FORGOT_PASSWORD,
@@ -11,7 +12,7 @@ import {
   PASSWORD_RECOVER_CODE,
 } from "../constants";
 import Help from "../screens/Help";
-import Products from "../screens/Products";
+import Categories from "../screens/Categories";
 import Home from "../screens/Home";
 import NoConnection from "../screens/NoConnection";
 import ForgotPassword from "../screens/ForgotPassword";
@@ -25,16 +26,16 @@ interface Route {
   options?: StackNavigationOptions;
 }
 
-export const commonScreens: Array<Route> = [
+export const nonAuthBottomTabScreens: Array<Route> = [
   {
     name: HOME_SCREEN,
     component: Home,
     options: { title: "Home" },
   },
   {
-    name: PRODUCTS_SCREEN,
-    component: Products,
-    options: { title: "Products" },
+    name: CATEGORIES_SCREEN,
+    component: Categories,
+    options: { title: i18n.t("categories") },
   },
   {
     name: HELP_SCREEN,

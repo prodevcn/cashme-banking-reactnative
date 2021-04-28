@@ -6,6 +6,7 @@ import forgotPasswordSlice from "../redux/forgotPasswordSlice";
 import notificationSlice from "../redux/notificationSlice";
 import settingSlice from "../redux/settingSlice";
 import profileSlice from "../redux/profileSlice";
+import categorySlice from "../redux/categorySlice";
 
 const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ const store = configureStore({
     notification: notificationSlice.reducer,
     setting: settingSlice.reducer,
     profile: profileSlice.reducer,
+    category: categorySlice.reducer,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
 });
