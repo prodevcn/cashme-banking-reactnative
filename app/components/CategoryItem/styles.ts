@@ -6,7 +6,9 @@ const styles = StyleSheet.create({
     width: "auto",
     height: "auto",
   },
-  foreground: {},
+  background: {
+    alignItems: "center",
+  },
   icon: {
     ...StyleSheet.absoluteFillObject,
     alignItems: "center",

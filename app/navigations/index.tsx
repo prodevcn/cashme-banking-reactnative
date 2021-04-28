@@ -6,6 +6,7 @@ import {
   authScreens,
   resetPinScreen,
   securitySettingsScreen,
+  productScreens,
 } from "./routes";
 
 const Stack = createStackNavigator();
@@ -19,12 +20,22 @@ class RootNavigation extends Component {
           component={NonAuthenticatedScreens}
           options={{ headerShown: false }}
         />
+
         {authScreens.map((authScreen, index) => (
           <Stack.Screen
-            key={index}
+            key={`${authScreen.name}_${index}`}
             name={authScreen.name}
             component={authScreen.component}
             options={authScreen.options}
+          />
+        ))}
+
+        {productScreens.map((screen, index) => (
+          <Stack.Screen
+            key={`${screen.name}_${index}`}
+            name={screen.name}
+            component={screen.component}
+            options={screen.options}
           />
         ))}
 

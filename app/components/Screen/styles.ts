@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import customColor from "../../theme/customColor";
 
 const styles = StyleSheet.create({
   container: {
@@ -17,6 +18,7 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
   },
   headerLeft: {
+    flexDirection: "row",
     marginLeft: 24,
   },
   subHeader: {
@@ -24,8 +26,13 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   subHeaderText: {
-    color: "#32506E",
-    fontSize: 30,
+    fontSize: 36,
+    lineHeight: 43,
+    color: customColor.brandDark,
+  },
+  goBackIcon: {
+    color: "#1B8CF4",
+    marginRight: 10,
   },
 });
 

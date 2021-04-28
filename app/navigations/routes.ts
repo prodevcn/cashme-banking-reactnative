@@ -10,6 +10,7 @@ import {
   RESET_PIN,
   SECURITY_SETTINGS,
   PASSWORD_RECOVER_CODE,
+  FINANCE,
 } from "../constants";
 import Help from "../screens/Help";
 import Categories from "../screens/Categories";
@@ -19,6 +20,7 @@ import ForgotPassword from "../screens/ForgotPassword";
 import ResetPin from "../screens/ResetPin";
 import SecuritySettings from "../screens/SecuritySettings";
 import PasswordRecoverCode from "../screens/PasswordRecoverCode";
+import Finance from "../screens/Products/Finance";
 
 interface Route {
   name: string;
@@ -74,3 +76,11 @@ export const securitySettingsScreen: Route = {
   component: SecuritySettings,
   options: { headerShown: false },
 };
+
+export const productScreens: Array<Route> = [
+  {
+    name: FINANCE,
+    component: Finance,
+    options: { title: "Finance", headerShown: false },
+  },
+];

@@ -1,6 +1,13 @@
 {
   "learn_more": "Իմանալ ավելին",
+  "apply_now": "Դիմել հիմա",
   "categories": "Կատեգորիաներ",
+  "loan_term": "Վարկի Ժամկետ",
+  "loan_amount": "Վարկի գումարը",
+  "interest": "Տոկոս",
+  "AMD": "դրամ",
+  "months": "Ամիս",
+  "monthly": "Ամսեկան",
   "login": {
     "login": "Մուտք",
     "username": "Հեռախոս/Էլ․Հասցե",
