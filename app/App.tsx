@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Root } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
 import NetInfo from "@react-native-community/netinfo";
 import * as Font from "expo-font";
@@ -56,7 +57,9 @@ const App = () => {
       <NavigationContainer
         ref={ref => GlobalNavigation.setGlobalNavigator(ref)}
       >
-        <RootNavigation />
+        <Root>
+          <RootNavigation />
+        </Root>
       </NavigationContainer>
     </>
   );

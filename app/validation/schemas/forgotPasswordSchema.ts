@@ -1,0 +1,17 @@
+import yup from "./validators";
+import i18n from "../../i18n";
+
+const forgotPasswordSchema = yup.object({
+  username: yup.lazy(value => {
+    if (isNaN(+value)) {
+      return yup
+        .string()
+        .required(i18n.t("validations.required"))
+        .email(i18n.t("validations.email"));
+    }
+
+    return yup.string().required(i18n.t("validations.required")).phone();
+  }),
+});
+
+export default forgotPasswordSchema;

@@ -3,3 +3,4 @@ export const HOME_SCREEN = "HOME_SCREEN";
 export const PRODUCTS_SCREEN = "PRODUCTS_SCREEN";
 export const HELP_SCREEN = "HELP_SCREEN";
 export const NO_CONNECTION = "NO_CONNECTION";
+export const FORGOT_PASSWORD = "FORGOT_PASSWORD";
