@@ -14,6 +14,13 @@
     "username": "Phone/Email",
     "continue": "Continue"
   },
+  "password_recover_code": {
+    "title": "Enter 4-digit recover code",
+    "phone_info": "The recovery code has been sent to your <0>{{username}}</0> phone number",
+    "email_info": "The recovery code has been sent to your <0>{{username}}</0> email address",
+    "label": "Please enter verification code",
+    "resend_code": "Resend Code"
+  },
   "no_connection": {
     "check_connection": "Check your connection and try again",
     "retry": "Retry"
@@ -31,7 +38,8 @@
     "required": "This field is required",
     "email": "Invalid email",
     "phone": "Invalid phone number",
-    "match": "Fields must match"
+    "match": "Fields must match",
+    "code": "Code length must be 4"
   },
   "reset_pin": {
     "title": "Pin code",

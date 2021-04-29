@@ -14,6 +14,20 @@ yup.addMethod<yup.StringSchema>(yup.string, "phone", function () {
   });
 });
 
+yup.addMethod<yup.StringSchema>(yup.string, "pinCode", function () {
+  return this.test(
+    "pinCode",
+    i18n.t("validations.pin_code"),
+    function (value = "") {
+      if (value) {
+        return value.length === 4;
+      }
+
+      return true;
+    },
+  );
+});
+
 declare module "yup" {
   interface StringSchema<
     TType extends Maybe<string> = string | undefined,

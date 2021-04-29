@@ -13,11 +13,13 @@ import {
 } from "native-base";
 import { Formik } from "formik";
 import { Asserts } from "yup";
+import { useNavigation } from "@react-navigation/native";
 import forgotPasswordSchema from "../../validation/schemas/forgotPasswordSchema";
 import Validation from "../../components/Validation";
 import Screen from "../../components/Screen";
 import { forgotPassword } from "../../redux/forgotPasswordSlice";
 import { RootState } from "../../store";
+import { PASSWORD_RECOVER_CODE } from "../../constants";
 
 import styles from "./styles";
 
@@ -26,6 +28,7 @@ interface SignInFormValues extends Asserts<typeof forgotPasswordSchema> {}
 const ForgotPassword = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { navigate } = useNavigation();
   const { loading, error } = useSelector(
     (state: RootState) => state.forgotPassword,
   );
@@ -38,29 +41,32 @@ const ForgotPassword = () => {
     return username.substr(username.length - 8);
   };
 
-  const handleSubmit = (values: any) => {
+  const handleSubmit = async (values: any) => {
     const username = getValidUsername(values.username);
 
-    dispatch(forgotPassword({ username }));
+    try {
+      await dispatch(forgotPassword({ username }));
+
+      navigate(PASSWORD_RECOVER_CODE);
+    } catch (e) {
+      Toast.show({
+        text: error,
+        type: "danger",
+        duration: 5000,
+      });
+    }
   };
 
   const initialValues: SignInFormValues = {
     username: "",
   };
 
-  if (error) {
-    Toast.show({
-      text: error,
-      type: "danger",
-      duration: 5000,
-    });
-  }
-
   return (
-    <Screen innerStyle={styles.container} isLoading={loading}>
+    <Screen isLoading={loading} title={t("forgot_password.title")}>
       <View style={styles.content}>
-        <Text style={styles.contentTitle}>{t("forgot_password.title")}</Text>
-        <Text style={styles.contentLabel}>{t("forgot_password.label")}</Text>
+        <View style={styles.caption}>
+          <Text>{t("forgot_password.label")}</Text>
+        </View>
 
         <Formik
           initialValues={initialValues}

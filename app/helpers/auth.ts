@@ -1,5 +1,7 @@
 import ReactNativeBiometrics from "react-native-biometrics";
 import PubSub from "pubsub-js";
+import { BIOMETRIC_AUTH_SECRET } from "@env";
+import * as LocalAuthentication from "expo-local-authentication";
 import Storage from "../util/storage";
 import {
   AUTH_TYPE,
@@ -8,7 +10,6 @@ import {
   IDENTIFIER,
   PIN_KEY,
 } from "../constants";
-import * as LocalAuthentication from "expo-local-authentication";
 
 export const createKeys = async () => {
   const { publicKey } = await ReactNativeBiometrics.createKeys();
@@ -56,7 +57,7 @@ export const hasPrivateKey = async () => {
 
 export const signMessage = async (text: string) => {
   const epochTimeSeconds = Math.round(new Date().getTime() / 1000).toString();
-  const message = epochTimeSeconds + "some message";
+  const message = epochTimeSeconds + BIOMETRIC_AUTH_SECRET;
 
   const { signature = "" } = await ReactNativeBiometrics.createSignature({
     promptMessage: text,

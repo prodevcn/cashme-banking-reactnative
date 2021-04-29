@@ -19,12 +19,7 @@ import { BlurView } from "@react-native-community/blur";
 import LoginForm from "../LoginForm";
 import DrawerButton from "./DrawerButton";
 import { verifyPin, verifySignature } from "../../redux/authSlice";
-import {
-  getAuthType,
-  getUsername,
-  promptPin,
-  signMessage,
-} from "../../helpers/auth";
+import * as auth from "../../helpers/auth";
 import { AUTH_TYPES } from "../../constants";
 
 import styles from "./styles";
@@ -60,7 +55,7 @@ const LoginDrawer = () => {
   const onLogin = async () => {
     ref?.current?.expand();
 
-    const authType = await getAuthType();
+    const authType = await auth.getAuthType();
 
     if (!authType) {
       return;
@@ -74,15 +69,17 @@ const LoginDrawer = () => {
   };
 
   const biometricsAuth = async () => {
-    const username = await getUsername();
-    const { signature, message } = await signMessage(t("login.login"));
+    try {
+      const username = await auth.getUsername();
+      const { signature, message } = await auth.signMessage(t("login.login"));
 
-    dispatch(verifySignature(username, signature, message));
+      dispatch(verifySignature(username, signature, message));
+    } catch {}
   };
 
   const pinAuth = async () => {
-    const username = await getUsername();
-    const { success, payload } = await promptPin();
+    const username = await auth.getUsername();
+    const { success, payload } = await auth.promptPin();
 
     if (success) {
       dispatch(verifyPin(username, payload));

@@ -8,6 +8,7 @@ import {
   FORGOT_PASSWORD,
   RESET_PIN,
   SECURITY_SETTINGS,
+  PASSWORD_RECOVER_CODE,
 } from "../constants";
 import Help from "../screens/Help";
 import Products from "../screens/Products";
@@ -16,6 +17,7 @@ import NoConnection from "../screens/NoConnection";
 import ForgotPassword from "../screens/ForgotPassword";
 import ResetPin from "../screens/ResetPin";
 import SecuritySettings from "../screens/SecuritySettings";
+import PasswordRecoverCode from "../screens/PasswordRecoverCode";
 
 interface Route {
   name: string;
@@ -45,7 +47,12 @@ export const authScreens: Array<Route> = [
   {
     name: FORGOT_PASSWORD,
     component: ForgotPassword,
-    options: { title: "" },
+    options: { headerShown: false },
+  },
+  {
+    name: PASSWORD_RECOVER_CODE,
+    component: PasswordRecoverCode,
+    options: { headerShown: false },
   },
 ];
 
