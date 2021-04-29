@@ -61,6 +61,7 @@ const LoginForm = () => {
                 </View>
                 <Validation formik={props} name="password" showMessage={true}>
                   <PasswordInput
+                    label={t("login.password")}
                     value={values.password}
                     onChangeText={handleChange("password")}
                     onBlur={handleBlur("password")}

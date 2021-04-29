@@ -8,6 +8,8 @@ import MenuButton from "../MenuButton";
 import { enrollPublicKey } from "../../redux/authSlice";
 import * as auth from "../../helpers/auth";
 import { RootState } from "../../store";
+import * as GlobalNavigation from "../../navigations/GlobalNavigation";
+import { RESET_PIN } from "../../constants";
 
 import PinIcon from "../../assets/images/pin.svg";
 import FingerprintIcon from "../../assets/images/finger-print.svg";
@@ -16,8 +18,9 @@ import styles from "./styles";
 
 const SettingsOverlay = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isDismissed, setIsDismissed] = useState(true);
   const [hasSensor, setHasSensor] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(true);
+  const [isLocalAuthEnabled, setIsLocalAuthEnabled] = useState(false);
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -33,9 +36,11 @@ const SettingsOverlay = () => {
     async function init() {
       const dismissed = await auth.isBiometricsDismissed();
       const sensor = await auth.hasSensor();
+      const localAuthEnabled = await auth.isLocalAuthEnabled();
 
       setIsDismissed(dismissed);
       setHasSensor(sensor);
+      setIsLocalAuthEnabled(localAuthEnabled);
     }
     init();
   }, []);
@@ -45,7 +50,7 @@ const SettingsOverlay = () => {
       return;
     }
 
-    setIsVisible(!isDismissed && hasSensor);
+    setIsVisible(!isDismissed && !isLocalAuthEnabled);
   }, [token]);
 
   const skip = () => {
@@ -68,7 +73,12 @@ const SettingsOverlay = () => {
 
     await dispatch(enrollPublicKey(email, publicKey));
 
-    hideOverlay();
+    skip();
+  };
+
+  const enablePin = async () => {
+    GlobalNavigation.navigate(RESET_PIN);
+    skip();
   };
 
   return (
@@ -88,6 +98,7 @@ const SettingsOverlay = () => {
               title={t("settings_overlay.pin_code")}
               description={t("settings_overlay.create_pin_code")}
               Icon={PinIcon}
+              onPress={enablePin}
             />
             {hasSensor && (
               <MenuButton

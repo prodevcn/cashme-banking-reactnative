@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import api from "../../util/api";
+import * as auth from "../../helpers/auth";
 import { AppThunk } from "../../store";
 
 interface AuthState {
@@ -50,6 +51,18 @@ const authSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+
+    enrollPinStarted: state => {
+      state.loading = true;
+      state.error = undefined;
+    },
+    enrollPinFulfilled: state => {
+      state.loading = false;
+    },
+    enrollPinFailed: (state, action: PayloadAction<object | undefined>) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -60,6 +73,9 @@ const {
   enrollPublicKeyStarted,
   enrollPublicKeyFulfilled,
   enrollPublicKeyFailed,
+  enrollPinStarted,
+  enrollPinFulfilled,
+  enrollPinFailed,
 } = authSlice.actions;
 
 export const signIn = (signInData: AuthPayload): AppThunk => async dispatch => {
@@ -73,6 +89,8 @@ export const signIn = (signInData: AuthPayload): AppThunk => async dispatch => {
     const token = data.data?.token;
 
     dispatch(signInFulfilled(token));
+
+    await auth.setUsername(signInData.username);
 
     api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
@@ -91,7 +109,7 @@ export const enrollPublicKey = (
   try {
     dispatch(enrollPublicKeyStarted());
 
-    const res = await api.post("/api/auth/enroll", { username, publicKey });
+    const res = await api.post("/api/auth/enroll-key", { username, publicKey });
 
     dispatch(enrollPublicKeyFulfilled());
 
@@ -111,10 +129,59 @@ export const verifySignature = (
   try {
     dispatch(signInStarted());
 
-    const { data = {} } = await api.post("/api/auth/verify", {
+    const { data = {} } = await api.post("/api/auth/verify-signature", {
       username,
       signature,
       message,
+    });
+    const token = data.data?.token;
+
+    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+    dispatch(signInFulfilled(token));
+
+    return token;
+  } catch (e) {
+    dispatch(signInFailed(e.message));
+
+    return e;
+  }
+};
+
+export const enrollPin = (
+  username: string,
+  password: string,
+  pin: string,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(enrollPinStarted());
+
+    const res = await api.post("/api/auth/enroll-pin", {
+      username,
+      password,
+      pin,
+    });
+
+    dispatch(enrollPinFulfilled());
+
+    return res;
+  } catch (e) {
+    dispatch(enrollPinFailed(e.message));
+
+    return e;
+  }
+};
+
+export const verifyPin = (
+  username: string,
+  pin: string,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(signInStarted());
+
+    const { data = {} } = await api.post("/api/auth/verify-pin", {
+      username,
+      pin,
     });
     const token = data.data?.token;
 

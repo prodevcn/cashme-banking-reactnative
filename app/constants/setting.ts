@@ -1,10 +1,4 @@
 // App settings
-
-// Local Authentication Methods
-export const FINGERPRINT = "FINGERPRINT";
-export const FACE_ID = "FACE_ID";
-export const PIN = "PIN";
-
 export const ARM_PHONE_CODES = [
   "33",
   "41",

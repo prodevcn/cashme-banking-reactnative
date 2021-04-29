@@ -18,7 +18,7 @@ const PasswordInput = (props: NativeBase.Input) => {
     <View style={styles.passwordSection}>
       <View>
         <Item floatingLabel style={props.style}>
-          <Label style={styles.inputLabel}>{t("login.password")}</Label>
+          <Label style={styles.inputLabel}>{props.label}</Label>
           <Input secureTextEntry={secureTextEntry} {...props} />
         </Item>
       </View>

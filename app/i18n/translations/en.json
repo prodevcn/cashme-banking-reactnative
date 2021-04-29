@@ -30,6 +30,15 @@
   "validations": {
     "required": "This field is required",
     "email": "Invalid email",
-    "phone": "Invalid phone number"
+    "phone": "Invalid phone number",
+    "match": "Fields must match"
+  },
+  "reset_pin": {
+    "password": "Password",
+    "pin": "Pin",
+    "confirm_pin": "Confirm pin"
+  },
+  "pin_code_prompt": {
+    "title": "Enter your PIN Code"
   }
 }
