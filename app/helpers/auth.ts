@@ -1,6 +1,13 @@
 import ReactNativeBiometrics from "react-native-biometrics";
+import PubSub from "pubsub-js";
 import Storage from "../util/storage";
-import { DISMISS_SECURITY_OVERLAY, IDENTIFIER } from "../constants";
+import {
+  AUTH_TYPE,
+  AUTH_TYPES,
+  DISMISS_SECURITY_OVERLAY,
+  IDENTIFIER,
+  PIN_KEY,
+} from "../constants";
 
 export const createKeys = async () => {
   const { publicKey } = await ReactNativeBiometrics.createKeys();
@@ -26,19 +33,9 @@ export const deleteKeys = async () => {
   await ReactNativeBiometrics.deleteKeys();
 };
 
-export const getBiometricsUsername = async () => {
-  const hasKey = await hasPrivateKey();
-
-  if (!hasKey) {
-    return;
-  }
-
-  return await getUsername();
-};
-
 export const enableBiometrics = async (username: string) => {
   const publicKey = await createKeys();
-  await setUsername(username);
+  await setAuthType(AUTH_TYPES.BIOMETRICS);
 
   return publicKey;
 };
@@ -84,4 +81,55 @@ export const dismissBiometrics = async () => {
     key: DISMISS_SECURITY_OVERLAY,
     value: true,
   });
+};
+
+export const setPin = async (pin: string) => {
+  return await Storage.setItem({
+    key: PIN_KEY,
+    value: pin,
+    encrypted: true,
+  });
+};
+
+export const getPin = async () => {
+  return await Storage.getItem({
+    key: PIN_KEY,
+    encrypted: true,
+  });
+};
+
+type PinPayload = {
+  success: boolean;
+  payload: string;
+};
+export const promptPin = async () => {
+  return new Promise<PinPayload>((resolve, reject) => {
+    PubSub.publish(PIN_KEY, (success: boolean, payload: string) => {
+      success ? resolve({ success, payload }) : reject({ success, payload });
+    });
+  });
+};
+
+export const enablePin = async (username: string, pin: string) => {
+  await setPin(pin);
+  await setAuthType(AUTH_TYPES.BIOMETRICS);
+};
+
+export const setAuthType = async (type: string) => {
+  return await Storage.setItem({
+    key: AUTH_TYPE,
+    value: type,
+  });
+};
+
+export const getAuthType = async () => {
+  return await Storage.getItem({
+    key: AUTH_TYPE,
+  });
+};
+
+export const isLocalAuthEnabled = async () => {
+  const type = await getAuthType();
+
+  return !!type;
 };

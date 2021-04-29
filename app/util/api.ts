@@ -1,12 +1,12 @@
 import axios from "axios";
 import humps from "humps";
-import { BASE_URL } from "../config";
+import { API_URL } from "@env";
 import * as GlobalNavigation from "../navigations/GlobalNavigation";
 import { NO_CONNECTION } from "../constants";
 import store from "../store";
 
 const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/x.app.v2+json",

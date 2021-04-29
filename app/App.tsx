@@ -12,7 +12,7 @@ import SettingsOverlay from "./components/SettingsOverlay";
 import RootNavigation from "./navigations";
 import * as GlobalNavigation from "./navigations/GlobalNavigation";
 import { RootState } from "./store";
-import ReactNativeBiometrics from "react-native-biometrics";
+import PinCodePrompt from "./components/PinCodePrompt";
 
 const App = () => {
   const [isReady, setIsReady] = useState(false);
@@ -49,10 +49,9 @@ const App = () => {
     return <Loader />;
   }
 
-  ReactNativeBiometrics.isSensorAvailable().then(a => console.log("uuuu", a));
-
   return (
     <>
+      <PinCodePrompt />
       <SettingsOverlay />
       <NavigationContainer
         ref={ref => GlobalNavigation.setGlobalNavigator(ref)}
