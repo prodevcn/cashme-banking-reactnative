@@ -6,25 +6,27 @@ import LoginDrawer from "../../components/LoginDrawer";
 import { RootState } from "../../store";
 
 import styles from "./styles";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
+  const { t } = useTranslation();
   const data = [
     {
       image: require("../../assets/images/products/cashme.png"),
-      title: "Cash me",
-      description: "Receive money in your account in as little as 5 min",
+      title: t("products.cash_me"),
+      description: t("products.cash_me_description"),
       redirectScreenName: "",
     },
     {
       image: require("../../assets/images/products/arpi-solar.png"),
-      title: "Arpi Solar",
-      description: "Receive money in your account in as little as 5 min",
+      title: t("products.arpi_solar"),
+      description: t("products.arpi_solar_description"),
       redirectScreenName: "",
     },
     {
       image: require("../../assets/images/products/pay-later.png"),
-      title: "Pay for me",
-      description: "Receive money in your account in as little as 5 min",
+      title: t("products.pay_later"),
+      description: t("products.pay_later_description"),
       redirectScreenName: "",
     },
   ];
