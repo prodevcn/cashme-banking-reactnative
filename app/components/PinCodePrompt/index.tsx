@@ -36,6 +36,10 @@ const PinCodePrompt = () => {
   };
 
   const onfailure = (attempts: number) => {
+    if (attempts === 3) {
+      setIsVisible(false);
+    }
+
     callback(false, attempts);
   };
 
