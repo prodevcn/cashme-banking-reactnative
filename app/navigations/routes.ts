@@ -6,21 +6,22 @@ import {
   HELP_SCREEN,
   NO_CONNECTION,
   FORGOT_PASSWORD,
+  RESET_PIN,
 } from "../constants";
 import Help from "../screens/Help";
 import Products from "../screens/Products";
 import Home from "../screens/Home";
 import NoConnection from "../screens/NoConnection";
 import ForgotPassword from "../screens/ForgotPassword";
-import { Button, Text } from "native-base";
+import ResetPin from "../screens/ResetPin";
 
-interface Routes {
+interface Route {
   name: string;
   component: ComponentType;
   options?: StackNavigationOptions;
 }
 
-export const commonScreens: Array<Routes> = [
+export const commonScreens: Array<Route> = [
   {
     name: HOME_SCREEN,
     component: Home,
@@ -38,7 +39,7 @@ export const commonScreens: Array<Routes> = [
   },
 ];
 
-export const authScreens: Array<Routes> = [
+export const authScreens: Array<Route> = [
   {
     name: FORGOT_PASSWORD,
     component: ForgotPassword,
@@ -46,9 +47,14 @@ export const authScreens: Array<Routes> = [
   },
 ];
 
-// If there is no connection
-export const noConnectionScreen: Routes = {
+export const noConnectionScreen: Route = {
   name: NO_CONNECTION,
   component: NoConnection,
   options: { title: "Net Info", headerShown: false },
+};
+
+export const resetPinScreen: Route = {
+  name: RESET_PIN,
+  component: ResetPin,
+  options: { title: "Reset Pin", headerShown: false },
 };

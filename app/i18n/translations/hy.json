@@ -36,7 +36,8 @@
   "reset_pin": {
     "password": "Գաղտնաբառ",
     "pin": "Նոր պին",
-    "confirm_pin": "Հաստատել պինը"
+    "confirm_pin": "Հաստատել պինը",
+    "confirm": "Հաստատել"
   },
   "pin_code_prompt": {
     "title": "Մուտքագրք ձեր պինը"

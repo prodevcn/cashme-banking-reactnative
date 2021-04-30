@@ -69,7 +69,7 @@ const SettingsOverlay = () => {
       return;
     }
 
-    const publicKey = await auth.enableBiometrics(email);
+    const publicKey = await auth.enableBiometrics();
 
     await dispatch(enrollPublicKey(email, publicKey));
 

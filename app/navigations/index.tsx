@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NonAuthenticatedScreens } from "./bottomTab";
-import { noConnectionScreen, authScreens } from "./routes";
+import { noConnectionScreen, authScreens, resetPinScreen } from "./routes";
 
 const Stack = createStackNavigator();
 
@@ -23,11 +23,16 @@ class RootNavigation extends Component {
           />
         ))}
 
-        {/* If there is no internet connection */}
         <Stack.Screen
           name={noConnectionScreen.name}
           component={noConnectionScreen.component}
           options={noConnectionScreen.options}
+        />
+
+        <Stack.Screen
+          name={resetPinScreen.name}
+          component={resetPinScreen.component}
+          options={resetPinScreen.options}
         />
       </Stack.Navigator>
     );

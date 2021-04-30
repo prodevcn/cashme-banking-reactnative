@@ -36,7 +36,8 @@
   "reset_pin": {
     "password": "Password",
     "pin": "Pin",
-    "confirm_pin": "Confirm pin"
+    "confirm_pin": "Confirm pin",
+    "confirm": "Confirm"
   },
   "pin_code_prompt": {
     "title": "Enter your PIN Code"

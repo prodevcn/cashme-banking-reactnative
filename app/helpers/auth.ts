@@ -33,7 +33,7 @@ export const deleteKeys = async () => {
   await ReactNativeBiometrics.deleteKeys();
 };
 
-export const enableBiometrics = async (username: string) => {
+export const enableBiometrics = async () => {
   const publicKey = await createKeys();
   await setAuthType(AUTH_TYPES.BIOMETRICS);
 
@@ -110,7 +110,7 @@ export const promptPin = async () => {
   });
 };
 
-export const enablePin = async (username: string, pin: string) => {
+export const enablePin = async (pin: string) => {
   await setPin(pin);
   await setAuthType(AUTH_TYPES.BIOMETRICS);
 };
