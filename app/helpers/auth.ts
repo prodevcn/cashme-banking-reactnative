@@ -8,6 +8,7 @@ import {
   IDENTIFIER,
   PIN_KEY,
 } from "../constants";
+import * as LocalAuthentication from "expo-local-authentication";
 
 export const createKeys = async () => {
   const { publicKey } = await ReactNativeBiometrics.createKeys();
@@ -23,10 +24,14 @@ export const promptBiometrics = async (text: string) => {
   return success;
 };
 
-export const hasSensor = async () => {
-  const { available } = await ReactNativeBiometrics.isSensorAvailable();
+// Device has touch id or face recognition sensors
+export const hasHardware = async () => {
+  return await LocalAuthentication.hasHardwareAsync();
+};
 
-  return available;
+// Device has fingerprint or facial data stored
+export const isDeviceAuthEnabled = async () => {
+  return await LocalAuthentication.isEnrolledAsync();
 };
 
 export const deleteKeys = async () => {

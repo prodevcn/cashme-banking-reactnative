@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigation } from "@react-navigation/native";
@@ -7,6 +7,7 @@ import Screen from "../../components/Screen";
 import MenuButton from "../../components/MenuButton";
 import { RootState } from "../../store";
 import * as auth from "../../helpers/auth";
+import * as platform from "../../helpers/platform";
 import { enrollPublicKey } from "../../redux/authSlice";
 import { RESET_PIN } from "../../constants";
 
@@ -16,6 +17,9 @@ import FingerprintIcon from "../../assets/images/finger-print.svg";
 import styles from "./styles";
 
 const SecuritySettings = () => {
+  const [hasHardware, sethasHardware] = useState(false);
+  const [isDeviceAuthEnabled, setIsDeviceAuthEnabled] = useState(false);
+
   const { t } = useTranslation();
   const { loading, profile: { email } = {} } = useSelector(
     (state: RootState) => ({
@@ -26,11 +30,26 @@ const SecuritySettings = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
+  useEffect(() => {
+    async function init() {
+      const hardware = await auth.hasHardware();
+      const deviceAuthEnabled = await auth.isDeviceAuthEnabled();
+
+      sethasHardware(hardware);
+      setIsDeviceAuthEnabled(deviceAuthEnabled);
+    }
+    init();
+  }, []);
+
   const enablePin = async () => {
     navigation.navigate(RESET_PIN);
   };
 
   const enableBiometrics = async () => {
+    if (!isDeviceAuthEnabled) {
+      return platform.openMobileSettings();
+    }
+
     const success = auth.promptBiometrics(t("login.login"));
 
     if (!success) {
@@ -55,12 +74,14 @@ const SecuritySettings = () => {
             Icon={() => <PinIcon fill="#000" stroke="#000" />}
             onPress={enablePin}
           />
-          <MenuButton
-            title={t("settings_overlay.biometrics")}
-            description={t("settings_overlay.enable_biometrics")}
-            Icon={() => <FingerprintIcon fill="#000" />}
-            onPress={enableBiometrics}
-          />
+          {hasHardware && (
+            <MenuButton
+              title={t("settings_overlay.biometrics")}
+              description={t("settings_overlay.enable_biometrics")}
+              Icon={() => <FingerprintIcon fill="#000" />}
+              onPress={enableBiometrics}
+            />
+          )}
         </View>
       </View>
     </Screen>

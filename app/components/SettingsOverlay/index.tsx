@@ -7,6 +7,7 @@ import Logo from "../Logo";
 import MenuButton from "../MenuButton";
 import { enrollPublicKey } from "../../redux/authSlice";
 import * as auth from "../../helpers/auth";
+import * as platform from "../../helpers/platform";
 import { RootState } from "../../store";
 import * as GlobalNavigation from "../../navigations/GlobalNavigation";
 import { RESET_PIN } from "../../constants";
@@ -19,7 +20,8 @@ import styles from "./styles";
 
 const SettingsOverlay = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [hasSensor, setHasSensor] = useState(false);
+  const [hasHardware, sethasHardware] = useState(false);
+  const [isDeviceAuthEnabled, setIsDeviceAuthEnabled] = useState(false);
   const [isDismissed, setIsDismissed] = useState(true);
   const [isLocalAuthEnabled, setIsLocalAuthEnabled] = useState(false);
 
@@ -36,11 +38,13 @@ const SettingsOverlay = () => {
   useEffect(() => {
     async function init() {
       const dismissed = await auth.isBiometricsDismissed();
-      const sensor = await auth.hasSensor();
+      const hardware = await auth.hasHardware();
+      const deviceAuthEnabled = await auth.isDeviceAuthEnabled();
       const localAuthEnabled = await auth.isLocalAuthEnabled();
 
       setIsDismissed(dismissed);
-      setHasSensor(sensor);
+      sethasHardware(hardware);
+      setIsDeviceAuthEnabled(deviceAuthEnabled);
       setIsLocalAuthEnabled(localAuthEnabled);
     }
     init();
@@ -64,6 +68,10 @@ const SettingsOverlay = () => {
   };
 
   const enableBiometrics = async () => {
+    if (!isDeviceAuthEnabled) {
+      return platform.openMobileSettings();
+    }
+
     const success = auth.promptBiometrics(t("login.login"));
 
     if (!success) {
@@ -109,7 +117,7 @@ const SettingsOverlay = () => {
               onPress={enablePin}
               {...menuButtonStyleOverrides}
             />
-            {hasSensor && (
+            {hasHardware && (
               <MenuButton
                 title={t("settings_overlay.biometrics")}
                 description={t("settings_overlay.enable_biometrics")}

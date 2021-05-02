@@ -22,6 +22,9 @@ PODS:
     - UMCore
   - EXLinearGradient (8.4.0):
     - UMCore
+  - EXLocalAuthentication (11.0.2):
+    - UMConstantsInterface
+    - UMCore
   - EXLocation (10.0.0):
     - UMCore
     - UMPermissionsInterface
@@ -338,6 +341,7 @@ DEPENDENCIES:
   - EXImageLoader (from `../node_modules/expo-image-loader/ios`)
   - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - EXLinearGradient (from `../node_modules/expo-linear-gradient/ios`)
+  - EXLocalAuthentication (from `../node_modules/expo-local-authentication/ios`)
   - EXLocation (from `../node_modules/expo-location/ios`)
   - EXNotifications (from `../node_modules/expo-notifications/ios`)
   - EXPermissions (from `../node_modules/expo-permissions/ios`)
@@ -420,6 +424,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-keep-awake/ios"
   EXLinearGradient:
     :path: "../node_modules/expo-linear-gradient/ios"
+  EXLocalAuthentication:
+    :path: "../node_modules/expo-local-authentication/ios"
   EXLocation:
     :path: "../node_modules/expo-location/ios"
   EXNotifications:
@@ -544,6 +550,7 @@ SPEC CHECKSUMS:
   EXImageLoader: f96ec9992733a4224418bbd9382e5485c8948944
   EXKeepAwake: 615c5a6fca5c2afedf611bb6f7f2ca323246de94
   EXLinearGradient: c803fbd1aa974be038177b1e45524bc35759fe9c
+  EXLocalAuthentication: 4f625501ff104674734c3113fcb28e401f674ff2
   EXLocation: d55e2a37f61bcfb4eba9c813b3f4621d896c4c00
   EXNotifications: 3a88b7b898fa842cae3c5a895a255fab554bc0c8
   EXPermissions: 17d4846ad1880f6891c74ae58ca1acb43e47ed47
