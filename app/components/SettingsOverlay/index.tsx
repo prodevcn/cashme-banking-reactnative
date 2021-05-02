@@ -97,7 +97,7 @@ const SettingsOverlay = () => {
             <MenuButton
               title={t("settings_overlay.pin_code")}
               description={t("settings_overlay.create_pin_code")}
-              Icon={PinIcon}
+              Icon={() => <PinIcon fill="#fff" stroke="#fff" />}
               onPress={enablePin}
             />
             {hasSensor && (

@@ -8,7 +8,10 @@ import { Root, StyleProvider } from "native-base";
 import theme from './app/theme';
 import store from "./app/store";
 import i18n from "./app/i18n";
+import { initApiInterceptors } from "./app/util/api";
 import App from "./app/App";
+
+initApiInterceptors(store);
 
 const RootComponent = () => (
   <StyleProvider  style={theme()}>
