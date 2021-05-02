@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   subHeaderText: {
     color: "#32506E",
-    fontSize: 40,
+    fontSize: 30,
   },
 });
 

@@ -14,6 +14,7 @@ import { RESET_PIN } from "../../constants";
 import PinIcon from "../../assets/images/pin.svg";
 import FingerprintIcon from "../../assets/images/finger-print.svg";
 
+import customColor from "../../theme/customColor";
 import styles from "./styles";
 
 const SettingsOverlay = () => {
@@ -81,6 +82,13 @@ const SettingsOverlay = () => {
     skip();
   };
 
+  const menuButtonStyleOverrides = {
+    styleBorder: customColor.brandLight,
+    styleArrowColor: customColor.brandLight,
+    styleTitleColor: customColor.brandLight,
+    styleDescriptionColor: customColor.brandLight,
+  };
+
   return (
     <>
       <Modal
@@ -99,13 +107,15 @@ const SettingsOverlay = () => {
               description={t("settings_overlay.create_pin_code")}
               Icon={() => <PinIcon fill="#fff" stroke="#fff" />}
               onPress={enablePin}
+              {...menuButtonStyleOverrides}
             />
             {hasSensor && (
               <MenuButton
                 title={t("settings_overlay.biometrics")}
                 description={t("settings_overlay.enable_biometrics")}
-                Icon={FingerprintIcon}
+                Icon={() => <FingerprintIcon fill="#fff" stroke="#fff" />}
                 onPress={enableBiometrics}
+                {...menuButtonStyleOverrides}
               />
             )}
           </View>

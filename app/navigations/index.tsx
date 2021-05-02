@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NonAuthenticatedScreens } from "./bottomTab";
-import { noConnectionScreen, authScreens, resetPinScreen } from "./routes";
+import {
+  noConnectionScreen,
+  authScreens,
+  resetPinScreen,
+  securitySettingsScreen,
+} from "./routes";
 
 const Stack = createStackNavigator();
 
@@ -33,6 +38,12 @@ class RootNavigation extends Component {
           name={resetPinScreen.name}
           component={resetPinScreen.component}
           options={resetPinScreen.options}
+        />
+
+        <Stack.Screen
+          name={securitySettingsScreen.name}
+          component={securitySettingsScreen.component}
+          options={securitySettingsScreen.options}
         />
       </Stack.Navigator>
     );

@@ -5,3 +5,4 @@ export const HELP_SCREEN = "HELP_SCREEN";
 export const NO_CONNECTION = "NO_CONNECTION";
 export const FORGOT_PASSWORD = "FORGOT_PASSWORD";
 export const RESET_PIN = "RESET_PIN";
+export const SECURITY_SETTINGS = "SECURITY_SETTINGS";

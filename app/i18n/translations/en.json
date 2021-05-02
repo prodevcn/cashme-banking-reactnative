@@ -52,5 +52,9 @@
     "arpi_solar_description": "Receive money in your account in as little as 5 min",
     "pay_later": "Pay for me",
     "pay_later_description": "Receive money in your account in as little as 5 min"
+  },
+  "security_settings": {
+    "title": "Security",
+    "caption": "Choose security actions to unlock your phone"
   }
 }

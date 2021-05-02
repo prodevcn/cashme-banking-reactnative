@@ -34,6 +34,8 @@ export const deleteKeys = async () => {
 };
 
 export const enableBiometrics = async () => {
+  await clearAllLocalAuth();
+
   const publicKey = await createKeys();
   await setAuthType(AUTH_TYPES.BIOMETRICS);
 
@@ -111,6 +113,7 @@ export const promptPin = async () => {
 };
 
 export const enablePin = async (pin: string) => {
+  await clearAllLocalAuth();
   await setPin(pin);
   await setAuthType(AUTH_TYPES.BIOMETRICS);
 };
@@ -132,4 +135,9 @@ export const isLocalAuthEnabled = async () => {
   const type = await getAuthType();
 
   return !!type;
+};
+
+export const clearAllLocalAuth = async () => {
+  await deleteKeys();
+  await setPin("");
 };
