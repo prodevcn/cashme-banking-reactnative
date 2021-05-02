@@ -13,11 +13,13 @@ import { RootState } from "../../store";
 import * as auth from "../../helpers/auth";
 import { enrollPin } from "../../redux/authSlice";
 
+import PinIcon from "../../assets/images/pin.svg";
+
 import styles from "./styles";
 
 interface PinFormValues extends Asserts<typeof resetPinSchema> {}
 
-const ResetPin = () => {
+const ResetPin = (props: any) => {
   const { t } = useTranslation();
   const { loading } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
@@ -40,8 +42,11 @@ const ResetPin = () => {
   };
 
   return (
-    <Screen isLoading={loading}>
+    <Screen title={t("reset_pin.title")} isLoading={loading}>
       <View style={styles.container}>
+        <View style={styles.pinIcon}>
+          <PinIcon width="46" height="47" fill="#000" stroke="#000" />
+        </View>
         <Formik
           initialValues={initialValues}
           validationSchema={resetPinSchema}
@@ -76,7 +81,12 @@ const ResetPin = () => {
                   />
                 </Validation>
 
-                <Button full rounded onPress={handleSubmit}>
+                <Button
+                  style={styles.submitButton}
+                  full
+                  rounded
+                  onPress={handleSubmit}
+                >
                   <Text>{t("reset_pin.confirm")}</Text>
                 </Button>
               </Form>

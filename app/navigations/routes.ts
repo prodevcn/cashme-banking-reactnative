@@ -50,11 +50,11 @@ export const authScreens: Array<Route> = [
 export const noConnectionScreen: Route = {
   name: NO_CONNECTION,
   component: NoConnection,
-  options: { title: "Net Info", headerShown: false },
+  options: { headerShown: false },
 };
 
 export const resetPinScreen: Route = {
   name: RESET_PIN,
   component: ResetPin,
-  options: { title: "Reset Pin", headerShown: false },
+  options: { headerShown: false },
 };

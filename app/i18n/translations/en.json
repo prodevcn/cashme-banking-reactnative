@@ -34,6 +34,7 @@
     "match": "Fields must match"
   },
   "reset_pin": {
+    "title": "Pin code",
     "password": "Password",
     "pin": "Pin",
     "confirm_pin": "Confirm pin",
