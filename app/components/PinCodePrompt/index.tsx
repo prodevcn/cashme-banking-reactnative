@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Modal from "react-native-modal";
 import { View } from "native-base";
-import PINCode from "@haskkor/react-native-pincode";
+import PINCode, {
+  resetPinCodeInternalStates,
+} from "@haskkor/react-native-pincode";
 import PubSub from "pubsub-js";
 import * as auth from "../../helpers/auth";
 import { PIN_KEY } from "../../constants";
@@ -35,9 +37,10 @@ const PinCodePrompt = () => {
     callback(true, pin);
   };
 
-  const onfailure = (attempts: number) => {
-    if (attempts === 3) {
+  const onfailure = async (attempts: number) => {
+    if (attempts >= 3) {
       setIsVisible(false);
+      await resetPinCodeInternalStates();
     }
 
     callback(false, attempts);
@@ -48,7 +51,7 @@ const PinCodePrompt = () => {
       <Modal
         isVisible={isVisible}
         customBackdrop={<View style={styles.modal} />}
-        backdropOpacity={0.9}
+        backdropOpacity={0.8}
       >
         <View style={styles.container}>
           <PINCode
@@ -61,6 +64,14 @@ const PinCodePrompt = () => {
             disableLockScreen={true}
             storePin={() => {}}
             titleEnter={t("pin_code_prompt.title")}
+            titleAttemptFailed={t("pin_code_prompt.attempt_failed")}
+            subtitleError={t("pin_code_prompt.subtitle_error")}
+            stylePinCodeButtonCircle={styles.pinCodeButtonCircle}
+            stylePinCodeColumnDeleteButton={styles.pinCodeButtonCircle}
+            stylePinCodeCircle={styles.pinCodeCircle}
+            stylePinCodeDeleteButtonText={styles.pinCodeDeleteButtonText}
+            stylePinCodeRowButtons={styles.pinCodeRowButtons}
+            numbersButtonOverlayColor="#394f6b"
           />
         </View>
       </Modal>

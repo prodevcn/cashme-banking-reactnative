@@ -5,13 +5,13 @@ import { Provider } from "react-redux";
 import { I18nextProvider } from "react-i18next";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Root, StyleProvider } from "native-base";
-import getTheme from './native-base-theme/components';
+import theme from './app/theme';
 import store from "./app/store";
 import i18n from "./app/i18n";
 import App from "./app/App";
 
 const RootComponent = () => (
-  <StyleProvider  style={getTheme()}>
+  <StyleProvider  style={theme()}>
     <Provider store={store}>
       <I18nextProvider i18n={i18n}>
         <SafeAreaProvider>

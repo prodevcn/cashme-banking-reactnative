@@ -1,12 +1,12 @@
 import React from "react";
 import { View } from "native-base";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import Slider from "../../components/Slider";
 import LoginDrawer from "../../components/LoginDrawer";
 import { RootState } from "../../store";
 
 import styles from "./styles";
-import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const { t } = useTranslation();

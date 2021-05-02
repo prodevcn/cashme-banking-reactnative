@@ -103,9 +103,9 @@ type PinPayload = {
   payload: string;
 };
 export const promptPin = async () => {
-  return new Promise<PinPayload>((resolve, reject) => {
+  return new Promise<PinPayload>(resolve => {
     PubSub.publish(PIN_KEY, (success: boolean, payload: string) => {
-      success ? resolve({ success, payload }) : reject({ success, payload });
+      resolve({ success, payload });
     });
   });
 };

@@ -40,7 +40,9 @@
     "confirm": "Confirm"
   },
   "pin_code_prompt": {
-    "title": "Enter your PIN Code"
+    "title": "Enter your PIN Code",
+    "attempt_failed": "Incorrect PIN Code",
+    "subtitle_error": "Please try again"
   },
   "products": {
     "cash_me": "Cash me",

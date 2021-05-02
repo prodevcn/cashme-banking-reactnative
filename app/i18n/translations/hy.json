@@ -40,7 +40,9 @@
     "confirm": "Հաստատել"
   },
   "pin_code_prompt": {
-    "title": "Մուտքագրք ձեր պինը"
+    "title": "Մուտքագրք ձեր պինը",
+    "attempt_failed": "Սխալ պին",
+    "subtitle_error": "Կրկին փորձեք"
   },
   "products": {
     "cash_me": "Cash me",
