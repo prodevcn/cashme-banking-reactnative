@@ -1,25 +1,13 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   content: {
-    flex: 1,
-    alignSelf: "flex-start",
-    paddingHorizontal: 30,
-    marginVertical: 20,
+    width: "100%",
+    alignSelf: "center",
   },
-  contentTitle: {
-    fontSize: 40,
-    color: "#32506E",
-    width: 300,
-  },
-  contentLabel: {
-    paddingVertical: 20,
+  caption: {
+    paddingVertical: 50,
+    color: "#443C38",
   },
   button: {
     marginTop: 50,

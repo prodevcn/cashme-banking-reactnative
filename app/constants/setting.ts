@@ -17,3 +17,5 @@ export const ARM_PHONE_CODES = [
   "98",
   "99",
 ];
+
+export const CODE_INPUT_LENGTH = 4;
