@@ -23,6 +23,11 @@
     "username": "Հեռախոս/Էլ․Հասցե",
     "continue": "Շարունակել"
   },
+  "security_question": {
+    "title": "Անվտանգության հարց",
+    "answer": "Պատասխան",
+    "continue": "Շարունակել"
+  },
   "password_recover_code": {
     "title": "Վերականգնման կոդ",
     "phone_info": "Կոդն ուղարկվել է ձեր <0>{{username}}</0> հեռախոսահամարին",
