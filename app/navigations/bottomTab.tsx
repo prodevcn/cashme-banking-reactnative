@@ -5,7 +5,12 @@ import AnimatedTabBar, {
   TabsConfig,
   BubbleTabBarItemConfig,
 } from "@gorhom/animated-tabbar";
-import { commonScreens } from "./routes";
+import { nonAuthBottomTabScreens } from "./routes";
+import {
+  HOME_SCREEN,
+  CATEGORIES_SCREEN,
+  HELP_SCREEN,
+} from "../constants/screens";
 import Help from "../assets/images/tabs/help.svg";
 import HelpFill from "../assets/images/tabs/help_fill.svg";
 import Home from "../assets/images/tabs/home.svg";
@@ -20,7 +25,7 @@ export function NonAuthenticatedScreens() {
     <BottomTab.Navigator
       tabBar={props => (
         <AnimatedTabBar
-          tabs={renderTabs(props.state)}
+          tabs={renderNonAuthScreenTabs(props.state)}
           duration={1200}
           iconSize={25}
           itemContainerWidth="fill"
@@ -30,7 +35,7 @@ export function NonAuthenticatedScreens() {
         />
       )}
     >
-      {commonScreens.map(screen => (
+      {nonAuthBottomTabScreens.map(screen => (
         <BottomTab.Screen
           key={screen.name}
           name={screen.name}
@@ -42,7 +47,7 @@ export function NonAuthenticatedScreens() {
   );
 }
 
-function renderTabs(state: TabNavigationState<ParamListBase>) {
+function renderNonAuthScreenTabs(state: TabNavigationState<ParamListBase>) {
   const defaultTabs = {
     labelStyle: {
       color: "#1B8CF4",
@@ -58,29 +63,28 @@ function renderTabs(state: TabNavigationState<ParamListBase>) {
     inactiveColor: "rgba(0,0,0,1)",
   };
 
-  const tabs: TabsConfig<BubbleTabBarItemConfig> = {
-    HOME_SCREEN: {
+  const tabs: TabsConfig<BubbleTabBarItemConfig> = {};
+  nonAuthBottomTabScreens.map((screen, index) => {
+    let icon: any;
+    switch (screen.name) {
+      case HOME_SCREEN:
+        icon = () => (state.index === index ? <HomeFill /> : <Home />);
+        break;
+      case CATEGORIES_SCREEN:
+        icon = () => (state.index === index ? <ProductFill /> : <Product />);
+        break;
+      case HELP_SCREEN:
+        icon = () => (state.index === index ? <HelpFill /> : <Help />);
+        break;
+    }
+    tabs[screen.name] = {
       ...defaultTabs,
       icon: {
         ...defaultIconStyles,
-        component: () => (state.index === 0 ? <HomeFill /> : <Home />),
+        component: icon,
       },
-    },
-    PRODUCTS_SCREEN: {
-      ...defaultTabs,
-      icon: {
-        ...defaultIconStyles,
-        component: () => (state.index === 1 ? <ProductFill /> : <Product />),
-      },
-    },
-    HELP_SCREEN: {
-      ...defaultTabs,
-      icon: {
-        ...defaultIconStyles,
-        component: () => (state.index === 2 ? <HelpFill /> : <Help />),
-      },
-    },
-  };
+    };
+  });
 
   return tabs;
 }

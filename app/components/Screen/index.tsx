@@ -1,5 +1,5 @@
 import { Button, Header, Icon, Left } from "native-base";
-import React, { ReactElement } from "react";
+import React, { Component, ReactElement } from "react";
 import {
   ScrollView,
   StatusBar,
@@ -14,7 +14,8 @@ import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
 interface ScreenProps {
-  title?: string;
+  title?: string | React.ReactElement;
+  hasHeader?: boolean;
   isNonScrolling?: boolean;
   statusBarHidden?: boolean;
   isLoading?: boolean;
@@ -30,6 +31,7 @@ interface ScreenProps {
 const Screen = (props: ScreenProps) => {
   const {
     title,
+    hasHeader = false,
     isNonScrolling = true,
     statusBarHidden = false,
     isLoading = false,
@@ -51,17 +53,23 @@ const Screen = (props: ScreenProps) => {
         showHideTransition={showHideTransitionStyle}
         hidden={statusBarHidden}
       />
-      <Header style={styles.header}>
-        <Left style={styles.headerLeft}>
-          <Button transparent onPress={() => navigation.goBack()}>
-            <Icon name="arrow-back" />
-          </Button>
-        </Left>
-      </Header>
+      {hasHeader && (
+        <Header style={styles.header}>
+          <Left style={styles.headerLeft}>
+            <Button transparent onPress={() => navigation.goBack()}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+        </Header>
+      )}
       {[
         title ? (
           <View key="ScreenSubHeader" style={styles.subHeader}>
-            <Text style={styles.subHeaderText}>{title}</Text>
+            {typeof title === "string" ? (
+              <Text style={styles.subHeaderText}>{title}</Text>
+            ) : (
+              title
+            )}
           </View>
         ) : null,
         isNonScrolling ? (
