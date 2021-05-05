@@ -11,6 +11,7 @@ import {
   SECURITY_SETTINGS,
   PASSWORD_RECOVER_CODE,
   FINANCE,
+  PROFILE_SCREEN,
 } from "../constants";
 import Help from "../screens/Help";
 import Categories from "../screens/Categories";
@@ -21,6 +22,7 @@ import ResetPin from "../screens/ResetPin";
 import SecuritySettings from "../screens/SecuritySettings";
 import PasswordRecoverCode from "../screens/PasswordRecoverCode";
 import Finance from "../screens/Products/Finance";
+import Profile from "../screens/Profile";
 
 interface Route {
   name: string;
@@ -43,6 +45,24 @@ export const nonAuthBottomTabScreens: Array<Route> = [
     name: HELP_SCREEN,
     component: Help,
     options: { title: "Help" },
+  },
+];
+
+export const authBottomTabScreens: Array<Route> = [
+  {
+    name: HOME_SCREEN,
+    component: Home,
+    options: { title: "Home" },
+  },
+  {
+    name: CATEGORIES_SCREEN,
+    component: Categories,
+    options: { title: i18n.t("categories") },
+  },
+  {
+    name: PROFILE_SCREEN,
+    component: Profile,
+    options: { title: i18n.t("profile") },
   },
 ];
 
