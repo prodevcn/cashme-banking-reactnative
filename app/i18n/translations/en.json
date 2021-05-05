@@ -23,6 +23,17 @@
     "username": "Phone/Email",
     "continue": "Continue"
   },
+  "security_question": {
+    "title": "Security question",
+    "answer": "Answer",
+    "continue": "Continue"
+  },
+  "reset_password": {
+    "title": "Reset password",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "continue": "Continue"
+  },
   "password_recover_code": {
     "title": "Enter 4-digit recover code",
     "phone_info": "The recovery code has been sent to your <0>{{username}}</0> phone number",

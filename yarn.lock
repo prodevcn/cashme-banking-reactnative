@@ -8648,6 +8648,14 @@ react-native-otp-verify@^1.0.4:
   resolved "https://registry.yarnpkg.com/react-native-otp-verify/-/react-native-otp-verify-1.0.4.tgz#7a330264d2ac3b4155f8b19a5bcaab6ab4fa456c"
   integrity sha512-ME8XnRHxFj8Z7fpe8Gqnup///cicB6WROsf2si75zix2VWK0LW7z5dyT5EL/bOynj9KphSf219LWLKiou2aDAQ==
 
+react-native-password-strength-meter@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-password-strength-meter/-/react-native-password-strength-meter-0.0.5.tgz#7e5d38a844b2221937f893f0d80a8ffa575159b0"
+  integrity sha512-MRKcs0+xkS1ufTVNJsvcXJy30A8IXxZpfY8NYCuAovup8gHYsRP/jUOf/T55dBGBuaSbz7FHFDp2LmV8cBktkw==
+  dependencies:
+    prop-types "^15.6.2"
+    react-native-speedometer "^1.0.0"
+
 react-native-reanimated@^1:
   version "1.13.3"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.13.3.tgz#fb0e1d582c8866015140f2159e147ffe6e798a3a"
@@ -8702,6 +8710,13 @@ react-native-snap-carousel@^3.9.1:
   dependencies:
     prop-types "^15.6.1"
     react-addons-shallow-compare "15.6.2"
+
+react-native-speedometer@^1.0.0:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-speedometer/-/react-native-speedometer-1.0.5.tgz#228b0710d7cbf257b07ae4615825eda86f746d3d"
+  integrity sha512-vloJbiIATVFBMayTZXE9Zf5GD8daBJsUxU83xxNo/vynfX84omu3nMgwYxpAqwO4oDOI1Nj86pFzPkU7kPqGIA==
+  dependencies:
+    prop-types "^15.6.2"
 
 react-native-svg-transformer@^0.14.3:
   version "0.14.3"

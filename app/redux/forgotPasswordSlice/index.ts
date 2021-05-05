@@ -8,6 +8,7 @@ interface DataSuccessProps {
   verified?: boolean;
   question?: string;
   answerVerified?: boolean;
+  passwordReset?: boolean;
 }
 
 interface ForgotPasswordState {
@@ -27,6 +28,12 @@ interface GetSecurityQuestionPayload {
 interface submitSecurityAnswerPayload {
   username: string;
   answer: string;
+}
+
+interface submitResetPasswordPayload {
+  username: string;
+  password: string;
+  passwordConfirmation: string;
 }
 
 interface SubmitCodePayload {
@@ -142,6 +149,28 @@ const forgotPasswordSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    submitResetPasswordStarted: state => {
+      state.loading = true;
+      state.error = undefined;
+    },
+    submitResetPasswordFulfilled: (
+      state,
+      action: PayloadAction<DataSuccessProps | undefined>,
+    ) => {
+      state.loading = false;
+      state.data = {
+        ...state.data,
+        passwordReset: action.payload?.passwordReset,
+      };
+      state.error = undefined;
+    },
+    submitResetPasswordFailed: (
+      state,
+      action: PayloadAction<object | undefined>,
+    ) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -161,6 +190,9 @@ const {
   submitSecurityAnswerStarted,
   submitSecurityAnswerFulfilled,
   submitSecurityAnswerFailed,
+  submitResetPasswordStarted,
+  submitResetPasswordFulfilled,
+  submitResetPasswordFailed,
 } = forgotPasswordSlice.actions;
 
 export const forgotPassword = (
@@ -262,6 +294,27 @@ export const submitSecurityAnswer = (
     return data.data;
   } catch (e) {
     dispatch(submitSecurityAnswerFailed(e.message));
+
+    throw e;
+  }
+};
+
+export const resetPassword = (
+  resetPasswordData: submitResetPasswordPayload,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(submitResetPasswordStarted());
+
+    const { data = {} }: any = await api.post(
+      "/api/auth/reset-password",
+      resetPasswordData,
+    );
+
+    dispatch(submitResetPasswordFulfilled(data.data));
+
+    return data.data;
+  } catch (e) {
+    dispatch(submitResetPasswordFailed(e.message));
 
     throw e;
   }
