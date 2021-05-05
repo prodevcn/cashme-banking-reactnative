@@ -23,7 +23,7 @@ import {
   submitSecurityAnswer,
 } from "../../redux/forgotPasswordSlice";
 import { RootState } from "../../store";
-import { NEW_PASSWORD } from "../../constants";
+import { RESET_PASSWORD } from "../../constants";
 
 import styles from "./styles";
 
@@ -50,7 +50,7 @@ const SecurityQuestion = () => {
 
       await dispatch(submitSecurityAnswer({ username, answer: values.answer }));
 
-      navigate(NEW_PASSWORD);
+      navigate(RESET_PASSWORD);
     } catch (e) {
       Toast.show({
         text: error,

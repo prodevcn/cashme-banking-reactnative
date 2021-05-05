@@ -13,6 +13,7 @@ import {
   FINANCE,
   PROFILE_SCREEN,
   SECURITY_QUESTION,
+  RESET_PASSWORD,
 } from "../constants";
 import Help from "../screens/Help";
 import Categories from "../screens/Categories";
@@ -25,6 +26,7 @@ import PasswordRecoverCode from "../screens/PasswordRecoverCode";
 import Finance from "../screens/Products/Finance";
 import Profile from "../screens/Profile";
 import SecurityQuestion from "../screens/SecurityQuestion";
+import ResetPassword from "../screens/ResetPassword";
 
 interface Route {
   name: string;
@@ -82,6 +84,11 @@ export const authScreens: Array<Route> = [
   {
     name: SECURITY_QUESTION,
     component: SecurityQuestion,
+    options: { headerShown: false },
+  },
+  {
+    name: RESET_PASSWORD,
+    component: ResetPassword,
     options: { headerShown: false },
   },
 ];
