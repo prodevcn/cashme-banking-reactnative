@@ -10,10 +10,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
   },
   background: {
-    backgroundColor: "#ffffff",
+    backgroundColor: customColor.white,
   },
   header: {
-    backgroundColor: "#ffffff",
+    backgroundColor: customColor.white,
     borderBottomWidth: 0,
     paddingLeft: 0,
   },

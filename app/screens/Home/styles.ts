@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import customColor from "../../theme/customColor";
 
 const styles = StyleSheet.create({
   container: {
@@ -6,7 +7,7 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: customColor.white,
     alignItems: "center",
   },
 });

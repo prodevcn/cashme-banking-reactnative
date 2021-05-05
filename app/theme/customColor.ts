@@ -7,6 +7,9 @@ export default {
   brandLight: "#fff",
   brandDark: "#32506E",
 
+  white: "#fff",
+  black: "#000",
+
   get buttonPrimaryBg() {
     return this.brandPrimary;
   },

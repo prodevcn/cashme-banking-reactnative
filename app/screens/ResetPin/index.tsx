@@ -16,6 +16,7 @@ import { enrollPin } from "../../redux/authSlice";
 import PinIcon from "../../assets/images/pin.svg";
 
 import styles from "./styles";
+import customColor from "../../theme/customColor";
 
 interface PinFormValues extends Asserts<typeof resetPinSchema> {}
 
@@ -45,7 +46,12 @@ const ResetPin = (props: any) => {
     <Screen title={t("reset_pin.title")} isLoading={loading}>
       <View style={styles.container}>
         <View style={styles.pinIcon}>
-          <PinIcon width="46" height="47" fill="#000" stroke="#000" />
+          <PinIcon
+            width="46"
+            height="47"
+            fill={customColor.black}
+            stroke={customColor.black}
+          />
         </View>
         <Formik
           initialValues={initialValues}
