@@ -12,6 +12,7 @@ import {
   PASSWORD_RECOVER_CODE,
   FINANCE,
   PROFILE_SCREEN,
+  SECURITY_QUESTION,
 } from "../constants";
 import Help from "../screens/Help";
 import Categories from "../screens/Categories";
@@ -23,6 +24,7 @@ import SecuritySettings from "../screens/SecuritySettings";
 import PasswordRecoverCode from "../screens/PasswordRecoverCode";
 import Finance from "../screens/Products/Finance";
 import Profile from "../screens/Profile";
+import SecurityQuestion from "../screens/SecurityQuestion";
 
 interface Route {
   name: string;
@@ -75,6 +77,11 @@ export const authScreens: Array<Route> = [
   {
     name: PASSWORD_RECOVER_CODE,
     component: PasswordRecoverCode,
+    options: { headerShown: false },
+  },
+  {
+    name: SECURITY_QUESTION,
+    component: SecurityQuestion,
     options: { headerShown: false },
   },
 ];

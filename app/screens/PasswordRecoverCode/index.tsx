@@ -20,7 +20,7 @@ import {
   submitRecoveryCode,
 } from "../../redux/forgotPasswordSlice";
 import { RootState } from "../../store";
-import { CODE_INPUT_LENGTH, SECURITY_ANSWER } from "../../constants";
+import { CODE_INPUT_LENGTH, SECURITY_QUESTION } from "../../constants";
 import { listenForSms } from "../../helpers/sms";
 
 import styles from "./styles";
@@ -57,7 +57,7 @@ const PasswordRecoverCode = () => {
         submitRecoveryCode({ ...values, username: data?.username }),
       );
 
-      navigate(SECURITY_ANSWER);
+      navigate(SECURITY_QUESTION);
     } catch {
       Toast.show({
         text: error,

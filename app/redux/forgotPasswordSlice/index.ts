@@ -6,6 +6,8 @@ interface DataSuccessProps {
   sent?: boolean;
   username?: string;
   verified?: boolean;
+  question?: string;
+  answerVerified?: boolean;
 }
 
 interface ForgotPasswordState {
@@ -16,6 +18,15 @@ interface ForgotPasswordState {
 
 interface ForgotPasswordPayload {
   username: string;
+}
+
+interface GetSecurityQuestionPayload {
+  username: string;
+}
+
+interface submitSecurityAnswerPayload {
+  username: string;
+  answer: string;
 }
 
 interface SubmitCodePayload {
@@ -87,6 +98,50 @@ const forgotPasswordSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    getSecurityQuestionStarted: state => {
+      state.loading = true;
+      state.error = undefined;
+    },
+    getSecurityQuestionFulfilled: (
+      state,
+      action: PayloadAction<DataSuccessProps | undefined>,
+    ) => {
+      state.loading = false;
+      state.data = {
+        ...state.data,
+        question: action.payload?.question,
+      };
+      state.error = undefined;
+    },
+    getSecurityQuestionFailed: (
+      state,
+      action: PayloadAction<object | undefined>,
+    ) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    submitSecurityAnswerStarted: state => {
+      state.loading = true;
+      state.error = undefined;
+    },
+    submitSecurityAnswerFulfilled: (
+      state,
+      action: PayloadAction<DataSuccessProps | undefined>,
+    ) => {
+      state.loading = false;
+      state.data = {
+        ...state.data,
+        answerVerified: action.payload?.answerVerified,
+      };
+      state.error = undefined;
+    },
+    submitSecurityAnswerFailed: (
+      state,
+      action: PayloadAction<object | undefined>,
+    ) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -100,6 +155,12 @@ const {
   submitCodeStarted,
   submitCodeFulfilled,
   submitCodeFailed,
+  getSecurityQuestionStarted,
+  getSecurityQuestionFulfilled,
+  getSecurityQuestionFailed,
+  submitSecurityAnswerStarted,
+  submitSecurityAnswerFulfilled,
+  submitSecurityAnswerFailed,
 } = forgotPasswordSlice.actions;
 
 export const forgotPassword = (
@@ -160,6 +221,47 @@ export const submitRecoveryCode = (
     return data.data;
   } catch (e) {
     dispatch(submitCodeFailed(e.message));
+
+    throw e;
+  }
+};
+
+export const getSecurityQuestion = (
+  securityQuestionData: GetSecurityQuestionPayload,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(getSecurityQuestionStarted());
+
+    const { data = {} }: any = await api.get(
+      `/api/auth/get-security-question?username=${securityQuestionData.username}`,
+    );
+
+    dispatch(getSecurityQuestionFulfilled(data.data));
+
+    return data.data;
+  } catch (e) {
+    dispatch(getSecurityQuestionFailed(e.message));
+
+    throw e;
+  }
+};
+
+export const submitSecurityAnswer = (
+  securityAnswerData: submitSecurityAnswerPayload,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(submitSecurityAnswerStarted());
+
+    const { data = {} }: any = await api.post(
+      "/api/auth/submit-security-answer",
+      securityAnswerData,
+    );
+
+    dispatch(submitSecurityAnswerFulfilled(data.data));
+
+    return data.data;
+  } catch (e) {
+    dispatch(submitSecurityAnswerFailed(e.message));
 
     throw e;
   }
