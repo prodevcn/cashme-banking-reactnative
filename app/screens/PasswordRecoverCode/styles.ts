@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   cellText: {
-    color: "#000",
+    color: customColor.black,
     fontSize: 36,
     textAlign: "center",
   },

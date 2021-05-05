@@ -15,6 +15,7 @@ import PinIcon from "../../assets/images/pin.svg";
 import FingerprintIcon from "../../assets/images/finger-print.svg";
 
 import styles from "./styles";
+import customColor from "../../theme/customColor";
 
 const SecuritySettings = () => {
   const [hasHardware, sethasHardware] = useState(false);
@@ -71,14 +72,16 @@ const SecuritySettings = () => {
           <MenuButton
             title={t("settings_overlay.pin_code")}
             description={t("settings_overlay.create_pin_code")}
-            Icon={() => <PinIcon fill="#000" stroke="#000" />}
+            Icon={() => (
+              <PinIcon fill={customColor.black} stroke={customColor.black} />
+            )}
             onPress={enablePin}
           />
           {hasHardware && (
             <MenuButton
               title={t("settings_overlay.biometrics")}
               description={t("settings_overlay.enable_biometrics")}
-              Icon={() => <FingerprintIcon fill="#000" />}
+              Icon={() => <FingerprintIcon fill={customColor.black} />}
               onPress={enableBiometrics}
             />
           )}

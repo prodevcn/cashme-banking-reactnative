@@ -113,7 +113,9 @@ const SettingsOverlay = () => {
             <MenuButton
               title={t("settings_overlay.pin_code")}
               description={t("settings_overlay.create_pin_code")}
-              Icon={() => <PinIcon fill="#fff" stroke="#fff" />}
+              Icon={() => (
+                <PinIcon fill={customColor.white} stroke={customColor.white} />
+              )}
               onPress={enablePin}
               {...menuButtonStyleOverrides}
             />
@@ -121,7 +123,12 @@ const SettingsOverlay = () => {
               <MenuButton
                 title={t("settings_overlay.biometrics")}
                 description={t("settings_overlay.enable_biometrics")}
-                Icon={() => <FingerprintIcon fill="#fff" stroke="#fff" />}
+                Icon={() => (
+                  <FingerprintIcon
+                    fill={customColor.white}
+                    stroke={customColor.white}
+                  />
+                )}
                 onPress={enableBiometrics}
                 {...menuButtonStyleOverrides}
               />
