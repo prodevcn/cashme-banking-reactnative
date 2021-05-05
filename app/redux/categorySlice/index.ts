@@ -53,8 +53,10 @@ export const getCategories = (): AppThunk => async dispatch => {
     const data = [1, 2, 3, 4, 5, 6];
 
     dispatch(categoryFetchSuccess(data));
+
+    return data;
   } catch (e) {
-    dispatch(categoryFetchFailure(e));
+    dispatch(categoryFetchFailure(e.message));
   }
 };
 

@@ -1,10 +1,11 @@
-import { Button, Header, Icon, Left } from "native-base";
-import React, { Component, ReactElement } from "react";
+import { Header, Icon, Left, Right } from "native-base";
+import React, { ReactElement } from "react";
 import {
   ScrollView,
   StatusBar,
   StatusBarAnimation,
   StatusBarStyle,
+  TextStyle,
   ViewStyle,
 } from "react-native";
 import { View, Text } from "native-base";
@@ -12,14 +13,18 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Loader from "../Loader";
 import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import Logo from "../Logo";
 
 interface ScreenProps {
-  title?: string | React.ReactElement;
+  title?: string;
   hasHeader?: boolean;
+  hasBackIcon?: boolean;
+  hasLogo?: boolean;
   isNonScrolling?: boolean;
   statusBarHidden?: boolean;
   isLoading?: boolean;
 
+  titleStyle?: TextStyle;
   backgroundColor?: ViewStyle;
   innerStyle?: ViewStyle;
   contentContainerStyle?: ViewStyle;
@@ -29,21 +34,23 @@ interface ScreenProps {
 }
 
 const Screen = (props: ScreenProps) => {
+  const { goBack } = useNavigation();
   const {
     title,
     hasHeader = false,
+    hasBackIcon = true,
+    hasLogo = false,
     isNonScrolling = true,
     statusBarHidden = false,
     isLoading = false,
 
+    titleStyle,
     backgroundColor = styles.background,
     innerStyle = null,
     contentContainerStyle = {},
     statusBarStyle = "light-content",
     showHideTransitionStyle = "fade",
   } = props;
-
-  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={[styles.container, backgroundColor]}>
@@ -56,22 +63,27 @@ const Screen = (props: ScreenProps) => {
       {hasHeader && (
         <Header style={styles.header}>
           <Left style={styles.headerLeft}>
-            <Button transparent onPress={() => navigation.goBack()}>
-              <Icon name="arrow-back" />
-            </Button>
+            {[
+              hasBackIcon && (
+                <Icon
+                  type="AntDesign"
+                  name="arrowleft"
+                  style={styles.goBackIcon}
+                  onPress={() => goBack()}
+                />
+              ),
+              hasLogo && <Logo type="dark" />,
+            ]}
           </Left>
+          <Right />
         </Header>
       )}
       {[
-        title ? (
+        title && (
           <View key="ScreenSubHeader" style={styles.subHeader}>
-            {typeof title === "string" ? (
-              <Text style={styles.subHeaderText}>{title}</Text>
-            ) : (
-              title
-            )}
+            <Text style={[styles.subHeaderText, titleStyle]}>{title}</Text>
           </View>
-        ) : null,
+        ),
         isNonScrolling ? (
           <View
             key="ScreenView"

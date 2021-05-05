@@ -3,7 +3,7 @@ import {
   ImageStyle,
   TextStyle,
   ViewStyle,
-  TouchableHighlight,
+  TouchableOpacity,
 } from "react-native";
 import { Text, View } from "native-base";
 
@@ -13,7 +13,7 @@ interface ICategoryItemProps {
   style?: ViewStyle;
   textStyle?: TextStyle;
   backgroundStyle?: ImageStyle;
-  onPress?(): CallableFunction;
+  onPress?(): void;
   title: string;
   Icon: any;
   Background: any;
@@ -28,10 +28,10 @@ const CategoryItem = ({
   ...rest
 }: ICategoryItemProps) => {
   return (
-    <TouchableHighlight {...rest}>
+    <TouchableOpacity activeOpacity={0.7} {...rest}>
       <View>
         <View style={styles.container}>
-          <View style={backgroundStyle}>
+          <View style={[styles.background, backgroundStyle]}>
             <Background />
           </View>
           <View style={styles.icon}>
@@ -42,7 +42,7 @@ const CategoryItem = ({
           <Text style={[styles.text, textStyle]}>{title}</Text>
         </View>
       </View>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 };
 

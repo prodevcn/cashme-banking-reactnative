@@ -1,6 +1,13 @@
 {
   "learn_more": "Learn More",
+  "apply_now": "Apply Now",
   "categories": "Categories",
+  "loan_term": "Loan Term",
+  "loan_amount": "Loan Amount",
+  "interest": "Interest",
+  "AMD": "AMD",
+  "months": "Months",
+  "monthly": "Monthly",
   "login": {
     "login": "Login",
     "username": "Phone/Email",

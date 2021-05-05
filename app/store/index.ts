@@ -7,6 +7,7 @@ import notificationSlice from "../redux/notificationSlice";
 import settingSlice from "../redux/settingSlice";
 import profileSlice from "../redux/profileSlice";
 import categorySlice from "../redux/categorySlice";
+import productSlice from "../redux/productSlice";
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     setting: settingSlice.reducer,
     profile: profileSlice.reducer,
     category: categorySlice.reducer,
+    product: productSlice.reducer,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
 });
