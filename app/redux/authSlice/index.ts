@@ -5,6 +5,8 @@ import { AppThunk } from "../../store";
 
 interface UserData {
   username: string;
+  firstName: string;
+  lastName: string;
   token: string;
   uri: string;
 }

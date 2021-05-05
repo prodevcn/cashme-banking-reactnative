@@ -92,7 +92,11 @@ const PasswordRecoverCode = () => {
   };
 
   return (
-    <Screen isLoading={loading} title={t("password_recover_code.title")}>
+    <Screen
+      isLoading={loading}
+      title={t("password_recover_code.title")}
+      hasHeader={true}
+    >
       <View>
         {isNaN(+data.username!) ? (
           <Text style={styles.contentInfo}>

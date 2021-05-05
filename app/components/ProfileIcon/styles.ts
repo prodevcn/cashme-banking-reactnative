@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   icon: {
     color: customColor.brandDark,
     textAlign: "center",
+    textAlignVertical: "center",
   },
 });
 

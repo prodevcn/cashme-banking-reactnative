@@ -62,7 +62,11 @@ const ForgotPassword = () => {
   };
 
   return (
-    <Screen isLoading={loading} title={t("forgot_password.title")}>
+    <Screen
+      isLoading={loading}
+      title={t("forgot_password.title")}
+      hasHeader={true}
+    >
       <View style={styles.content}>
         <View style={styles.caption}>
           <Text>{t("forgot_password.label")}</Text>

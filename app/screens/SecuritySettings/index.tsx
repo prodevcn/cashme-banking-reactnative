@@ -63,7 +63,11 @@ const SecuritySettings = () => {
   };
 
   return (
-    <Screen title={t("security_settings.title")} isLoading={loading}>
+    <Screen
+      title={t("security_settings.title")}
+      isLoading={loading}
+      hasHeader={true}
+    >
       <View style={styles.container}>
         <View style={styles.caption}>
           <Text>{t("security_settings.caption")}</Text>
