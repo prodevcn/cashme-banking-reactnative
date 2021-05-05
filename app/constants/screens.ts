@@ -2,6 +2,7 @@
 export const HOME_SCREEN = "HOME_SCREEN";
 export const CATEGORIES_SCREEN = "CATEGORIES_SCREEN";
 export const HELP_SCREEN = "HELP_SCREEN";
+export const PROFILE_SCREEN = "PROFILE_SCREEN";
 export const NO_CONNECTION = "NO_CONNECTION";
 export const FORGOT_PASSWORD = "FORGOT_PASSWORD";
 export const RESET_PIN = "RESET_PIN";

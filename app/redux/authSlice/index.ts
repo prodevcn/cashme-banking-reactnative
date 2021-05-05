@@ -3,7 +3,14 @@ import api from "../../util/api";
 import * as auth from "../../helpers/auth";
 import { AppThunk } from "../../store";
 
+interface UserData {
+  username: string;
+  token: string;
+  uri: string;
+}
+
 interface AuthState {
+  data: UserData | undefined;
   loading: boolean;
   token: string | undefined;
   error: object | undefined;
@@ -15,6 +22,7 @@ interface AuthPayload {
 }
 
 const initialState: AuthState = {
+  data: undefined,
   loading: false,
   token: undefined,
   error: undefined,
