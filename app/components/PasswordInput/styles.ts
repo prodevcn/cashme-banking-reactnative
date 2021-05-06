@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import customColor from "../../theme/customColor";
 
 const styles = StyleSheet.create({
   passwordSection: {
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
   },
   inputLabel: {
-    color: "black",
+    color: customColor.black,
   },
 });
 

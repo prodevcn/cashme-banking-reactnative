@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     color: "#707070",
   },
   contentInfoUsername: {
-    color: "black",
+    color: customColor.black,
     fontWeight: "bold",
   },
   inputLabel: {

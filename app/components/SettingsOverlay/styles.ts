@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import customColor from "../../theme/customColor";
 
 const styles = StyleSheet.create({
   modal: {
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     width: 300,
   },
   titleText: {
-    color: "white",
+    color: customColor.white,
     fontSize: 16,
     lineHeight: 25,
   },
@@ -30,11 +31,11 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   skipText: {
-    color: "white",
+    color: customColor.white,
     fontSize: 22,
   },
   dismissText: {
-    color: "white",
+    color: customColor.white,
     fontSize: 12,
   },
 });

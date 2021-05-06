@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   infoDescription: {
     fontSize: 12,
     lineHeight: 15,
-    color: "black",
+    color: customColor.black,
     textAlign: "center",
   },
   divider: {
