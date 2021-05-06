@@ -23,6 +23,7 @@ import * as auth from "../../helpers/auth";
 import { AUTH_TYPES } from "../../constants";
 
 import styles from "./styles";
+import customColor from "../../theme/customColor";
 
 const LoginDrawer = () => {
   const ref = useRef<BottomSheetModal>(null);
@@ -109,7 +110,7 @@ const LoginDrawer = () => {
               style={styles.blured}
               blurType="light"
               blurAmount={5}
-              reducedTransparencyFallbackColor="white"
+              reducedTransparencyFallbackColor={customColor.white}
             />
             {!isExpanded ? (
               <View>

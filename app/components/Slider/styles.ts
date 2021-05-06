@@ -1,4 +1,5 @@
 import { StyleSheet, Platform } from "react-native";
+import customColor from "../../theme/customColor";
 
 export const paginationStyle = StyleSheet.create({
   container: {
@@ -46,7 +47,7 @@ export const carouselStyle = StyleSheet.create({
   imageContainer: {
     flex: 1,
     marginBottom: Platform.select({ ios: 0, android: 1 }), // Prevent a random Android rendering issue
-    backgroundColor: "white",
+    backgroundColor: customColor.white,
   },
   image: {
     width: "100%",
