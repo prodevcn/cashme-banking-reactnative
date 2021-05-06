@@ -65,7 +65,11 @@ const SecurityQuestion = () => {
   };
 
   return (
-    <Screen isLoading={loading} title={t("security_question.title")}>
+    <Screen
+      isLoading={loading}
+      title={t("security_question.title")}
+      hasHeader={true}
+    >
       <View style={styles.content}>
         <View style={styles.caption}>
           <Icon name="help-circle-outline" style={styles.questionIcon} />
