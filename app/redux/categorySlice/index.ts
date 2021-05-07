@@ -2,8 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "../../store";
 import api from "../../util/api";
 
+interface ICategoryData {
+  id: number;
+  slug: string;
+}
+
 interface ICategoryState {
-  data: Array<number> | undefined;
+  data: Array<ICategoryData> | undefined;
   loading: boolean;
   error: object | undefined;
 }
@@ -21,7 +26,10 @@ const categorySlice = createSlice({
     categoryFetchStart: state => {
       state.loading = true;
     },
-    categoryFetchSuccess: (state, action: PayloadAction<Array<number>>) => {
+    categoryFetchSuccess: (
+      state,
+      action: PayloadAction<Array<ICategoryData>>,
+    ) => {
       state.loading = false;
       state.data = action.payload;
     },
@@ -45,16 +53,13 @@ const {
 export const getCategories = (): AppThunk => async dispatch => {
   try {
     dispatch(categoryFetchStart());
-    // TODO: Uncomment when api is ready
-    //const categories = await api.get<Array<number>>("/api/categories");
-    //dispatch(categoryFetchSuccess(categories.data));
 
-    // Just for test
-    const data = [1, 2, 3, 4, 5, 6];
+    const res = await (await api.get("/api/categories")).data;
+    const categories: Array<ICategoryData> = res.data.categories;
 
-    dispatch(categoryFetchSuccess(data));
+    dispatch(categoryFetchSuccess(categories));
 
-    return data;
+    return categories;
   } catch (e) {
     dispatch(categoryFetchFailure(e.message));
   }
