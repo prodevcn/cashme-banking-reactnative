@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation, Trans } from "react-i18next";
 import { View, Text, Form, Button, Label, Toast, Icon } from "native-base";
@@ -20,18 +20,20 @@ import {
   submitRecoveryCode,
 } from "../../redux/forgotPasswordSlice";
 import { RootState } from "../../store";
-import { VERIFICATION_CODE_LENGTH, SECURITY_QUESTION } from "../../constants";
-import { listenForSms } from "../../helpers/sms";
+import {
+  VERIFICATION_CODE_LENGTH,
+  EMAIL_VERIFICATION_SUCCESS,
+  HOME_SCREEN,
+} from "../../constants";
 
 import styles from "./styles";
 
 interface CodeFormValues extends Asserts<typeof passwordRecoverCodeSchema> {}
 
-const PasswordRecoverCode = () => {
+const EmailVerification = () => {
   const { t } = useTranslation();
   const { navigate } = useNavigation();
   const [value, setValue] = useState("");
-  const [smsCode, setSmsCode] = useState("");
   const ref = useBlurOnFulfill({ value, cellCount: VERIFICATION_CODE_LENGTH });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
@@ -42,22 +44,13 @@ const PasswordRecoverCode = () => {
     (state: RootState) => state.forgotPassword,
   );
 
-  useEffect(() => {
-    const getSmsCode = (message: string) => {
-      setSmsCode(message);
-      handleSubmit({ code: message });
-    };
-
-    listenForSms(getSmsCode);
-  }, []);
-
   const handleSubmit = async (values: any) => {
     try {
       await dispatch(
         submitRecoveryCode({ ...values, username: data?.username }),
       );
 
-      navigate(SECURITY_QUESTION);
+      navigate(EMAIL_VERIFICATION_SUCCESS);
     } catch {
       Toast.show({
         text: error,
@@ -94,14 +87,14 @@ const PasswordRecoverCode = () => {
   return (
     <Screen
       isLoading={loading}
-      title={t("password_recover_code.title")}
-      hasHeader={true}
+      title={t("email_verification.title")}
+      titleStyle={styles.title}
     >
       <View>
         <Text style={styles.contentInfo}>
           <Trans
-            defaults={`password_recover_code.phone_info`}
-            values={{ username: `+374${data.username}` }}
+            defaults={`email_verification.info`}
+            values={{ username: data.username }}
             components={[<Text style={styles.contentInfoUsername}>text</Text>]}
           />
         </Text>
@@ -116,7 +109,7 @@ const PasswordRecoverCode = () => {
               <Form>
                 <View style={styles.inputContainer}>
                   <Label style={styles.inputLabel}>
-                    {t("password_recover_code.label")}
+                    {t("email_verification.label")}
                   </Label>
                   <ShakingComponent
                     shake={
@@ -165,7 +158,17 @@ const PasswordRecoverCode = () => {
                   }}
                 >
                   <Icon name="refresh" style={styles.resendButtonIcon} />
-                  <Text>{t("password_recover_code.resend_code")}</Text>
+                  <Text>{t("email_verification.resend_code")}</Text>
+                </Button>
+
+                <Button
+                  full
+                  transparent
+                  onPress={() => {
+                    navigate(HOME_SCREEN);
+                  }}
+                >
+                  <Text>{t("email_verification.cancel")}</Text>
                 </Button>
               </Form>
             );
@@ -176,4 +179,4 @@ const PasswordRecoverCode = () => {
   );
 };
 
-export default PasswordRecoverCode;
+export default EmailVerification;

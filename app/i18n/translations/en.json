@@ -109,6 +109,15 @@
     "cancel": "Cancel",
     "continue": "Continue"
   },
+  "email_verification": {
+    "title": "Email Address Verification",
+    "info": "Verification link and code has been sent to your <0>{{username}}</0> email",
+    "label": "Please Enter Verification Code",
+    "success": "You have successfully verified your email",
+    "resend_code": "Resend Code",
+    "cancel": "Cancel",
+    "continue": "Continue"
+  },
   "profile_settings": "Profile Settings",
   "notifications": "Notifications",
   "terms_and_conditions": "Terms and conditions",

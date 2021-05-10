@@ -21,7 +21,7 @@ import {
 } from "../../redux/forgotPasswordSlice";
 import { RootState } from "../../store";
 import {
-  CODE_INPUT_LENGTH,
+  VERIFICATION_CODE_LENGTH,
   PHONE_VERIFICATION_SUCCESS,
   HOME_SCREEN,
 } from "../../constants";
@@ -36,7 +36,7 @@ const PhoneVerification = () => {
   const { navigate } = useNavigation();
   const [value, setValue] = useState("");
   const [smsCode, setSmsCode] = useState("");
-  const ref = useBlurOnFulfill({ value, cellCount: CODE_INPUT_LENGTH });
+  const ref = useBlurOnFulfill({ value, cellCount: VERIFICATION_CODE_LENGTH });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
     setValue,
@@ -74,7 +74,7 @@ const PhoneVerification = () => {
   const handleChange = (text: string, setFieldValue: Function) => {
     setFieldValue("code", text);
 
-    if (text.length === CODE_INPUT_LENGTH) {
+    if (text.length === VERIFICATION_CODE_LENGTH) {
       handleSubmit({ code: text });
     }
   };
@@ -124,7 +124,9 @@ const PhoneVerification = () => {
                     {t("phone_verification.label")}
                   </Label>
                   <ShakingComponent
-                    shake={error && values.code?.length === CODE_INPUT_LENGTH}
+                    shake={
+                      error && values.code?.length === VERIFICATION_CODE_LENGTH
+                    }
                   >
                     <Validation formik={formik} name="code" showMessage={true}>
                       <CodeField
@@ -136,7 +138,7 @@ const PhoneVerification = () => {
                           handleChange(text, setFieldValue);
                         }}
                         onBlur={handleBlur("code")}
-                        cellCount={CODE_INPUT_LENGTH}
+                        cellCount={VERIFICATION_CODE_LENGTH}
                         rootStyle={styles.codeFiledRoot}
                         keyboardType="number-pad"
                         textContentType="oneTimeCode"
