@@ -18,6 +18,17 @@
     "sign_up": "SIGN UP",
     "forgot_password": "Forgot Password"
   },
+  "sign_up": {
+    "title": "Sign Up",
+    "label": "Create an account to continue!",
+    "email": "Email",
+    "phone_number": "Phone",
+    "document_number": "Passport",
+    "continue": "Continue",
+    "already_have_account": "Do you have an account? ",
+    "login": "Login",
+    "terms_conditions": "By creating an account, you agree to our Term & Conditions"
+  },
   "forgot_password": {
     "title": "Forgot Password",
     "label": "Don't worry, happens to the best of us.",
@@ -60,7 +71,9 @@
     "email": "Invalid email",
     "phone": "Invalid phone number",
     "match": "Fields must match",
-    "code": "Code length must be 4"
+    "code": "Code length must be 4",
+    "passport": "Invalid passport",
+    "idcard": "Invalid ID card"
   },
   "reset_pin": {
     "title": "Pin code",

@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   inputLabel: {
-    color: "#443C38",
+    color: customColor.masala,
   },
   button: {
     marginTop: 20,

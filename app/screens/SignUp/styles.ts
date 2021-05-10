@@ -2,24 +2,33 @@ import { StyleSheet } from "react-native";
 import customColor from "../../theme/customColor";
 
 const styles = StyleSheet.create({
-  backgroundContainer: {
-    ...StyleSheet.absoluteFillObject,
+  content: {
+    width: "100%",
+    alignSelf: "center",
   },
-  blurArea: {
-    ...StyleSheet.absoluteFillObject,
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    overflow: "hidden",
+  caption: {
+    color: customColor.masala,
+    marginBottom: 30,
   },
-  blured: {
-    ...StyleSheet.absoluteFillObject,
+  inputSection: {
+    marginVertical: 10,
+  },
+  inputIcon: {
+    fontSize: 18,
+  },
+  inputValidIcon: {
+    fontSize: 18,
+    color: customColor.dodgerBlue,
   },
   button: {
-    marginTop: 20,
-    width: "90%",
-    height: 54,
-    alignSelf: "center",
-    elevation: 0,
+    marginTop: 30,
+  },
+  checkboxContainer: {
+    borderBottomWidth: 0,
+    marginLeft: 0,
+  },
+  termsConditions: {
+    fontSize: 12,
   },
   accountText: {
     fontSize: 13,
@@ -27,6 +36,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     display: "flex",
     flexDirection: "row",
+    marginBottom: 30,
   },
   signUp: {
     height: 10,

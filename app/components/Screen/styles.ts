@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     color: customColor.brandDark,
   },
   goBackIcon: {
-    color: "#1B8CF4",
+    color: customColor.dodgerBlue,
     marginRight: 10,
   },
 });
