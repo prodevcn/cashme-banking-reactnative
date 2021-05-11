@@ -20,14 +20,18 @@ import {
   submitRecoveryCode,
 } from "../../redux/forgotPasswordSlice";
 import { RootState } from "../../store";
-import { CODE_INPUT_LENGTH, SECURITY_QUESTION } from "../../constants";
+import {
+  CODE_INPUT_LENGTH,
+  PHONE_VERIFICATION_SUCCESS,
+  HOME_SCREEN,
+} from "../../constants";
 import { listenForSms } from "../../helpers/sms";
 
 import styles from "./styles";
 
 interface CodeFormValues extends Asserts<typeof passwordRecoverCodeSchema> {}
 
-const PasswordRecoverCode = () => {
+const PhoneVerification = () => {
   const { t } = useTranslation();
   const { navigate } = useNavigation();
   const [value, setValue] = useState("");
@@ -57,7 +61,7 @@ const PasswordRecoverCode = () => {
         submitRecoveryCode({ ...values, username: data?.username }),
       );
 
-      navigate(SECURITY_QUESTION);
+      navigate(PHONE_VERIFICATION_SUCCESS);
     } catch {
       Toast.show({
         text: error,
@@ -82,7 +86,7 @@ const PasswordRecoverCode = () => {
       Toast.show({
         text: error,
         type: "danger",
-        duration: 5000,
+        duration: 2000,
       });
     }
   };
@@ -94,17 +98,18 @@ const PasswordRecoverCode = () => {
   return (
     <Screen
       isLoading={loading}
-      title={t("password_recover_code.title")}
-      hasHeader={true}
+      title={t("phone_verification.title")}
+      titleStyle={styles.title}
     >
       <View>
         <Text style={styles.contentInfo}>
           <Trans
-            defaults={`password_recover_code.phone_info`}
+            defaults={`phone_verification.info`}
             values={{ username: `+374${data.username}` }}
             components={[<Text style={styles.contentInfoUsername}>text</Text>]}
           />
         </Text>
+
         <Formik
           initialValues={initialValues}
           validationSchema={passwordRecoverCodeSchema}
@@ -116,7 +121,7 @@ const PasswordRecoverCode = () => {
               <Form>
                 <View style={styles.inputContainer}>
                   <Label style={styles.inputLabel}>
-                    {t("password_recover_code.label")}
+                    {t("phone_verification.label")}
                   </Label>
                   <ShakingComponent
                     shake={error && values.code?.length === CODE_INPUT_LENGTH}
@@ -125,7 +130,8 @@ const PasswordRecoverCode = () => {
                       <CodeField
                         ref={ref}
                         {...props}
-                        value={values.code}
+                        value={smsCode || values.code}
+                        defaultValue={smsCode}
                         onChangeText={text => {
                           handleChange(text, setFieldValue);
                         }}
@@ -163,7 +169,17 @@ const PasswordRecoverCode = () => {
                   }}
                 >
                   <Icon name="refresh" style={styles.resendButtonIcon} />
-                  <Text>{t("password_recover_code.resend_code")}</Text>
+                  <Text>{t("phone_verification.resend_code")}</Text>
+                </Button>
+
+                <Button
+                  full
+                  transparent
+                  onPress={() => {
+                    navigate(HOME_SCREEN);
+                  }}
+                >
+                  <Text>{t("phone_verification.cancel")}</Text>
                 </Button>
               </Form>
             );
@@ -174,4 +190,4 @@ const PasswordRecoverCode = () => {
   );
 };
 
-export default PasswordRecoverCode;
+export default PhoneVerification;
