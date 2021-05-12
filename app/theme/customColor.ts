@@ -9,6 +9,8 @@ export default {
 
   white: "#fff",
   black: "#000",
+  masala: "#443C38",
+  dodgerBlue: "#1B8CF4",
 
   get buttonPrimaryBg() {
     return this.brandPrimary;

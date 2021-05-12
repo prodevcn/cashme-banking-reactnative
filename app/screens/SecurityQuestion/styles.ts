@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import customColor from "../../theme/customColor";
 
 const styles = StyleSheet.create({
   content: {
@@ -7,7 +8,7 @@ const styles = StyleSheet.create({
   },
   caption: {
     paddingVertical: 50,
-    color: "#443C38",
+    color: customColor.masala,
     flexDirection: "row",
     alignItems: "flex-start",
   },

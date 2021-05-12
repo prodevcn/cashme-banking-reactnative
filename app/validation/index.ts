@@ -9,3 +9,15 @@ export const isPhone = (value?: string) => {
 
   return phoneRegex.test(value || "");
 };
+
+export const isPassport = (value?: string) => {
+  const passportRegex = /^[a-zA-Z]{2}[0-9]{7}$/;
+
+  return passportRegex.test(value || "");
+};
+
+export const isIdCard = (value?: string) => {
+  const idCardRegex = /^[0-9]{9}$/;
+
+  return idCardRegex.test(value || "");
+};

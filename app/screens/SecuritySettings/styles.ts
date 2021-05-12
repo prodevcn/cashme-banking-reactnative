@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import customColor from "../../theme/customColor";
 
 const styles = StyleSheet.create({
   container: {
@@ -8,7 +9,7 @@ const styles = StyleSheet.create({
   },
   caption: {
     marginTop: 50,
-    color: "#443C38",
+    color: customColor.masala,
   },
 });
 

@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 import { View, Text } from "native-base";
 import {
   BottomSheetModal,
@@ -20,7 +21,7 @@ import LoginForm from "../LoginForm";
 import DrawerButton from "./DrawerButton";
 import { verifyPin, verifySignature } from "../../redux/authSlice";
 import * as auth from "../../helpers/auth";
-import { AUTH_TYPES } from "../../constants";
+import { AUTH_TYPES, SIGN_UP } from "../../constants";
 
 import styles from "./styles";
 import customColor from "../../theme/customColor";
@@ -31,6 +32,7 @@ const LoginDrawer = () => {
   const snapPoints = useMemo(() => [120, 320], []);
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { navigate } = useNavigation();
 
   useLayoutEffect(() => {
     ref.current?.present();
@@ -124,9 +126,13 @@ const LoginDrawer = () => {
                 </DrawerButton>
                 <Text style={styles.accountText}>
                   {t("login.dont_have_account")}{" "}
-                  <Text style={styles.signUpLink} onPress={() => {}}>
-                    {t("login.sign_up")}
-                  </Text>
+                  <DrawerButton
+                    transparent
+                    style={styles.signUp}
+                    onPress={() => navigate(SIGN_UP)}
+                  >
+                    <Text style={styles.signUpLink}>{t("login.sign_up")}</Text>
+                  </DrawerButton>
                 </Text>
               </View>
             ) : (
