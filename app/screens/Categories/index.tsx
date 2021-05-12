@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { View, Text } from "native-base";
+import { View } from "native-base";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 
@@ -33,14 +33,14 @@ const Categories = () => {
       hasLogo={true}
     >
       <View style={styles.list}>
-        {data?.map(id => (
+        {data?.map(item => (
           <CategoryItem
-            key={`${CATEGORIES[id].title}_${id}`}
-            title={CATEGORIES[id].title}
-            Background={CATEGORIES[id].Background}
-            Icon={CATEGORIES[id].Icon}
+            key={`${CATEGORIES[item.slug].title}_${item.id}`}
+            title={CATEGORIES[item.slug].title}
+            Background={CATEGORIES[item.slug].Background}
+            Icon={CATEGORIES[item.slug].Icon}
             style={styles.item}
-            onPress={() => navigate(CATEGORIES[id].screen)}
+            onPress={() => navigate(CATEGORIES[item.slug].screen)}
           />
         ))}
       </View>

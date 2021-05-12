@@ -51,7 +51,11 @@ const ResetPassword = () => {
   const deviceWidth = Dimensions.get("window").width;
 
   return (
-    <Screen isLoading={loading} title={t("reset_password.title")}>
+    <Screen
+      isLoading={loading}
+      title={t("reset_password.title")}
+      hasHeader={true}
+    >
       <View style={styles.content}>
         <Formik
           initialValues={initialValues}

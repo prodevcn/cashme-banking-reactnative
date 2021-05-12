@@ -66,13 +66,14 @@ const Screen = (props: ScreenProps) => {
             {[
               hasBackIcon && (
                 <Icon
+                  key="ArrowLeftIcon"
                   type="AntDesign"
                   name="arrowleft"
                   style={styles.goBackIcon}
                   onPress={() => goBack()}
                 />
               ),
-              hasLogo && <Logo type="dark" />,
+              hasLogo && <Logo key="DarkLogo" type="dark" />,
             ]}
           </Left>
           <Right />

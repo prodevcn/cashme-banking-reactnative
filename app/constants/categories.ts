@@ -21,37 +21,37 @@ import ServicesIcon from "../assets/images/categories/services_icon.svg";
 import ServicesBg from "../assets/images/categories/services_bg.svg";
 
 export const CATEGORIES = {
-  1: {
+  finance: {
     screen: FINANCE,
     title: i18n.t("category_item.finance"),
     Icon: FinanceIcon,
     Background: FinanceBg,
   },
-  2: {
+  wallet: {
     screen: WALLET,
     title: i18n.t("category_item.wallet"),
     Icon: WalletIcon,
     Background: WalletBg,
   },
-  3: {
+  e_commerce: {
     screen: E_COMMERCE,
     title: i18n.t("category_item.e_commerce"),
     Icon: E_CommerceIcon,
     Background: E_CommerceBg,
   },
-  4: {
+  medical: {
     screen: MEDICAL,
     title: i18n.t("category_item.medical"),
     Icon: MedicalIcon,
     Background: MedicalBg,
   },
-  5: {
+  property: {
     screen: PROPERTY,
     title: i18n.t("category_item.property"),
     Icon: PropertyIcon,
     Background: PropertyBg,
   },
-  6: {
+  services: {
     screen: SERVICES,
     title: i18n.t("category_item.services"),
     Icon: ServicesIcon,
