@@ -77,7 +77,8 @@
     "match": "Fields must match",
     "code": "Code length must be 4",
     "passport": "Invalid passport",
-    "idcard": "Invalid ID card"
+    "idcard": "Invalid ID card",
+    "password": "Invalid password"
   },
   "reset_pin": {
     "title": "Pin code",

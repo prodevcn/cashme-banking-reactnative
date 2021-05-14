@@ -6,6 +6,7 @@ declare module "yup" {
     pinCode(): StringSchema;
     passport(): StringSchema;
     idcard(): StringSchema;
+    password(): StringSchema;
   }
 }
 
