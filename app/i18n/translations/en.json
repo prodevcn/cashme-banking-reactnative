@@ -99,6 +99,16 @@
     "title": "Security",
     "caption": "Choose security actions to unlock your phone"
   },
+  "phone_verification": {
+    "title": "SMS Verification",
+    "info": "An SMS with a verification code has been sent to your <0>{{username}}</0>",
+    "label": "Please Enter Verification Code",
+    "verified_title": "Phone Number Verified",
+    "success": "You have successfully verified your phone number",
+    "resend_code": "Resend Code",
+    "cancel": "Cancel",
+    "continue": "Continue"
+  },
   "profile_settings": "Profile Settings",
   "notifications": "Notifications",
   "terms_and_conditions": "Terms and conditions",

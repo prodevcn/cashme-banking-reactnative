@@ -2,10 +2,13 @@ import { StyleSheet } from "react-native";
 import customColor from "../../theme/customColor";
 
 const styles = StyleSheet.create({
+  title: {
+    marginTop: 50,
+  },
   contentInfo: {
     paddingVertical: 50,
     textAlign: "center",
-    color: "#707070",
+    color: customColor.brandGray,
   },
   contentInfoUsername: {
     color: customColor.black,
@@ -40,7 +43,7 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: "center",
     alignItems: "center",
-    borderBottomColor: "#707070",
+    borderBottomColor: customColor.brandGray,
     borderBottomWidth: 1,
   },
   cellText: {
