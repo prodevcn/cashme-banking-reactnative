@@ -1,7 +1,12 @@
 import * as yup from "yup";
 import i18n from "../../i18n";
 import _ from "lodash";
-import { isPhone, isIdCard, isPassport } from "../../validation";
+import {
+  isPhone,
+  isIdCard,
+  isPassport,
+  isValidPassword,
+} from "../../validation";
 import { AnyObject, Maybe } from "yup/lib/types";
 
 yup.addMethod<yup.StringSchema>(yup.string, "phone", function () {
@@ -50,6 +55,20 @@ yup.addMethod<yup.StringSchema>(yup.string, "idcard", function () {
 
     return true;
   });
+});
+
+yup.addMethod<yup.StringSchema>(yup.string, "password", function () {
+  return this.test(
+    "password",
+    i18n.t("validations.password"),
+    function (value) {
+      if (value) {
+        return isValidPassword(value);
+      }
+
+      return true;
+    },
+  );
 });
 
 declare module "yup" {

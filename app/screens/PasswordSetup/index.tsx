@@ -7,20 +7,20 @@ import { Formik } from "formik";
 import { Asserts } from "yup";
 import { useNavigation } from "@react-navigation/native";
 import { BoxPasswordStrengthDisplay } from "react-native-password-strength-meter";
-import resetPasswordSchema from "../../validation/schemas/resetPasswordSchema";
+import passwordSetupSchema from "../../validation/schemas/passwordSetupSchema";
 import Validation from "../../components/Validation";
 import PasswordInput from "../../components/PasswordInput";
 import Screen from "../../components/Screen";
 import { resetPassword } from "../../redux/forgotPasswordSlice";
 import { RootState } from "../../store";
 import { HOME_SCREEN, PASSWORD_STRENGTH_LEVELS } from "../../constants";
-import { hasNumber, hasLetter, isValidPassword } from "../../validation";
+import { hasNumber, hasLetter } from "../../validation";
 import CheckMark from "../../assets/images/check-mark.svg";
 import customColor from "../../theme/customColor";
 
 import styles from "./styles";
 
-interface PasswordFormValues extends Asserts<typeof resetPasswordSchema> {}
+interface PasswordFormValues extends Asserts<typeof passwordSetupSchema> {}
 
 const PasswordSetup = () => {
   const { t } = useTranslation();
@@ -31,23 +31,18 @@ const PasswordSetup = () => {
   );
 
   const handleSubmit = async (values: any) => {
-    if (
-      values.password === values.passwordConfirmation &&
-      isValidPassword(values.password)
-    ) {
-      try {
-        const username = data?.username || "";
+    try {
+      const username = data?.username || "";
 
-        await dispatch(resetPassword({ username, ...values }));
+      await dispatch(resetPassword({ username, ...values }));
 
-        navigate(HOME_SCREEN);
-      } catch (e) {
-        Toast.show({
-          text: error,
-          type: "danger",
-          duration: 5000,
-        });
-      }
+      navigate(HOME_SCREEN);
+    } catch (e) {
+      Toast.show({
+        text: error,
+        type: "danger",
+        duration: 5000,
+      });
     }
   };
 
@@ -67,7 +62,7 @@ const PasswordSetup = () => {
       <View style={styles.content}>
         <Formik
           initialValues={initialValues}
-          validationSchema={resetPasswordSchema}
+          validationSchema={passwordSetupSchema}
           onSubmit={handleSubmit}
           component={props => {
             const { values, handleChange, handleBlur, handleSubmit } = props;
