@@ -21,3 +21,21 @@ export const isIdCard = (value?: string) => {
 
   return idCardRegex.test(value || "");
 };
+
+export const hasNumber = (value?: string) => {
+  const containsNumber = /[\d]{1}$/;
+
+  return containsNumber.test(value || "");
+};
+
+export const hasLetter = (value?: string) => {
+  const containsLetter = /[A-Za-z]/;
+
+  return containsLetter.test(value || "");
+};
+
+export const isValidPassword = (value?: string) => {
+  const validatedPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+  return validatedPassword.test(value || "");
+};

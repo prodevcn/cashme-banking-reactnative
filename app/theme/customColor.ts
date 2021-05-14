@@ -11,6 +11,7 @@ export default {
 
   white: "#fff",
   black: "#000",
+  gray: "#C7D7E6",
   masala: "#443C38",
   dodgerBlue: "#1B8CF4",
 

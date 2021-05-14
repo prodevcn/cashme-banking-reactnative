@@ -44,7 +44,11 @@
     "title": "Նոր գաղտնաբառ",
     "password": "Գաղտնաբառ",
     "confirm_password": "Կրկնել գաղտնաբառը",
-    "continue": "Շարունակել"
+    "continue": "Շարունակել",
+    "password_criteria": "Ծածկագիրը պետք է համապատասխանի հետևյալ կրիտերիաներին",
+    "contains_characters": "Պարունակում է առնվազն 8 սիմվոլ",
+    "contains_letters": "Պարունակում է տառեր",
+    "contains_numbers": "Պարունակում է թվեր"
   },
   "password_recover_code": {
     "title": "Վերականգնման կոդ",
