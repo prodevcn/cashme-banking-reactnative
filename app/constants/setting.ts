@@ -18,7 +18,7 @@ export const ARM_PHONE_CODES = [
   "99",
 ];
 
-export const CODE_INPUT_LENGTH = 4;
+export const VERIFICATION_CODE_LENGTH = 4;
 
 export const PASSWORD_STRENGTH_LEVELS = [
   {
