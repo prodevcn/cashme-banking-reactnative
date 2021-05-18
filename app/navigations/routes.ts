@@ -19,6 +19,7 @@ import {
   PHONE_VERIFICATION_SUCCESS,
   EMAIL_VERIFICATION,
   EMAIL_VERIFICATION_SUCCESS,
+  PASSWORD_SETUP,
 } from "../constants";
 import Help from "../screens/Help";
 import Categories from "../screens/Categories";
@@ -37,6 +38,7 @@ import PhoneVerificationSuccess from "../screens/PhoneVerificationSuccess";
 import PhoneVerification from "../screens/PhoneVerification/index";
 import EmailVerification from "../screens/EmailVerification";
 import EmailVerificationSuccess from "../screens/EmailVerificationSuccess";
+import PasswordSetup from "../screens/PasswordSetup";
 
 interface Route {
   name: string;
@@ -124,6 +126,11 @@ export const authScreens: Array<Route> = [
   {
     name: EMAIL_VERIFICATION_SUCCESS,
     component: EmailVerificationSuccess,
+    options: { headerShown: false },
+  },
+  {
+    name: PASSWORD_SETUP,
+    component: PasswordSetup,
     options: { headerShown: false },
   },
 ];

@@ -44,7 +44,11 @@
     "title": "Reset password",
     "password": "Password",
     "confirm_password": "Confirm Password",
-    "continue": "Continue"
+    "continue": "Continue",
+    "password_criteria": "Password should match following criteria",
+    "contains_characters": "Contains at least 8 characters",
+    "contains_letters": "Contains letters",
+    "contains_numbers": "Contains numbers"
   },
   "password_recover_code": {
     "title": "Enter 4-digit recover code",

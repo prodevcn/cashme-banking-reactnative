@@ -13,29 +13,43 @@ interface ValidationProps {
 }
 
 class Validation extends Component<ValidationProps> {
+  getUpdatedChildren = (child: ReactElement) => {
+    const {
+      name,
+      isNested,
+      formik: { errors, touched },
+    } = this.props;
+
+    if (!child.props.children) {
+      return [];
+    }
+
+    if (child.props.children) {
+      return child.props.children.map((c: any, index: any) => {
+        if (isNested && index === 0) {
+          return React.cloneElement(child.props.children[index], {
+            style: [touched[name] && errors[name] ? styles.invalid : ""],
+            key: index,
+          });
+        }
+
+        return c;
+      });
+    }
+  };
+
   render() {
     const {
       children,
       name,
       showMessage,
-      isNested,
       formik: { errors, touched, setFieldTouched, handleChange, handleBlur },
     } = this.props;
 
     return (
       <React.Fragment>
         {React.Children.map(children, (child: ReactElement) => {
-          const updatedChilds = child.props.children.map(
-            (c: any, index: any) => {
-              if (isNested && index === 0) {
-                return React.cloneElement(child.props.children[0], {
-                  style: [touched[name] && errors[name] ? styles.invalid : ""],
-                });
-              }
-
-              return c;
-            },
-          );
+          const updatedChilds = this.getUpdatedChildren(child);
 
           return React.cloneElement(
             child,
