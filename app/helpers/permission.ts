@@ -4,6 +4,10 @@ export const getNotificationsPermission = async () => {
   return await getPermissionStatus(Permissions.NOTIFICATIONS);
 };
 
+export const getCameraPermission = async () => {
+  return await getPermissionStatus(Permissions.CAMERA);
+};
+
 const getPermissionStatus = async (
   permission: Permissions.PermissionType,
 ): Promise<boolean> => {
