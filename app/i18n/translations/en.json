@@ -1,6 +1,6 @@
 {
   "hello": "Hello",
-  "learn_more": "Learn More",
+  "learn_more": "Know More",
   "apply_now": "Apply Now",
   "categories": "Categories",
   "loan_term": "Loan Term",
@@ -134,5 +134,17 @@
     "medical": "Medical",
     "wallet": "Wallet",
     "e_commerce": "E-commerce"
+  },
+  "face_verification_setup": {
+    "title": "Face Verification Setup",
+    "step": "Step",
+    "box_title": "Check your ID",
+    "box_description": "Make sure the ID number is correct and belongs to you",
+    "not_my_id": "It’s not my ID",
+    "take_selfie": "Take a selfie",
+    "take_selfie_button": "Take selfie",
+    "cancel": "Cancel",
+    "remove_glasses": "Remove your glasses, if necessary",
+    "face_forward": "Face forward and make sure your eyes are clearly visible"
   }
 }

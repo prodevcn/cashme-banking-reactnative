@@ -1,6 +1,6 @@
 {
   "hello": "Բարև",
-  "learn_more": "Իմանալ ավելին",
+  "learn_more": "Ավելին",
   "apply_now": "Դիմել հիմա",
   "categories": "Կատեգորիաներ",
   "loan_term": "Վարկի Ժամկետ",
@@ -134,5 +134,17 @@
     "medical": "Բժշկական",
     "wallet": "Դրամապանակ",
     "e_commerce": "Առևտուր"
+  },
+  "face_verification_setup": {
+    "title": "Դեմքի ճանաչման կարգավորում",
+    "step": "Քայլ",
+    "box_title": "Ստուգեք ID֊ն",
+    "box_description": "Համոզվեք, որ ID-ն ճիշտ է գրված",
+    "not_my_id": "Սա իմ ID-ն չէ",
+    "take_selfie": "Սելֆի անել",
+    "take_selfie_button": "Սելֆի անել",
+    "cancel": "Չեղարկել",
+    "remove_glasses": "Հանեք ակնոցները անհրաժեշտության դեպքում",
+    "face_forward": "Գլուխը ուղիղ և վստահ եղեք, որ Ձեր աչքերը երևում են"
   }
 }
