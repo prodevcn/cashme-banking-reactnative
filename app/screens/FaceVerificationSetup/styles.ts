@@ -96,4 +96,34 @@ const styles = StyleSheet.create({
   },
 });
 
+export const sheetStyles = StyleSheet.create({
+  container: {
+    paddingVertical: 30,
+    paddingHorizontal: 25,
+  },
+  title: {
+    fontSize: 28,
+    lineHeight: 34,
+    color: customColor.brandDark,
+    marginBottom: 20,
+  },
+  description: {
+    fontSize: 17,
+    lineHeight: 20,
+    color: customColor.masala,
+    marginBottom: 30,
+  },
+  buttonContainer: {
+    marginHorizontal: 50,
+  },
+  button: {
+    marginBottom: 20,
+  },
+  note: {
+    fontSize: 12,
+    lineHeight: 15,
+    color: customColor.masala,
+  },
+});
+
 export default styles;

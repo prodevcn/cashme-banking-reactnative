@@ -146,5 +146,12 @@
     "cancel": "Cancel",
     "remove_glasses": "Remove your glasses, if necessary",
     "face_forward": "Face forward and make sure your eyes are clearly visible"
+  },
+  "change_id_sheet": {
+    "title": "Change ID",
+    "description": "Are you sure you want to change your ID number?",
+    "yes": "Yes",
+    "no": "No",
+    "note": "You will be redirected to Registration page and the registration will start again"
   }
 }
