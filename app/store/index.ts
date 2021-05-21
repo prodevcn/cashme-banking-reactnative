@@ -9,6 +9,7 @@ import profileSlice from "../redux/profileSlice";
 import categorySlice from "../redux/categorySlice";
 import productSlice from "../redux/productSlice";
 import signUpSlice from "../redux/signUpSlice";
+import cashMeSlice from "../redux/cashMeSlice";
 
 const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ const store = configureStore({
     category: categorySlice.reducer,
     product: productSlice.reducer,
     signUp: signUpSlice.reducer,
+    cashMe: cashMeSlice.reducer,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
 });
