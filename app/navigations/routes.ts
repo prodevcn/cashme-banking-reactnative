@@ -23,6 +23,7 @@ import {
   FACE_VERIFICATION_SETUP,
   CASH_ME,
   SECURITY_QUESTION_SETUP,
+  GET_LOAN,
 } from "../constants";
 import Help from "../screens/Help";
 import Categories from "../screens/Categories";
@@ -38,13 +39,14 @@ import SecurityQuestion from "../screens/SecurityQuestion";
 import ResetPassword from "../screens/ResetPassword";
 import SignUp from "../screens/SignUp";
 import PhoneVerificationSuccess from "../screens/PhoneVerificationSuccess";
-import PhoneVerification from "../screens/PhoneVerification/index";
+import PhoneVerification from "../screens/PhoneVerification";
 import EmailVerification from "../screens/EmailVerification";
 import EmailVerificationSuccess from "../screens/EmailVerificationSuccess";
 import PasswordSetup from "../screens/PasswordSetup";
-import FaceVerificationSetup from "../screens/FaceVerificationSetup/index";
 import CashMe from "../screens/Products/CashMe";
 import SecurityQuestionSetup from "../screens/SecurityQuestionSetup";
+import FaceVerificationSetup from "../screens/FaceVerificationSetup";
+import GetLoan from "../screens/GetLoan";
 
 interface Route {
   name: string;
@@ -150,6 +152,12 @@ export const authScreens: Array<Route> = [
     options: { headerShown: false },
   },
 ];
+
+export const getLoan: Route = {
+  name: GET_LOAN,
+  component: GetLoan,
+  options: { headerShown: false },
+};
 
 export const noConnectionScreen: Route = {
   name: NO_CONNECTION,
