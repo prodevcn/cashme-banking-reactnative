@@ -21,6 +21,7 @@ import {
   EMAIL_VERIFICATION_SUCCESS,
   PASSWORD_SETUP,
   FACE_VERIFICATION_SETUP,
+  CASH_ME,
 } from "../constants";
 import Help from "../screens/Help";
 import Categories from "../screens/Categories";
@@ -41,6 +42,7 @@ import EmailVerification from "../screens/EmailVerification";
 import EmailVerificationSuccess from "../screens/EmailVerificationSuccess";
 import PasswordSetup from "../screens/PasswordSetup";
 import FaceVerificationSetup from "../screens/FaceVerificationSetup/index";
+import CashMe from "../screens/Products/CashMe";
 
 interface Route {
   name: string;
@@ -165,5 +167,10 @@ export const productScreens: Array<Route> = [
     name: FINANCE,
     component: Finance,
     options: { title: "Finance", headerShown: false },
+  },
+  {
+    name: CASH_ME,
+    component: CashMe,
+    options: { title: "CashMe", headerShown: false },
   },
 ];

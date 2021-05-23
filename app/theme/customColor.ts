@@ -7,7 +7,9 @@ export default {
   brandLight: "#fff",
   brandDark: "#32506E",
   brandGray: "#707070",
+  brandGrayLight: "#E2E2E2",
   brandBlue: "#007AFF",
+  brandBlueLight: "#F0F8FF",
 
   white: "#fff",
   black: "#000",

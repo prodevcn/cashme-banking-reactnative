@@ -37,6 +37,7 @@ const Finance = () => {
             description={FINANCE_PRODUCTS[id].description}
             image={FINANCE_PRODUCTS[id].image}
             style={styles.item}
+            screen={FINANCE_PRODUCTS[id].screen}
           />
         ))}
       </View>
