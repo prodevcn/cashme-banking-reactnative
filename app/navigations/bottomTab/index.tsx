@@ -1,32 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Keyboard } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ParamListBase, TabNavigationState } from "@react-navigation/native";
 import AnimatedTabBar, {
   TabsConfig,
   BubbleTabBarItemConfig,
 } from "@gorhom/animated-tabbar";
-import { nonAuthBottomTabScreens, authBottomTabScreens } from "./routes";
-import { RootState } from "../store/index";
+
+import { isAndroid } from "../../helpers/platform";
+import { nonAuthBottomTabScreens, authBottomTabScreens } from "../routes";
+import { RootState } from "../../store";
 import {
   HOME_SCREEN,
   CATEGORIES_SCREEN,
   HELP_SCREEN,
   PROFILE_SCREEN,
-} from "../constants/screens";
+} from "../../constants";
 
-import Help from "../assets/images/tabs/help.svg";
-import HelpFill from "../assets/images/tabs/help_fill.svg";
-import Home from "../assets/images/tabs/home.svg";
-import HomeFill from "../assets/images/tabs/home_fill.svg";
-import Product from "../assets/images/tabs/product.svg";
-import ProductFill from "../assets/images/tabs/product_fill.svg";
-import ProfileIcon from "../components/ProfileIcon";
+import Help from "../../assets/images/tabs/help.svg";
+import HelpFill from "../../assets/images/tabs/help_fill.svg";
+import Home from "../../assets/images/tabs/home.svg";
+import HomeFill from "../../assets/images/tabs/home_fill.svg";
+import Product from "../../assets/images/tabs/product.svg";
+import ProductFill from "../../assets/images/tabs/product_fill.svg";
+import ProfileIcon from "../../components/ProfileIcon";
+
+import styles from "./styles";
 
 const BottomTab = createBottomTabNavigator();
 
-export function NonAuthenticatedScreens() {
+export const NonAuthenticatedScreens = () => {
+  const [isVisible, setIsVisible] = useState(true);
   const { token, data } = useSelector((state: RootState) => state.auth);
+
+  useEffect(() => {
+    if (isAndroid) {
+      Keyboard.addListener("keyboardDidShow", _keyboardDidShow);
+      Keyboard.addListener("keyboardDidHide", _keyboardDidHide);
+    }
+
+    return () => {
+      Keyboard.removeListener("keyboardDidShow", _keyboardDidShow);
+      Keyboard.removeListener("keyboardDidHide", _keyboardDidHide);
+    };
+  }, []);
+
+  const _keyboardDidShow = () => {
+    setIsVisible(false);
+  };
+
+  const _keyboardDidHide = () => {
+    setIsVisible(true);
+  };
 
   return (
     <BottomTab.Navigator
@@ -37,7 +63,7 @@ export function NonAuthenticatedScreens() {
               ? renderNonAuthScreenTabs(props.state)
               : renderAuthScreenTabs(props.state, data?.uri)
           }
-          duration={1200}
+          duration={800}
           iconSize={25}
           itemContainerWidth="fill"
           itemInnerSpace={13}
@@ -45,6 +71,10 @@ export function NonAuthenticatedScreens() {
           {...props}
         />
       )}
+      tabBarOptions={{
+        keyboardHidesTabBar: true,
+        style: isVisible ? styles.container : { display: "none" },
+      }}
     >
       {!token
         ? nonAuthBottomTabScreens.map(screen => (
@@ -65,7 +95,7 @@ export function NonAuthenticatedScreens() {
           ))}
     </BottomTab.Navigator>
   );
-}
+};
 
 function renderNonAuthScreenTabs(state: TabNavigationState<ParamListBase>) {
   const defaultTabs = {
