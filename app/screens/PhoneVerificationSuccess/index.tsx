@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import PhoneSuccessIcon from "../../assets/images/phone-success.svg";
 import Screen from "../../components/Screen";
-import { PASSWORD_SETUP } from "../../constants";
+import { FACE_VERIFICATION_SETUP } from "../../constants";
 
 import styles from "./styles";
 
@@ -27,7 +27,7 @@ const PhoneVerificationSuccess = () => {
           primary
           rounded
           style={styles.button}
-          onPress={() => navigate(PASSWORD_SETUP)}
+          onPress={() => navigate(FACE_VERIFICATION_SETUP)}
         >
           <Text>{t("phone_verification.continue")}</Text>
         </Button>

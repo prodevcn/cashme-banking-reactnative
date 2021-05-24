@@ -16,9 +16,9 @@ import Validation from "../../components/Validation";
 import Screen from "../../components/Screen";
 import ShakingComponent from "../../components/ShakingComponent";
 import {
-  resendRecoveryCode,
-  submitRecoveryCode,
-} from "../../redux/forgotPasswordSlice";
+  resendEmailVerificationCode,
+  submitEmailVerificationCode,
+} from "../../redux/signUpSlice";
 import { RootState } from "../../store";
 import {
   VERIFICATION_CODE_LENGTH,
@@ -40,17 +40,13 @@ const EmailVerification = () => {
     setValue,
   });
   const dispatch = useDispatch();
-  const {
-    data = {},
-    loading,
-    error,
-  } = useSelector((state: RootState) => state.forgotPassword);
+  const { data, loading, error } = useSelector(
+    (state: RootState) => state.signUp,
+  );
 
   const handleSubmit = async (values: any) => {
     try {
-      await dispatch(
-        submitRecoveryCode({ ...values, username: data?.username }),
-      );
+      await dispatch(submitEmailVerificationCode(values));
 
       navigate(EMAIL_VERIFICATION_SUCCESS);
     } catch {
@@ -70,9 +66,9 @@ const EmailVerification = () => {
     }
   };
 
-  const resendCode = (username: string = "") => {
+  const resendCode = () => {
     try {
-      dispatch(resendRecoveryCode({ username }));
+      dispatch(resendEmailVerificationCode());
     } catch {
       Toast.show({
         text: error,
@@ -96,7 +92,7 @@ const EmailVerification = () => {
         <Text style={styles.contentInfo}>
           <Trans
             defaults={`email_verification.info`}
-            values={{ username: data.username }}
+            values={{ email: data?.email }}
             components={[<Text style={styles.contentInfoUsername}>text</Text>]}
           />
         </Text>
@@ -152,10 +148,10 @@ const EmailVerification = () => {
                 <Button
                   full
                   transparent
-                  disabled={data && !data.sent}
+                  disabled={data && !data?.sent}
                   style={styles.resendButton}
                   onPress={() => {
-                    resendCode(data && data.username);
+                    resendCode();
                     setFieldValue("code", "");
                   }}
                 >
