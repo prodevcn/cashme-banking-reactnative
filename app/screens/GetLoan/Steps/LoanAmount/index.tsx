@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Button, Text } from "native-base";
-import { Col, Row, Grid } from "react-native-easy-grid";
+import { Button, Text, Col, Row, Grid } from "native-base";
 import { useTranslation } from "react-i18next";
 
 import CalculationSlider from "./CalculationSlider";

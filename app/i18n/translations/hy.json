@@ -302,6 +302,19 @@
       "realize_annual_rate": "Գիտակցում եմ տարեկան տոկոսադրույքը",
       "confirm": "Հաստատել",
       "input_description": "Խնդրում ենք մուտքագրել <0>{{rate}}</0>, որը Ձեր վարկի փաստացի տոկոսադրույքն է"
+    },
+    "transfer_options": {
+      "preferred_loan_option": "Վարկի ստացման նախընտրելի տարբերակը",
+      "cash": "Կանխիկ",
+      "transfer": "Փոխանցումով",
+      "confirm": "Հաստատել",
+      "offices_to_get_money": "Գումարի ստացման գրասենյակներ"
+    },
+    "office_locations": {
+      "title": "Գրասենյակներ",
+      "open": "Բաց է",
+      "closed": "Փակ է",
+      "working_hours": "Աշխ․ ժամեր"
     }
   }
 }

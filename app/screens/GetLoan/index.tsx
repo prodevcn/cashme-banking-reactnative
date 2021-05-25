@@ -1,17 +1,18 @@
 import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { View, Text, Icon } from "native-base";
-import { Route, RouteProp, useNavigation } from "@react-navigation/native";
+import { RouteProp, useNavigation } from "@react-navigation/native";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import Wizard from "react-native-wizard";
 
 import Screen from "../../components/Screen";
 import LoanAmount from "./Steps/LoanAmount";
-
-import styles from "./styles";
+import TransferOptions from "./Steps/TransferOptions";
 import { PROPOSAL_LIST } from "../../constants/products";
 import { GET_LOAN } from "../../constants";
 import { RootStackParamList } from "../../navigations";
+
+import styles from "./styles";
 
 type GetLoanRouteProp = RouteProp<RootStackParamList, typeof GET_LOAN>;
 
@@ -49,11 +50,7 @@ const GetLoan = ({ route }: Props) => {
     },
     {
       title: t("credit_steps.get_loan.loan_approval"),
-      content: (
-        <View
-          style={{ width: "100%", height: 500, backgroundColor: "#9be07d" }}
-        />
-      ),
+      content: <TransferOptions />,
     },
     {
       title: t("credit_steps.get_loan.loan_approval"),

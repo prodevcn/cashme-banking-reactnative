@@ -1,8 +1,7 @@
 import React, { useCallback, useMemo, useRef, useState } from "react";
-import { Form, Input, Item, Text, View } from "native-base";
+import { Form, Input, Item, Text, View, Col, Row } from "native-base";
 import { useTranslation, Trans } from "react-i18next";
 import { ViewStyle } from "react-native";
-import { Col, Row } from "react-native-easy-grid";
 import {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,

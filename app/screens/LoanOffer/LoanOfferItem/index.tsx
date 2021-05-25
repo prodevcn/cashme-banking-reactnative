@@ -1,8 +1,7 @@
 import React from "react";
 import { ViewStyle } from "react-native";
 import { useTranslation } from "react-i18next";
-import { Button, Text } from "native-base";
-import { Col, Row, Grid } from "react-native-easy-grid";
+import { Button, Text, Col, Row, Grid } from "native-base";
 
 import Currency from "../../../components/Currency";
 
