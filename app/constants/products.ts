@@ -1,5 +1,9 @@
 import i18n from "../i18n";
 import { CASH_ME, ARPI_SOLAR, VEHICLE, PAY_LATER } from "./screens";
+import { IProposalItemProps } from "../components/ProposalItem/index";
+import HomeLoanIcon from "../assets/images/home-loan.svg";
+import CarLoanIcon from "../assets/images/car-loan.svg";
+import ConsumerLoanIcon from "../assets/images/consumer-loan.svg";
 
 export const FINANCE_PRODUCTS = {
   1: {
@@ -27,3 +31,27 @@ export const FINANCE_PRODUCTS = {
     image: require("../assets/images/products/finance/auto.png"),
   },
 };
+
+export const PROPOSAL_LIST: Array<IProposalItemProps> = [
+  {
+    title: i18n.t("credit_steps.get_loan.consumer"),
+    description: i18n.t("credit_steps.get_loan.proposal_description"),
+    amount: 800000,
+    color: "#FFB858",
+    Icon: ConsumerLoanIcon,
+  },
+  {
+    title: i18n.t("credit_steps.get_loan.car"),
+    description: i18n.t("credit_steps.get_loan.proposal_description"),
+    amount: 1300000,
+    color: "#5B59D3",
+    Icon: CarLoanIcon,
+  },
+  {
+    title: i18n.t("credit_steps.get_loan.property"),
+    description: i18n.t("credit_steps.get_loan.proposal_description"),
+    amount: 14000000,
+    color: "#49AA36",
+    Icon: HomeLoanIcon,
+  },
+];

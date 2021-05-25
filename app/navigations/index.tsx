@@ -8,6 +8,7 @@ import {
   securitySettingsScreen,
   productScreens,
   getLoan,
+  proposals,
   personalInfoScreen,
   smsSignatureScreen,
   pdfViewerScreen,
@@ -53,6 +54,12 @@ class RootNavigation extends Component {
           name={getLoan.name}
           component={getLoan.component}
           options={getLoan.options}
+        />
+
+        <Stack.Screen
+          name={proposals.name}
+          component={proposals.component}
+          options={proposals.options}
         />
 
         <Stack.Screen

@@ -21,13 +21,14 @@ import {
   EMAIL_VERIFICATION_SUCCESS,
   PASSWORD_SETUP,
   FACE_VERIFICATION_SETUP,
+  PROFILE_CREATE_SUCCESS,
   CASH_ME,
   SECURITY_QUESTION_SETUP,
   GET_LOAN,
+  LOAN_TYPES,
   PERSONAL_INFO,
   SMS_SIGNATURE,
-  PDF_VIEWER,
-  PROFILE_CREATE_SUCCESS,
+  PDF_VIEWER
 } from "../constants";
 import Help from "../screens/Help";
 import Categories from "../screens/Categories";
@@ -50,11 +51,12 @@ import PasswordSetup from "../screens/PasswordSetup";
 import CashMe from "../screens/Products/CashMe";
 import SecurityQuestionSetup from "../screens/SecurityQuestionSetup";
 import FaceVerificationSetup from "../screens/FaceVerificationSetup";
+import ProfileCreateSuccess from "../screens/ProfileCreateSuccess";
 import GetLoan from "../screens/GetLoan";
+import Proposals from "../screens/Proposals";
 import PersonalInfo from "../screens/PersonalInfo";
 import SmsSignature from "../screens/SmsSignature";
 import PdfViewer from "../screens/PdfViewer";
-import ProfileCreateSuccess from "../screens/ProfileCreateSuccess";
 
 interface Route {
   name: string;
@@ -169,6 +171,12 @@ export const authScreens: Array<Route> = [
 export const getLoan: Route = {
   name: GET_LOAN,
   component: GetLoan,
+  options: { headerShown: false },
+};
+
+export const proposals: Route = {
+  name: LOAN_TYPES,
+  component: Proposals,
   options: { headerShown: false },
 };
 

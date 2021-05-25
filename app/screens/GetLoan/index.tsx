@@ -1,29 +1,42 @@
 import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { View, Text, Icon } from "native-base";
-import { useNavigation } from "@react-navigation/native";
+import { Route, useNavigation } from "@react-navigation/native";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import Wizard from "react-native-wizard";
 
 import Screen from "../../components/Screen";
-import Proposals from "./Steps/Proposals";
+import LoanAmount from "./Steps/LoanAmount";
 
 import styles from "./styles";
+import { PROPOSAL_LIST } from "../../constants/products";
 
-const GetLoan = () => {
+interface IGetLoan {
+  route: Route<any>;
+}
+
+const GetLoan = ({ route }: IGetLoan) => {
   const { t } = useTranslation();
   const { goBack } = useNavigation();
   const wizard = useRef<any>();
   const [currentStep, setCurrentStep] = useState(0);
-
+  const proposalIndex = route.params?.proposalIndex;
   // TODO: All the views should be replaced with already ready components/screens
   const stepList = [
     {
-      title: t("get_loan.loan_amount"),
-      content: <Proposals />,
+      title: t("credit_steps.get_loan.loan_amount"),
+      content: (
+        <LoanAmount
+          title={PROPOSAL_LIST[proposalIndex].title}
+          description={PROPOSAL_LIST[proposalIndex].description}
+          amount={PROPOSAL_LIST[proposalIndex].amount}
+          color={PROPOSAL_LIST[proposalIndex].color}
+          LoanIcon={PROPOSAL_LIST[proposalIndex].Icon}
+        />
+      ),
     },
     {
-      title: t("get_loan.personal_info"),
+      title: t("credit_steps.get_loan.personal_info"),
       content: (
         <View
           style={{ width: "100%", height: 500, backgroundColor: "#e04851" }}
@@ -31,7 +44,7 @@ const GetLoan = () => {
       ),
     },
     {
-      title: t("get_loan.loan_approval"),
+      title: t("credit_steps.get_loan.loan_approval"),
       content: (
         <View
           style={{ width: "100%", height: 500, backgroundColor: "#9be07d" }}
@@ -39,7 +52,7 @@ const GetLoan = () => {
       ),
     },
     {
-      title: t("get_loan.loan_approval"),
+      title: t("credit_steps.get_loan.loan_approval"),
       content: (
         <View
           style={{ width: "100%", height: 500, backgroundColor: "#2634e0" }}
@@ -47,7 +60,7 @@ const GetLoan = () => {
       ),
     },
     {
-      title: t("get_loan.loan_approval"),
+      title: t("credit_steps.get_loan.loan_approval"),
       content: (
         <View
           style={{ width: "100%", height: 500, backgroundColor: "#2634e0" }}

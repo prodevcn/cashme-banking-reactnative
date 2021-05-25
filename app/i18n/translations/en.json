@@ -286,6 +286,21 @@
       "car": "Car",
       "property": "Property",
       "proposal_description": "Collateral loans and without"
+    },
+    "loan_amount_step": {
+      "loan_amount": "Loan amount",
+      "actual_interest_rate": "Actual interest rate",
+      "nominal_interest_rate": "Nominal interest rate",
+      "loan_term": "Loan term",
+      "months": "months",
+      "monthly_payment": "Monthly payment",
+      "last_month_payment": "Last month payment",
+      "amount_to_be_paid": "Amount to be paid",
+      "upcoming_payment_day": "Upcoming payment day",
+      "preferred_amount": "Preferred amount to be paid monthly",
+      "realize_annual_rate": "I realize the annual interest rate",
+      "confirm": "Confirm",
+      "input_description": "Please input <0>{{rate}}</0>, which is your loan interest rate"
     }
   }
 }

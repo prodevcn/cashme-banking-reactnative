@@ -12,9 +12,10 @@ export interface IProposalItemProps {
   style?: ViewStyle;
   title: string;
   description: string;
-  amount: number | string;
+  amount: number;
   color: string;
   Icon: any;
+  onPress?(): void;
 }
 
 const ProposalItem = ({
@@ -24,6 +25,7 @@ const ProposalItem = ({
   amount,
   color,
   Icon,
+  onPress,
 }: IProposalItemProps) => {
   const { t } = useTranslation();
 
@@ -36,9 +38,11 @@ const ProposalItem = ({
           <Currency amount={amount} style={styles.amount} />
         </Col>
         <Col style={styles.rightSide}>
-          <Icon style={[styles.icon, { color }]} />
-          <Button rounded style={styles.button}>
-            <Text style={styles.buttonText}>{t("get_loan.apply_now")}</Text>
+          <Icon style={styles.icon} fill={color} />
+          <Button rounded style={styles.button} onPress={onPress}>
+            <Text style={styles.buttonText}>
+              {t("credit_steps.get_loan.apply_now")}
+            </Text>
           </Button>
         </Col>
       </Row>
