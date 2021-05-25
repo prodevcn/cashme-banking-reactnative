@@ -10,6 +10,7 @@
   "months": "Months",
   "monthly": "Monthly",
   "profile": "Profile",
+  "dropdown_default": "Please select...",
   "login": {
     "login": "Login",
     "username": "Phone/Email",
@@ -229,5 +230,23 @@
     "yes": "Yes",
     "no": "No",
     "note": "You will be redirected to Registration page and the registration will start again"
+  },
+
+  "credit_steps": {
+    "personal_info": {
+      "notification": {
+        "email": "Email",
+        "in_person": "In person",
+        "post": "Postal service",
+        "method": "Notification mode"
+      },
+      "dispute_solution": {
+        "gnm_arbitration": "GNM arbitration court",
+        "optimum": "Optimus Lex LTD",
+        "court": "Settle in court",
+        "arbitration": "UBA Financial arbitration",
+        "method": "Dispute solution method"
+      }
+    }
   }
 }

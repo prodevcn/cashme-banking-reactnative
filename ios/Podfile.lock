@@ -3,7 +3,7 @@ PODS:
   - DoubleConversion (1.1.6)
   - EXApplication (3.0.0):
     - UMCore
-  - EXConstants (10.0.1):
+  - EXConstants (10.1.3):
     - UMConstantsInterface
     - UMCore
   - EXErrorRecovery (1.4.0):
@@ -11,7 +11,7 @@ PODS:
   - EXFileSystem (9.3.0):
     - UMCore
     - UMFileSystemInterface
-  - EXFont (9.0.0):
+  - EXFont (9.1.0):
     - UMCore
     - UMFontInterface
   - EXImageLoader (1.3.0):
@@ -35,7 +35,7 @@ PODS:
   - EXPermissions (10.0.0):
     - UMCore
     - UMPermissionsInterface
-  - EXSecureStore (10.0.0):
+  - EXSecureStore (10.1.0):
     - UMCore
   - EXSplashScreen (0.8.1):
     - React-Core
@@ -298,7 +298,7 @@ PODS:
     - React-Core (= 0.63.4)
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
-  - RNCAsyncStorage (1.15.2):
+  - RNCAsyncStorage (1.15.4):
     - React-Core
   - RNCMaskedView (0.1.10):
     - React
@@ -310,7 +310,7 @@ PODS:
     - React-Core
   - RNScreens (2.15.2):
     - React-Core
-  - RNSVG (12.1.0):
+  - RNSVG (12.1.1):
     - React
   - UMAppLoader (1.4.0)
   - UMBarCodeScannerInterface (5.4.0)
@@ -543,10 +543,10 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   EXApplication: e3a06b6d81f94e526f029a57b2121d6cde044004
-  EXConstants: d9483a8fe0a963dd7ee3389f371303773e6ecd37
+  EXConstants: c4dd28acc12039c999612507a5f935556f2c86ce
   EXErrorRecovery: b46af4b91e2b4ec598ab1fa51d2cf088aaf5511f
   EXFileSystem: 0e4974ab77bff04cda68d2886d070cbe64b93a6b
-  EXFont: ec06a9fb8f0d558fb7afa8540f3d932622fa85d6
+  EXFont: d6fb79f9863120f0d0b26b0c2d1453bc9511e9df
   EXImageLoader: f96ec9992733a4224418bbd9382e5485c8948944
   EXKeepAwake: 615c5a6fca5c2afedf611bb6f7f2ca323246de94
   EXLinearGradient: c803fbd1aa974be038177b1e45524bc35759fe9c
@@ -554,7 +554,7 @@ SPEC CHECKSUMS:
   EXLocation: d55e2a37f61bcfb4eba9c813b3f4621d896c4c00
   EXNotifications: 3a88b7b898fa842cae3c5a895a255fab554bc0c8
   EXPermissions: 17d4846ad1880f6891c74ae58ca1acb43e47ed47
-  EXSecureStore: 6ae3b88c67304ab64c63d44acc8fa31b1f5fb400
+  EXSecureStore: da5a255445bb6ee8b8ac54f65412bc803272bd87
   EXSplashScreen: 8c7c1112ce7611a853486af4737fe2298eda7657
   EXSQLite: bda6a286dded0637bb312ee781239dcca163ff4b
   EXUpdates: 5124c03b19730078482a27b97fcb4718b06ca6b5
@@ -586,13 +586,13 @@ SPEC CHECKSUMS:
   React-RCTText: 5c51df3f08cb9dedc6e790161195d12bac06101c
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
-  RNCAsyncStorage: 9b7605e899f9acb2fba33e87952c529731265453
+  RNCAsyncStorage: f47a7e8f927f7c9da947491fc55752eb9ce17f2d
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNKeychain: f75b8c8b2f17d3b2aa1f25b4a0ac5b83d947ff8f
   RNReanimated: 514a11da3a2bcc6c3dfd9de32b38e2b9bf101926
   RNScreens: 3d682bcaba69a4f8e55543d90818704f34338db1
-  RNSVG: ce9d996113475209013317e48b05c21ee988d42e
+  RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   UMAppLoader: 92d044af52626af3d81a69796ad666fc7a9a7d78
   UMBarCodeScannerInterface: 3f6c1b09ef4b867ce752b8c0b3893bcf9cd85f32
   UMCameraInterface: d516032121192fee9a6c93bdfff0bb2cc7282796
