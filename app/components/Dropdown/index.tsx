@@ -12,7 +12,6 @@ import {
   BottomSheetBackdropProps,
   BottomSheetFlatList,
   BottomSheetModal,
-  BottomSheetModalProvider,
   TouchableOpacity,
 } from "@gorhom/bottom-sheet";
 
@@ -116,45 +115,43 @@ const Dropdown = ({
         onPress={openDropdown}
         {...rest}
       >
-        <Text>{selected.text || defaultText || t("dropdown_default")}</Text>
+        <Text style={styles.btnText}>
+          {selected.text || defaultText || t("dropdown_default")}
+        </Text>
         <Icon type="AntDesign" name={opened ? "up" : "down"} />
       </Button>
 
-      <BottomSheetModalProvider>
-        <View>
-          <BottomSheetModal
-            ref={bottomSheetRef}
-            key="Dropdown"
-            name="Dropdown"
-            index={opened ? 1 : 0}
-            snapPoints={snapPoints}
-            dismissOnPanDown={false}
-            handleComponent={null}
-            backdropComponent={renderBackdrop}
-            backgroundComponent={ModalBackground}
-            enableContentPanningGesture={false}
-            enableHandlePanningGesture={false}
-            onAnimate={(fromIndex, toIndex) => setOpened(toIndex === 1)}
-            animationDuration={500}
-            style={styles.dropdownSheet}
-          >
-            <View style={styles.header}>
-              <Text style={styles.headerText}>{label}</Text>
-            </View>
-
-            <BottomSheetFlatList
-              data={options}
-              keyExtractor={i => i.value}
-              renderItem={renderItem}
-              ItemSeparatorComponent={({ highlighted }) => (
-                <View
-                  style={[styles.separator, highlighted && { marginLeft: 0 }]}
-                />
-              )}
-            />
-          </BottomSheetModal>
+      <BottomSheetModal
+        ref={bottomSheetRef}
+        key="Dropdown"
+        name="Dropdown"
+        index={opened ? 1 : 0}
+        snapPoints={snapPoints}
+        dismissOnPanDown={false}
+        handleComponent={null}
+        backdropComponent={renderBackdrop}
+        backgroundComponent={ModalBackground}
+        enableContentPanningGesture={false}
+        enableHandlePanningGesture={false}
+        onAnimate={(fromIndex, toIndex) => setOpened(toIndex === 1)}
+        animationDuration={500}
+        style={styles.dropdownSheet}
+      >
+        <View style={styles.header}>
+          <Text style={styles.headerText}>{label}</Text>
         </View>
-      </BottomSheetModalProvider>
+
+        <BottomSheetFlatList
+          data={options}
+          keyExtractor={i => i.value}
+          renderItem={renderItem}
+          ItemSeparatorComponent={({ highlighted }) => (
+            <View
+              style={[styles.separator, highlighted && { marginLeft: 0 }]}
+            />
+          )}
+        />
+      </BottomSheetModal>
     </>
   );
 };
