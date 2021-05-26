@@ -6,6 +6,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     borderBottomWidth: 1,
   },
+  btnText: {
+    width: "90%",
+    paddingLeft: 0,
+  },
 
   backgroundContainer: {
     ...StyleSheet.absoluteFillObject,

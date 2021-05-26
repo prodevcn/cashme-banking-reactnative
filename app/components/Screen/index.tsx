@@ -10,10 +10,13 @@ import {
 } from "react-native";
 import { View, Text } from "native-base";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Loader from "../Loader";
-import styles from "./styles";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { useNavigation } from "@react-navigation/native";
+import Loader from "../Loader";
+
 import Logo from "../Logo";
+
+import styles from "./styles";
 
 interface ScreenProps {
   title?: string;
@@ -53,57 +56,59 @@ const Screen = (props: ScreenProps) => {
   } = props;
 
   return (
-    <SafeAreaView style={[styles.container, backgroundColor]}>
-      <StatusBar
-        animated={true}
-        barStyle={statusBarStyle}
-        showHideTransition={showHideTransitionStyle}
-        hidden={statusBarHidden}
-      />
-      {hasHeader && (
-        <Header style={styles.header}>
-          <Left style={styles.headerLeft}>
-            {[
-              hasBackIcon && (
-                <Icon
-                  key="ArrowLeftIcon"
-                  type="AntDesign"
-                  name="arrowleft"
-                  style={styles.goBackIcon}
-                  onPress={() => goBack()}
-                />
-              ),
-              hasLogo && <Logo key="DarkLogo" type="dark" />,
-            ]}
-          </Left>
-          <Right />
-        </Header>
-      )}
-      {[
-        title && (
-          <View key="ScreenSubHeader" style={styles.subHeader}>
-            <Text style={[styles.subHeaderText, titleStyle]}>{title}</Text>
-          </View>
-        ),
-        isNonScrolling ? (
-          <View
-            key="ScreenView"
-            style={[styles.innerContainer, innerStyle, backgroundColor]}
-          >
-            {props.children}
-          </View>
-        ) : (
-          <ScrollView
-            key="ScreenScrollView"
-            style={[styles.innerContainer, innerStyle, backgroundColor]}
-            contentContainerStyle={contentContainerStyle}
-          >
-            {props.children}
-          </ScrollView>
-        ),
-        isLoading && <Loader key="Loader" isFullScreen={true} />,
-      ]}
-    </SafeAreaView>
+    <BottomSheetModalProvider>
+      <SafeAreaView style={[styles.container, backgroundColor]}>
+        <StatusBar
+          animated={true}
+          barStyle={statusBarStyle}
+          showHideTransition={showHideTransitionStyle}
+          hidden={statusBarHidden}
+        />
+        {hasHeader && (
+          <Header style={styles.header}>
+            <Left style={styles.headerLeft}>
+              {[
+                hasBackIcon && (
+                  <Icon
+                    key="ArrowLeftIcon"
+                    type="AntDesign"
+                    name="arrowleft"
+                    style={styles.goBackIcon}
+                    onPress={() => goBack()}
+                  />
+                ),
+                hasLogo && <Logo key="DarkLogo" type="dark" />,
+              ]}
+            </Left>
+            <Right />
+          </Header>
+        )}
+        {[
+          title && (
+            <View key="ScreenSubHeader" style={styles.subHeader}>
+              <Text style={[styles.subHeaderText, titleStyle]}>{title}</Text>
+            </View>
+          ),
+          isNonScrolling ? (
+            <View
+              key="ScreenView"
+              style={[styles.innerContainer, innerStyle, backgroundColor]}
+            >
+              {props.children}
+            </View>
+          ) : (
+            <ScrollView
+              key="ScreenScrollView"
+              style={[styles.innerContainer, innerStyle, backgroundColor]}
+              contentContainerStyle={contentContainerStyle}
+            >
+              {props.children}
+            </ScrollView>
+          ),
+          isLoading && <Loader key="Loader" isFullScreen={true} />,
+        ]}
+      </SafeAreaView>
+    </BottomSheetModalProvider>
   );
 };
 
