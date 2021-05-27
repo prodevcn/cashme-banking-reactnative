@@ -44,25 +44,25 @@ const signUpSlice = createSlice({
 
 const { signUpStarted, signUpFulfilled, signUpFailed } = signUpSlice.actions;
 
-export const signUp = (
-  signUpData: SignUpPayload,
-): AppThunk => async dispatch => {
-  try {
-    dispatch(signUpStarted());
+export const signUp =
+  (signUpData: SignUpPayload): AppThunk =>
+  async dispatch => {
+    try {
+      dispatch(signUpStarted());
 
-    const { data = {} }: any = await api.post(
-      "/api/submit-document-mobile",
-      signUpData,
-    );
+      const { data = {} }: any = await api.post(
+        "/api/submit-document-mobile",
+        signUpData,
+      );
 
-    dispatch(signUpFulfilled(data));
+      dispatch(signUpFulfilled(data));
 
-    return data.data;
-  } catch (e) {
-    dispatch(signUpFailed(e.message));
+      return data.data;
+    } catch (e) {
+      dispatch(signUpFailed(e.message));
 
-    throw e;
-  }
-};
+      throw e;
+    }
+  };
 
 export default signUpSlice;

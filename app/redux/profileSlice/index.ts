@@ -32,11 +32,8 @@ const profileSlice = createSlice({
   },
 });
 
-const {
-  fetchProfileStarted,
-  fetchProfileFulfilled,
-  fetchProfileFailed,
-} = profileSlice.actions;
+const { fetchProfileStarted, fetchProfileFulfilled, fetchProfileFailed } =
+  profileSlice.actions;
 
 export const fetchProfile = (): AppThunk => async dispatch => {
   try {
