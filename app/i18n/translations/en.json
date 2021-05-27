@@ -224,6 +224,14 @@
     "remove_glasses": "Remove your glasses, if necessary",
     "face_forward": "Face forward and make sure your eyes are clearly visible"
   },
+  "security_question_setup": {
+    "title": "Security question",
+    "caption": "Almost done! Please answer this security question",
+    "answer": "Answer",
+    "continue": "Continue",
+    "placeholder": "Select Security Question",
+    "apply": "apply"
+  },
   "change_id_sheet": {
     "title": "Change ID",
     "description": "Are you sure you want to change your ID number?",

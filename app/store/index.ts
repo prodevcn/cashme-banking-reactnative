@@ -10,6 +10,7 @@ import categorySlice from "../redux/categorySlice";
 import productSlice from "../redux/productSlice";
 import signUpSlice from "../redux/signUpSlice";
 import cashMeSlice from "../redux/cashMeSlice";
+import securityQuestionSlice from "../redux/securityQuestionSlice";
 
 const store = configureStore({
   reducer: {
@@ -23,6 +24,7 @@ const store = configureStore({
     product: productSlice.reducer,
     signUp: signUpSlice.reducer,
     cashMe: cashMeSlice.reducer,
+    securityQuestion: securityQuestionSlice.reducer,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
 });

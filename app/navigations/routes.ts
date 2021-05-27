@@ -22,6 +22,7 @@ import {
   PASSWORD_SETUP,
   FACE_VERIFICATION_SETUP,
   CASH_ME,
+  SECURITY_QUESTION_SETUP,
 } from "../constants";
 import Help from "../screens/Help";
 import Categories from "../screens/Categories";
@@ -43,6 +44,7 @@ import EmailVerificationSuccess from "../screens/EmailVerificationSuccess";
 import PasswordSetup from "../screens/PasswordSetup";
 import FaceVerificationSetup from "../screens/FaceVerificationSetup/index";
 import CashMe from "../screens/Products/CashMe";
+import SecurityQuestionSetup from "../screens/SecurityQuestionSetup";
 
 interface Route {
   name: string;
@@ -140,6 +142,11 @@ export const authScreens: Array<Route> = [
   {
     name: FACE_VERIFICATION_SETUP,
     component: FaceVerificationSetup,
+    options: { headerShown: false },
+  },
+  {
+    name: SECURITY_QUESTION_SETUP,
+    component: SecurityQuestionSetup,
     options: { headerShown: false },
   },
 ];

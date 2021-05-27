@@ -24,7 +24,7 @@ interface DropdownProps {
   label?: string;
 }
 
-interface DropdownItem {
+export interface DropdownItem {
   text: string;
   value: string;
 }
