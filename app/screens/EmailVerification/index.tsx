@@ -40,9 +40,11 @@ const EmailVerification = () => {
     setValue,
   });
   const dispatch = useDispatch();
-  const { data = {}, loading, error } = useSelector(
-    (state: RootState) => state.forgotPassword,
-  );
+  const {
+    data = {},
+    loading,
+    error,
+  } = useSelector((state: RootState) => state.forgotPassword);
 
   const handleSubmit = async (values: any) => {
     try {
