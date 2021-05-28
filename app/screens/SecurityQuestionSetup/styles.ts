@@ -23,10 +23,6 @@ const styles = StyleSheet.create({
   formArea: {
     marginTop: 50,
   },
-
-  upperCase: {
-    textTransform: "uppercase",
-  },
   questionItem: {
     marginVertical: 10,
     flexDirection: "row",

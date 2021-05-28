@@ -33,8 +33,11 @@ const productSlice = createSlice({
 });
 
 // Actions
-const { productFetchSuccess, productFetchFailure, productFetchStart } =
-  productSlice.actions;
+const {
+  productFetchSuccess,
+  productFetchFailure,
+  productFetchStart,
+} = productSlice.actions;
 
 export const getProducts = (): AppThunk => async dispatch => {
   try {

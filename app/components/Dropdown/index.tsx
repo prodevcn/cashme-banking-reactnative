@@ -99,7 +99,7 @@ const Dropdown = ({
         style={[styles.item]}
       >
         <Icon
-          type="AntDesign"
+          type="FontAwesome"
           name="check"
           style={[styles.itemIcon, { opacity: isSelected(item) ? 1 : 0 }]}
         />

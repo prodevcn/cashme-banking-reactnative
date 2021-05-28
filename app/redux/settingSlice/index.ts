@@ -21,10 +21,10 @@ const settingSlice = createSlice({
 
 const { setInternetConnectionSuccess } = settingSlice.actions;
 
-export const setHasInternetConnection =
-  (hasConnection: boolean): AppThunk =>
-  async dispatch => {
-    dispatch(setInternetConnectionSuccess(hasConnection));
-  };
+export const setHasInternetConnection = (
+  hasConnection: boolean,
+): AppThunk => async dispatch => {
+  dispatch(setInternetConnectionSuccess(hasConnection));
+};
 
 export default settingSlice;
