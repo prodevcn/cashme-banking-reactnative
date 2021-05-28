@@ -57,8 +57,11 @@ const cashMeSlice = createSlice({
 });
 
 // Actions
-const { cashMeFetchSuccess, cashMeFetchFailure, cashMeFetchStart } =
-  cashMeSlice.actions;
+const {
+  cashMeFetchSuccess,
+  cashMeFetchFailure,
+  cashMeFetchStart,
+} = cashMeSlice.actions;
 
 export const getCashMeInfo = (): AppThunk => async dispatch => {
   try {

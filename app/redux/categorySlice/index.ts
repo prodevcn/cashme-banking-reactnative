@@ -44,8 +44,11 @@ const categorySlice = createSlice({
 });
 
 // Actions
-const { categoryFetchSuccess, categoryFetchFailure, categoryFetchStart } =
-  categorySlice.actions;
+const {
+  categoryFetchSuccess,
+  categoryFetchFailure,
+  categoryFetchStart,
+} = categorySlice.actions;
 
 export const getCategories = (): AppThunk => async dispatch => {
   try {

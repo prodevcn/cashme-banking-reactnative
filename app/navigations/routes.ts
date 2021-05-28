@@ -25,6 +25,7 @@ import {
   SECURITY_QUESTION_SETUP,
   GET_LOAN,
   PERSONAL_INFO,
+  PROFILE_CREATE_SUCCESS,
 } from "../constants";
 import Help from "../screens/Help";
 import Categories from "../screens/Categories";
@@ -49,6 +50,7 @@ import SecurityQuestionSetup from "../screens/SecurityQuestionSetup";
 import FaceVerificationSetup from "../screens/FaceVerificationSetup";
 import GetLoan from "../screens/GetLoan";
 import PersonalInfo from "../screens/PersonalInfo";
+import ProfileCreateSuccess from "../screens/ProfileCreateSuccess";
 
 interface Route {
   name: string;
@@ -151,6 +153,11 @@ export const authScreens: Array<Route> = [
   {
     name: SECURITY_QUESTION_SETUP,
     component: SecurityQuestionSetup,
+    options: { headerShown: false },
+  },
+  {
+    name: PROFILE_CREATE_SUCCESS,
+    component: ProfileCreateSuccess,
     options: { headerShown: false },
   },
 ];

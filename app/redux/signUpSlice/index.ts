@@ -183,8 +183,8 @@ export const submitPhoneVerificationCode =
     } catch (e) {
       dispatch(fetchFailed(e.message));
 
-      throw e;
-    }
-  };
+    throw e;
+  }
+};
 
 export default signUpSlice;

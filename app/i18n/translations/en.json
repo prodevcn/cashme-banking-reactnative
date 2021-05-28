@@ -71,6 +71,12 @@
     "skip": "Skip",
     "dont_show_again": "Don't show again"
   },
+  "profile_created": {
+    "title": "Profile has been created",
+    "success": "Thank you, your account is created and activated.",
+    "home": "Home",
+    "loan_apply": "Apply for loan"
+  },
   "validations": {
     "required": "This field is required",
     "email": "Invalid email",
