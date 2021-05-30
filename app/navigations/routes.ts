@@ -24,6 +24,7 @@ import {
   CASH_ME,
   SECURITY_QUESTION_SETUP,
   GET_LOAN,
+  PERSONAL_INFO,
 } from "../constants";
 import Help from "../screens/Help";
 import Categories from "../screens/Categories";
@@ -47,6 +48,7 @@ import CashMe from "../screens/Products/CashMe";
 import SecurityQuestionSetup from "../screens/SecurityQuestionSetup";
 import FaceVerificationSetup from "../screens/FaceVerificationSetup";
 import GetLoan from "../screens/GetLoan";
+import PersonalInfo from "../screens/PersonalInfo";
 
 interface Route {
   name: string;
@@ -189,3 +191,9 @@ export const productScreens: Array<Route> = [
     options: { title: "CashMe", headerShown: false },
   },
 ];
+
+export const personalInfoScreen: Route = {
+  name: PERSONAL_INFO,
+  component: PersonalInfo,
+  options: { headerShown: false },
+};
