@@ -241,6 +241,11 @@
   },
   "credit_steps": {
     "personal_info": {
+      "email": "Էլ․ հասցե",
+      "phone": "Հեռ.",
+      "second_phone": "Երկրորդ հեռ.",
+      "country": "Երկիր",
+      "address": "Հասցե",
       "notification": {
         "email": "էլեկտրոնային փոստ",
         "in_person": "Առձեռն",

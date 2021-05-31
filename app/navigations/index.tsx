@@ -8,6 +8,7 @@ import {
   securitySettingsScreen,
   productScreens,
   getLoan,
+  personalInfoScreen,
 } from "./routes";
 
 const Stack = createStackNavigator();
@@ -62,6 +63,12 @@ class RootNavigation extends Component {
           name={securitySettingsScreen.name}
           component={securitySettingsScreen.component}
           options={securitySettingsScreen.options}
+        />
+
+        <Stack.Screen
+          name={personalInfoScreen.name}
+          component={personalInfoScreen.component}
+          options={personalInfoScreen.options}
         />
       </Stack.Navigator>
     );

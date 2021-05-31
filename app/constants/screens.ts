@@ -35,3 +35,5 @@ export const CASH_ME = "CASH_ME";
 export const PAY_LATER = "PAY_LATER";
 export const ARPI_SOLAR = "ARPI_SOLAR";
 export const VEHICLE = "VEHICLE";
+
+export const PERSONAL_INFO = "PERSONAL_INFO";

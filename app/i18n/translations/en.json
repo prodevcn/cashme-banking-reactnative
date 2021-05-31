@@ -241,6 +241,11 @@
   },
   "credit_steps": {
     "personal_info": {
+      "email": "Email",
+      "phone": "Phone",
+      "second_phone": "Second phone",
+      "country": "Country",
+      "address": "Address",
       "notification": {
         "email": "Email",
         "in_person": "In person",

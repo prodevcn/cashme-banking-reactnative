@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { ViewStyle } from "react-native";
 import { Button, Text, Icon, View } from "native-base";
 import { useTranslation } from "react-i18next";
 import {
@@ -14,6 +15,7 @@ import {
   BottomSheetModal,
   TouchableOpacity,
 } from "@gorhom/bottom-sheet";
+import { randomId } from "../../helpers/string";
 
 import styles from "./styles";
 
@@ -22,6 +24,7 @@ interface DropdownProps {
   options: DropdownItem[];
   onChange?: Function;
   label?: string;
+  style?: ViewStyle;
 }
 
 export interface DropdownItem {
@@ -34,6 +37,7 @@ const Dropdown = ({
   options = [],
   label,
   onChange = () => {},
+  style,
   ...rest
 }: DropdownProps) => {
   const bottomSheetRef = useRef<BottomSheetModal>(null);
@@ -42,6 +46,8 @@ const Dropdown = ({
   const { t } = useTranslation();
 
   const snapPoints = useMemo(() => ["0%", "50%"], []);
+
+  const key = useMemo(() => randomId(5), []);
 
   useLayoutEffect(() => {
     bottomSheetRef.current?.present();
@@ -66,12 +72,14 @@ const Dropdown = ({
 
   const openDropdown = () => {
     setOpened(true);
+
+    bottomSheetRef.current?.present();
     bottomSheetRef.current?.expand();
   };
 
   const closeDropdown = () => {
     setOpened(false);
-    bottomSheetRef.current?.collapse();
+    bottomSheetRef.current?.dismiss();
   };
 
   const selectItem = (item: any, index: number) => {
@@ -106,7 +114,7 @@ const Dropdown = ({
   );
 
   return (
-    <>
+    <View style={style}>
       <Button
         iconRight
         transparent
@@ -123,8 +131,8 @@ const Dropdown = ({
 
       <BottomSheetModal
         ref={bottomSheetRef}
-        key="Dropdown"
-        name="Dropdown"
+        key={key}
+        name={key}
         index={opened ? 1 : 0}
         snapPoints={snapPoints}
         dismissOnPanDown={false}
@@ -133,7 +141,11 @@ const Dropdown = ({
         backgroundComponent={ModalBackground}
         enableContentPanningGesture={false}
         enableHandlePanningGesture={false}
-        onAnimate={(fromIndex, toIndex) => setOpened(toIndex === 1)}
+        onAnimate={(fromIndex, toIndex) => {
+          if (toIndex === 0) {
+            closeDropdown();
+          }
+        }}
         animationDuration={500}
         style={styles.dropdownSheet}
       >
@@ -152,7 +164,7 @@ const Dropdown = ({
           )}
         />
       </BottomSheetModal>
-    </>
+    </View>
   );
 };
 
