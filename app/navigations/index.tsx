@@ -7,6 +7,7 @@ import {
   resetPinScreen,
   securitySettingsScreen,
   productScreens,
+  getLoan,
 } from "./routes";
 
 const Stack = createStackNavigator();
@@ -38,6 +39,12 @@ class RootNavigation extends Component {
             options={screen.options}
           />
         ))}
+
+        <Stack.Screen
+          name={getLoan.name}
+          component={getLoan.component}
+          options={getLoan.options}
+        />
 
         <Stack.Screen
           name={noConnectionScreen.name}

@@ -239,7 +239,6 @@
     "no": "No",
     "note": "You will be redirected to Registration page and the registration will start again"
   },
-
   "credit_steps": {
     "personal_info": {
       "notification": {
@@ -255,6 +254,17 @@
         "arbitration": "UBA Financial arbitration",
         "method": "Dispute solution method"
       }
+    },
+    "get_loan": {
+      "loan_amount": "Loan Amount",
+      "personal_info": "Personal Info",
+      "loan_approval": "Loan Approval",
+      "apply_now": "Apply Now",
+      "available_amount": "Your available amount is up to:",
+      "consumer": "Consumer",
+      "car": "Car",
+      "property": "Property",
+      "proposal_description": "Collateral loans and without"
     }
   }
 }

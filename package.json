@@ -69,6 +69,7 @@
     "react-native-svg-transformer": "^0.14.3",
     "react-native-unimodules": "~0.12.0",
     "react-native-web": "~0.13.12",
+    "react-native-wizard": "^2.1.0",
     "react-navigation": "^4.4.4",
     "react-redux": "^7.2.3",
     "redux": "^4.0.5",
