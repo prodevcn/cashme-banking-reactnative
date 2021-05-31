@@ -2,12 +2,14 @@ import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigation } from "@react-navigation/native";
 import { Button, View, Text } from "native-base";
+import { useSelector } from "react-redux";
 import BottomSheet from "@gorhom/bottom-sheet";
 
 import Screen from "../../components/Screen";
 import ChangeIdSheet from "./ChangeIdSheet";
 import { HOME_SCREEN, FACE_RECOGNITION } from "../../constants";
 import { getCameraPermission } from "../../helpers/permission";
+import { RootState } from "../../store/index";
 
 import GlassIcon from "../../assets/images/glass.svg";
 import FaceIcon from "../../assets/images/face.svg";
@@ -16,6 +18,7 @@ import styles from "./styles";
 const FaceVerificationSetup = () => {
   const { t } = useTranslation();
   const { navigate } = useNavigation();
+  const { data } = useSelector((state: RootState) => state.signUp);
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   const handleSelfieBtn = async () => {
@@ -53,7 +56,7 @@ const FaceVerificationSetup = () => {
                   <Text style={styles.boxDesc}>
                     {t("face_verification_setup.box_description")}
                   </Text>
-                  <Text style={styles.boxID}>AB12356879</Text>
+                  <Text style={styles.boxID}>{data.documentNumber}</Text>
                   <Text
                     style={styles.btnID}
                     onPress={() => {

@@ -13,4 +13,5 @@ export const listenForSms = async (callback: Function) => {
 const otpHandler = (message: string, callback: Function) => {
   const otp = /(\d{4})/g.exec(message) || [];
   callback(otp[0]);
+  RNOtpVerify.removeListener();
 };

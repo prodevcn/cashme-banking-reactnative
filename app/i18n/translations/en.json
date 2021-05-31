@@ -183,7 +183,7 @@
   },
   "phone_verification": {
     "title": "SMS Verification",
-    "info": "An SMS with a verification code has been sent to your <0>{{username}}</0>",
+    "info": "An SMS with a verification code has been sent to your <0>{{phoneNumber}}</0>",
     "label": "Please Enter Verification Code",
     "verified_title": "Phone Number Verified",
     "success": "You have successfully verified your phone number",
@@ -193,7 +193,7 @@
   },
   "email_verification": {
     "title": "Email Address Verification",
-    "info": "Verification link and code has been sent to your <0>{{username}}</0> email",
+    "info": "Verification link and code has been sent to your <0>{{email}}</0> email",
     "label": "Please Enter Verification Code",
     "success": "You have successfully verified your email",
     "resend_code": "Resend Code",

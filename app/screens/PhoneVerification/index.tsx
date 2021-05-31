@@ -16,9 +16,9 @@ import Validation from "../../components/Validation";
 import Screen from "../../components/Screen";
 import ShakingComponent from "../../components/ShakingComponent";
 import {
-  resendRecoveryCode,
-  submitRecoveryCode,
-} from "../../redux/forgotPasswordSlice";
+  resendPhoneVerificationCode,
+  submitPhoneVerificationCode,
+} from "../../redux/signUpSlice";
 import { RootState } from "../../store";
 import {
   VERIFICATION_CODE_LENGTH,
@@ -42,11 +42,9 @@ const PhoneVerification = () => {
     setValue,
   });
   const dispatch = useDispatch();
-  const {
-    data = {},
-    loading,
-    error,
-  } = useSelector((state: RootState) => state.forgotPassword);
+  const { data, loading, error } = useSelector(
+    (state: RootState) => state.signUp,
+  );
 
   useEffect(() => {
     const getSmsCode = (message: string) => {
@@ -55,13 +53,13 @@ const PhoneVerification = () => {
     };
 
     listenForSms(getSmsCode);
+
+    dispatch(resendPhoneVerificationCode());
   }, []);
 
   const handleSubmit = async (values: any) => {
     try {
-      await dispatch(
-        submitRecoveryCode({ ...values, username: data?.username }),
-      );
+      await dispatch(submitPhoneVerificationCode(values));
 
       navigate(PHONE_VERIFICATION_SUCCESS);
     } catch {
@@ -81,9 +79,9 @@ const PhoneVerification = () => {
     }
   };
 
-  const resendCode = (username: string = "") => {
+  const resendCode = () => {
     try {
-      dispatch(resendRecoveryCode({ username }));
+      dispatch(resendPhoneVerificationCode());
     } catch {
       Toast.show({
         text: error,
@@ -107,7 +105,7 @@ const PhoneVerification = () => {
         <Text style={styles.contentInfo}>
           <Trans
             defaults={`phone_verification.info`}
-            values={{ username: `+374${data.username}` }}
+            values={{ phoneNumber: `+374${data.phoneNumber}` }}
             components={[<Text style={styles.contentInfoUsername}>text</Text>]}
           />
         </Text>
@@ -168,7 +166,7 @@ const PhoneVerification = () => {
                   disabled={data && !data.sent}
                   style={styles.resendButton}
                   onPress={() => {
-                    resendCode(data && data.username);
+                    resendCode();
                     setFieldValue("code", "");
                   }}
                 >
