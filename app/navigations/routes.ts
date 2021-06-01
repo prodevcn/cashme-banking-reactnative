@@ -25,6 +25,8 @@ import {
   SECURITY_QUESTION_SETUP,
   GET_LOAN,
   PERSONAL_INFO,
+  SMS_SIGNATURE,
+  PDF_VIEWER,
   PROFILE_CREATE_SUCCESS,
 } from "../constants";
 import Help from "../screens/Help";
@@ -50,6 +52,8 @@ import SecurityQuestionSetup from "../screens/SecurityQuestionSetup";
 import FaceVerificationSetup from "../screens/FaceVerificationSetup";
 import GetLoan from "../screens/GetLoan";
 import PersonalInfo from "../screens/PersonalInfo";
+import SmsSignature from "../screens/SmsSignature";
+import PdfViewer from "../screens/PdfViewer";
 import ProfileCreateSuccess from "../screens/ProfileCreateSuccess";
 
 interface Route {
@@ -202,5 +206,17 @@ export const productScreens: Array<Route> = [
 export const personalInfoScreen: Route = {
   name: PERSONAL_INFO,
   component: PersonalInfo,
+  options: { headerShown: false },
+};
+
+export const smsSignatureScreen: Route = {
+  name: SMS_SIGNATURE,
+  component: SmsSignature,
+  options: { headerShown: false },
+};
+
+export const pdfViewerScreen: Route = {
+  name: PDF_VIEWER,
+  component: PdfViewer,
   options: { headerShown: false },
 };
