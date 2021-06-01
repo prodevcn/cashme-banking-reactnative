@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
@@ -19,7 +19,10 @@ import securityQuestionSchema from "../../validation/schemas/securityQuestionSch
 import Validation from "../../components/Validation";
 import Screen from "../../components/Screen";
 import Dropdown, { DropdownItem } from "../../components/Dropdown";
-import { getSecurityQuestions } from "../../redux/securityQuestionSlice";
+import {
+  getSecurityQuestions,
+  setSecurityQuestion,
+} from "../../redux/securityQuestionSlice";
 import { RootState } from "../../store";
 import { PROFILE_CREATE_SUCCESS } from "../../constants";
 
@@ -32,11 +35,11 @@ const SecurityQuestionSetup = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
-  const [selectedQuestion, setQuestion] = useState();
   const { data, loading, error } = useSelector(
     (state: RootState) => state.securityQuestion,
   );
   const initialValues: SecurityQuestionFormValues = {
+    id: 0,
     answer: "",
   };
 
@@ -46,7 +49,7 @@ const SecurityQuestionSetup = () => {
 
   const handleSubmit = async (values: any) => {
     try {
-      // TODO: submit question & answer
+      await dispatch(setSecurityQuestion(values));
 
       navigate(PROFILE_CREATE_SUCCESS);
     } catch (e) {
@@ -58,10 +61,13 @@ const SecurityQuestionSetup = () => {
     }
   };
 
-  const formatQuestion = (list: Array<string> = []): Array<DropdownItem> => {
-    return list.map(item => {
-      return { text: item, value: item };
-    });
+  const formatQuestion = (questions: any): Array<DropdownItem> => {
+    return (
+      questions &&
+      questions.map((item: any) => {
+        return { text: item.question, value: item.id };
+      })
+    );
   };
 
   return (
@@ -81,17 +87,23 @@ const SecurityQuestionSetup = () => {
           validationSchema={securityQuestionSchema}
           onSubmit={handleSubmit}
           component={props => {
-            const { values, handleChange, handleBlur, handleSubmit } = props;
+            const {
+              values,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              setFieldValue,
+            } = props;
 
             return (
               <Form>
                 <Dropdown
                   onChange={(item: any) => {
-                    setQuestion(item.text);
+                    setFieldValue("id", item.value);
                   }}
                   defaultText={t("security_question_setup.title")}
-                  options={formatQuestion(data)}
-                ></Dropdown>
+                  options={formatQuestion(data?.questions)}
+                />
                 <View style={styles.formArea}>
                   <Validation formik={props} name="answer" showMessage={true}>
                     <Item floatingLabel>

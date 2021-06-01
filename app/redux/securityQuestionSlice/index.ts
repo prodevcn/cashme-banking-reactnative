@@ -2,8 +2,17 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "../../store";
 import api from "../../util/api";
 
+interface SecurityQuestionData {
+  questions: Array<any>;
+}
+
+interface SetSecurityQuestionPayload {
+  id: number;
+  answer: string;
+}
+
 interface ISecurityQuestionState {
-  data: Array<string> | undefined;
+  data?: SecurityQuestionData;
   loading: boolean;
   error: any;
 }
@@ -23,12 +32,26 @@ const securityQuestionSlice = createSlice({
     },
     securityQuestionFetchSuccess: (
       state,
-      action: PayloadAction<Array<string> | undefined>,
+      action: PayloadAction<SecurityQuestionData>,
     ) => {
       state.loading = false;
       state.data = action.payload;
     },
     securityQuestionFetchFailure: (
+      state,
+      action: PayloadAction<object | undefined>,
+    ) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    setSecurityQuestionStart: state => {
+      state.loading = true;
+    },
+    setSecurityQuestionSuccess: state => {
+      state.loading = false;
+      state.error = null;
+    },
+    setSecurityQuestionFailure: (
       state,
       action: PayloadAction<object | undefined>,
     ) => {
@@ -44,30 +67,40 @@ const {
   securityQuestionFetchStart,
   securityQuestionFetchSuccess,
   securityQuestionFetchFailure,
+  setSecurityQuestionStart,
+  setSecurityQuestionSuccess,
+  setSecurityQuestionFailure,
 } = securityQuestionSlice.actions;
 
 export const getSecurityQuestions = (): AppThunk => async dispatch => {
   try {
     dispatch(securityQuestionFetchStart());
 
-    // TODO: Uncomment after finish API endpoints
+    const { data } = await api.get("/api/security-questions");
+    const securityQuestionData: SecurityQuestionData = data.data;
 
-    // const securityQuestions: ISecurityQuestionState = await (await api.get("/api/security-questions")).data;
-    // dispatch(securityQuestionFetchSuccess(securityQuestions.data));
-    // return securityQuestions.data;
-
-    // Only for test
-    const data = [
-      "Lorem ipstem keate gories Lorem ipstem keate gories Lorem ipstem keate gories 1",
-      "Lorem ipstem keate gories Lorem ipstem keate gories Lorem ipstem keate gories 2",
-      "Lorem ipstem keate gories Lorem ipstem keate gories Lorem ipstem keate gories 3",
-      "Lorem ipstem keate gories Lorem ipstem keate gories Lorem ipstem keate gories 4",
-      "Lorem ipstem keate gories Lorem ipstem keate gories Lorem ipstem keate gories 5",
-    ];
-    dispatch(securityQuestionFetchSuccess(data));
-    return data;
+    dispatch(securityQuestionFetchSuccess(securityQuestionData));
+    return securityQuestionData;
   } catch (e) {
     dispatch(securityQuestionFetchFailure(e.message));
+  }
+};
+
+export const setSecurityQuestion = (
+  setSecurityQuestionData: SetSecurityQuestionPayload,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(setSecurityQuestionStart());
+
+    const { data } = await api.post(
+      "/api/security-questions",
+      setSecurityQuestionData,
+    );
+
+    dispatch(setSecurityQuestionSuccess());
+    return data.data;
+  } catch (e) {
+    dispatch(setSecurityQuestionFailure(e.message));
   }
 };
 

@@ -37,22 +37,20 @@ const loanSlice = createSlice({
 
 const { getLoanStarted, loanSuccess, loanFailed } = loanSlice.actions;
 
-export const getLoan =
-  (loanData: LoanPayload): AppThunk =>
-  async dispatch => {
-    try {
-      dispatch(getLoanStarted());
+export const getLoan = (loanData: LoanPayload): AppThunk => async dispatch => {
+  try {
+    dispatch(getLoanStarted());
 
-      const { data = {} }: any = await api.post("/api/loan", loanData);
+    const { data = {} }: any = await api.post("/api/loan", loanData);
 
-      dispatch(loanSuccess());
+    dispatch(loanSuccess());
 
-      return data;
-    } catch (e) {
-      dispatch(loanFailed(e.message));
+    return data;
+  } catch (e) {
+    dispatch(loanFailed(e.message));
 
-      return e;
-    }
-  };
+    return e;
+  }
+};
 
 export default loanSlice;

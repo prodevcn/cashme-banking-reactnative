@@ -195,129 +195,129 @@ const {
   submitResetPasswordFailed,
 } = forgotPasswordSlice.actions;
 
-export const forgotPassword =
-  (forgotPasswordData: ForgotPasswordPayload): AppThunk =>
-  async dispatch => {
-    try {
-      dispatch(forgotPasswordStarted());
+export const forgotPassword = (
+  forgotPasswordData: ForgotPasswordPayload,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(forgotPasswordStarted());
 
-      const { data = {} }: any = await api.post(
-        "/api/auth/send-recovery-code",
-        forgotPasswordData,
-      );
+    const { data = {} }: any = await api.post(
+      "/api/auth/send-recovery-code",
+      forgotPasswordData,
+    );
 
-      dispatch(forgotPasswordFulfilled(data.data));
+    dispatch(forgotPasswordFulfilled(data.data));
 
-      return data.data;
-    } catch (e) {
-      dispatch(forgotPasswordFailed(e.message));
+    return data.data;
+  } catch (e) {
+    dispatch(forgotPasswordFailed(e.message));
 
-      throw e;
-    }
-  };
+    throw e;
+  }
+};
 
-export const resendRecoveryCode =
-  (forgotPasswordData: ForgotPasswordPayload): AppThunk =>
-  async dispatch => {
-    try {
-      dispatch(resendCodeStarted());
+export const resendRecoveryCode = (
+  forgotPasswordData: ForgotPasswordPayload,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(resendCodeStarted());
 
-      const { data = {} }: any = await api.post(
-        "/api/auth/resend-recovery-code",
-        forgotPasswordData,
-      );
+    const { data = {} }: any = await api.post(
+      "/api/auth/resend-recovery-code",
+      forgotPasswordData,
+    );
 
-      dispatch(resendCodeFulfilled(data.data));
+    dispatch(resendCodeFulfilled(data.data));
 
-      return data.data;
-    } catch (e) {
-      dispatch(resendCodeFailed(e.message));
+    return data.data;
+  } catch (e) {
+    dispatch(resendCodeFailed(e.message));
 
-      throw e;
-    }
-  };
+    throw e;
+  }
+};
 
-export const submitRecoveryCode =
-  (submitCodeData: SubmitCodePayload): AppThunk =>
-  async dispatch => {
-    try {
-      dispatch(submitCodeStarted());
+export const submitRecoveryCode = (
+  submitCodeData: SubmitCodePayload,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(submitCodeStarted());
 
-      const { data = {} }: any = await api.post(
-        "/api/auth/submit-recovery-code",
-        submitCodeData,
-      );
+    const { data = {} }: any = await api.post(
+      "/api/auth/submit-recovery-code",
+      submitCodeData,
+    );
 
-      dispatch(submitCodeFulfilled(data.data));
+    dispatch(submitCodeFulfilled(data.data));
 
-      return data.data;
-    } catch (e) {
-      dispatch(submitCodeFailed(e.message));
+    return data.data;
+  } catch (e) {
+    dispatch(submitCodeFailed(e.message));
 
-      throw e;
-    }
-  };
+    throw e;
+  }
+};
 
-export const getSecurityQuestion =
-  (securityQuestionData: GetSecurityQuestionPayload): AppThunk =>
-  async dispatch => {
-    try {
-      dispatch(getSecurityQuestionStarted());
+export const getSecurityQuestion = (
+  securityQuestionData: GetSecurityQuestionPayload,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(getSecurityQuestionStarted());
 
-      const { data = {} }: any = await api.get(
-        `/api/auth/get-security-question?username=${securityQuestionData.username}`,
-      );
+    const { data = {} }: any = await api.get(
+      `/api/auth/get-security-question?username=${securityQuestionData.username}`,
+    );
 
-      dispatch(getSecurityQuestionFulfilled(data.data));
+    dispatch(getSecurityQuestionFulfilled(data.data));
 
-      return data.data;
-    } catch (e) {
-      dispatch(getSecurityQuestionFailed(e.message));
+    return data.data;
+  } catch (e) {
+    dispatch(getSecurityQuestionFailed(e.message));
 
-      throw e;
-    }
-  };
+    throw e;
+  }
+};
 
-export const submitSecurityAnswer =
-  (securityAnswerData: submitSecurityAnswerPayload): AppThunk =>
-  async dispatch => {
-    try {
-      dispatch(submitSecurityAnswerStarted());
+export const submitSecurityAnswer = (
+  securityAnswerData: submitSecurityAnswerPayload,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(submitSecurityAnswerStarted());
 
-      const { data = {} }: any = await api.post(
-        "/api/auth/submit-security-answer",
-        securityAnswerData,
-      );
+    const { data = {} }: any = await api.post(
+      "/api/auth/submit-security-answer",
+      securityAnswerData,
+    );
 
-      dispatch(submitSecurityAnswerFulfilled(data.data));
+    dispatch(submitSecurityAnswerFulfilled(data.data));
 
-      return data.data;
-    } catch (e) {
-      dispatch(submitSecurityAnswerFailed(e.message));
+    return data.data;
+  } catch (e) {
+    dispatch(submitSecurityAnswerFailed(e.message));
 
-      throw e;
-    }
-  };
+    throw e;
+  }
+};
 
-export const resetPassword =
-  (resetPasswordData: submitResetPasswordPayload): AppThunk =>
-  async dispatch => {
-    try {
-      dispatch(submitResetPasswordStarted());
+export const resetPassword = (
+  resetPasswordData: submitResetPasswordPayload,
+): AppThunk => async dispatch => {
+  try {
+    dispatch(submitResetPasswordStarted());
 
-      const { data = {} }: any = await api.post(
-        "/api/auth/reset-password",
-        resetPasswordData,
-      );
+    const { data = {} }: any = await api.post(
+      "/api/auth/reset-password",
+      resetPasswordData,
+    );
 
-      dispatch(submitResetPasswordFulfilled(data.data));
+    dispatch(submitResetPasswordFulfilled(data.data));
 
-      return data.data;
-    } catch (e) {
-      dispatch(submitResetPasswordFailed(e.message));
+    return data.data;
+  } catch (e) {
+    dispatch(submitResetPasswordFailed(e.message));
 
-      throw e;
-    }
-  };
+    throw e;
+  }
+};
 
 export default forgotPasswordSlice;

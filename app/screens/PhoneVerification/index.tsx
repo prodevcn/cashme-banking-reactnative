@@ -105,7 +105,7 @@ const PhoneVerification = () => {
         <Text style={styles.contentInfo}>
           <Trans
             defaults={`phone_verification.info`}
-            values={{ phoneNumber: `+374${data.phoneNumber}` }}
+            values={{ phoneNumber: data.phoneNumber }}
             components={[<Text style={styles.contentInfoUsername}>text</Text>]}
           />
         </Text>

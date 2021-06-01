@@ -11,9 +11,12 @@ import passwordSetupSchema from "../../validation/schemas/passwordSetupSchema";
 import Validation from "../../components/Validation";
 import PasswordInput from "../../components/PasswordInput";
 import Screen from "../../components/Screen";
-import { resetPassword } from "../../redux/forgotPasswordSlice";
+import { setPassword } from "../../redux/signUpSlice";
 import { RootState } from "../../store";
-import { HOME_SCREEN, PASSWORD_STRENGTH_LEVELS } from "../../constants";
+import {
+  SECURITY_QUESTION_SETUP,
+  PASSWORD_STRENGTH_LEVELS,
+} from "../../constants";
 import { hasNumber, hasLetter } from "../../validation";
 import CheckMark from "../../assets/images/check-mark.svg";
 import customColor from "../../theme/customColor";
@@ -26,17 +29,13 @@ const PasswordSetup = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
-  const { data, loading, error } = useSelector(
-    (state: RootState) => state.forgotPassword,
-  );
+  const { loading, error } = useSelector((state: RootState) => state.signUp);
 
   const handleSubmit = async (values: any) => {
     try {
-      const username = data?.username || "";
+      await dispatch(setPassword(values));
 
-      await dispatch(resetPassword({ username, ...values }));
-
-      navigate(HOME_SCREEN);
+      navigate(SECURITY_QUESTION_SETUP);
     } catch (e) {
       Toast.show({
         text: error,
@@ -108,7 +107,7 @@ const PasswordSetup = () => {
                   <Text style={styles.requirementText}>
                     <CheckMark
                       fill={
-                        values.password.length >= 8
+                        values.password && values.password.length >= 8
                           ? customColor.dodgerBlue
                           : customColor.gray
                       }

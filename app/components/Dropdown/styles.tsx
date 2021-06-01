@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    paddingVertical: 25,
+    paddingVertical: 10,
   },
   headerText: {
     fontSize: 28,
@@ -43,12 +43,14 @@ const styles = StyleSheet.create({
   },
   itemIcon: {
     color: customColor.brandPrimary,
-    fontSize: 20,
+    fontSize: 25,
+    top: 10,
   },
   itemText: {
+    width: "90%",
     color: customColor.gray,
-    fontSize: 20,
-    paddingLeft: 20,
+    fontSize: 16,
+    paddingLeft: 10,
     fontWeight: "500",
   },
   selectedItemText: {

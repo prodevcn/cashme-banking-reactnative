@@ -23,7 +23,7 @@ export const isIdCard = (value?: string) => {
 };
 
 export const hasNumber = (value?: string) => {
-  const containsNumber = /[\d]{1}$/;
+  const containsNumber = /[\d]{1}/;
 
   return containsNumber.test(value || "");
 };
@@ -35,7 +35,7 @@ export const hasLetter = (value?: string) => {
 };
 
 export const isValidPassword = (value?: string) => {
-  const validatedPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const validatedPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d.,;_\-\/@$!%*#?&{}()]{8,}$/;
 
   return validatedPassword.test(value || "");
 };
