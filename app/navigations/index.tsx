@@ -9,9 +9,17 @@ import {
   productScreens,
   getLoan,
   personalInfoScreen,
+  smsSignatureScreen,
+  pdfViewerScreen,
 } from "./routes";
 
-const Stack = createStackNavigator();
+// TODO: list all screens here!
+export type RootStackParamList = { [name: string]: undefined } & {
+  PdfViewer: { uri: string };
+  Main: undefined;
+};
+
+const Stack = createStackNavigator<RootStackParamList>();
 
 class RootNavigation extends Component {
   render() {
@@ -69,6 +77,18 @@ class RootNavigation extends Component {
           name={personalInfoScreen.name}
           component={personalInfoScreen.component}
           options={personalInfoScreen.options}
+        />
+
+        <Stack.Screen
+          name={smsSignatureScreen.name}
+          component={smsSignatureScreen.component}
+          options={smsSignatureScreen.options}
+        />
+
+        <Stack.Screen
+          name={pdfViewerScreen.name}
+          component={pdfViewerScreen.component}
+          options={pdfViewerScreen.options}
         />
       </Stack.Navigator>
     );

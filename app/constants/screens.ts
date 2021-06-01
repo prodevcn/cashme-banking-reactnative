@@ -37,3 +37,5 @@ export const ARPI_SOLAR = "ARPI_SOLAR";
 export const VEHICLE = "VEHICLE";
 
 export const PERSONAL_INFO = "PERSONAL_INFO";
+export const SMS_SIGNATURE = "SMS_SIGNATURE";
+export const PDF_VIEWER = "PDF_VIEWER";

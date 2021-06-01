@@ -20,4 +20,6 @@ export default {
   get buttonPrimaryBg() {
     return this.brandPrimary;
   },
+
+  checkboxBgColor: "#1B8CF4",
 };

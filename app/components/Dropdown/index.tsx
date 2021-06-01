@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import { ViewStyle } from "react-native";
 import { Button, Text, Icon, View } from "native-base";
 import { useTranslation } from "react-i18next";
@@ -55,10 +49,6 @@ const Dropdown = ({
   const snapPoints = useMemo(() => ["0%", "50%"], []);
 
   const key = useMemo(() => randomId(5), []);
-
-  useLayoutEffect(() => {
-    bottomSheetRef.current?.present();
-  }, []);
 
   const renderBackdrop = useCallback(
     (props: BottomSheetBackdropProps) => (
