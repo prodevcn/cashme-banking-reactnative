@@ -25,6 +25,7 @@ interface DropdownProps {
   onChange?: Function;
   label?: string;
   style?: ViewStyle;
+  selectedValue?: string;
 }
 
 export interface DropdownItem {
@@ -35,14 +36,20 @@ export interface DropdownItem {
 const Dropdown = ({
   defaultText,
   options = [],
+  selectedValue,
   label,
   onChange = () => {},
   style,
   ...rest
 }: DropdownProps) => {
+  const initialSelection = options.find(it => it.value === selectedValue) || {
+    value: "",
+    text: "",
+  };
+
   const bottomSheetRef = useRef<BottomSheetModal>(null);
   const [opened, setOpened] = useState(false);
-  const [selected, setSelected] = useState({ value: "", text: "" });
+  const [selected, setSelected] = useState(initialSelection);
   const { t } = useTranslation();
 
   const snapPoints = useMemo(() => ["0%", "50%"], []);
