@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 import Screen from "../../components/Screen";
 import ProfileIcon from "../../components/ProfileIcon";
-import ProfileItem from "../../components/ProfileItem";
+import ProfileItem from "./ProfileItem";
 import { SECURITY_SETTINGS } from "../../constants";
 import { RootState } from "../../store/index";
 
@@ -54,7 +54,11 @@ const Profile = () => {
   ];
 
   return (
-    <Screen isNonScrolling={false} innerStyle={styles.screenContainer}>
+    <Screen
+      hasTabbar={true}
+      isNonScrolling={false}
+      innerStyle={styles.screenContainer}
+    >
       <View>
         <ImageBackground
           source={require("../../assets/images/profile_bg.png")}

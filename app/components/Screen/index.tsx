@@ -47,7 +47,7 @@ const Screen = (props: ScreenProps) => {
     isNonScrolling = true,
     statusBarHidden = false,
     isLoading = false,
-    hasTabbar = true,
+    hasTabbar = false,
 
     titleStyle,
     backgroundColor = styles.background,

@@ -25,7 +25,6 @@ const CashMe = () => {
       isNonScrolling={false}
       isLoading={false}
       innerStyle={styles.screenContainer}
-      hasTabbar={false}
     >
       <View>
         <ProductHeader

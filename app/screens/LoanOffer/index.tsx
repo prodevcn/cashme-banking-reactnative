@@ -34,12 +34,7 @@ const LoanOffer = () => {
   };
 
   return (
-    <Screen
-      hasHeader
-      hasTabbar={false}
-      isNonScrolling={false}
-      innerStyle={styles.innerStyle}
-    >
+    <Screen hasHeader isNonScrolling={false} innerStyle={styles.innerStyle}>
       <>
         <Row style={[styles.autoFill, styles.profileBlock]}>
           <Col style={[styles.autoFill, styles.profileBlockIcon]}>

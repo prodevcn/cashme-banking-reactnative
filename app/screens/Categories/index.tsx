@@ -29,6 +29,7 @@ const Categories = () => {
       isNonScrolling={false}
       isLoading={loading}
       hasHeader={true}
+      hasTabbar={true}
       hasBackIcon={false}
       hasLogo={true}
     >
