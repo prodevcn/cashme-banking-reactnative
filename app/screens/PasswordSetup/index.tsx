@@ -36,7 +36,7 @@ const PasswordSetup = () => {
       await dispatch(setPassword(values));
 
       navigate(SECURITY_QUESTION_SETUP);
-    } catch (e) {
+    } catch (error) {
       Toast.show({
         text: error,
         type: "danger",

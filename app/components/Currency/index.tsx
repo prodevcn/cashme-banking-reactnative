@@ -10,7 +10,7 @@ interface ICurrencyProps {
   style?: TextStyle;
 }
 
-const Currency = ({ amount, precision = 0, style }: ICurrencyProps) => {
+const Currency = ({ amount, precision = 2, style }: ICurrencyProps) => {
   return (
     <Text style={style}>{`֏ ${numberToDecimalString(amount, precision)}`}</Text>
   );

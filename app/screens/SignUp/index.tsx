@@ -44,7 +44,7 @@ const SignUp = () => {
       );
 
       navigate(EMAIL_VERIFICATION);
-    } catch (e) {
+    } catch (error) {
       Toast.show({
         text: error,
         type: "danger",

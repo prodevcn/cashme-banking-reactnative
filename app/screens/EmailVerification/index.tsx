@@ -49,7 +49,7 @@ const EmailVerification = () => {
       await dispatch(submitEmailVerificationCode(values));
 
       navigate(EMAIL_VERIFICATION_SUCCESS);
-    } catch {
+    } catch (error) {
       Toast.show({
         text: error,
         type: "danger",
@@ -69,7 +69,7 @@ const EmailVerification = () => {
   const resendCode = () => {
     try {
       dispatch(resendEmailVerificationCode());
-    } catch {
+    } catch (error) {
       Toast.show({
         text: error,
         type: "danger",

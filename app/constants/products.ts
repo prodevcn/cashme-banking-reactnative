@@ -1,6 +1,6 @@
 import i18n from "../i18n";
 import { CASH_ME, ARPI_SOLAR, VEHICLE, PAY_LATER } from "./screens";
-import { IProposalItemProps } from "../components/ProposalItem/index";
+import { ILoanOfferItemProps } from "../screens/LoanOffer/LoanOfferItem/index";
 import HomeLoanIcon from "../assets/images/home-loan.svg";
 import CarLoanIcon from "../assets/images/car-loan.svg";
 import ConsumerLoanIcon from "../assets/images/consumer-loan.svg";
@@ -32,7 +32,7 @@ export const FINANCE_PRODUCTS = {
   },
 };
 
-export const PROPOSAL_LIST: Array<IProposalItemProps> = [
+export const PROPOSAL_LIST: Array<ILoanOfferItemProps> = [
   {
     title: i18n.t("credit_steps.get_loan.consumer"),
     description: i18n.t("credit_steps.get_loan.proposal_description"),

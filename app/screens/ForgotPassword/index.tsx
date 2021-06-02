@@ -48,7 +48,7 @@ const ForgotPassword = () => {
       await dispatch(forgotPassword({ username }));
 
       navigate(PASSWORD_RECOVER_CODE);
-    } catch (e) {
+    } catch (error) {
       Toast.show({
         text: error,
         type: "danger",

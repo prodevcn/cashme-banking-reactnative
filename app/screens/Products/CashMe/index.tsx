@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { StatusBar } from "react-native";
+import React from "react";
 import { Button, View, Text } from "native-base";
 import { useTranslation } from "react-i18next";
 
@@ -15,20 +14,18 @@ import CashMeLogo from "../../../assets/images/products/finance/cashme/cashme.sv
 import HomeRenovation from "../../../assets/images/products/finance/cashme/home_renovation.svg";
 import TravelLoan from "../../../assets/images/products/finance/cashme/travel_loan.svg";
 import MedicalLoan from "../../../assets/images/products/finance/cashme/medical_loan.svg";
+
 import styles from "./styles";
 
 const CashMe = () => {
   const { t } = useTranslation();
-
-  useEffect(() => {
-    StatusBar.setBackgroundColor("transparent");
-  }, []);
 
   return (
     <Screen
       isNonScrolling={false}
       isLoading={false}
       innerStyle={styles.screenContainer}
+      hasTabbar={false}
     >
       <View>
         <ProductHeader

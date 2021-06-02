@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   autoFill: {
     flex: 0,
   },
-  proposal: {
+  loanOffer: {
     marginBottom: 10,
   },
   profileBlock: {

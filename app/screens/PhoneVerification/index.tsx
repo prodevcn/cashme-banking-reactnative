@@ -62,7 +62,7 @@ const PhoneVerification = () => {
       await dispatch(submitPhoneVerificationCode(values));
 
       navigate(PHONE_VERIFICATION_SUCCESS);
-    } catch {
+    } catch (error) {
       Toast.show({
         text: error,
         type: "danger",
@@ -82,7 +82,7 @@ const PhoneVerification = () => {
   const resendCode = () => {
     try {
       dispatch(resendPhoneVerificationCode());
-    } catch {
+    } catch (error) {
       Toast.show({
         text: error,
         type: "danger",

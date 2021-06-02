@@ -26,6 +26,7 @@ interface ScreenProps {
   isNonScrolling?: boolean;
   statusBarHidden?: boolean;
   isLoading?: boolean;
+  hasTabbar?: boolean;
 
   titleStyle?: TextStyle;
   backgroundColor?: ViewStyle;
@@ -46,6 +47,7 @@ const Screen = (props: ScreenProps) => {
     isNonScrolling = true,
     statusBarHidden = false,
     isLoading = false,
+    hasTabbar = true,
 
     titleStyle,
     backgroundColor = styles.background,
@@ -99,7 +101,12 @@ const Screen = (props: ScreenProps) => {
           ) : (
             <ScrollView
               key="ScreenScrollView"
-              style={[styles.innerContainer, innerStyle, backgroundColor]}
+              style={[
+                styles.innerContainer,
+                innerStyle,
+                backgroundColor,
+                hasTabbar && styles.hasTabbar,
+              ]}
               contentContainerStyle={contentContainerStyle}
             >
               {props.children}

@@ -25,7 +25,7 @@ import {
   CASH_ME,
   SECURITY_QUESTION_SETUP,
   GET_LOAN,
-  LOAN_TYPES,
+  LOAN_OFFER,
   PERSONAL_INFO,
   SMS_SIGNATURE,
   PDF_VIEWER,
@@ -53,7 +53,7 @@ import SecurityQuestionSetup from "../screens/SecurityQuestionSetup";
 import FaceVerificationSetup from "../screens/FaceVerificationSetup";
 import ProfileCreateSuccess from "../screens/ProfileCreateSuccess";
 import GetLoan from "../screens/GetLoan";
-import Proposals from "../screens/Proposals";
+import LoanOffer from "../screens/LoanOffer";
 import PersonalInfo from "../screens/PersonalInfo";
 import SmsSignature from "../screens/SmsSignature";
 import PdfViewer from "../screens/PdfViewer";
@@ -174,9 +174,9 @@ export const getLoan: Route = {
   options: { headerShown: false },
 };
 
-export const proposals: Route = {
-  name: LOAN_TYPES,
-  component: Proposals,
+export const loanOffer: Route = {
+  name: LOAN_OFFER,
+  component: LoanOffer,
   options: { headerShown: false },
 };
 

@@ -4,11 +4,11 @@ import { useTranslation } from "react-i18next";
 import { Button, Text } from "native-base";
 import { Col, Row, Grid } from "react-native-easy-grid";
 
-import Currency from "../Currency";
+import Currency from "../../../components/Currency";
 
 import styles from "./styles";
 
-export interface IProposalItemProps {
+export interface ILoanOfferItemProps {
   style?: ViewStyle;
   title: string;
   description: string;
@@ -18,7 +18,7 @@ export interface IProposalItemProps {
   onPress?(): void;
 }
 
-const ProposalItem = ({
+const LoanOfferItem = ({
   style,
   title,
   description,
@@ -26,7 +26,7 @@ const ProposalItem = ({
   color,
   Icon,
   onPress,
-}: IProposalItemProps) => {
+}: ILoanOfferItemProps) => {
   const { t } = useTranslation();
 
   return (
@@ -50,4 +50,4 @@ const ProposalItem = ({
   );
 };
 
-export default ProposalItem;
+export default LoanOfferItem;

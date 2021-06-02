@@ -1,11 +1,14 @@
-import React, { useEffect, ReactElement } from "react";
-import { ViewStyle, TouchableOpacity, ImageBackground } from "react-native";
+import React from "react";
+import { TouchableOpacity, ImageBackground } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, Button } from "native-base";
 
+import { LOAN_OFFER } from "../../../../constants";
+
 import ArrowLeft from "../../../../assets/images/arrow-left.svg";
 import customColor from "../../../../theme/customColor";
+
 import styles from "./styles";
 
 interface ProductHeaderProps {
@@ -17,6 +20,8 @@ interface ProductHeaderProps {
 const ProductHeader = (props: ProductHeaderProps) => {
   const { goBack } = useNavigation();
   const { t } = useTranslation();
+  const { navigate } = useNavigation();
+
   const {
     backgroundImage = null,
     screenLogo = null,
@@ -41,7 +46,14 @@ const ProductHeader = (props: ProductHeaderProps) => {
         </View>
         <View>
           <Button rounded primary style={styles.button}>
-            <Text style={styles.upper}>{t("single_product.get_it_now")}</Text>
+            <Text
+              style={styles.upper}
+              onPress={() => {
+                navigate(LOAN_OFFER);
+              }}
+            >
+              {t("single_product.get_it_now")}
+            </Text>
           </Button>
         </View>
       </ImageBackground>

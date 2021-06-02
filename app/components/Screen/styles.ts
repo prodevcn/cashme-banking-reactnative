@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
   innerContainer: {
     flex: 1,
     paddingHorizontal: 30,
-    marginBottom: 100,
   },
   background: {
     backgroundColor: customColor.white,
@@ -34,6 +33,10 @@ const styles = StyleSheet.create({
   goBackIcon: {
     color: customColor.dodgerBlue,
     marginRight: 10,
+  },
+
+  hasTabbar: {
+    marginBottom: 100,
   },
 });
 

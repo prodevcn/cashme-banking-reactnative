@@ -5,8 +5,8 @@ import { View, Text } from "native-base";
 import { Col, Row } from "react-native-easy-grid";
 import { useSelector } from "react-redux";
 
+import LoanOfferItem from "./LoanOfferItem";
 import Avatar from "../../components/Avatar";
-import ProposalItem from "../../components/ProposalItem";
 import HorizontalSummary from "../../components/HorizontalSummary";
 import Screen from "../../components/Screen";
 import { PROPOSAL_LIST, GET_LOAN } from "../../constants";
@@ -14,7 +14,7 @@ import { RootState } from "../../store";
 
 import styles from "./styles";
 
-const Proposals = () => {
+const LoanOffer = () => {
   const { t } = useTranslation();
   const { navigate } = useNavigation();
   const { data } = useSelector((state: RootState) => state.loan);
@@ -34,7 +34,12 @@ const Proposals = () => {
   };
 
   return (
-    <Screen hasHeader isNonScrolling={false} innerStyle={styles.innerStyle}>
+    <Screen
+      hasHeader
+      hasTabbar={false}
+      isNonScrolling={false}
+      innerStyle={styles.innerStyle}
+    >
       <>
         <Row style={[styles.autoFill, styles.profileBlock]}>
           <Col style={[styles.autoFill, styles.profileBlockIcon]}>
@@ -66,13 +71,13 @@ const Proposals = () => {
 
           {PROPOSAL_LIST.map((proposal, index) => (
             <Row key={`proposal_${index}`} style={styles.autoFill}>
-              <ProposalItem
+              <LoanOfferItem
                 title={proposal.title}
                 description={proposal.description}
                 amount={proposal.amount}
                 color={proposal.color}
                 Icon={proposal.Icon}
-                style={styles.proposal}
+                style={styles.loanOffer}
                 onPress={() => selectLoan(index)}
               />
             </Row>
@@ -83,4 +88,4 @@ const Proposals = () => {
   );
 };
 
-export default Proposals;
+export default LoanOffer;
