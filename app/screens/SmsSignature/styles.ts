@@ -19,7 +19,9 @@ const styles = StyleSheet.create({
   listItem: {
     alignItems: "flex-start",
     borderBottomWidth: 0,
-    marginHorizontal: 0,
+    paddingHorizontal: 0,
+    marginLeft: 0,
+    marginRight: 0,
   },
   checkboxLabel: {
     fontSize: 9,
@@ -31,28 +33,8 @@ const styles = StyleSheet.create({
     color: customColor.dodgerBlue,
   },
 
-  codeFiledRoot: {
+  codeInputLabel: {
     marginTop: 20,
-    width: "100%",
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
-  cellRoot: {
-    width: 60,
-    height: 60,
-    justifyContent: "center",
-    alignItems: "center",
-    borderBottomColor: customColor.brandGray,
-    borderBottomWidth: 1,
-  },
-  cellText: {
-    color: customColor.black,
-    fontSize: 36,
-    textAlign: "center",
-  },
-  focusCell: {
-    borderBottomColor: customColor.brandBlue,
-    borderBottomWidth: 2,
   },
 
   getCodeButton: {
