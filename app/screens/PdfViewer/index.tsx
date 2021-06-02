@@ -4,13 +4,14 @@ import { RouteProp } from "@react-navigation/native";
 import Pdf from "react-native-pdf";
 import Screen from "../../components/Screen";
 import { RootStackParamList } from "../../navigations";
+import { PDF_VIEWER } from "../../constants";
 
 import styles from "./styles";
 
-type PdfViewerScreenRouteProp = RouteProp<RootStackParamList, "PdfViewer">;
+type PdfViewerRouteProp = RouteProp<RootStackParamList, typeof PDF_VIEWER>;
 
 type Props = {
-  route: PdfViewerScreenRouteProp;
+  route: PdfViewerRouteProp;
 };
 
 const PdfViewer = ({ route }: Props) => {

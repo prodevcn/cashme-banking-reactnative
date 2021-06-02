@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { View, Text, Icon } from "native-base";
-import { Route, useNavigation } from "@react-navigation/native";
+import { Route, RouteProp, useNavigation } from "@react-navigation/native";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import Wizard from "react-native-wizard";
 
@@ -10,17 +10,21 @@ import LoanAmount from "./Steps/LoanAmount";
 
 import styles from "./styles";
 import { PROPOSAL_LIST } from "../../constants/products";
+import { GET_LOAN } from "../../constants";
+import { RootStackParamList } from "../../navigations";
 
-interface IGetLoan {
-  route: Route<any>;
-}
+type GetLoanRouteProp = RouteProp<RootStackParamList, typeof GET_LOAN>;
 
-const GetLoan = ({ route }: IGetLoan) => {
+type Props = {
+  route: GetLoanRouteProp;
+};
+
+const GetLoan = ({ route }: Props) => {
   const { t } = useTranslation();
   const { goBack } = useNavigation();
   const wizard = useRef<any>();
   const [currentStep, setCurrentStep] = useState(0);
-  const proposalIndex = route.params?.proposalIndex;
+  const proposalIndex = route.params.proposalIndex;
   // TODO: All the views should be replaced with already ready components/screens
   const stepList = [
     {
