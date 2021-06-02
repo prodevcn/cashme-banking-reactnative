@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import {
   View,
@@ -13,14 +13,8 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { Formik } from "formik";
 import { Asserts } from "yup";
-import {
-  CodeField,
-  Cursor,
-  useBlurOnFulfill,
-  useClearByFocusCell,
-} from "react-native-confirmation-code-field";
 import Screen from "../../components/Screen";
-import ShakingComponent from "../../components/ShakingComponent";
+import SmsCodeInput from "../../components/SmsCodeInput";
 import Validation from "../../components/Validation";
 import smsSignatureSchema from "../../validation/schemas/smsSignatureSchema";
 
@@ -48,13 +42,6 @@ const PdfTrigger = ({ doc }: any) => {
 
 const SmsSignature = () => {
   const { t } = useTranslation();
-  const [value, setValue] = useState("");
-  const [smsCode, setSmsCode] = useState("");
-  const ref = useBlurOnFulfill({ value, cellCount: SMS_CODE_LENGTH });
-  const [props, getCellOnLayoutHandler] = useClearByFocusCell({
-    value,
-    setValue,
-  });
 
   const initialValues: SmsSignaureFormValues = {
     code: "",
@@ -177,41 +164,21 @@ const SmsSignature = () => {
                   </Body>
                 </ListItem>
 
-                <Label>{t("credit_steps.sms_signature.label")}</Label>
-                <ShakingComponent
-                  shake={values.code?.length === SMS_CODE_LENGTH}
-                >
-                  <Validation formik={formik} name="code" showMessage={true}>
-                    <CodeField
-                      ref={ref}
-                      {...props}
-                      value={smsCode || values.code}
-                      defaultValue={smsCode}
-                      onChangeText={text => {
-                        handleChange(text, setFieldValue);
-                      }}
-                      onBlur={handleBlur("code")}
-                      cellCount={SMS_CODE_LENGTH}
-                      rootStyle={styles.codeFiledRoot}
-                      keyboardType="number-pad"
-                      textContentType="oneTimeCode"
-                      renderCell={({ index, symbol, isFocused }) => (
-                        <View
-                          onLayout={getCellOnLayoutHandler(index)}
-                          key={index}
-                          style={[
-                            styles.cellRoot,
-                            isFocused && styles.focusCell,
-                          ]}
-                        >
-                          <Text style={styles.cellText}>
-                            {symbol || (isFocused ? <Cursor /> : null)}
-                          </Text>
-                        </View>
-                      )}
-                    />
-                  </Validation>
-                </ShakingComponent>
+                <Label style={styles.codeInputLabel}>
+                  {t("credit_steps.sms_signature.label")}
+                </Label>
+                <Validation formik={formik} name="code" showMessage={false}>
+                  <SmsCodeInput
+                    code={values.code}
+                    length={SMS_CODE_LENGTH}
+                    onChange={text => {
+                      handleChange(text, setFieldValue);
+                    }}
+                    onBlur={handleBlur("code")}
+                    onSubmit={handleSubmit}
+                    shakeHandler={() => values.code.length === SMS_CODE_LENGTH}
+                  ></SmsCodeInput>
+                </Validation>
 
                 <Button
                   full
