@@ -3,6 +3,7 @@ export * from "./screens";
 export * from "./setting";
 export * from "./categories";
 export * from "./products";
+export * from "./faq";
 
 import i18n from "../i18n";
 

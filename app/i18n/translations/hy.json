@@ -286,6 +286,21 @@
       "car": "Ավտոգրավով",
       "property": "Գույքով",
       "proposal_description": "Վարկեր Գրավով, Ինչպես Նաև Առանց Գրավի"
+    },
+    "loan_amount_step": {
+      "loan_amount": "Վարկի գումար",
+      "actual_interest_rate": "Փաստացի տոկոսադրույք",
+      "nominal_interest_rate": "Անվանական տոկոսադրույք",
+      "loan_term": "Վարկի Ժամկետ",
+      "months": "ամիս",
+      "monthly_payment": "Ամսական վճարում",
+      "last_month_payment": "Վերջին ամսվա վճարում",
+      "amount_to_be_paid": "Վճարման ենթակա գումար",
+      "upcoming_payment_day": "Վճարման առաջիկա օր",
+      "preferred_amount": "Ամսեկան վճարման ենթակա գումարի նախընտրելի չափը",
+      "realize_annual_rate": "Գիտակցում եմ տարեկան տոկոսադրույքը",
+      "confirm": "Հաստատել",
+      "input_description": "Խնդրում ենք մուտքագրել <0>{{rate}}</0>, որը Ձեր վարկի փաստացի տոկոսադրույքն է"
     }
   }
 }

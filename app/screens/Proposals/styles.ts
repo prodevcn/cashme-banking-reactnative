@@ -1,7 +1,11 @@
 import { StyleSheet } from "react-native";
-import customColor from "../../../../theme/customColor";
+import customColor from "../../theme/customColor";
 
 const styles = StyleSheet.create({
+  innerStyle: {
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+  },
   container: {
     paddingHorizontal: 12,
     paddingVertical: 15,
@@ -24,6 +28,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: customColor.gray,
     paddingBottom: 10,
+    paddingHorizontal: 15,
     marginBottom: 15,
   },
   profileBlockIcon: {
@@ -31,19 +36,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  profileIcon: {
-    width: 45,
-    height: 45,
-  },
   nameBlockText: {
     fontSize: 14,
     lineHeight: 30,
     color: customColor.dodgerBlue,
-  },
-  contentDivider: {
-    width: 1,
-    backgroundColor: customColor.gray,
-    marginHorizontal: 10,
   },
   contentText: {
     fontSize: 12,
