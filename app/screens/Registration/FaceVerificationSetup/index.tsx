@@ -5,14 +5,14 @@ import { Button, View, Text } from "native-base";
 import { useSelector } from "react-redux";
 import BottomSheet from "@gorhom/bottom-sheet";
 
-import Screen from "../../components/Screen";
+import Screen from "../../../components/Screen";
 import ChangeIdSheet from "./ChangeIdSheet";
-import { HOME_SCREEN, FACE_RECOGNITION, PASSWORD_SETUP } from "../../constants";
-import { getCameraPermission } from "../../helpers/permission";
-import { RootState } from "../../store/index";
+import { HOME_SCREEN, FACE_RECOGNITION } from "../../../constants";
+import { getCameraPermission } from "../../../helpers/permission";
+import { RootState } from "../../../store/index";
 
-import GlassIcon from "../../assets/images/glass.svg";
-import FaceIcon from "../../assets/images/face.svg";
+import GlassIcon from "../../../assets/images/glass.svg";
+import FaceIcon from "../../../assets/images/face.svg";
 import styles from "./styles";
 
 const FaceVerificationSetup = () => {
@@ -22,13 +22,11 @@ const FaceVerificationSetup = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   const handleSelfieBtn = async () => {
-    // const status = await getCameraPermission();
+    const status = await getCameraPermission();
 
-    // if (status) {
-    //   navigate(FACE_RECOGNITION);
-    // }
-
-    navigate(PASSWORD_SETUP);
+    if (status) {
+      navigate(FACE_RECOGNITION);
+    }
   };
 
   return (

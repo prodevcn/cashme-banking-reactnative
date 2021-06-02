@@ -7,19 +7,19 @@ import { Formik } from "formik";
 import { Asserts } from "yup";
 import { useNavigation } from "@react-navigation/native";
 import { BoxPasswordStrengthDisplay } from "react-native-password-strength-meter";
-import passwordSetupSchema from "../../validation/schemas/passwordSetupSchema";
-import Validation from "../../components/Validation";
-import PasswordInput from "../../components/PasswordInput";
-import Screen from "../../components/Screen";
-import { setPassword } from "../../redux/signUpSlice";
-import { RootState } from "../../store";
+import passwordSetupSchema from "../../../validation/schemas/passwordSetupSchema";
+import Validation from "../../../components/Validation";
+import PasswordInput from "../../../components/PasswordInput";
+import Screen from "../../../components/Screen";
+import { setPassword } from "../../../redux/signUpSlice";
+import { RootState } from "../../../store";
 import {
   SECURITY_QUESTION_SETUP,
   PASSWORD_STRENGTH_LEVELS,
-} from "../../constants";
-import { hasNumber, hasLetter } from "../../validation";
-import CheckMark from "../../assets/images/check-mark.svg";
-import customColor from "../../theme/customColor";
+} from "../../../constants";
+import { hasNumber, hasLetter } from "../../../validation";
+import CheckMark from "../../../assets/images/check-mark.svg";
+import customColor from "../../../theme/customColor";
 
 import styles from "./styles";
 

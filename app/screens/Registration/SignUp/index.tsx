@@ -15,13 +15,13 @@ import {
 import { Formik } from "formik";
 import { Asserts } from "yup";
 import { useNavigation } from "@react-navigation/native";
-import signUpSchema from "../../validation/schemas/signUpSchema";
-import Validation from "../../components/Validation";
+import signUpSchema from "../../../validation/schemas/signUpSchema";
+import Validation from "../../../components/Validation";
 import InputComponent from "./InputComponent";
-import Screen from "../../components/Screen";
-import { signUp } from "../../redux/signUpSlice";
-import { RootState } from "../../store";
-import { HOME_SCREEN, EMAIL_VERIFICATION } from "../../constants";
+import Screen from "../../../components/Screen";
+import { signUp } from "../../../redux/signUpSlice";
+import { RootState } from "../../../store";
+import { HOME_SCREEN, EMAIL_VERIFICATION } from "../../../constants";
 
 import styles from "./styles";
 

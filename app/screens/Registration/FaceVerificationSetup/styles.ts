@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import customColor from "../../theme/customColor";
+import customColor from "../../../theme/customColor";
 
 const radius = 70;
 

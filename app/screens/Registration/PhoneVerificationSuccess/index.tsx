@@ -3,9 +3,9 @@ import { useTranslation } from "react-i18next";
 import { View, Text, Button } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
-import PhoneSuccessIcon from "../../assets/images/phone-success.svg";
-import Screen from "../../components/Screen";
-import { FACE_VERIFICATION_SETUP } from "../../constants";
+import PhoneSuccessIcon from "../../../assets/images/phone-success.svg";
+import Screen from "../../../components/Screen";
+import { FACE_VERIFICATION_SETUP } from "../../../constants";
 
 import styles from "./styles";
 

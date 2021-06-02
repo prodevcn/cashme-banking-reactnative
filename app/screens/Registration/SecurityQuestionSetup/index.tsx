@@ -15,16 +15,16 @@ import {
   Toast,
 } from "native-base";
 
-import securityQuestionSchema from "../../validation/schemas/securityQuestionSchema";
-import Validation from "../../components/Validation";
-import Screen from "../../components/Screen";
-import Dropdown, { DropdownItem } from "../../components/Dropdown";
+import securityQuestionSchema from "../../../validation/schemas/securityQuestionSchema";
+import Validation from "../../../components/Validation";
+import Screen from "../../../components/Screen";
+import Dropdown, { DropdownItem } from "../../../components/Dropdown";
 import {
   getSecurityQuestions,
   setSecurityQuestion,
-} from "../../redux/securityQuestionSlice";
-import { RootState } from "../../store";
-import { PROFILE_CREATE_SUCCESS } from "../../constants";
+} from "../../../redux/securityQuestionSlice";
+import { RootState } from "../../../store";
+import { PROFILE_CREATE_SUCCESS } from "../../../constants";
 
 import styles from "./styles";
 

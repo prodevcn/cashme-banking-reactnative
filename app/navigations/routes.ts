@@ -21,9 +21,9 @@ import {
   EMAIL_VERIFICATION_SUCCESS,
   PASSWORD_SETUP,
   FACE_VERIFICATION_SETUP,
+  SECURITY_QUESTION_SETUP,
   PROFILE_CREATE_SUCCESS,
   CASH_ME,
-  SECURITY_QUESTION_SETUP,
   GET_LOAN,
   LOAN_OFFER,
   PERSONAL_INFO,
@@ -42,16 +42,18 @@ import Finance from "../screens/Products/Finance";
 import Profile from "../screens/Profile";
 import SecurityQuestion from "../screens/SecurityQuestion";
 import ResetPassword from "../screens/ResetPassword";
-import SignUp from "../screens/SignUp";
-import PhoneVerificationSuccess from "../screens/PhoneVerificationSuccess";
-import PhoneVerification from "../screens/PhoneVerification";
-import EmailVerification from "../screens/EmailVerification";
-import EmailVerificationSuccess from "../screens/EmailVerificationSuccess";
-import PasswordSetup from "../screens/PasswordSetup";
+
+import SignUp from "../screens/Registration/SignUp";
+import PhoneVerificationSuccess from "../screens/Registration/PhoneVerificationSuccess";
+import PhoneVerification from "../screens/Registration/PhoneVerification";
+import EmailVerification from "../screens/Registration/EmailVerification";
+import EmailVerificationSuccess from "../screens/Registration/EmailVerificationSuccess";
+import PasswordSetup from "../screens/Registration/PasswordSetup";
+import SecurityQuestionSetup from "../screens/Registration/SecurityQuestionSetup";
+import FaceVerificationSetup from "../screens/Registration/FaceVerificationSetup";
+import ProfileCreateSuccess from "../screens/Registration/ProfileCreateSuccess";
+
 import CashMe from "../screens/Products/CashMe";
-import SecurityQuestionSetup from "../screens/SecurityQuestionSetup";
-import FaceVerificationSetup from "../screens/FaceVerificationSetup";
-import ProfileCreateSuccess from "../screens/ProfileCreateSuccess";
 import GetLoan from "../screens/GetLoan";
 import LoanOffer from "../screens/LoanOffer";
 import PersonalInfo from "../screens/PersonalInfo";

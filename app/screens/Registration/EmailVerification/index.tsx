@@ -5,20 +5,20 @@ import { View, Text, Form, Button, Label, Toast, Icon } from "native-base";
 import { Formik } from "formik";
 import { Asserts } from "yup";
 import { useNavigation } from "@react-navigation/native";
-import passwordRecoverCodeSchema from "../../validation/schemas/passwordRecoverCodeSchema";
-import Validation from "../../components/Validation";
-import Screen from "../../components/Screen";
-import SmsCodeInput from "../../components/SmsCodeInput";
+import passwordRecoverCodeSchema from "../../../validation/schemas/passwordRecoverCodeSchema";
+import Validation from "../../../components/Validation";
+import Screen from "../../../components/Screen";
+import SmsCodeInput from "../../../components/SmsCodeInput";
 import {
   resendEmailVerificationCode,
   submitEmailVerificationCode,
-} from "../../redux/signUpSlice";
-import { RootState } from "../../store";
+} from "../../../redux/signUpSlice";
+import { RootState } from "../../../store";
 import {
   VERIFICATION_CODE_LENGTH,
   EMAIL_VERIFICATION_SUCCESS,
   HOME_SCREEN,
-} from "../../constants";
+} from "../../../constants";
 
 import styles from "./styles";
 
