@@ -44,8 +44,7 @@ const Proposals = () => {
 
   // TODO: Remove this test on API ready
   const { uri, firstName, lastName, passport, birthDate, SSN }: any = data || {
-    uri:
-      "https://insfocus.com/wp-content/uploads/2015/03/Uri-Profile-250x300.jpg",
+    uri: "https://insfocus.com/wp-content/uploads/2015/03/Uri-Profile-250x300.jpg",
     firstName: "Տիգրան",
     lastName: "Հարությունյան",
     passport: "AM0524477",

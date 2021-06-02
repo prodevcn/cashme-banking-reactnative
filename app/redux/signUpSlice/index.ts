@@ -88,126 +88,126 @@ const {
   setPasswordFullfiled,
 } = signUpSlice.actions;
 
-export const signUp = (
-  signUpPayload: SignUpPayload,
-): AppThunk => async dispatch => {
-  try {
-    dispatch(fetchStarted());
+export const signUp =
+  (signUpPayload: SignUpPayload): AppThunk =>
+  async dispatch => {
+    try {
+      dispatch(fetchStarted());
 
-    const { headers, data } = await api.post(
-      "/api/send-identity-verification-email",
-      signUpPayload,
-    );
-    const signUpData: SignUpData = data.data;
+      const { headers, data } = await api.post(
+        "/api/send-identity-verification-email",
+        signUpPayload,
+      );
+      const signUpData: SignUpData = data.data;
 
-    api.defaults.headers.common["suuid"] = headers.suuid;
+      api.defaults.headers.common["suuid"] = headers.suuid;
 
-    dispatch(signUpFulfilled(signUpData));
+      dispatch(signUpFulfilled(signUpData));
 
-    return signUpData;
-  } catch (e) {
-    dispatch(fetchFailed(e.message));
+      return signUpData;
+    } catch (e) {
+      dispatch(fetchFailed(e.message));
 
-    throw e;
-  }
-};
+      throw e;
+    }
+  };
 
-export const resendEmailVerificationCode = (): AppThunk => async (
-  dispatch,
-  getState,
-) => {
-  try {
-    dispatch(fetchStarted());
+export const resendEmailVerificationCode =
+  (): AppThunk => async (dispatch, getState) => {
+    try {
+      dispatch(fetchStarted());
 
-    const { data } = await api.post("/api/resend-identity-verification-email");
-    const signUpData = {
-      ...getState().signUp.data,
-      sent: data.data.sent,
-    };
+      const { data } = await api.post(
+        "/api/resend-identity-verification-email",
+      );
+      const signUpData = {
+        ...getState().signUp.data,
+        sent: data.data.sent,
+      };
 
-    dispatch(resendEmailVerificationCodeFulfilled(signUpData));
+      dispatch(resendEmailVerificationCodeFulfilled(signUpData));
 
-    return data.data;
-  } catch (e) {
-    dispatch(fetchFailed(e.message));
+      return data.data;
+    } catch (e) {
+      dispatch(fetchFailed(e.message));
 
-    throw e;
-  }
-};
+      throw e;
+    }
+  };
 
-export const submitEmailVerificationCode = (
-  code: object,
-): AppThunk => async dispatch => {
-  try {
-    dispatch(fetchStarted());
+export const submitEmailVerificationCode =
+  (code: object): AppThunk =>
+  async dispatch => {
+    try {
+      dispatch(fetchStarted());
 
-    const { data } = await api.post("/api/email-code-verify", code);
+      const { data } = await api.post("/api/email-code-verify", code);
 
-    dispatch(submitEmailVerificationCodeFulfilled());
+      dispatch(submitEmailVerificationCodeFulfilled());
 
-    return data.data;
-  } catch (e) {
-    dispatch(fetchFailed(e.message));
+      return data.data;
+    } catch (e) {
+      dispatch(fetchFailed(e.message));
 
-    throw e;
-  }
-};
+      throw e;
+    }
+  };
 
-export const resendPhoneVerificationCode = (): AppThunk => async (
-  dispatch,
-  getState,
-) => {
-  try {
-    dispatch(fetchStarted());
+export const resendPhoneVerificationCode =
+  (): AppThunk => async (dispatch, getState) => {
+    try {
+      dispatch(fetchStarted());
 
-    const { data } = await api.get("/api/verification-sms");
-    const signUpData = {
-      ...getState().signUp.data,
-      sent: data.data.sent,
-    };
+      const { data } = await api.get("/api/verification-sms");
+      const signUpData = {
+        ...getState().signUp.data,
+        sent: data.data.sent,
+      };
 
-    dispatch(resendPhoneVerificationCodeFulfilled(signUpData));
+      dispatch(resendPhoneVerificationCodeFulfilled(signUpData));
 
-    return data.data;
-  } catch (e) {
-    dispatch(fetchFailed(e.message));
+      return data.data;
+    } catch (e) {
+      dispatch(fetchFailed(e.message));
 
-    throw e;
-  }
-};
+      throw e;
+    }
+  };
 
-export const submitPhoneVerificationCode = (
-  code: object,
-): AppThunk => async dispatch => {
-  try {
-    dispatch(fetchStarted());
+export const submitPhoneVerificationCode =
+  (code: object): AppThunk =>
+  async dispatch => {
+    try {
+      dispatch(fetchStarted());
 
-    const { data } = await api.post("/api/verify-sms", code);
+      const { data } = await api.post("/api/verify-sms", code);
 
-    dispatch(submitEmailVerificationCodeFulfilled());
+      dispatch(submitEmailVerificationCodeFulfilled());
 
-    return data.data;
-  } catch (e) {
-    dispatch(fetchFailed(e.message));
+      return data.data;
+    } catch (e) {
+      dispatch(fetchFailed(e.message));
 
-    throw e;
-  }
-};
+      throw e;
+    }
+  };
 
-export const setPassword = (values: object): AppThunk => async dispatch => {
-  try {
-    dispatch(fetchStarted());
+export const setPassword =
+  (values: object): AppThunk =>
+  async dispatch => {
+    try {
+      dispatch(fetchStarted());
 
-    const { data } = await api.post("/api/password", values);
+      const { data } = await api.post("/api/password", values);
 
-    dispatch(setPasswordFullfiled());
+      dispatch(setPasswordFullfiled());
 
-    return data.data;
-  } catch (e) {
-    dispatch(fetchFailed(e.message));
+      return data.data;
+    } catch (e) {
+      dispatch(fetchFailed(e.message));
 
-    throw e;
-  }
-};
+      throw e;
+    }
+  };
 
 export default signUpSlice;

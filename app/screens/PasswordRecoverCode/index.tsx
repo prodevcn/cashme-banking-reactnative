@@ -38,9 +38,11 @@ const PasswordRecoverCode = () => {
     setValue,
   });
   const dispatch = useDispatch();
-  const { data = {}, loading, error } = useSelector(
-    (state: RootState) => state.forgotPassword,
-  );
+  const {
+    data = {},
+    loading,
+    error,
+  } = useSelector((state: RootState) => state.forgotPassword);
 
   useEffect(() => {
     const getSmsCode = (message: string) => {

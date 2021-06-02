@@ -86,22 +86,22 @@ export const getSecurityQuestions = (): AppThunk => async dispatch => {
   }
 };
 
-export const setSecurityQuestion = (
-  setSecurityQuestionData: SetSecurityQuestionPayload,
-): AppThunk => async dispatch => {
-  try {
-    dispatch(setSecurityQuestionStart());
+export const setSecurityQuestion =
+  (setSecurityQuestionData: SetSecurityQuestionPayload): AppThunk =>
+  async dispatch => {
+    try {
+      dispatch(setSecurityQuestionStart());
 
-    const { data } = await api.post(
-      "/api/security-questions",
-      setSecurityQuestionData,
-    );
+      const { data } = await api.post(
+        "/api/security-questions",
+        setSecurityQuestionData,
+      );
 
-    dispatch(setSecurityQuestionSuccess());
-    return data.data;
-  } catch (e) {
-    dispatch(setSecurityQuestionFailure(e.message));
-  }
-};
+      dispatch(setSecurityQuestionSuccess());
+      return data.data;
+    } catch (e) {
+      dispatch(setSecurityQuestionFailure(e.message));
+    }
+  };
 
 export default securityQuestionSlice;

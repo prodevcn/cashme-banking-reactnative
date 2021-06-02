@@ -67,128 +67,122 @@ const {
   enrollPinFulfilled,
 } = authSlice.actions;
 
-export const signIn = (
-  signInPayload: SignInPayload,
-): AppThunk => async dispatch => {
-  try {
-    dispatch(fetchStarted());
+export const signIn =
+  (signInPayload: SignInPayload): AppThunk =>
+  async dispatch => {
+    try {
+      dispatch(fetchStarted());
 
-    const { data = {} }: any = await api.post(
-      "/api/auth/mobile/login",
-      signInPayload,
-    );
-    const token = data.data?.token;
+      const { data = {} }: any = await api.post(
+        "/api/auth/mobile/login",
+        signInPayload,
+      );
+      const token = data.data?.token;
 
-    dispatch(signInFulfilled(token));
+      dispatch(signInFulfilled(token));
 
-    await auth.setUsername(signInPayload.username);
+      await auth.setUsername(signInPayload.username);
 
-    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-    return token;
-  } catch (e) {
-    dispatch(fetchFailed(e.message));
+      return token;
+    } catch (e) {
+      dispatch(fetchFailed(e.message));
 
-    return e;
-  }
-};
+      return e;
+    }
+  };
 
-export const enrollPublicKey = (
-  username: string,
-  publicKey: string,
-): AppThunk => async dispatch => {
-  try {
-    dispatch(fetchStarted());
+export const enrollPublicKey =
+  (username: string, publicKey: string): AppThunk =>
+  async dispatch => {
+    try {
+      dispatch(fetchStarted());
 
-    const res = await api.post("/api/auth/enroll-key", {
-      username,
-      publicKey,
-    });
+      const res = await api.post("/api/auth/enroll-key", {
+        username,
+        publicKey,
+      });
 
-    dispatch(enrollPublicKeyFulfilled());
+      dispatch(enrollPublicKeyFulfilled());
 
-    return res;
-  } catch (e) {
-    dispatch(fetchFailed(e.message));
+      return res;
+    } catch (e) {
+      dispatch(fetchFailed(e.message));
 
-    return e;
-  }
-};
+      return e;
+    }
+  };
 
-export const verifySignature = (
-  username: string,
-  signature: string,
-  message: string,
-): AppThunk => async dispatch => {
-  try {
-    dispatch(fetchStarted());
+export const verifySignature =
+  (username: string, signature: string, message: string): AppThunk =>
+  async dispatch => {
+    try {
+      dispatch(fetchStarted());
 
-    const { data = {} } = await api.post("/api/auth/verify-signature", {
-      username,
-      signature,
-      message,
-    });
-    const token = data.data?.token;
+      const { data = {} } = await api.post("/api/auth/verify-signature", {
+        username,
+        signature,
+        message,
+      });
+      const token = data.data?.token;
 
-    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-    dispatch(signInFulfilled(token));
+      dispatch(signInFulfilled(token));
 
-    return token;
-  } catch (e) {
-    dispatch(fetchFailed(e.message));
+      return token;
+    } catch (e) {
+      dispatch(fetchFailed(e.message));
 
-    return e;
-  }
-};
+      return e;
+    }
+  };
 
-export const enrollPin = (
-  username: string,
-  password: string,
-  pin: string,
-): AppThunk => async dispatch => {
-  try {
-    dispatch(fetchStarted());
+export const enrollPin =
+  (username: string, password: string, pin: string): AppThunk =>
+  async dispatch => {
+    try {
+      dispatch(fetchStarted());
 
-    const res = await api.post("/api/auth/enroll-pin", {
-      username,
-      password,
-      pin,
-    });
+      const res = await api.post("/api/auth/enroll-pin", {
+        username,
+        password,
+        pin,
+      });
 
-    dispatch(enrollPinFulfilled());
+      dispatch(enrollPinFulfilled());
 
-    return res;
-  } catch (e) {
-    dispatch(fetchFailed(e.message));
+      return res;
+    } catch (e) {
+      dispatch(fetchFailed(e.message));
 
-    return e;
-  }
-};
+      return e;
+    }
+  };
 
-export const verifyPin = (
-  username: string,
-  pin: string,
-): AppThunk => async dispatch => {
-  try {
-    dispatch(fetchStarted());
+export const verifyPin =
+  (username: string, pin: string): AppThunk =>
+  async dispatch => {
+    try {
+      dispatch(fetchStarted());
 
-    const { data = {} } = await api.post("/api/auth/verify-pin", {
-      username,
-      pin,
-    });
-    const token = data.data?.token;
+      const { data = {} } = await api.post("/api/auth/verify-pin", {
+        username,
+        pin,
+      });
+      const token = data.data?.token;
 
-    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-    dispatch(signInFulfilled(token));
+      dispatch(signInFulfilled(token));
 
-    return token;
-  } catch (e) {
-    dispatch(fetchFailed(e.message));
+      return token;
+    } catch (e) {
+      dispatch(fetchFailed(e.message));
 
-    return e;
-  }
-};
+      return e;
+    }
+  };
 
 export default authSlice;
