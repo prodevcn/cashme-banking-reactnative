@@ -12,7 +12,7 @@ import {
 
 import { randomId } from "../../helpers/string";
 
-import CheckMarkIcon from "../../assets/images/checkMark.svg";
+import CheckMarkIcon from "../../assets/images/check-mark-round.svg";
 import PercentageIcon from "../../assets/images/percentage.svg";
 import styles from "./styles";
 import customColor from "../../theme/customColor";

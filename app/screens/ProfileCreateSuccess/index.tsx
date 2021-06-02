@@ -4,7 +4,7 @@ import { View, Text, Button } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
 import ProfileSuccess from "../../assets/images/profile-success.svg";
-import Checkmark from "../../assets/images/checkmark.svg";
+import Checkmark from "../../assets/images/check-mark.svg";
 import Screen from "../../components/Screen";
 import { CATEGORIES_SCREEN, HOME_SCREEN } from "../../constants";
 

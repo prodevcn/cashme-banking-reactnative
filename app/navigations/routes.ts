@@ -28,7 +28,7 @@ import {
   LOAN_TYPES,
   PERSONAL_INFO,
   SMS_SIGNATURE,
-  PDF_VIEWER
+  PDF_VIEWER,
 } from "../constants";
 import Help from "../screens/Help";
 import Categories from "../screens/Categories";
