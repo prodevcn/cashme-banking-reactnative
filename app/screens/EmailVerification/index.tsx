@@ -1,20 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation, Trans } from "react-i18next";
 import { View, Text, Form, Button, Label, Toast, Icon } from "native-base";
 import { Formik } from "formik";
 import { Asserts } from "yup";
-import {
-  CodeField,
-  Cursor,
-  useBlurOnFulfill,
-  useClearByFocusCell,
-} from "react-native-confirmation-code-field";
 import { useNavigation } from "@react-navigation/native";
 import passwordRecoverCodeSchema from "../../validation/schemas/passwordRecoverCodeSchema";
 import Validation from "../../components/Validation";
 import Screen from "../../components/Screen";
-import ShakingComponent from "../../components/ShakingComponent";
+import SmsCodeInput from "../../components/SmsCodeInput";
 import {
   resendEmailVerificationCode,
   submitEmailVerificationCode,
@@ -33,12 +27,6 @@ interface CodeFormValues extends Asserts<typeof passwordRecoverCodeSchema> {}
 const EmailVerification = () => {
   const { t } = useTranslation();
   const { navigate } = useNavigation();
-  const [value, setValue] = useState("");
-  const ref = useBlurOnFulfill({ value, cellCount: VERIFICATION_CODE_LENGTH });
-  const [props, getCellOnLayoutHandler] = useClearByFocusCell({
-    value,
-    setValue,
-  });
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector(
     (state: RootState) => state.signUp,
@@ -109,41 +97,22 @@ const EmailVerification = () => {
                   <Label style={styles.inputLabel}>
                     {t("email_verification.label")}
                   </Label>
-                  <ShakingComponent
-                    shake={
-                      error && values.code?.length === VERIFICATION_CODE_LENGTH
-                    }
-                  >
-                    <Validation formik={formik} name="code" showMessage={true}>
-                      <CodeField
-                        ref={ref}
-                        {...props}
-                        value={values.code}
-                        onChangeText={text => {
-                          handleChange(text, setFieldValue);
-                        }}
-                        onBlur={handleBlur("code")}
-                        cellCount={VERIFICATION_CODE_LENGTH}
-                        rootStyle={styles.codeFiledRoot}
-                        keyboardType="number-pad"
-                        textContentType="oneTimeCode"
-                        renderCell={({ index, symbol, isFocused }) => (
-                          <View
-                            onLayout={getCellOnLayoutHandler(index)}
-                            key={index}
-                            style={[
-                              styles.cellRoot,
-                              isFocused && styles.focusCell,
-                            ]}
-                          >
-                            <Text style={styles.cellText}>
-                              {symbol || (isFocused ? <Cursor /> : null)}
-                            </Text>
-                          </View>
-                        )}
-                      />
-                    </Validation>
-                  </ShakingComponent>
+
+                  <Validation formik={formik} name="code" showMessage={true}>
+                    <SmsCodeInput
+                      code={values.code}
+                      length={VERIFICATION_CODE_LENGTH}
+                      onChange={text => {
+                        handleChange(text, setFieldValue);
+                      }}
+                      onBlur={handleBlur("code")}
+                      onSubmit={handleSubmit}
+                      shakeHandler={() =>
+                        !!error &&
+                        values.code?.length === VERIFICATION_CODE_LENGTH
+                      }
+                    ></SmsCodeInput>
+                  </Validation>
                 </View>
                 <Button
                   full

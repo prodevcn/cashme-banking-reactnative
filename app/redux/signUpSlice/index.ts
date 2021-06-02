@@ -13,7 +13,7 @@ interface SignUpState {
   data: SignUpData;
   loading: boolean;
   token?: string;
-  error?: object;
+  error?: string;
 }
 
 interface SignUpPayload {
@@ -41,7 +41,7 @@ const signUpSlice = createSlice({
       state.loading = true;
       state.error = undefined;
     },
-    fetchFailed: (state, action: PayloadAction<object | undefined>) => {
+    fetchFailed: (state, action: PayloadAction<string>) => {
       state.loading = false;
       state.error = action.payload;
     },

@@ -68,7 +68,7 @@ export const nonAuthBottomTabScreens: Array<Route> = [
   {
     name: HOME_SCREEN,
     component: Home,
-    options: { title: "Home" },
+    options: { title: i18n.t("home") },
   },
   {
     name: CATEGORIES_SCREEN,
@@ -78,7 +78,7 @@ export const nonAuthBottomTabScreens: Array<Route> = [
   {
     name: HELP_SCREEN,
     component: Help,
-    options: { title: "Help" },
+    options: { title: i18n.t("help") },
   },
 ];
 
@@ -86,7 +86,7 @@ export const authBottomTabScreens: Array<Route> = [
   {
     name: HOME_SCREEN,
     component: Home,
-    options: { title: "Home" },
+    options: { title: i18n.t("home") },
   },
   {
     name: CATEGORIES_SCREEN,

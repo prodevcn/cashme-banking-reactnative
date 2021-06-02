@@ -13,7 +13,7 @@ import { listenForSms } from "../../helpers/sms";
 import styles from "./styles";
 
 interface SmsCodeInputProps {
-  code: string;
+  code: string | undefined;
   length: number;
   onChange?: (text: string) => void;
   onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;

@@ -7,7 +7,7 @@ import BottomSheet from "@gorhom/bottom-sheet";
 
 import Screen from "../../components/Screen";
 import ChangeIdSheet from "./ChangeIdSheet";
-import { HOME_SCREEN, FACE_RECOGNITION } from "../../constants";
+import { HOME_SCREEN, FACE_RECOGNITION, PASSWORD_SETUP } from "../../constants";
 import { getCameraPermission } from "../../helpers/permission";
 import { RootState } from "../../store/index";
 
@@ -22,10 +22,13 @@ const FaceVerificationSetup = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   const handleSelfieBtn = async () => {
-    const status = await getCameraPermission();
-    if (status) {
-      navigate(FACE_RECOGNITION);
-    }
+    // const status = await getCameraPermission();
+
+    // if (status) {
+    //   navigate(FACE_RECOGNITION);
+    // }
+
+    navigate(PASSWORD_SETUP);
   };
 
   return (

@@ -31,7 +31,7 @@ const SignUp = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
-  const { loading, error } = useSelector((state: RootState) => state.signUp);
+  const { loading } = useSelector((state: RootState) => state.signUp);
 
   const handleSubmit = async (values: any) => {
     try {
@@ -44,9 +44,9 @@ const SignUp = () => {
       );
 
       navigate(EMAIL_VERIFICATION);
-    } catch (error) {
+    } catch (e) {
       Toast.show({
-        text: error,
+        text: e.message,
         type: "danger",
         duration: 5000,
       });
