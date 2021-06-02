@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { View, Text } from "native-base";
+import { View } from "native-base";
 import { useDispatch, useSelector } from "react-redux";
 
 import { RootState } from "../../../store/index";

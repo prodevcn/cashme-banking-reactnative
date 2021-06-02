@@ -3,11 +3,11 @@ import { useTranslation } from "react-i18next";
 import { View, Text, Button } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
-import Screen from "../../components/Screen";
-import { CATEGORIES_SCREEN, HOME_SCREEN } from "../../constants";
+import Screen from "../../../components/Screen";
+import { CATEGORIES_SCREEN, HOME_SCREEN } from "../../../constants";
 
-import ProfileSuccess from "../../assets/images/profile-success.svg";
-import Checkmark from "../../assets/images/check-mark.svg";
+import ProfileSuccess from "../../../assets/images/profile-success.svg";
+import Checkmark from "../../../assets/images/check-mark.svg";
 
 import styles from "./styles";
 

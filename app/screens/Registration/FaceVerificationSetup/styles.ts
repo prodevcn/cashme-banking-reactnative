@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import customColor from "../../theme/customColor";
+import customColor from "../../../theme/customColor";
 
 const radius = 70;
 
@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: "space-between",
     marginTop: 45,
   },
   box: {
@@ -60,6 +59,7 @@ const styles = StyleSheet.create({
     lineHeight: 15,
     color: customColor.masala,
     marginBottom: 6,
+    flexShrink: 1,
   },
   rightBoxSide: {
     flex: 1,
@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
   },
   takeSelfieBtn: {
     marginTop: 30,
+    marginBottom: 20,
   },
 });
 

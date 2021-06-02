@@ -1,7 +1,7 @@
 import React from "react";
 import { FormikContextType } from "formik";
 import { View, Item, Label, Input, Icon } from "native-base";
-import Validation from "../../components/Validation";
+import Validation from "../../../components/Validation";
 
 import styles from "./styles";
 

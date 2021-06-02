@@ -3,9 +3,9 @@ import { useTranslation } from "react-i18next";
 import { View, Text, Button } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
-import EmailSuccessIcon from "../../assets/images/email-success.svg";
-import Screen from "../../components/Screen";
-import { PHONE_VERIFICATION } from "../../constants";
+import EmailSuccessIcon from "../../../assets/images/email-success.svg";
+import Screen from "../../../components/Screen";
+import { PHONE_VERIFICATION } from "../../../constants";
 
 import styles from "./styles";
 

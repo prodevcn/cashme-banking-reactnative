@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Button, View, Text } from "native-base";
 import BottomSheet from "@gorhom/bottom-sheet";
 
-import { SIGN_UP } from "../../../constants";
+import { SIGN_UP } from "../../../../constants";
 
 import { sheetStyles } from "../styles";
 

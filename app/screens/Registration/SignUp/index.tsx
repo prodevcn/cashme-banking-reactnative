@@ -15,13 +15,13 @@ import {
 import { Formik } from "formik";
 import { Asserts } from "yup";
 import { useNavigation } from "@react-navigation/native";
-import signUpSchema from "../../validation/schemas/signUpSchema";
-import Validation from "../../components/Validation";
+import signUpSchema from "../../../validation/schemas/signUpSchema";
+import Validation from "../../../components/Validation";
 import InputComponent from "./InputComponent";
-import Screen from "../../components/Screen";
-import { signUp } from "../../redux/signUpSlice";
-import { RootState } from "../../store";
-import { HOME_SCREEN, EMAIL_VERIFICATION } from "../../constants";
+import Screen from "../../../components/Screen";
+import { signUp } from "../../../redux/signUpSlice";
+import { RootState } from "../../../store";
+import { HOME_SCREEN, EMAIL_VERIFICATION } from "../../../constants";
 
 import styles from "./styles";
 
@@ -31,7 +31,7 @@ const SignUp = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
-  const { loading, error } = useSelector((state: RootState) => state.signUp);
+  const { loading } = useSelector((state: RootState) => state.signUp);
 
   const handleSubmit = async (values: any) => {
     try {
@@ -44,9 +44,9 @@ const SignUp = () => {
       );
 
       navigate(EMAIL_VERIFICATION);
-    } catch (error) {
+    } catch (e) {
       Toast.show({
-        text: error,
+        text: e.message,
         type: "danger",
         duration: 5000,
       });

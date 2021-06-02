@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import customColor from "../../theme/customColor";
+import customColor from "../../../theme/customColor";
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     color: customColor.brandGray,
     marginBottom: 80,
-    textAlign: "center",
   },
   button: {
     marginHorizontal: 20,

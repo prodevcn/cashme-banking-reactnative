@@ -11,21 +11,21 @@ import {
   useClearByFocusCell,
 } from "react-native-confirmation-code-field";
 import { useNavigation } from "@react-navigation/native";
-import passwordRecoverCodeSchema from "../../validation/schemas/passwordRecoverCodeSchema";
-import Validation from "../../components/Validation";
-import Screen from "../../components/Screen";
-import ShakingComponent from "../../components/ShakingComponent";
+import passwordRecoverCodeSchema from "../../../validation/schemas/passwordRecoverCodeSchema";
+import Validation from "../../../components/Validation";
+import Screen from "../../../components/Screen";
+import ShakingComponent from "../../../components/ShakingComponent";
 import {
   resendPhoneVerificationCode,
   submitPhoneVerificationCode,
-} from "../../redux/signUpSlice";
-import { RootState } from "../../store";
+} from "../../../redux/signUpSlice";
+import { RootState } from "../../../store";
 import {
   VERIFICATION_CODE_LENGTH,
   PHONE_VERIFICATION_SUCCESS,
   HOME_SCREEN,
-} from "../../constants";
-import { listenForSms } from "../../helpers/sms";
+} from "../../../constants";
+import { listenForSms } from "../../../helpers/sms";
 
 import styles from "./styles";
 
