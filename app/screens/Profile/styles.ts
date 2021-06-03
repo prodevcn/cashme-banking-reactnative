@@ -14,18 +14,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     paddingVertical: 35,
     justifyContent: "space-between",
-  },
-  notificationIcon: {
-    alignSelf: "flex-end",
-    color: customColor.brandDark,
-  },
-  profileContent: {
     flexDirection: "row",
-    alignItems: "center",
-  },
-  profileIcon: {
-    width: 48,
-    height: 48,
+    alignItems: "flex-end",
   },
   userInfo: {
     marginHorizontal: 10,
@@ -43,9 +33,6 @@ const styles = StyleSheet.create({
   fullName: {
     fontWeight: "900",
   },
-  logoutIcon: {
-    alignSelf: "flex-end",
-  },
   headerBottomSheet: {
     width: "100%",
     height: 50,
@@ -60,6 +47,9 @@ const styles = StyleSheet.create({
   },
   profileItem: {
     marginBottom: 14,
+  },
+  logoutBtn: {
+    alignSelf: "center",
   },
 });
 

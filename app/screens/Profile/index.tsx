@@ -1,12 +1,11 @@
 import React from "react";
 import { ImageBackground } from "react-native";
-import { View, Text, Icon } from "native-base";
+import { View, Text, Button } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 import Screen from "../../components/Screen";
-import ProfileIcon from "../../components/ProfileIcon";
 import ProfileItem from "./ProfileItem";
 import { SECURITY_SETTINGS } from "../../constants";
 import { RootState } from "../../store/index";
@@ -17,7 +16,7 @@ import ProfileSvg from "../../assets/images/profile.svg";
 import SecuritySvg from "../../assets/images/security.svg";
 import NotificationSvg from "../../assets/images/notification.svg";
 import TermsSvg from "../../assets/images/terms.svg";
-import LogoutIcon from "../../assets/images/logout.svg";
+import Avatar from "../../components/Avatar";
 
 const Profile = () => {
   const { data } = useSelector((state: RootState) => state.profile);
@@ -61,26 +60,19 @@ const Profile = () => {
     >
       <View>
         <ImageBackground
-          source={require("../../assets/images/profile_bg.png")}
+          source={require("../../assets/images/profile_bg.jpg")}
           style={styles.imageBackground}
         >
           <View style={styles.headerContainer}>
-            <Icon
-              type="Ionicons"
-              name="notifications"
-              style={styles.notificationIcon}
-            />
-            <View style={styles.profileContent}>
-              <ProfileIcon style={styles.profileIcon} />
-              <View style={styles.userInfo}>
-                <Text style={[styles.profileText, styles.greeting]}>
-                  {t("hello")},
-                </Text>
-                <Text style={[styles.profileText, styles.fullName]}>
-                  {`${data?.firstName} ${data?.lastName}`}
-                </Text>
-              </View>
-              <LogoutIcon style={styles.logoutIcon} />
+            {/* TODO: That should be changed on back-end ready */}
+            <Avatar name={data?.firstName || "H"} />
+            <View style={styles.userInfo}>
+              <Text style={[styles.profileText, styles.greeting]}>
+                {t("hello")},
+              </Text>
+              <Text style={[styles.profileText, styles.fullName]}>
+                {`${data?.firstName} ${data?.lastName}`}
+              </Text>
             </View>
           </View>
           <View style={styles.headerBottomSheet} />
@@ -96,6 +88,10 @@ const Profile = () => {
             />
           ))}
         </View>
+
+        <Button transparent style={styles.logoutBtn}>
+          <Text>{t("sign_out")}</Text>
+        </Button>
       </View>
     </Screen>
   );

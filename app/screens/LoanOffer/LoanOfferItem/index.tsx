@@ -34,7 +34,7 @@ const LoanOfferItem = ({
         <Col>
           <Text style={[styles.title, { color }]}>{title}</Text>
           <Text style={styles.description}>{description}</Text>
-          <Currency amount={amount} style={styles.amount} />
+          <Currency amount={amount} style={styles.amount} precision={0} />
         </Col>
         <Col style={styles.rightSide}>
           <Icon style={styles.icon} fill={color} />
