@@ -31,6 +31,7 @@
     "login": "Login",
     "terms_conditions": "By creating an account, you agree to our Term & Conditions"
   },
+  "sign_out": "Sign Out",
   "forgot_password": {
     "title": "Forgot Password",
     "label": "Don't worry, happens to the best of us.",
