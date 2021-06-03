@@ -29,6 +29,7 @@ import {
   PERSONAL_INFO,
   SMS_SIGNATURE,
   PDF_VIEWER,
+  OFFICE_LOCATIONS,
 } from "../constants";
 import Help from "../screens/Help";
 import Categories from "../screens/Categories";
@@ -59,6 +60,7 @@ import LoanOffer from "../screens/LoanOffer";
 import PersonalInfo from "../screens/PersonalInfo";
 import SmsSignature from "../screens/SmsSignature";
 import PdfViewer from "../screens/PdfViewer";
+import OfficeLocations from "../screens/OfficeLocations/index";
 
 interface Route {
   name: string;
@@ -228,5 +230,11 @@ export const smsSignatureScreen: Route = {
 export const pdfViewerScreen: Route = {
   name: PDF_VIEWER,
   component: PdfViewer,
+  options: { headerShown: false },
+};
+
+export const officeLocations: Route = {
+  name: OFFICE_LOCATIONS,
+  component: OfficeLocations,
   options: { headerShown: false },
 };

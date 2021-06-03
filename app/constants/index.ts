@@ -4,6 +4,8 @@ export * from "./setting";
 export * from "./categories";
 export * from "./products";
 export * from "./faq";
+export * from "./loan";
+export * from "./format";
 
 import i18n from "../i18n";
 

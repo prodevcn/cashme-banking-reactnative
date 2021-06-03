@@ -1,9 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
-import { Col, Row, Grid } from "react-native-easy-grid";
 import { ScrollView, Animated } from "react-native";
-import { Text, View, Button } from "native-base";
+import { Text, View, Button, Col, Row, Grid } from "native-base";
 
 import LoadingBuffering from "../../../../components/LoadingBuffering";
 import { getCashMeInfo } from "../../../../redux/cashMeSlice";

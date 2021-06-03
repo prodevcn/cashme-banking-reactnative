@@ -12,6 +12,7 @@ import {
   personalInfoScreen,
   smsSignatureScreen,
   pdfViewerScreen,
+  officeLocations,
 } from "./routes";
 import { GET_LOAN, HOME_SCREEN, PDF_VIEWER } from "../constants";
 
@@ -98,6 +99,12 @@ class RootNavigation extends Component {
           name={pdfViewerScreen.name}
           component={pdfViewerScreen.component}
           options={pdfViewerScreen.options}
+        />
+
+        <Stack.Screen
+          name={officeLocations.name}
+          component={officeLocations.component}
+          options={officeLocations.options}
         />
       </Stack.Navigator>
     );

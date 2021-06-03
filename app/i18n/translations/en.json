@@ -302,6 +302,19 @@
       "realize_annual_rate": "I realize the annual interest rate",
       "confirm": "Confirm",
       "input_description": "Please input <0>{{rate}}</0>, which is your loan interest rate"
+    },
+    "transfer_options": {
+      "preferred_loan_option": "Preferred loan option",
+      "cash": "Cash",
+      "transfer": "Transfer",
+      "confirm": "Confirm",
+      "offices_to_get_money": "Offices to get money"
+    },
+    "office_locations": {
+      "title": "Offices",
+      "open": "Open",
+      "closed": "Closed",
+      "working_hours": "Working hours"
     }
   }
 }

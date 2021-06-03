@@ -22,6 +22,9 @@
   <uses-permission android:name="android.permission.WAKE_LOCK"/>
   <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
   <application android:name=".MainApplication" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" android:allowBackup="true" android:theme="@style/AppTheme">
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAFv_C-WHRWzw4n0I38Fu3qd1le4C9I-tM"/>
+    <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+    
     <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="https://exp.host/@hpilosyan/pallaton"/>
     <meta-data android:name="expo.modules.updates.EXPO_SDK_VERSION" android:value="40.0.0"/>
     <meta-data android:name="expo.modules.updates.ENABLED" android:value="true"/>

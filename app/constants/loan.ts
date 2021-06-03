@@ -1,0 +1,4 @@
+export const TRANSFER_OPTIONS = {
+  CASH: "CASH",
+  CARD_TRANSFER: "CARD_TRANSFER",
+};
