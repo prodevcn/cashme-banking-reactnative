@@ -4,6 +4,7 @@ import React, {
   useMemo,
   useState,
   useRef,
+  useEffect,
 } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -26,7 +27,15 @@ import { AUTH_TYPES, SIGN_UP } from "../../constants";
 import styles from "./styles";
 import customColor from "../../theme/customColor";
 
-const LoginDrawer = () => {
+interface LoginDrawerProps {
+  initiallyOpened?: boolean;
+  redirectTo?: string;
+}
+
+const LoginDrawer = ({
+  initiallyOpened = false,
+  redirectTo,
+}: LoginDrawerProps) => {
   const ref = useRef<BottomSheetModal>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const snapPoints = useMemo(() => [195, 385], []);
@@ -37,6 +46,12 @@ const LoginDrawer = () => {
   useLayoutEffect(() => {
     ref.current?.present();
   }, []);
+
+  useEffect(() => {
+    if (initiallyOpened) {
+      onLogin();
+    }
+  }, [initiallyOpened]);
 
   const renderBackdrop = useCallback(
     (props: BottomSheetBackdropProps) => (
@@ -77,6 +92,8 @@ const LoginDrawer = () => {
       const { signature, message } = await auth.signMessage(t("login.login"));
 
       dispatch(verifySignature(username, signature, message));
+
+      onLoginSuccess();
     } catch {}
   };
 
@@ -86,6 +103,14 @@ const LoginDrawer = () => {
 
     if (success) {
       dispatch(verifyPin(username, payload));
+
+      onLoginSuccess();
+    }
+  };
+
+  const onLoginSuccess = () => {
+    if (redirectTo) {
+      navigate(redirectTo);
     }
   };
 
@@ -96,7 +121,7 @@ const LoginDrawer = () => {
           ref={ref}
           key="LoginDrawer"
           name="LoginDrawer"
-          index={isExpanded ? 1 : 0}
+          index={initiallyOpened ? 1 : 0}
           snapPoints={snapPoints}
           dismissOnPanDown={false}
           handleComponent={null}
@@ -136,7 +161,7 @@ const LoginDrawer = () => {
                 </Text>
               </View>
             ) : (
-              <LoginForm />
+              <LoginForm onLoginSuccess={onLoginSuccess} />
             )}
           </View>
         </BottomSheetModal>
