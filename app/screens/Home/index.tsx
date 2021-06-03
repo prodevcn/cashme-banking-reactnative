@@ -7,8 +7,17 @@ import LoginDrawer from "../../components/LoginDrawer";
 import { RootState } from "../../store";
 
 import styles from "./styles";
+import { RouteProp } from "@react-navigation/native";
+import { RootStackParamList } from "../../navigations";
+import { HOME_SCREEN } from "../../constants";
 
-const Home = () => {
+type HomeRouteProp = RouteProp<RootStackParamList, typeof HOME_SCREEN>;
+
+type Props = {
+  route: HomeRouteProp;
+};
+
+const Home = ({ route }: Props) => {
   const { t } = useTranslation();
   const data = [
     {
@@ -32,13 +41,16 @@ const Home = () => {
   ];
 
   const { token } = useSelector((state: RootState) => state.auth);
+  const redirectTo = route.params?.redirectTo;
 
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
         <Slider data={data} />
       </View>
-      {!token && <LoginDrawer />}
+      {!token && (
+        <LoginDrawer initiallyOpened={!!redirectTo} redirectTo={redirectTo} />
+      )}
     </View>
   );
 };

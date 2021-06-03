@@ -16,15 +16,23 @@ import { RootState } from "../../store";
 import styles from "./styles";
 
 interface SignInFormValues extends Asserts<typeof loginSchema> {}
+interface SignInFormProps {
+  onLoginSuccess: Function;
+}
 
-const LoginForm = () => {
+const LoginForm = ({ onLoginSuccess }: SignInFormProps) => {
   const { t } = useTranslation();
   const { loading } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
 
-  const handleSubmit = (values: any) => {
-    dispatch(signIn(values));
+  const handleSubmit = async (values: any) => {
+    try {
+      await dispatch(signIn(values));
+      onLoginSuccess();
+    } catch {
+      // TODO:
+    }
   };
 
   const initialValues: SignInFormValues = {

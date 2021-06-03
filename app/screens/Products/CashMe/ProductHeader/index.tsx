@@ -1,10 +1,12 @@
 import React from "react";
 import { TouchableOpacity, ImageBackground } from "react-native";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, Button } from "native-base";
 
-import { LOAN_OFFER } from "../../../../constants";
+import { HOME_SCREEN, LOAN_OFFER } from "../../../../constants";
+import { RootState } from "../../../../store";
 
 import ArrowLeft from "../../../../assets/images/arrow-left.svg";
 import customColor from "../../../../theme/customColor";
@@ -21,12 +23,20 @@ const ProductHeader = (props: ProductHeaderProps) => {
   const { goBack } = useNavigation();
   const { t } = useTranslation();
   const { navigate } = useNavigation();
-
+  const { token } = useSelector((state: RootState) => state.auth);
   const {
     backgroundImage = null,
     screenLogo = null,
     description = null,
   } = props;
+
+  const handler = () => {
+    if (token) {
+      navigate(LOAN_OFFER);
+    } else {
+      navigate(HOME_SCREEN, { redirectTo: LOAN_OFFER });
+    }
+  };
 
   return (
     <View style={styles.main}>
@@ -46,12 +56,7 @@ const ProductHeader = (props: ProductHeaderProps) => {
         </View>
         <View>
           <Button rounded primary style={styles.button}>
-            <Text
-              style={styles.upper}
-              onPress={() => {
-                navigate(LOAN_OFFER);
-              }}
-            >
+            <Text style={styles.upper} onPress={handler}>
               {t("single_product.get_it_now")}
             </Text>
           </Button>

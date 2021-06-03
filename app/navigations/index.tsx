@@ -13,11 +13,12 @@ import {
   smsSignatureScreen,
   pdfViewerScreen,
 } from "./routes";
-import { GET_LOAN, PDF_VIEWER } from "../constants";
+import { GET_LOAN, HOME_SCREEN, PDF_VIEWER } from "../constants";
 
 export type RootStackParamList = { [name: string]: undefined } & {
   [PDF_VIEWER]: { uri: string };
   [GET_LOAN]: { proposalIndex: number };
+  [HOME_SCREEN]: { redirectTo: string };
   Main: undefined;
 };
 
