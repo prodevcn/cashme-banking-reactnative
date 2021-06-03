@@ -4,7 +4,7 @@ import { View, Text, Button } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
 import Screen from "../../../components/Screen";
-import { CATEGORIES_SCREEN, HOME_SCREEN } from "../../../constants";
+import { HOME_SCREEN } from "../../../constants";
 
 import ProfileSuccess from "../../../assets/images/profile-success.svg";
 import Checkmark from "../../../assets/images/check-mark.svg";
@@ -24,15 +24,6 @@ const ProfileCreateSuccess = () => {
         </View>
         <Text style={styles.text}>{t("profile_created.success")}</Text>
 
-        <Button
-          full
-          primary
-          rounded
-          style={styles.button}
-          onPress={() => navigate(CATEGORIES_SCREEN)}
-        >
-          <Text>{t("profile_created.loan_apply")}</Text>
-        </Button>
         <Button
           full
           bordered

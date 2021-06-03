@@ -77,8 +77,7 @@
   "profile_created": {
     "title": "Profile has been created",
     "success": "Thank you, your account is created and activated.",
-    "home": "Home",
-    "loan_apply": "Apply for loan"
+    "home": "Home"
   },
   "validations": {
     "required": "This field is required",

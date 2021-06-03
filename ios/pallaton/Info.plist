@@ -58,6 +58,10 @@
     <string>Sign In by using biometrics</string>
     <key>UIUserInterfaceStyle</key>
     <string>Light</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Allow access to camera</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Allow access to microphone</string>
     <key>CFBundleURLTypes</key>
     <array>
       <dict>

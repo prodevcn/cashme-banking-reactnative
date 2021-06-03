@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   backBtn: {
-    top: 30,
+    top: 10,
     left: 30,
   },
   ctrlSection: {

@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    marginTop: 45,
+    marginTop: 30,
   },
   box: {
     flexDirection: "row",
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   takeSelfieBtn: {
     marginTop: 30,
-    marginBottom: 20,
+    marginBottom: 15,
   },
 });
 

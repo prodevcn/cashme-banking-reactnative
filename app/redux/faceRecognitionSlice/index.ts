@@ -2,12 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "../../store";
 import api from "../../util/api";
 
-// TODO: change Data interface after make sure the API response data.
-
-interface Data {
-  success: boolean;
-}
-
 interface IFaceRecognitionState {
   data: any | undefined;
   loading: boolean;
@@ -39,34 +33,30 @@ const faceRecognitionSlice = createSlice({
       state.loading = false;
       state.data = action.payload;
     },
-    checkError: state => {
-      state.error = undefined;
-    },
   },
 });
 
-const { fetchStarted, fetchFailed, faceRecognitionFulfilled, checkError } =
+const { fetchStarted, fetchFailed, faceRecognitionFulfilled } =
   faceRecognitionSlice.actions;
 
 export const sendFaceSnapshot =
-  (uri: any): AppThunk =>
+  (base64: any): AppThunk =>
   async dispatch => {
     try {
       dispatch(fetchStarted());
-      // TODO: add API call when integrate API
-      // only for the test
-      setTimeout(() => {
-        const responseData: Data = { success: true };
-        dispatch(faceRecognitionFulfilled(responseData));
-        dispatch(fetchFailed({ error: "error" }));
-      }, 3000);
+
+      const { data = {} }: any = await api.post("/api/check-liveness", {
+        citizenImage: base64,
+      });
+
+      dispatch(faceRecognitionFulfilled(data));
+
+      return data;
     } catch (e) {
       dispatch(fetchFailed(e.message));
+
+      throw e;
     }
   };
-
-export const errorChecked = (): AppThunk => async dispatch => {
-  dispatch(checkError());
-};
 
 export default faceRecognitionSlice;

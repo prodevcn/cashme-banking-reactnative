@@ -35,7 +35,7 @@ const SecurityQuestionSetup = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
-  const { data, loading, error } = useSelector(
+  const { data, loading } = useSelector(
     (state: RootState) => state.securityQuestion,
   );
   const initialValues: SecurityQuestionFormValues = {
@@ -54,20 +54,17 @@ const SecurityQuestionSetup = () => {
       navigate(PROFILE_CREATE_SUCCESS);
     } catch (e) {
       Toast.show({
-        text: error,
+        text: e.message,
         type: "danger",
         duration: 5000,
       });
     }
   };
 
-  const formatQuestion = (questions: any): Array<DropdownItem> => {
-    return (
-      questions &&
-      questions.map((item: any) => {
-        return { text: item.question, value: item.id };
-      })
-    );
+  const formatQuestion = (questions: any[] = []): Array<DropdownItem> => {
+    return questions.map((item: any) => {
+      return { text: item.question, value: item.id };
+    });
   };
 
   return (
@@ -76,7 +73,7 @@ const SecurityQuestionSetup = () => {
       isNonScrolling={true}
       title={t("security_question.title")}
       innerStyle={styles.main}
-      hasHeader={true}
+      hasHeader={false}
     >
       <View style={styles.content}>
         <Text style={styles.pageCaption}>

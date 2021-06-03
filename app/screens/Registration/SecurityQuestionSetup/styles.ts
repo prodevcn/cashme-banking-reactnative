@@ -1,7 +1,6 @@
 import { StyleSheet, Dimensions } from "react-native";
 import customColor from "../../../theme/customColor";
 
-const { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
   main: {
     paddingHorizontal: 0,

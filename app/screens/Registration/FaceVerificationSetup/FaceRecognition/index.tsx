@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useEffect, useCallback } from "react";
+import React, { useRef, useMemo, useCallback } from "react";
 import { View, Text, ImageBackground } from "react-native";
 import { Button, Spinner } from "native-base";
 import { RNCamera } from "react-native-camera";
@@ -12,10 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
 
 import Screen from "../../../../components/Screen";
-import {
-  sendFaceSnapshot,
-  errorChecked,
-} from "../../../../redux/faceRecognitionSlice";
+import { sendFaceSnapshot } from "../../../../redux/faceRecognitionSlice";
 import { RootState } from "../../../../store";
 
 import styles from "./styles";
@@ -24,11 +21,12 @@ import ArrowLeft from "../../../../assets/images/arrow-left.svg";
 import FaceIcon from "../../../../assets/images/face.svg";
 import GlassIcon from "../../../../assets/images/glass.svg";
 import BrightnessIcon from "../../../../assets/images/brightness.svg";
+import { PASSWORD_SETUP } from "../../../../constants";
 
 const FaceRecognition = () => {
   const camera = useRef<RNCamera>(null);
-  const bottomSheet = useRef<BottomSheetModal>(null);
-  const { goBack } = useNavigation();
+  const ref = useRef<BottomSheetModal>(null);
+  const { goBack, navigate } = useNavigation();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { loading, error } = useSelector(
@@ -37,32 +35,33 @@ const FaceRecognition = () => {
   const snapPoints = useMemo(() => [0, "50%"], []);
 
   const takePicture = async () => {
-    if (camera) {
-      const options = { quality: 1, base64: true };
-      const data = await camera.current?.takePictureAsync(options);
-      // TODO: change dispatch when integrate API
-      dispatch(sendFaceSnapshot(data?.uri));
+    if (!camera) {
+      return;
+    }
+
+    const options = { quality: 1, base64: true };
+    const data = await camera.current?.takePictureAsync(options);
+
+    try {
+      await dispatch(sendFaceSnapshot(data?.base64));
+
+      navigate(PASSWORD_SETUP);
+    } catch (error) {
+      bottomSheetOpen();
+
+      // TODO: REMOVE! This is for demo
+      navigate(PASSWORD_SETUP);
     }
   };
 
-  const bottomSheetExtend = useCallback(() => {
-    bottomSheet?.current?.present();
+  const bottomSheetOpen = useCallback(() => {
+    ref.current?.present();
+    ref.current?.expand();
   }, []);
 
   const bottomSheetClose = useCallback(() => {
-    bottomSheet?.current?.close();
+    ref.current?.dismiss();
   }, []);
-
-  const checkError = () => {
-    bottomSheetClose();
-    dispatch(errorChecked());
-  };
-
-  useEffect(() => {
-    if (error) {
-      bottomSheetExtend();
-    }
-  }, [error]);
 
   return (
     <BottomSheetModalProvider>
@@ -70,17 +69,10 @@ const FaceRecognition = () => {
         <>
           <RNCamera
             ref={camera}
-            faceDetectionMode={RNCamera.Constants.FaceDetection.Mode.accurate}
-            faceDetectionLandmarks={
-              RNCamera.Constants.FaceDetection.Landmarks.all
-            }
-            faceDetectionClassifications={
-              RNCamera.Constants.FaceDetection.Classifications.all
-            }
             style={styles.container}
             autoFocus={RNCamera.Constants.AutoFocus.on}
             type={RNCamera.Constants.Type.front}
-            flashMode={RNCamera.Constants.FlashMode.auto}
+            flashMode={RNCamera.Constants.FlashMode.off}
             androidCameraPermissionOptions={{
               title: "Permission to use camera",
               message: "We need your permission to use your camera",
@@ -125,7 +117,7 @@ const FaceRecognition = () => {
               )}
             </View>
           </ImageBackground>
-          <BottomSheetModal ref={bottomSheet} index={1} snapPoints={snapPoints}>
+          <BottomSheetModal ref={ref} index={1} snapPoints={snapPoints}>
             <View style={styles.sheetContainer}>
               <Text style={styles.title}>
                 {t("face_verification_setup.face_verification_failed")}
@@ -150,9 +142,7 @@ const FaceRecognition = () => {
               </View>
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => {
-                  checkError();
-                }}
+                onPress={bottomSheetClose}
               >
                 <Text style={styles.buttonText}>{t("got_it")}</Text>
               </TouchableOpacity>
