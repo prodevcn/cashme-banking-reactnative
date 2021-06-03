@@ -3,12 +3,15 @@ import { ImageBackground } from "react-native";
 import { View, Text, Button } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Screen from "../../components/Screen";
 import ProfileItem from "./ProfileItem";
 import { SECURITY_SETTINGS } from "../../constants";
 import { RootState } from "../../store/index";
+import Avatar from "../../components/Avatar";
+import { clearAllLocalAuth } from "../../helpers/auth";
+import { logout } from "../../redux/authSlice";
 
 import styles from "./styles";
 
@@ -16,12 +19,13 @@ import ProfileSvg from "../../assets/images/profile.svg";
 import SecuritySvg from "../../assets/images/security.svg";
 import NotificationSvg from "../../assets/images/notification.svg";
 import TermsSvg from "../../assets/images/terms.svg";
-import Avatar from "../../components/Avatar";
 
 const Profile = () => {
   const { data } = useSelector((state: RootState) => state.profile);
   const { navigate } = useNavigation();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
   const profileItems = [
     {
       PrefixIcon: <ProfileSvg />,
@@ -52,6 +56,11 @@ const Profile = () => {
     },
   ];
 
+  const onLogout = () => {
+    dispatch(logout());
+    clearAllLocalAuth();
+  };
+
   return (
     <Screen
       hasTabbar={true}
@@ -65,7 +74,7 @@ const Profile = () => {
         >
           <View style={styles.headerContainer}>
             {/* TODO: That should be changed on back-end ready */}
-            <Avatar name={data?.firstName || "H"} />
+            <Avatar name={data?.firstName} />
             <View style={styles.userInfo}>
               <Text style={[styles.profileText, styles.greeting]}>
                 {t("hello")},
@@ -89,7 +98,7 @@ const Profile = () => {
           ))}
         </View>
 
-        <Button transparent style={styles.logoutBtn}>
+        <Button transparent style={styles.logoutBtn} onPress={onLogout}>
           <Text>{t("sign_out")}</Text>
         </Button>
       </View>

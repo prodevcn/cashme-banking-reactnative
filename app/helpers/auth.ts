@@ -144,6 +144,7 @@ export const isLocalAuthEnabled = async () => {
 };
 
 export const clearAllLocalAuth = async () => {
+  await setAuthType("");
   await deleteKeys();
   await setPin("");
 };

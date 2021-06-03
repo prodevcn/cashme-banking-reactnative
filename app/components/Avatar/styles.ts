@@ -1,12 +1,11 @@
 import { StyleSheet } from "react-native";
+import customColor from "../../theme/customColor";
 
 const styles = StyleSheet.create({
-  container: {},
-
   textContainer: {
     alignItems: "center",
     justifyContent: "center",
-    borderColor: "red",
+    borderColor: customColor.lightGray,
     borderWidth: 1,
   },
 });

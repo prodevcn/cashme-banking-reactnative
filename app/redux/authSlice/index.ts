@@ -55,6 +55,10 @@ const authSlice = createSlice({
     enrollPinFulfilled: state => {
       state.loading = false;
     },
+
+    logoutStart: state => {
+      state.token = undefined;
+    },
   },
 });
 
@@ -65,6 +69,8 @@ const {
   signInFulfilled,
   enrollPublicKeyFulfilled,
   enrollPinFulfilled,
+
+  logoutStart,
 } = authSlice.actions;
 
 export const signIn =
@@ -184,5 +190,9 @@ export const verifyPin =
       return e;
     }
   };
+
+export const logout = (): AppThunk => async dispatch => {
+  dispatch(logoutStart());
+};
 
 export default authSlice;
