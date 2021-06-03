@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
+  <g id="Group_9270" data-name="Group 9270" transform="translate(-32 -660)">
+    <circle id="Ellipse_1406" data-name="Ellipse 1406" cx="11.5" cy="11.5" r="11.5" transform="translate(32 660)" fill="#32506e"/>
+    <g id="sunny-outline" transform="translate(33.625 661.625)">
+      <path id="Path_1690" data-name="Path 1690" d="M18,3.375v1.5" transform="translate(-8.125)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path id="Path_1691" data-name="Path 1691" d="M18,29.25v1.5" transform="translate(-8.125 -14.375)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path id="Path_1692" data-name="Path 1692" d="M27.016,7.658l-1.06,1.06" transform="translate(-12.545 -2.379)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path id="Path_1693" data-name="Path 1693" d="M8.719,25.955l-1.06,1.06" transform="translate(-2.38 -12.544)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path id="Path_1694" data-name="Path 1694" d="M30.75,18h-1.5" transform="translate(-14.375 -8.125)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path id="Path_1695" data-name="Path 1695" d="M4.875,18h-1.5" transform="translate(0 -8.125)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path id="Path_1696" data-name="Path 1696" d="M27.016,27.016l-1.06-1.06" transform="translate(-12.545 -12.545)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path id="Path_1697" data-name="Path 1697" d="M8.719,8.719l-1.06-1.06" transform="translate(-2.38 -2.38)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path id="Path_1698" data-name="Path 1698" d="M17.375,14.875a2.5,2.5,0,1,1-2.5-2.5A2.5,2.5,0,0,1,17.375,14.875Z" transform="translate(-5 -5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

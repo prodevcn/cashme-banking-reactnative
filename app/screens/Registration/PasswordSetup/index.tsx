@@ -29,7 +29,7 @@ const PasswordSetup = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
-  const { loading, error } = useSelector((state: RootState) => state.signUp);
+  const { loading } = useSelector((state: RootState) => state.signUp);
 
   const handleSubmit = async (values: any) => {
     try {
@@ -38,7 +38,7 @@ const PasswordSetup = () => {
       navigate(SECURITY_QUESTION_SETUP);
     } catch (error) {
       Toast.show({
-        text: error,
+        text: error.message,
         type: "danger",
         duration: 5000,
       });

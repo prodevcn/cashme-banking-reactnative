@@ -12,6 +12,7 @@
   "monthly": "Monthly",
   "profile": "Profile",
   "dropdown_default": "Please select...",
+  "got_it": "Got It",
   "login": {
     "login": "Login",
     "username": "Phone/Email",
@@ -76,8 +77,7 @@
   "profile_created": {
     "title": "Profile has been created",
     "success": "Thank you, your account is created and activated.",
-    "home": "Home",
-    "loan_apply": "Apply for loan"
+    "home": "Home"
   },
   "validations": {
     "required": "This field is required",
@@ -230,7 +230,14 @@
     "take_selfie_button": "Take selfie",
     "cancel": "Cancel",
     "remove_glasses": "Remove your glasses, if necessary",
-    "face_forward": "Face forward and make sure your eyes are clearly visible"
+    "face_forward": "Face forward and make sure your eyes are clearly visible",
+    "camera_message": "Keep your face within the oval",
+    "face_verification_failed": "Face Verification Failed",
+    "error_message": {
+      "message_1": "Face forward and make sure your eyes are clearly visible",
+      "message_2": "Remove your glasses, if necessary",
+      "message_3": "Check light and brightness"
+    }
   },
   "security_question_setup": {
     "title": "Security question",
