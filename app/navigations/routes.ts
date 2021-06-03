@@ -29,6 +29,7 @@ import {
   PERSONAL_INFO,
   SMS_SIGNATURE,
   PDF_VIEWER,
+  FACE_RECOGNITION,
   OFFICE_LOCATIONS,
 } from "../constants";
 import Help from "../screens/Help";
@@ -53,6 +54,7 @@ import PasswordSetup from "../screens/Registration/PasswordSetup";
 import SecurityQuestionSetup from "../screens/Registration/SecurityQuestionSetup";
 import FaceVerificationSetup from "../screens/Registration/FaceVerificationSetup";
 import ProfileCreateSuccess from "../screens/Registration/ProfileCreateSuccess";
+import FaceRecognition from "../screens/Registration/FaceVerificationSetup/FaceRecognition";
 
 import CashMe from "../screens/Products/CashMe";
 import GetLoan from "../screens/GetLoan";
@@ -168,6 +170,11 @@ export const authScreens: Array<Route> = [
   {
     name: PROFILE_CREATE_SUCCESS,
     component: ProfileCreateSuccess,
+    options: { headerShown: false },
+  },
+  {
+    name: FACE_RECOGNITION,
+    component: FaceRecognition,
     options: { headerShown: false },
   },
 ];

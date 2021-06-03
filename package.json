@@ -55,6 +55,7 @@
     "react-i18next": "^11.8.12",
     "react-native": "~0.63.4",
     "react-native-biometrics": "2.1.4",
+    "react-native-camera": "^3.44.0",
     "react-native-confirmation-code-field": "^7.1.0",
     "react-native-dotenv": "^2.5.5",
     "react-native-gesture-handler": "1.10.3",
