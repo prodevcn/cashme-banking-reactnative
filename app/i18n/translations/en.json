@@ -254,13 +254,42 @@
     "no": "No",
     "note": "You will be redirected to Registration page and the registration will start again"
   },
+
+  "get_loan": {
+    "loan_amount": "Loan Amount",
+    "personal_info": "Personal Info",
+    "loan_approval": "Loan Approval",
+    "apply_now": "Apply Now",
+    "available_amount": "Your available amount is up to:",
+    "consumer": "Consumer",
+    "car": "Car",
+    "property": "Property",
+    "proposal_description": "Collateral loans and without"
+  },
   "credit_steps": {
+    "loan_amount_step": {
+      "loan_amount": "Loan amount",
+      "actual_interest_rate": "Actual interest rate",
+      "nominal_interest_rate": "Nominal interest rate",
+      "loan_term": "Loan term",
+      "months": "months",
+      "monthly_payment": "Monthly payment",
+      "last_month_payment": "Last month payment",
+      "amount_to_be_paid": "Amount to be paid",
+      "upcoming_payment_day": "Upcoming payment day",
+      "select_amount": "Select the amount",
+      "preferred_amount": "Preferred amount to be paid monthly",
+      "realize_annual_rate": "I realize the annual interest rate",
+      "confirm": "Confirm",
+      "input_description": "Please input <0>{{rate}}</0>, which is your loan interest rate"
+    },
     "personal_info": {
       "email": "Email",
       "phone": "Phone",
       "second_phone": "Second phone",
       "country": "Country",
       "address": "Address",
+      "Submit": "Submit",
       "notification": {
         "email": "Email",
         "in_person": "In person",
@@ -275,42 +304,6 @@
         "method": "Dispute solution method"
       }
     },
-    "sms_signature": {
-      "pdf_confirmation_text": "Սույնով հավաստիացնում եմ, որ ծանոթացել եմ վարկին կցվող <0></0>, <1></1> և <2></2>",
-      "confirmation_text": "Սույնով կրկին անգամ հաստատում եմ, որ «ԳԼՈԲԱԼ ԿՐԵԴԻՏ» ՈՒՎԿ ՓԲԸ-ը վարկ ստանալու նպատակով տրամադրել եմ իմ անձնական տվյալները և տեղեկացված եմ, որ իմ կողմից երրորդ անձանց տվյալներ ներկայացված լինելու վերաբերյալ համապատասխան հիմքերի ի հայտ գալու դեպքում կարող եմ ենթարկվել ՀՀ օրենսդրությամբ սահմանված պատասխանատվության: Հաստատում եմ նաև, որ տեղեկացված եմ, որ իմ կողմից «ԳԼՈԲԱԼ ԿՐԵԴԻՏ» ՈՒՎԿ ՓԲԸ-ն հանդեպ ստանձնած վարկային պարտավորության չկատարման դեպքում տվյալները փոխանցվելու են «ԱՔՌԱ ՔՐԵԴԻԹ ՌԵՓՈՐԻՆԳ» ՓԲԸ-ը և արտացոլվելու են իմ վերաբերյալ վարկային զեկույցներում",
-      "agreement_text": "Սույնով տալիս եմ իմ համաձայնությունն այն մասին, որ սույն համաձայնությունը կնքվում է հեռակա կարգով` տեղեկություններ (հաղորդագրություններ) փոխանակելու միջոցով: Պայմանագիրը համարվում է իմ և «Գլոբալ Կրեդիտ» ՈՒՎԿ ՓԲԸ-ի կողմից հեռակա կարգով ստորագրված սույն պայմանն իմ կողմից ընդունելու և վերջինիս հետևանքով վարկի տրամադրումը հաստատվելու միջոցով: Ամբողջական և անհետկանչելի ձևով ընդունում եմ վարկային պայմանագրի պայմանները, այդ թվում՝ ընդունում եմ, որ սույնով սահմանված ձևով վարկային պայմանագրի կնքմամբ վարկային պայմանագիրը համարվում է իմ և «Գլոբալ Կրեդիտ» ՈՒՎԿ ՓԲԸ-ի միջև գրավոր ձևով կնքված վավեր պայմանագիր",
-      "personal_sheet": "personal sheet",
-      "loan_contract": "loan contract",
-      "what_to_do": "what to do",
-      "label": "Please enter the code",
-      "get_code": "Get code"
-    },
-    "get_loan": {
-      "loan_amount": "Loan Amount",
-      "personal_info": "Personal Info",
-      "loan_approval": "Loan Approval",
-      "apply_now": "Apply Now",
-      "available_amount": "Your available amount is up to:",
-      "consumer": "Consumer",
-      "car": "Car",
-      "property": "Property",
-      "proposal_description": "Collateral loans and without"
-    },
-    "loan_amount_step": {
-      "loan_amount": "Loan amount",
-      "actual_interest_rate": "Actual interest rate",
-      "nominal_interest_rate": "Nominal interest rate",
-      "loan_term": "Loan term",
-      "months": "months",
-      "monthly_payment": "Monthly payment",
-      "last_month_payment": "Last month payment",
-      "amount_to_be_paid": "Amount to be paid",
-      "upcoming_payment_day": "Upcoming payment day",
-      "preferred_amount": "Preferred amount to be paid monthly",
-      "realize_annual_rate": "I realize the annual interest rate",
-      "confirm": "Confirm",
-      "input_description": "Please input <0>{{rate}}</0>, which is your loan interest rate"
-    },
     "transfer_options": {
       "preferred_loan_option": "Preferred loan option",
       "cash": "Cash",
@@ -323,6 +316,16 @@
       "open": "Open",
       "closed": "Closed",
       "working_hours": "Working hours"
+    },
+    "sms_signature": {
+      "pdf_confirmation_text": "Սույնով հավաստիացնում եմ, որ ծանոթացել եմ վարկին կցվող <0></0>, <1></1> և <2></2>",
+      "confirmation_text": "Սույնով կրկին անգամ հաստատում եմ, որ «ԳԼՈԲԱԼ ԿՐԵԴԻՏ» ՈՒՎԿ ՓԲԸ-ը վարկ ստանալու նպատակով տրամադրել եմ իմ անձնական տվյալները և տեղեկացված եմ, որ իմ կողմից երրորդ անձանց տվյալներ ներկայացված լինելու վերաբերյալ համապատասխան հիմքերի ի հայտ գալու դեպքում կարող եմ ենթարկվել ՀՀ օրենսդրությամբ սահմանված պատասխանատվության: Հաստատում եմ նաև, որ տեղեկացված եմ, որ իմ կողմից «ԳԼՈԲԱԼ ԿՐԵԴԻՏ» ՈՒՎԿ ՓԲԸ-ն հանդեպ ստանձնած վարկային պարտավորության չկատարման դեպքում տվյալները փոխանցվելու են «ԱՔՌԱ ՔՐԵԴԻԹ ՌԵՓՈՐԻՆԳ» ՓԲԸ-ը և արտացոլվելու են իմ վերաբերյալ վարկային զեկույցներում",
+      "agreement_text": "Սույնով տալիս եմ իմ համաձայնությունն այն մասին, որ սույն համաձայնությունը կնքվում է հեռակա կարգով` տեղեկություններ (հաղորդագրություններ) փոխանակելու միջոցով: Պայմանագիրը համարվում է իմ և «Գլոբալ Կրեդիտ» ՈՒՎԿ ՓԲԸ-ի կողմից հեռակա կարգով ստորագրված սույն պայմանն իմ կողմից ընդունելու և վերջինիս հետևանքով վարկի տրամադրումը հաստատվելու միջոցով: Ամբողջական և անհետկանչելի ձևով ընդունում եմ վարկային պայմանագրի պայմանները, այդ թվում՝ ընդունում եմ, որ սույնով սահմանված ձևով վարկային պայմանագրի կնքմամբ վարկային պայմանագիրը համարվում է իմ և «Գլոբալ Կրեդիտ» ՈՒՎԿ ՓԲԸ-ի միջև գրավոր ձևով կնքված վավեր պայմանագիր",
+      "personal_sheet": "personal sheet",
+      "loan_contract": "loan contract",
+      "what_to_do": "what to do",
+      "label": "Please enter the code",
+      "get_code": "Get code"
     }
   }
 }

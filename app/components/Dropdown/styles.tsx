@@ -39,18 +39,19 @@ const styles = StyleSheet.create({
 
   item: {
     flexDirection: "row",
-    paddingVertical: 10,
+    paddingTop: 10,
+    paddingBottom: 8,
   },
   itemIcon: {
     color: customColor.brandPrimary,
     fontSize: 25,
-    top: 10,
   },
   itemText: {
     width: "90%",
     color: customColor.gray,
     fontSize: 16,
     paddingLeft: 10,
+    paddingTop: 1,
     fontWeight: "500",
   },
   selectedItemText: {

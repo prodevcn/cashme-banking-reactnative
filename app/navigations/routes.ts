@@ -26,7 +26,6 @@ import {
   CASH_ME,
   GET_LOAN,
   LOAN_OFFER,
-  PERSONAL_INFO,
   SMS_SIGNATURE,
   PDF_VIEWER,
   FACE_RECOGNITION,
@@ -59,7 +58,6 @@ import FaceRecognition from "../screens/Registration/FaceVerificationSetup/FaceR
 import CashMe from "../screens/Products/CashMe";
 import GetLoan from "../screens/GetLoan";
 import LoanOffer from "../screens/LoanOffer";
-import PersonalInfo from "../screens/PersonalInfo";
 import SmsSignature from "../screens/SmsSignature";
 import PdfViewer from "../screens/PdfViewer";
 import OfficeLocations from "../screens/OfficeLocations/index";
@@ -221,12 +219,6 @@ export const productScreens: Array<Route> = [
     options: { title: "CashMe", headerShown: false },
   },
 ];
-
-export const personalInfoScreen: Route = {
-  name: PERSONAL_INFO,
-  component: PersonalInfo,
-  options: { headerShown: false },
-};
 
 export const smsSignatureScreen: Route = {
   name: SMS_SIGNATURE,

@@ -45,7 +45,7 @@ const Screen = (props: ScreenProps) => {
     hasBackIcon = true,
     hasLogo = false,
     isNonScrolling = true,
-    statusBarHidden = false,
+    statusBarHidden = true,
     isLoading = false,
     hasTabbar = false,
 

@@ -45,6 +45,9 @@ const styles = StyleSheet.create({
     borderColor: customColor.gray,
     paddingLeft: 15,
   },
+  dropdownBtn: {
+    borderBottomWidth: 0,
+  },
   loanTerm: {
     marginBottom: 20,
   },

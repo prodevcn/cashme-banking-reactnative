@@ -59,9 +59,7 @@ const LoanOffer = () => {
 
         <View style={styles.container}>
           <Row style={styles.autoFill}>
-            <Text style={styles.title}>
-              {t("credit_steps.get_loan.available_amount")}
-            </Text>
+            <Text style={styles.title}>{t("get_loan.available_amount")}</Text>
           </Row>
 
           {PROPOSAL_LIST.map((proposal, index) => (

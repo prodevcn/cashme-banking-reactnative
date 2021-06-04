@@ -39,9 +39,7 @@ const LoanOfferItem = ({
         <Col style={styles.rightSide}>
           <Icon style={styles.icon} fill={color} />
           <Button rounded style={styles.button} onPress={onPress}>
-            <Text style={styles.buttonText}>
-              {t("credit_steps.get_loan.apply_now")}
-            </Text>
+            <Text style={styles.buttonText}>{t("get_loan.apply_now")}</Text>
           </Button>
         </Col>
       </Row>

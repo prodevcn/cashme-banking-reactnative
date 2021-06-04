@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   imageBackground: {
     width: "100%",
-    minHeight: 285,
+    minHeight: 220,
   },
   headerContainer: {
     flex: 1,
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   profileText: {
-    fontSize: 24,
+    fontSize: 22,
     lineHeight: 29,
     color: customColor.white,
   },

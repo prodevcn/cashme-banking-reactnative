@@ -34,22 +34,22 @@ export const FINANCE_PRODUCTS = {
 
 export const PROPOSAL_LIST: Array<ILoanOfferItemProps> = [
   {
-    title: i18n.t("credit_steps.get_loan.consumer"),
-    description: i18n.t("credit_steps.get_loan.proposal_description"),
+    title: i18n.t("get_loan.consumer"),
+    description: i18n.t("get_loan.proposal_description"),
     amount: 800000,
     color: "#FFB858",
     Icon: ConsumerLoanIcon,
   },
   {
-    title: i18n.t("credit_steps.get_loan.car"),
-    description: i18n.t("credit_steps.get_loan.proposal_description"),
+    title: i18n.t("get_loan.car"),
+    description: i18n.t("get_loan.proposal_description"),
     amount: 1300000,
     color: "#5B59D3",
     Icon: CarLoanIcon,
   },
   {
-    title: i18n.t("credit_steps.get_loan.property"),
-    description: i18n.t("credit_steps.get_loan.proposal_description"),
+    title: i18n.t("get_loan.property"),
+    description: i18n.t("get_loan.proposal_description"),
     amount: 14000000,
     color: "#49AA36",
     Icon: HomeLoanIcon,

@@ -19,6 +19,7 @@ interface DropdownProps {
   onChange?: Function;
   label?: string;
   style?: ViewStyle;
+  btnStyle?: ViewStyle;
   selectedValue?: string;
 }
 
@@ -34,6 +35,7 @@ const Dropdown = ({
   label,
   onChange = () => {},
   style,
+  btnStyle,
   ...rest
 }: DropdownProps) => {
   const initialSelection = options.find(it => it.value === selectedValue) || {
@@ -96,7 +98,7 @@ const Dropdown = ({
         style={[styles.item]}
       >
         <Icon
-          type="FontAwesome"
+          type="AntDesign"
           name="check"
           style={[styles.itemIcon, { opacity: isSelected(item) ? 1 : 0 }]}
         />
@@ -116,7 +118,7 @@ const Dropdown = ({
         iconRight
         transparent
         full
-        style={styles.btn}
+        style={[styles.btn, btnStyle]}
         onPress={openDropdown}
         {...rest}
       >

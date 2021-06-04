@@ -119,11 +119,7 @@ const ConfirmLoanRate = ({
           <View style={styles.formContainer}>
             <Form style={{ flex: 1 }}>
               <Item regular style={styles.formItem}>
-                <Input
-                  value={value}
-                  keyboardType="number-pad"
-                  onChangeText={onChangeText}
-                />
+                <Input value={value} onChangeText={onChangeText} />
               </Item>
             </Form>
             <Text style={styles.rate}>%</Text>

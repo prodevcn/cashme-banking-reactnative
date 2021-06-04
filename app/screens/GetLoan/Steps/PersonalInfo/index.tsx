@@ -1,19 +1,25 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { View, Label, Text } from "native-base";
-import { useNavigation } from "@react-navigation/native";
-import Screen from "../../components/Screen";
-import Avatar from "../../components/Avatar";
-import HorizontalSummary from "../../components/HorizontalSummary";
-import Dropdown from "../../components/Dropdown";
-import PhoneInput from "../../components/PhoneInput";
-import { NOTIFICATION_METHODS, DISPUTE_SOLUTION } from "../../constants";
+import { View, Label, Text, Button } from "native-base";
+import Screen from "../../../../components/Screen";
+import Avatar from "../../../../components/Avatar";
+import HorizontalSummary from "../../../../components/HorizontalSummary";
+import Dropdown from "../../../../components/Dropdown";
+import PhoneInput from "../../../../components/PhoneInput";
+import { NOTIFICATION_METHODS, DISPUTE_SOLUTION } from "../../../../constants";
 
 import styles from "./styles";
 
-const PhoneVerification = () => {
+interface IPersonalInfoProps {
+  wizard: React.MutableRefObject<any>;
+}
+
+const PersonalInfo = ({ wizard }: IPersonalInfoProps) => {
   const { t } = useTranslation();
-  const { navigate } = useNavigation();
+
+  const handleSubmit = () => {
+    wizard.current.next();
+  };
 
   return (
     <Screen isLoading={false} hasHeader={false} isNonScrolling={false}>
@@ -104,9 +110,13 @@ const PhoneVerification = () => {
           options={DISPUTE_SOLUTION}
           style={styles.dropdown}
         ></Dropdown>
+
+        <Button full rounded onPress={handleSubmit} style={styles.submitBtn}>
+          <Text>{t("credit_steps.personal_info.submit")}</Text>
+        </Button>
       </>
     </Screen>
   );
 };
 
-export default PhoneVerification;
+export default PersonalInfo;

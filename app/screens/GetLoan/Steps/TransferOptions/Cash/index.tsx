@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row, Text, View, Icon, Button } from "native-base";
 import { useTranslation } from "react-i18next";
-import MapView, { PROVIDER_GOOGLE, Region } from "react-native-maps";
+// import MapView, { PROVIDER_GOOGLE, Region } from "react-native-maps";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 
@@ -12,16 +12,16 @@ import styles from "./styles";
 const Cash = () => {
   const { t } = useTranslation();
   const { navigate } = useNavigation();
-  const region: Region = {
-    latitude: 40.195341954089585,
-    latitudeDelta: 0.4190311305971264,
-    longitude: 44.522839207202196,
-    longitudeDelta: 0.4512323811650276,
-  };
+  // const region: Region = {
+  //   latitude: 40.195341954089585,
+  //   latitudeDelta: 0.4190311305971264,
+  //   longitude: 44.522839207202196,
+  //   longitudeDelta: 0.4512323811650276,
+  // };
 
   return (
     <View style={styles.container}>
-      <MapView provider={PROVIDER_GOOGLE} style={styles.map} region={region} />
+      {/* <MapView provider={PROVIDER_GOOGLE} style={styles.map} region={region} /> */}
 
       <TouchableOpacity
         activeOpacity={0.8}

@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
-import customColor from "../../theme/customColor";
+import customColor from "../../../../theme/customColor";
 
 const styles = StyleSheet.create({
   avatar: {
     alignItems: "center",
+    marginTop: 20,
     marginBottom: 10,
   },
 
@@ -48,6 +49,10 @@ const styles = StyleSheet.create({
 
   dropdown: {
     marginBottom: 30,
+  },
+
+  submitBtn: {
+    marginBottom: 50,
   },
 });
 

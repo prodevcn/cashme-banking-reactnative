@@ -9,7 +9,6 @@ import {
   productScreens,
   getLoan,
   loanOffer,
-  personalInfoScreen,
   smsSignatureScreen,
   pdfViewerScreen,
   officeLocations,
@@ -81,12 +80,6 @@ class RootNavigation extends Component {
           name={securitySettingsScreen.name}
           component={securitySettingsScreen.component}
           options={securitySettingsScreen.options}
-        />
-
-        <Stack.Screen
-          name={personalInfoScreen.name}
-          component={personalInfoScreen.component}
-          options={personalInfoScreen.options}
         />
 
         <Stack.Screen

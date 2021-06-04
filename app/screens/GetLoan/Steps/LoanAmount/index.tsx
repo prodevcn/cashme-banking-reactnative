@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Text, Col, Row, Grid } from "native-base";
 import { useTranslation } from "react-i18next";
+import { range } from "lodash";
 
 import CalculationSlider from "./CalculationSlider";
 import LoanTerms from "./LoanTerms";
@@ -17,6 +18,7 @@ interface ILoanAmount {
   amount: number;
   color: string;
   LoanIcon: any;
+  wizard: React.MutableRefObject<any>;
 }
 
 const LoanAmount = ({
@@ -25,10 +27,17 @@ const LoanAmount = ({
   amount,
   color,
   LoanIcon,
+  wizard,
 }: ILoanAmount) => {
   const { t } = useTranslation();
   const [monthlyPayableSize, setMonthlyPayableSize] = useState(8000);
   const [inputText, setInputText] = useState("");
+
+  const amounts = range(50000, 810000, 10000);
+
+  const approveLoan = () => {
+    wizard.current.next();
+  };
 
   return (
     <Grid style={styles.container}>
@@ -52,9 +61,10 @@ const LoanAmount = ({
         {/*TODO: Should be changed on API ready */}
         <Dropdown
           onChange={(item: any) => console.log(item)}
-          label="some label"
-          options={[{ text: "some text 2", value: "value2" }]}
+          label={t("credit_steps.loan_amount_step.select_amount")}
+          options={amounts.map(n => ({ text: n, value: n }))}
           style={styles.dropdown}
+          btnStyle={styles.dropdownBtn}
         />
       </Row>
 
@@ -99,6 +109,7 @@ const LoanAmount = ({
             rounded
             style={styles.confirmBtn}
             disabled={!("97.56" == inputText)}
+            onPress={approveLoan}
           >
             <Text style={styles.confirmBtnText}>
               {t("credit_steps.loan_amount_step.confirm")}

@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
 
   hasTabbar: {
-    marginBottom: 100,
+    marginBottom: 75,
   },
 });
 

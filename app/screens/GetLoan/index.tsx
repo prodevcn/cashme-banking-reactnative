@@ -7,6 +7,7 @@ import Wizard from "react-native-wizard";
 
 import Screen from "../../components/Screen";
 import LoanAmount from "./Steps/LoanAmount";
+import PersonalInfo from "./Steps/PersonalInfo";
 import TransferOptions from "./Steps/TransferOptions";
 import { PROPOSAL_LIST } from "../../constants/products";
 import { GET_LOAN } from "../../constants";
@@ -29,7 +30,7 @@ const GetLoan = ({ route }: Props) => {
   // TODO: All the views should be replaced with already ready components/screens
   const stepList = [
     {
-      title: t("credit_steps.get_loan.loan_amount"),
+      title: t("get_loan.loan_amount"),
       content: (
         <LoanAmount
           title={PROPOSAL_LIST[proposalIndex].title}
@@ -37,23 +38,20 @@ const GetLoan = ({ route }: Props) => {
           amount={PROPOSAL_LIST[proposalIndex].amount}
           color={PROPOSAL_LIST[proposalIndex].color}
           LoanIcon={PROPOSAL_LIST[proposalIndex].Icon}
+          wizard={wizard}
         />
       ),
     },
     {
-      title: t("credit_steps.get_loan.personal_info"),
-      content: (
-        <View
-          style={{ width: "100%", height: 500, backgroundColor: "#e04851" }}
-        />
-      ),
+      title: t("get_loan.personal_info"),
+      content: <PersonalInfo wizard={wizard} />,
     },
     {
-      title: t("credit_steps.get_loan.loan_approval"),
+      title: t("get_loan.loan_approval"),
       content: <TransferOptions />,
     },
     {
-      title: t("credit_steps.get_loan.loan_approval"),
+      title: t("get_loan.loan_approval"),
       content: (
         <View
           style={{ width: "100%", height: 500, backgroundColor: "#2634e0" }}
@@ -61,7 +59,7 @@ const GetLoan = ({ route }: Props) => {
       ),
     },
     {
-      title: t("credit_steps.get_loan.loan_approval"),
+      title: t("get_loan.loan_approval"),
       content: (
         <View
           style={{ width: "100%", height: 500, backgroundColor: "#2634e0" }}
