@@ -136,3 +136,5 @@ buck-out/
 web-build/
 
 # @end expo-cli
+
+testers.txt
