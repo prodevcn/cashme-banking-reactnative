@@ -8,7 +8,8 @@
     "test": "jest",
     "postinstall": "husky install",
     "lint-staged": "lint-staged",
-    "format": "./node_modules/.bin/prettier --write ./app"
+    "format": "./node_modules/.bin/prettier --write ./app",
+    "postversion": "./node_modules/.bin/react-native-version"
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.4",
@@ -105,6 +106,7 @@
     "eslint-plugin-react": "^7.23.1",
     "jest": "~25.2.6",
     "jest-expo": "~40.0.0",
+    "react-native-version": "4.0.0",
     "react-test-renderer": "~16.13.1",
     "typescript": "~4.0.0"
   },
