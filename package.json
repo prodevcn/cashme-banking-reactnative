@@ -47,7 +47,7 @@
     "i18next-xhr-backend": "^3.2.2",
     "lint-staged": "^10.5.4",
     "lodash": "4.17.21",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "native-base": "^2.15.2",
     "prettier": "^2.2.1",
     "pubsub-js": "1.9.3",
